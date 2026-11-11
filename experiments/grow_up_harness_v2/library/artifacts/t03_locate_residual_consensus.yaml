@@ -4,10 +4,11 @@ task_node: B5.4
 summary: Choose a bounded residual band only after sphere confidence rejection
 contract:
   pre:
+  - hand_open
   - primary_RGBD_sphere_fit_low_confidence
   - guard_clear
   post:
-  - propose_inlier_band_not_task_success
+  - fruit_position_estimated
   params: {}
   failure_codes:
   - SCHEMA

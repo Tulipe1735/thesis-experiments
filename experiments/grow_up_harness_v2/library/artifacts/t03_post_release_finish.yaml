@@ -5,11 +5,12 @@ summary: After actual release and backward clearance, dwell without unnecessary 
   extra raise
 contract:
   pre:
+  - placement_target_selected
   - released
   - hand_clear_after_backward_retreat
   - guard_clear
   post:
-  - post_release_dwell_not_task_success
+  - post_release_dwell_done
   params: {}
   failure_codes:
   - SCHEMA

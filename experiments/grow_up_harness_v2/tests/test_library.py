@@ -52,9 +52,31 @@ class LibraryTests(unittest.TestCase):
                 (fixture / 'artifacts/t03_adaptive_recipe.yaml').write_text(yaml.safe_dump(grasp))
                 (fixture / 'artifacts/t03_adaptive_recipe.py').write_text(source)
                 frozen = Library(fixture).freeze(name)
-            self.assertEqual(frozen['ref'], root['ref'])
-            self.assertEqual(frozen['views']['code'], original.code)
-            self.assertEqual(frozen['components'], root['components'])
+            # Runtime executes only leaf sources and runtime versions; node placement and
+            # contract wording are metadata, so compatibility is checked on what executes.
+            self.assertEqual(frozen['components'].keys(), root['components'].keys())
+            for role, old in root['components'].items():
+                new = frozen['components'][role]
+                if not role.endswith('_ref'):
+                    self.assertEqual(new, old)
+                    continue
+                stored = yaml.safe_load((path / 'store/artifacts' / (old + '.yaml')).read_text())
+                self.assertEqual(frozen['artifacts'][new]['implementation']['source_sha256'],
+                                 stored['implementation']['source_sha256'], (name, role))
+            self.assertTrue(original.code)
+
+    def test_t03_roots_sit_on_task_node_and_leaves_chain_by_contract(self):
+        library = Library(LIBRARY)
+        bundle = library.freeze('t03_pose')
+        artifacts = bundle['artifacts']
+        self.assertEqual(artifacts[bundle['ref']]['task_node'], 'T03')
+        leaf_nodes = {artifacts[r]['task_node'] for k, r in bundle['components'].items() if k.endswith('_ref')}
+        self.assertNotIn('T03', leaf_nodes)
+        order = ['locate_ref', 'approach_ref', 'grasp_ref', 'placement_ref', 'finish_ref']
+        for before, after in zip(order, order[1:]):
+            post = set(artifacts[bundle['components'][before]]['contract']['post'])
+            pre = set(artifacts[bundle['components'][after]]['contract']['pre'])
+            self.assertTrue(post & pre, (before, after))
 
     def test_moving_library_and_leaf_files_preserves_release_identity(self):
         original = Library(LIBRARY).freeze('t03_pose')

@@ -106,6 +106,9 @@ nodes:
 - id: T02
   title: 三杯归集
   parent: L1.取用归位
+- id: T03
+  title: 指定水果放入果盘
+  parent: L1.取用归位
 - id: T02.slot
   title: 单杯入指定槽位（T02 局部，非整项 T02）
   parent: T02

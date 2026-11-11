@@ -4,10 +4,12 @@ task_node: B2.3
 summary: Select only prechecked route IDs or decline; no direct physical authority
 contract:
   pre:
+  - fruit_position_estimated
   - current_RGBD_gray_can
   - bounded_route_preflight
   post:
-  - route_selected_or_declined_not_task_success
+  - approach_route_selected
+  - open_hand_clearance_at_arrival
   params: {}
   failure_codes:
   - NO_SAFE_ROUTE

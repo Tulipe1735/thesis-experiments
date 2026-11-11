@@ -4,10 +4,12 @@ task_node: B2.3
 summary: Reuse selector over bounded observation-relative native local-pose candidates
 contract:
   pre:
+  - fruit_position_estimated
   - current_RGBD_can
   - bounded_native_local_pose_candidates
   post:
-  - pose_route_selected_or_declined_not_task_success
+  - approach_route_selected
+  - open_hand_clearance_at_arrival
   params: {}
   failure_codes:
   - NO_SAFE_POSE

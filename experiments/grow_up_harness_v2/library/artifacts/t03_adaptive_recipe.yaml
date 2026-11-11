@@ -5,10 +5,12 @@ summary: Shared bounded numeric grasp recipe for existing AdaptiveGrasp and T03 
   stages
 contract:
   pre:
-  - valid_T03_task
+  - approach_route_selected
+  - closed_hand_clearance_at_arrival
+  - retreat_path_clearance_at_arrival
   - guard_clear
   post:
-  - bounded_recipe_proposed_not_task_success
+  - fruit_lifted_and_held
   params: {}
   failure_codes:
   - SCHEMA

@@ -1,6 +1,6 @@
 schema: artifact.v2
 name: t03_orange_to_platter_local_pose
-task_node: B4.4
+task_node: T03
 summary: Temporal locate plus observed-can local grasp-offset route leaf
 contract:
   pre:

@@ -8,7 +8,7 @@ contract:
   - camera_platter_estimate
   - guard_clear
   post:
-  - placement_target_selected_not_task_success
+  - placement_target_selected
   params: {}
   failure_codes:
   - SCHEMA
