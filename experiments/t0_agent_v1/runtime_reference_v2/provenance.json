@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-26",
+  "boundary": "simulation",
+  "reason": "Exact trusted sources retained after experimental directory migration and Git archival",
+  "archive_name": "thesis-experiments-20261026.bundle",
+  "sources": [
+    {
+      "path": "experiments/grow_up_v2/plant.py",
+      "sha256": "fa319ee540971aa8ba0ca38216c2918bf9087f2a7b612e7c2ddfd42e03426f0c",
+      "source": "git:5bda851c20b62db18616bf576939db68ce7d8d53"
+    },
+    {
+      "path": "experiments/grow_up_v2/isolation/worker.py",
+      "sha256": "443c125f1d0234d5b1efceba7d7279d63cb6da076ffbddfb53d27a2712283f81",
+      "source": "git:5bda851c20b62db18616bf576939db68ce7d8d53"
+    },
+    {
+      "path": "experiments/grow_up_v2/isolation/_entry.py",
+      "sha256": "bca3044a772353f5b3dedbb0eb0ed285cdd21300e8d72d414095c05cfc2e6d7b",
+      "source": "git:5bda851c20b62db18616bf576939db68ce7d8d53"
+    }
+  ]
+}

@@ -1,0 +1,422 @@
+{
+  "source": "experiments/t0_agent_v1/tray_20261025_001/episodes/2402_T02_scripted/obs_008.json",
+  "source_sha256": "16094720da3bdac3e6719111c4671bced9c5ca0040903d4e0a7b986eda262d31",
+  "state": {
+    "simulation_seconds": 35.281999999997154,
+    "joints": {
+      "left_hip_pitch_joint": {
+        "q": -0.00011924964405015453,
+        "dq": -6.298042522620955e-05,
+        "torque_Nm": -3.070464815448057,
+        "target": 0.0
+      },
+      "left_hip_roll_joint": {
+        "q": -4.332396234554947e-05,
+        "dq": 0.00010756132963815734,
+        "torque_Nm": -0.44778793783349835,
+        "target": 0.0
+      },
+      "left_hip_yaw_joint": {
+        "q": -0.00042452671165176155,
+        "dq": -0.000529861489694135,
+        "torque_Nm": 0.2500746914470118,
+        "target": 0.0
+      },
+      "left_knee_joint": {
+        "q": -0.0001483079626484006,
+        "dq": 0.0002595712610381929,
+        "torque_Nm": -2.4682544240445354,
+        "target": 0.0
+      },
+      "left_ankle_pitch_joint": {
+        "q": -0.00017362303992800703,
+        "dq": 0.0005445652827111689,
+        "torque_Nm": -2.7034789799515946,
+        "target": 0.0
+      },
+      "left_ankle_roll_joint": {
+        "q": -1.3741449415761937e-05,
+        "dq": -0.0001284864921306483,
+        "torque_Nm": 0.021547290432709722,
+        "target": 0.0
+      },
+      "right_hip_pitch_joint": {
+        "q": 8.20889480942495e-05,
+        "dq": 0.00014795337158802436,
+        "torque_Nm": -3.2603083613418495,
+        "target": 0.0
+      },
+      "right_hip_roll_joint": {
+        "q": -3.841640902549147e-05,
+        "dq": 0.00010804191009346309,
+        "torque_Nm": 0.3692829607890468,
+        "target": 0.0
+      },
+      "right_hip_yaw_joint": {
+        "q": -0.00040991848384938086,
+        "dq": -0.000524595919008726,
+        "torque_Nm": 0.10180865777472875,
+        "target": 0.0
+      },
+      "right_knee_joint": {
+        "q": -0.0001472605153905938,
+        "dq": 0.00026004427669867446,
+        "torque_Nm": -2.4254294815866557,
+        "target": 0.0
+      },
+      "right_ankle_pitch_joint": {
+        "q": -0.000350829427941384,
+        "dq": 0.00035774490768769975,
+        "torque_Nm": -2.451942321519968,
+        "target": 0.0
+      },
+      "right_ankle_roll_joint": {
+        "q": -1.6254255777624596e-05,
+        "dq": -0.00013081771869566595,
+        "torque_Nm": 0.022439788806174657,
+        "target": 0.0
+      },
+      "waist_yaw_joint": {
+        "q": 0.25208526457447117,
+        "dq": 0.002400180524015966,
+        "torque_Nm": -0.4036525612176973,
+        "target": 0.25
+      },
+      "waist_roll_joint": {
+        "q": 0.0005263887825842984,
+        "dq": 0.0015819804189185986,
+        "torque_Nm": 0.8241995258538174,
+        "target": 0.0
+      },
+      "waist_pitch_joint": {
+        "q": -0.15130248345222735,
+        "dq": -0.001379574301217352,
+        "torque_Nm": 5.503469918320434,
+        "target": -0.15
+      },
+      "left_shoulder_pitch_joint": {
+        "q": 0.6721117750496408,
+        "dq": 0.0880407837952454,
+        "torque_Nm": 0.32802048849147525,
+        "target": 0.6748912270804842
+      },
+      "left_shoulder_roll_joint": {
+        "q": 0.7384259297114895,
+        "dq": -0.006693262498450494,
+        "torque_Nm": 4.212180907123901,
+        "target": 0.7387466700419008
+      },
+      "left_shoulder_yaw_joint": {
+        "q": 1.5449672455054917,
+        "dq": 0.13303051914845546,
+        "torque_Nm": 1.6923361904959222,
+        "target": 1.5495927763418624
+      },
+      "left_elbow_joint": {
+        "q": -0.5103156552696666,
+        "dq": 0.037141682188484085,
+        "torque_Nm": -0.6917264682342221,
+        "target": -0.5091969411076596
+      },
+      "left_wrist_roll_joint": {
+        "q": -1.091525023150113,
+        "dq": 0.04306848365402253,
+        "torque_Nm": -0.3806543289116462,
+        "target": -1.0896192710252
+      },
+      "left_wrist_pitch_joint": {
+        "q": 0.9856464206680975,
+        "dq": 0.02231216376130845,
+        "torque_Nm": -0.8507733744849446,
+        "target": 0.9868306594742061
+      },
+      "left_wrist_yaw_joint": {
+        "q": -0.9792856844596971,
+        "dq": -0.16428230618205544,
+        "torque_Nm": 0.03003456954434114,
+        "target": -0.9871253172907613
+      },
+      "left_hand_thumb_0_joint": {
+        "q": 4.6992224209043325e-06,
+        "dq": 1.0790247796737404e-05,
+        "torque_Nm": 0.0035091158643926128,
+        "target": 0.0
+      },
+      "left_hand_thumb_1_joint": {
+        "q": -0.0005021489040165074,
+        "dq": -0.0005399449426605099,
+        "torque_Nm": 0.002127233674655267,
+        "target": 0.0
+      },
+      "left_hand_thumb_2_joint": {
+        "q": -7.542144614773781e-05,
+        "dq": -8.065014283829582e-05,
+        "torque_Nm": 0.00031939616461725776,
+        "target": 0.0
+      },
+      "left_hand_middle_0_joint": {
+        "q": 4.2525920740417405e-06,
+        "dq": -0.00013997034821116103,
+        "torque_Nm": -8.57862461302356e-07,
+        "target": 0.0
+      },
+      "left_hand_middle_1_joint": {
+        "q": -2.914187605176474e-07,
+        "dq": 0.0001271800812270497,
+        "torque_Nm": -1.4567106330558392e-05,
+        "target": 0.0
+      },
+      "left_hand_index_0_joint": {
+        "q": -1.3097033828129834e-05,
+        "dq": -0.00014363919695338425,
+        "torque_Nm": 6.893553841249249e-05,
+        "target": 0.0
+      },
+      "left_hand_index_1_joint": {
+        "q": -1.2883830228232223e-06,
+        "dq": 6.341040993209773e-05,
+        "torque_Nm": -2.9351919664926506e-06,
+        "target": 0.0
+      },
+      "right_shoulder_pitch_joint": {
+        "q": 0.3500056257155792,
+        "dq": 8.140400558761488e-06,
+        "torque_Nm": -0.3759964090339061,
+        "target": 0.35
+      },
+      "right_shoulder_roll_joint": {
+        "q": -0.44999544047452933,
+        "dq": 2.945708075390143e-05,
+        "torque_Nm": -3.674815036517572,
+        "target": -0.45
+      },
+      "right_shoulder_yaw_joint": {
+        "q": 1.5562165394855743e-06,
+        "dq": 1.2330780379173273e-05,
+        "torque_Nm": -0.8804683636070503,
+        "target": 0.0
+      },
+      "right_elbow_joint": {
+        "q": 1.0000024796171871,
+        "dq": 1.7786010397106555e-05,
+        "torque_Nm": -0.9375458039216937,
+        "target": 1.0
+      },
+      "right_wrist_roll_joint": {
+        "q": -1.1552219575899345e-08,
+        "dq": -4.742797849623468e-08,
+        "torque_Nm": 0.009991157627274497,
+        "target": 0.0
+      },
+      "right_wrist_pitch_joint": {
+        "q": 8.043105800439259e-07,
+        "dq": 8.22832553257986e-06,
+        "torque_Nm": -0.3894653618454636,
+        "target": 0.0
+      },
+      "right_wrist_yaw_joint": {
+        "q": 7.841420695007627e-07,
+        "dq": 6.937281092433302e-06,
+        "torque_Nm": -0.29616582568350935,
+        "target": 0.0
+      },
+      "right_hand_thumb_0_joint": {
+        "q": -4.8481571802592036e-08,
+        "dq": -1.4826784232443765e-07,
+        "torque_Nm": 0.0006292077012841348,
+        "target": 0.0
+      },
+      "right_hand_thumb_1_joint": {
+        "q": -4.913264401435474e-07,
+        "dq": -5.999613562067344e-06,
+        "torque_Nm": 0.029741208406786106,
+        "target": 0.0
+      },
+      "right_hand_thumb_2_joint": {
+        "q": -6.832416618106694e-08,
+        "dq": -7.936152576386966e-07,
+        "torque_Nm": 0.00456316633893937,
+        "target": 0.0
+      },
+      "right_hand_index_0_joint": {
+        "q": 9.875519225551284e-07,
+        "dq": 8.264008773201155e-06,
+        "torque_Nm": -0.0156341630026407,
+        "target": 0.0
+      },
+      "right_hand_index_1_joint": {
+        "q": 1.6325172258358583e-07,
+        "dq": 1.4055664314597308e-06,
+        "torque_Nm": -0.0025341181542054567,
+        "target": 0.0
+      },
+      "right_hand_middle_0_joint": {
+        "q": 1.065260432425274e-06,
+        "dq": 8.709129762954072e-06,
+        "torque_Nm": -0.015634523874027632,
+        "target": 0.0
+      },
+      "right_hand_middle_1_joint": {
+        "q": 1.753195168014991e-07,
+        "dq": 1.467383982300847e-06,
+        "torque_Nm": -0.0025341733033761547,
+        "target": 0.0
+      }
+    },
+    "palms": {
+      "left": {
+        "frame": "current_pelvis",
+        "side": "left",
+        "position_m": [
+          -0.04017209766433788,
+          0.3396996627846408,
+          0.29967370954879125
+        ],
+        "quaternion_xyzw": [
+          0.000270021687162061,
+          -0.000297201888775664,
+          0.0026092589912977263,
+          0.9999965152573499
+        ]
+      },
+      "right": {
+        "frame": "current_pelvis",
+        "side": "right",
+        "position_m": [
+          0.10690344137156389,
+          -0.3214217719706446,
+          -0.1096066726970063
+        ],
+        "quaternion_xyzw": [
+          -0.24721053148907568,
+          0.5267922666966649,
+          -0.02533606317267805,
+          0.8128560418502098
+        ]
+      }
+    },
+    "approximate_contact_load_N": {
+      "left": {},
+      "right": {}
+    },
+    "imu": {
+      "pelvis_quaternion_xyzw": [
+        -0.000304938373912392,
+        -0.00033034962068938126,
+        -0.7068776740660397,
+        0.7073356712259764
+      ],
+      "angular_velocity": [
+        5.2014977890525595e-05,
+        -0.0009114915193550768,
+        0.0006185885329586414
+      ]
+    },
+    "controller": {
+      "base_mode": "free_floating_contact_wrench_joint_control",
+      "external_base_assistance": false,
+      "guard": null,
+      "max_tilt_deg": 0.20537275140036415,
+      "max_drift_m": 0.0019895632296560916
+    },
+    "capabilities": {
+      "rgbd": true,
+      "joints": true,
+      "numerical_pose_ik": true,
+      "vla": false
+    }
+  },
+  "target": [
+    0.41831625242784737,
+    0.22797482202739283,
+    0.16838329624281184
+  ],
+  "obstacles": [
+    {
+      "observation_id": "obs_008",
+      "frame": "observation_pelvis",
+      "cup_bottom_position_m": [
+        0.4199875059519258,
+        0.37888109175834583,
+        0.16841259944415893
+      ],
+      "table_plane_z_from_xy": [
+        -0.0003429321870099972,
+        0.00019797936842785857,
+        0.16848161603883632
+      ],
+      "radius_prior_m": 0.041,
+      "bbox_xyxy": [
+        463,
+        297,
+        571,
+        413
+      ],
+      "white_pixels": 9821,
+      "wall_points": 1772,
+      "wall_inlier_fraction": 0.8662528216704289,
+      "circle_fit_rms_m": 0.0011770283996291194,
+      "table_fit_rms_m": 0.00044686888073594024,
+      "yaw_estimated": false,
+      "source": "head_rgb_aligned_depth_K_T_only",
+      "ground_truth_used": false,
+      "limitations": [
+        "upright white cup",
+        "known radius class prior",
+        "fixed simulated lighting",
+        "visible horizontal support required; no segmentation-ID access"
+      ],
+      "observation_simulation_seconds": 35.281999999997154,
+      "input_sha256": {
+        "head_rgb": "3dbe2f9d68984b8d3957daea80c47830c94eea9c86f227bed48166b413c9c45a",
+        "depth": "3514d1d620332355529724d52f58d7bb8c48e85576910bee26dae0a9997f4a5c"
+      }
+    },
+    {
+      "observation_id": "obs_008",
+      "frame": "observation_pelvis",
+      "cup_bottom_position_m": [
+        0.2728587827915012,
+        0.07989854659283233,
+        0.1745813612939196
+      ],
+      "table_plane_z_from_xy": [
+        -0.0003429321870099972,
+        0.00019797936842785857,
+        0.16848161603883632
+      ],
+      "radius_prior_m": 0.041,
+      "bbox_xyxy": [
+        697,
+        454,
+        856,
+        675
+      ],
+      "white_pixels": 28180,
+      "wall_points": 4340,
+      "wall_inlier_fraction": 0.778110599078341,
+      "circle_fit_rms_m": 0.0011538945477408693,
+      "table_fit_rms_m": 0.00044686888073594024,
+      "yaw_estimated": false,
+      "source": "head_rgb_aligned_depth_K_T_only",
+      "ground_truth_used": false,
+      "limitations": [
+        "upright white cup",
+        "known radius class prior",
+        "fixed simulated lighting",
+        "visible horizontal support required; no segmentation-ID access"
+      ],
+      "observation_simulation_seconds": 35.281999999997154,
+      "input_sha256": {
+        "head_rgb": "3dbe2f9d68984b8d3957daea80c47830c94eea9c86f227bed48166b413c9c45a",
+        "depth": "3514d1d620332355529724d52f58d7bb8c48e85576910bee26dae0a9997f4a5c"
+      }
+    }
+  ],
+  "offset": [
+    0.045,
+    -0.055,
+    -0.052
+  ],
+  "original_yaw": 0.6
+}

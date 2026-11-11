@@ -1,0 +1,12 @@
+{
+  "checked_documents": [
+    "README_CN.md",
+    "CUP_FINETUNE_CN.md",
+    "training/cup_fourview_sft_v1/README_CN.md"
+  ],
+  "missing_links": [],
+  "test_count": 67,
+  "tests_all_passed": true,
+  "media_count": 5,
+  "media_all_decoded": true
+}

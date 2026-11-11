@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-26",
+  "boundary": "simulation",
+  "status": "downloaded_unmodified_not_g1_validated",
+  "revision": "5ce6643f3092639d08f7b0f90ed1c6a84f50552c",
+  "source_repository": "https://github.com/ARISE-Initiative/robosuite",
+  "license": "MIT (repository LICENSE retained)",
+  "files": [
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "source_url": "https://raw.githubusercontent.com/ARISE-Initiative/robosuite/5ce6643f3092639d08f7b0f90ed1c6a84f50552c/LICENSE",
+      "size_bytes": 1474,
+      "sha256": "177978cbece0a4c454c2aaec5b3f145b39270814874c43109da9e829c39d9cba"
+    },
+    {
+      "path": "objects/bottle.xml",
+      "upstream_path": "robosuite/models/assets/objects/bottle.xml",
+      "source_url": "https://raw.githubusercontent.com/ARISE-Initiative/robosuite/5ce6643f3092639d08f7b0f90ed1c6a84f50552c/robosuite/models/assets/objects/bottle.xml",
+      "size_bytes": 987,
+      "sha256": "aa724e4080db8bf0bfbf917d047fad952f8bcf50f205310d4bbf5eed66b06d70"
+    },
+    {
+      "path": "objects/meshes/bottle.stl",
+      "upstream_path": "robosuite/models/assets/objects/meshes/bottle.stl",
+      "source_url": "https://raw.githubusercontent.com/ARISE-Initiative/robosuite/5ce6643f3092639d08f7b0f90ed1c6a84f50552c/robosuite/models/assets/objects/meshes/bottle.stl",
+      "size_bytes": 6684,
+      "sha256": "f2b6ca097b2d0d43b255fe3d605c8628117459b1d7369220ddf62ced5e84d962"
+    },
+    {
+      "path": "textures/glass.png",
+      "upstream_path": "robosuite/models/assets/textures/glass.png",
+      "source_url": "https://raw.githubusercontent.com/ARISE-Initiative/robosuite/5ce6643f3092639d08f7b0f90ed1c6a84f50552c/robosuite/models/assets/textures/glass.png",
+      "size_bytes": 89051,
+      "sha256": "9e12c4e1ed663ba3b690a701626e80189be02228f6d29c985273f15da4de423a"
+    }
+  ],
+  "total_size_bytes": 98196,
+  "adaptation_required": [
+    "Name prefix and freejoint placement in the G1 task model",
+    "Collision masks, inferred mass and friction audit",
+    "G1/Dex3 reachability/contact and independent task verification"
+  ],
+  "source_xml_notes": {
+    "physical_shape": "glass bottle; not inherently a branded water-bottle asset",
+    "visual_collision": "one group=1 visual and one group=0 collision mesh",
+    "dynamics": "density 50 kg/m^3 and friction 0.95 0.3 0.1 declared; no freejoint in raw standalone XML",
+    "sites": "bottom -0.082m, top 0.075m, horizontal radius 0.0254m"
+  }
+}

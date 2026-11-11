@@ -1,0 +1,14 @@
+{
+  "normalization_only": {
+    "tensor_count": 500,
+    "mismatched_tensor_names": [],
+    "matches_logged_parameters": true,
+    "seconds": 57.724574907000715
+  },
+  "best": {
+    "tensor_count": 500,
+    "mismatched_tensor_names": [],
+    "matches_logged_parameters": true,
+    "seconds": 60.94453971300027
+  }
+}

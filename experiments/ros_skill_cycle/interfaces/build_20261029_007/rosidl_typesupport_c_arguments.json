@@ -1,0 +1,13 @@
+{
+  "package_name": "thesis_skill_interfaces",
+  "idl_tuples": [
+    "/home/tulipe/projects/thesis-experiments/experiments/ros_skill_cycle/interfaces/build_20261029_007/idl:action/ExecuteSkill.idl"
+  ],
+  "output_dir": "/home/tulipe/projects/thesis-experiments/experiments/ros_skill_cycle/interfaces/build_20261029_007/generated/thesis_skill_interfaces",
+  "template_dir": "/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/rosidl_typesupport_c/resource",
+  "target_dependencies": [],
+  "ros_interface_dependencies": [],
+  "type_description_tuples": [
+    "action/ExecuteSkill.idl:/home/tulipe/projects/thesis-experiments/experiments/ros_skill_cycle/interfaces/build_20261029_007/description/action/ExecuteSkill.json"
+  ]
+}

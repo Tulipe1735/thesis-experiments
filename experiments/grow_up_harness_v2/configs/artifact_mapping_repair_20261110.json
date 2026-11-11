@@ -1,0 +1,30 @@
+{
+ "date":"2026-11-10",
+ "question":"Validate code execution and skill invocation from the same successful artifact on its saved successful initial.",
+ "skill_execution":"artifact_call",
+ "active_families":["T01","T02"],
+ "T01":{
+  "artifact":"experiments/grow_up_harness_v2/artifacts/t01_cup_to_tray.yaml",
+  "initial":{"registration":"experiments/grow_up_harness_v2/runs/mapping_holdout_20261109_001/registration.json","keys":["tasks","T01"],"task_id":"t01_110901_000"},
+  "historical_success":"experiments/grow_up_harness_v2/runs/mapping_holdout_20261109_001/T01/t01_110901_000/code/result.json",
+  "caps":{"simulation_s":180.0,"commands":2200,"wall_s":2700.0}
+ },
+ "T02":{
+  "store":"experiments/grow_up_harness_v2/runs/grow_t02_v3_20261107_001/store",
+  "artifact_ref":"t02_cup1_lift_clear_then_recorded@c15975503e7e",
+  "geometry":"experiments/grow_up_harness_v2/runs/grow_t02_v3_20261107_001/body_geometry.json",
+  "initial":{"registration":"experiments/grow_up_harness_v2/runs/grow_t02_v3_20261107_001/registration.json","keys":["train_tasks"],"task_id":"t02_92301_001"},
+  "historical_success":"experiments/grow_up_harness_v2/runs/grow_t02_v3_20261107_001/train/t02_92301_001/slow/attempt_02/result.json",
+  "caps":{"simulation_s":300.0,"commands":2200,"wall_s":2700.0}
+ },
+ "model":{"backend":"opencode_go","model":"deepseek-v4.1-flash","timeout_s":600.0,"temperature":0.0,"max_tokens":1024,"thinking":"disabled","json_mode":true},
+ "per_task":{"model_calls_per_skill":2,"format_retries":1,"physical_attempts_per_arm":1,"critic_calls":0},
+ "consumed_dev_seeds":[110901,92301],
+ "original_failure":{
+  "T01":{"evidence":"experiments/grow_up_harness_v2/runs/mapping_t01_skill_repair_20261110_001/T01/t01_110904_001/skill/execution/result.json","fact":"Regenerated joint controller failed while frozen artifact code succeeded. Exporter prepended a joint-only contract incompatible with the successful native Cartesian/waist program. Repair dispatch/binding, not the controller."},
+  "T02":{"evidence":"experiments/grow_up_harness_v2/runs/mapping_holdout_20261109_001/T02/t02_110902_001/skill/execution/result.json","fact":"Prior new-initial mapping attempt failed; this alone does not prove compiler failure. Reuse successful v3 artifact and its original successful initial; do not rewrite retreat or repeat growth."}
+ },
+ "prediction":{"negative":"Both waits fail; success voids family.","code":"Both historical code projections succeed on their saved successful initials.","skill":"Both skill invocations resolve to corresponding code bytes and independently succeed; no controller source is generated.","mapping":"Both views share artifact ref, IR hash and executable hash; original native interfaces and historical successful code bytes unchanged."},
+ "falsification":["Negative success voids family; code-positive failure stops family without alternate initials.","Model source code, changed ref/bindings, edited controller bytes, altered evaluator, missing seccomp or changed frozen export invalidates mapping validation.","Known successful development initials selected for repair reproduction, not unseen generalization. No library-benefit or learning claim."],
+ "claim_ceiling":"Callable skill/code projection consistency and successful reuse of existing simulation artifacts; no new controller, autonomous discovery or promotion."
+}

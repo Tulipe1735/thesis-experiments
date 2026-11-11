@@ -1,0 +1,25 @@
+schema: artifact.v2
+name: hand_open
+task_node: B3.2
+summary: Open the left hand to zero in bounded steps
+contract:
+  pre:
+  - guard_clear
+  post:
+  - hand_open
+  params: {}
+  failure_codes: []
+scope:
+  task_family: hand_open
+  initial_sha256: []
+  plant_sha256: 39301e1a017cc16a2da016dfea2a0a0b8675e9750d8ac578e7e72d666c814426
+provenance:
+  author: engineering_extraction
+  parents: []
+  created_on: '2026-11-07'
+  note: From experiments/grow_up_harness_v2/artifacts/t02_slot_place.yaml ir.phases.release
+    open_hand
+kind: leaf
+implementation:
+  language: python
+  source: hand_open.py

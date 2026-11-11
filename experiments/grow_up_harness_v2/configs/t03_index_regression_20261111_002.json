@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-11",
+  "output": "outputs/t03_index_regression_20261111_002",
+  "bundles": {
+    "parent": "outputs/artifacts/t03_pose_before_index_20261111_001.json",
+    "candidate": "outputs/artifacts/t03_pose_index_20261111_001.json"
+  },
+  "focuses": [
+    {
+      "stage": "locate",
+      "mechanism_trigger": "主定位球面拟合置信不足，残差共识带被触发"
+    },
+    {
+      "stage": "preflight",
+      "mechanism_trigger": "默认路线被净空筛选拒绝，返回替代位姿或 null"
+    },
+    {
+      "stage": "close_and_test",
+      "mechanism_trigger": "闭手前拇指-手指对齐超阈值，或 grip_settle 触发保护"
+    }
+  ],
+  "focus_cap": 3,
+  "handoff": {
+    "approach": [
+      "closed_hand_clearance_at_arrival",
+      "retreat_path_clearance_at_arrival"
+    ],
+    "close_and_test": [
+      "thumb_finger_alignment_at_arrival",
+      "grip_settle_force_window"
+    ]
+  },
+  "baselines": {
+    "negative": "每个有效初态真实 wait 2s，成功则整批作废",
+    "engineering_positive": "同初态旧抓持配方 parent；失败保留，不筛掉训练任务；不是已证实正例",
+    "original_failure": "旧抓持配方 parent 同初态执行，完整保留全部失败",
+    "treatment": "仅 index_scale 1.0→0.7 的 Codex 工程候选；人工及仿真真值接触诊断辅助；code/本地显式 skill ID 调用"
+  },
+  "prediction": {
+    "mapping": "同工件、同实际初态，code/skill 轨迹逐字节一致",
+    "task": "在明确已消耗613003初态，旧配方复现grip_settle禁止接触失败，新配方消除食指与非目标物接触；完整成功另由独立评价器决定",
+    "single_factor": "仅 index_scale 变化；定位/预抓取路线/其他抓持/下游全部复用"
+  },
+  "falsification": [
+    "负对照成功、接口/保护失效或 code/skill 不一致则停止；不补抽、不重试",
+    "食指仍触碰非目标物则几何预测被推翻；出现 TOUCH_ALIGNMENT_FAILED 或新稳持失败则记录副作用，不改本轮配方",
+    "上游阻塞不计抓持失败，不对未触发阶段宣称修复；本轮预算结束后停止，新修订另登记"
+  ],
+  "train_seed_start": 713000,
+  "train_count": 0,
+  "holdout_seed_start": 813000,
+  "holdout_count": 0,
+  "train_position_partition": "train",
+  "holdout_position_partition": "train",
+  "holdout_axis": "本轮仅训练，不开启新留出；旧613000..613003已用于诊断，保留已消耗身份",
+  "grid": {
+    "x_centers_m": [
+      0.28,
+      0.34,
+      0.4
+    ],
+    "y_centers_m": [
+      0.25,
+      0.32,
+      0.39
+    ],
+    "jitter_m": 0.008
+  },
+  "asset_index_cycle": [
+    1,
+    2,
+    5
+  ],
+  "consumed_dev_seeds": [
+    113000,
+    113001,
+    113002,
+    113003,
+    113004,
+    113005,
+    113006,
+    113007,
+    313000,
+    313001,
+    313002,
+    313003,
+    513000,
+    513001,
+    513002,
+    513003,
+    613000,
+    613001,
+    613002,
+    613003
+  ],
+  "pair_order_seed": 20261111,
+  "caps": {
+    "wall_s": 1200,
+    "physical_episodes": 4,
+    "model_calls": 0
+  },
+  "episode_caps": {
+    "simulation_s": 300.0,
+    "commands": 3000,
+    "wall_s": 240.0
+  },
+  "previous": "experiments/grow_up_harness_v2/runs/t03_obstacle_pose_eval_20261111_001",
+  "assistance": {
+    "author": "Codex engineering candidate",
+    "diagnosis": "user-directed; evaluator-private MuJoCo replay of old613003 final contact: index_1 vs distractor_2 0.1121N; thumb/middle vs fruit about2.7N",
+    "model_calls": 0,
+    "handoff_status": "declared measurements, not presumed passed; no new runtime safety gate"
+  },
+  "imported_training_tasks": [
+    {
+      "source": "experiments/grow_up_harness_v2/runs/t03_obstacle_pose_eval_20261111_001/tasks/test/T03_pose_test_613003",
+      "id": "T03_pose_test_613003",
+      "identity": "consumed old holdout reused as diagnostic training; not generalization",
+      "sampling": "reuse exact saved instance, robot_initial, scene and actual parameters; no resampling"
+    }
+  ],
+  "import_fix": "Prior import001 could not resolve relocated XML mesh file paths before any physical episode. Preserve failure; resolve only file resource paths against original scene directory in002. Geometry, controller and saved initial state unchanged."
+}

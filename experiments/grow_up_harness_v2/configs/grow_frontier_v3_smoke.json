@@ -1,0 +1,44 @@
+{
+ "train": {
+  "seed": 85101,
+  "count": 1,
+  "radius_rad": 0.3
+ },
+ "heldout": {
+  "seed": 86101,
+  "count": 1,
+  "radius_rad": 0.3
+ },
+ "proposer": {
+  "backend": "ollama",
+  "model": "qwen3.5:4b",
+  "timeout_s": 300
+ },
+ "critic": null,
+ "caps": {
+  "simulation_s": 30.0,
+  "commands": 200,
+  "wall_s": 300.0
+ },
+ "per_task": {
+  "fast_tries": 2,
+  "library_shown": 3,
+  "max_physical_attempts": 0,
+  "max_gate_rejections": 4,
+  "gate_steps": 8
+ },
+ "controls": {
+  "positive": "all"
+ },
+ "heldout_scratch": false,
+ "consumed_dev_seeds": [
+  81001,
+  82001,
+  91001
+ ],
+ "prediction": "Positives reproduce tighter pose. FAST is tried before authorship; library may still solve both tasks, which must not trigger model calls.",
+ "falsification": "Any model attempt before library exhaustion or after library success; any missing positive control or timing gap.",
+ "parent_store": "experiments/grow_up_harness_v2/runs/artifact_v2_migration_20261107_001/store",
+ "evaluator_version": "explicit-pose-replay-v3",
+ "frontier_stage": "tight_pose"
+}

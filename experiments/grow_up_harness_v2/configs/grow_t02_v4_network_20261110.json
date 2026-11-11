@@ -1,0 +1,74 @@
+{
+ "train": {
+  "seed": 92301,
+  "reuse": {
+   "registration": "experiments/grow_up_harness_v2/runs/t02_ladder_10mm_20261107_001/registration.json",
+   "task_ids": [
+    "t02_92301_001"
+   ],
+   "reason": "same as v3: frozen replay failed (margin 0.088 mm); visual positive passed. Development initial."
+  }
+ },
+ "heldout": {
+  "seed": 93201,
+  "count": 2,
+  "radius_m": 0.015
+ },
+ "proposer": {
+  "backend": "opencode_go",
+  "model": "deepseek-v4.1-flash",
+  "timeout_s": 600
+ },
+ "critic": {
+  "backend": "opencode_go",
+  "model": "deepseek-v4.1-flash",
+  "timeout_s": 600,
+  "temperature": 0
+ },
+ "caps": {
+  "simulation_s": 300.0,
+  "commands": 2200,
+  "wall_s": 2700.0
+ },
+ "per_task": {
+  "fast_tries": 2,
+  "library_shown": 7,
+  "max_physical_attempts": 3,
+  "max_gate_rejections": 4,
+  "gate_steps": 8
+ },
+ "controls": {
+  "positive": "all"
+ },
+ "heldout_scratch": true,
+ "consumed_dev_seeds": [
+  2400,
+  2401,
+  2402,
+  2501,
+  4001,
+  4002,
+  4003,
+  4004,
+  92901,
+  92101,
+  93101,
+  92201,
+  92301,
+  93201
+ ],
+ "prediction": "Negative wait fails. Visual positive passes on t02_92301_001. FAST runs t02_three_cup_split and fails (margin <1mm, deterministic). SLOW opens. WITHOUT human diagnosis this time: DeepSeek receives only per-cup feedback (which cup, margin, displacement) and can query the critic for failure analysis. Whether it autonomously identifies the retreat-pushes-cup pattern and proposes a fix (vertical lift / wider clearance / different timing) within 3 physical attempts: uncertain, less than even odds without the hint. Heldout FAST solves at least 1/2. From-scratch 0/2.",
+ "falsification": "Negative success voids run. FAST succeeding on t02_92301_001 means failure didn't reproduce. Artifact entering store without independent success, heldout changing store, policy receiving private poses, or claiming autonomous discovery when v3's hint was required all invalidate.",
+ "parent_store": "experiments/grow_up_harness_v2/runs/t02_split_store_20261107_001/store",
+ "evaluator_version": "t02-three-cup-strict-v1",
+ "positive_reference": "visual_engineering",
+ "caps_note": "same caps as v3: 300 s / 2200 commands / 2700 s wall",
+ "autonomous_diagnosis_test": true,
+ "v4_changes": "Removed human_diagnosis field. Agent must autonomously identify failure mode from per-cup feedback and critic. This tests: can DeepSeek discover the retreat-pushes-cup pattern without being told which leaf, which timeframe, which links, or which direction? Prediction: less likely to succeed than v3, but if it does, it's autonomous discovery not hint-following.",
+ "execution_note": {
+  "original_run": "experiments/grow_up_harness_v2/runs/grow_t02_v4_20261109_001",
+  "termination": "Infrastructure SIGINT before first model call; original evidence preserved.",
+  "new_output": "experiments/grow_up_harness_v2/runs/grow_t02_v4_network_20261110_001",
+  "protocol": "No model, prediction, seed, physics or budget changes; requires explicit external-data approval."
+ }
+}

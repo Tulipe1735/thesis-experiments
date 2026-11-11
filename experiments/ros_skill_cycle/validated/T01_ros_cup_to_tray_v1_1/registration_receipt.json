@@ -1,0 +1,14 @@
+{
+  "status": "registered",
+  "registry": "experiments/t0_agent_v1/skill_registry/T01_ros_cup_to_tray_v1_1.json",
+  "registry_sha256": "93a6159412b0a0f9eb100caa26c6f197e74b82cc5166b06b597e75d836e326e9",
+  "manifest_sha256": "0e7ff892d166ca795eb6f9e523799ae3cfc1a8b8c27b5637f4a856e1d3911aaf",
+  "audit_sha256": "84a39f5f10eea6b5620fd2746009ce76101e972cd82ae3fb5ad56086e76b3a6d",
+  "confirmation_audit_sha256": "5ebc271f16cd517d1d88ae2512bf4f40ba7e3f4eb8ffdf13f234fe6db55065fc",
+  "source_copies_sha256": {
+    "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1_1/implementation/execution.py": "5b6764f18ab3649b84c13981487a628ad3745e026a2d7f1f7efd0baae00ed1a2",
+    "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1_1/implementation/public_check.py": "480ec161220516174121eeec9a210c989918b12b5aa3ceb3241c870e2c7386b3",
+    "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1_1/policy.json": "97bb9d6d3ffbd5f45626e0d6a558d52e76fa97e1e146ffd395c94a0af033a7a8"
+  },
+  "new_physical_episodes": 0
+}

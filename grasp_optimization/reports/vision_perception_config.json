@@ -1,0 +1,20 @@
+{
+  "version": "head-rgbd-cup-v1",
+  "seed": 1000,
+  "radius_prior_m": 0.041,
+  "white_rgb_min": 95,
+  "max_channel_spread": 35,
+  "table_rms_limit_m": 0.0025,
+  "cylinder_rms_limit_m": 0.002,
+  "wall_inlier_fraction_min": 0.55,
+  "max_pose_age_s": 30,
+  "fixed_head_mount": "pantry_head_wide_v2",
+  "measured_T_optical_to_pelvis_updated_each_observation": true,
+  "simulator_segmentation_used": false,
+  "policy_module_hashes": {
+    "vision_grasp.py": "714bddca19d5ca3720afd04b59782b7c9279c0b2bd1dafeb25d24046d3171525",
+    "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+    "arm_planner.py": "84b301a1e3694c8547eb8bf483c40d81d13397c43b045b7be6d23b063539a2f5",
+    "run_vision_astra.py": "0b2adb3564f3e725407dadde72ce63556120d39f361f142895cef6ea36a87c67"
+  }
+}

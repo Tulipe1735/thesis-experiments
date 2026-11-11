@@ -1,0 +1,185 @@
+{
+ "version": "task_tree_v3",
+ "source": "task_tree_v2 plus T02.slot, a local acceptance sub-node of T02 (single cup into a designated tray slot); see docs/research/T02_ARTIFACT_V2_CURRICULUM.md",
+ "nodes": [
+  {
+   "id": "ROOT",
+   "title": "单房间 T0 能力树"
+  },
+  {
+   "id": "B",
+   "title": "身体主干",
+   "parent": "ROOT"
+  },
+  {
+   "id": "B1",
+   "title": "感知与动作对应",
+   "parent": "B"
+  },
+  {
+   "id": "B1.1",
+   "title": "关节与反馈",
+   "parent": "B1"
+  },
+  {
+   "id": "B1.2",
+   "title": "小动作与末端变化",
+   "parent": "B1"
+  },
+  {
+   "id": "B1.3",
+   "title": "局部可达性",
+   "parent": "B1"
+  },
+  {
+   "id": "B1.4",
+   "title": "观测延迟与重观测",
+   "parent": "B1"
+  },
+  {
+   "id": "B2",
+   "title": "无接触运动与姿态",
+   "parent": "B"
+  },
+  {
+   "id": "B2.1",
+   "title": "伸手接近",
+   "parent": "B2"
+  },
+  {
+   "id": "B2.2",
+   "title": "手掌朝向",
+   "parent": "B2"
+  },
+  {
+   "id": "B2.3",
+   "title": "中间位姿",
+   "parent": "B2"
+  },
+  {
+   "id": "B2.4",
+   "title": "安全回撤",
+   "parent": "B2"
+  },
+  {
+   "id": "B3",
+   "title": "接触与抓持",
+   "parent": "B"
+  },
+  {
+   "id": "B3.1",
+   "title": "探测接触",
+   "parent": "B3"
+  },
+  {
+   "id": "B3.2",
+   "title": "分指合拢",
+   "parent": "B3"
+  },
+  {
+   "id": "B3.3",
+   "title": "对向抓持",
+   "parent": "B3"
+  },
+  {
+   "id": "B3.4",
+   "title": "小试提与稳持",
+   "parent": "B3"
+  },
+  {
+   "id": "B4",
+   "title": "带物移动与释放",
+   "parent": "B"
+  },
+  {
+   "id": "B4.1",
+   "title": "保姿移物",
+   "parent": "B4"
+  },
+  {
+   "id": "B4.2",
+   "title": "接近支撑",
+   "parent": "B4"
+  },
+  {
+   "id": "B4.3",
+   "title": "卸载与释放",
+   "parent": "B4"
+  },
+  {
+   "id": "B4.4",
+   "title": "撤手后检查",
+   "parent": "B4"
+  },
+  {
+   "id": "B5",
+   "title": "稳定、异常与恢复",
+   "parent": "B"
+  },
+  {
+   "id": "B5.1",
+   "title": "不可达",
+   "parent": "B5"
+  },
+  {
+   "id": "B5.2",
+   "title": "未抓稳",
+   "parent": "B5"
+  },
+  {
+   "id": "B5.3",
+   "title": "停止重观测",
+   "parent": "B5"
+  },
+  {
+   "id": "B5.4",
+   "title": "有界恢复与退出",
+   "parent": "B5"
+  },
+  {
+   "id": "B6",
+   "title": "多肢体与身体移动",
+   "parent": "B"
+  },
+  {
+   "id": "APP",
+   "title": "应用任务",
+   "parent": "ROOT"
+  },
+  {
+   "id": "L0.获取递送",
+   "title": "获取递送 收纳补给",
+   "parent": "APP"
+  },
+  {
+   "id": "L1.取用归位",
+   "title": "取用 归位 分类收纳",
+   "parent": "L0.获取递送"
+  },
+  {
+   "id": "T01",
+   "title": "单杯放入托盘",
+   "parent": "L1.取用归位"
+  },
+  {
+   "id": "DEV",
+   "title": "机制验证（非能力树节点）",
+   "parent": "ROOT"
+  },
+  {
+   "id": "DEV.waypoints",
+   "title": "多目标位姿顺序到达（组合编译检查）",
+   "parent": "DEV"
+  },
+  {
+   "id": "T02",
+   "title": "三杯归集",
+   "parent": "L1.取用归位"
+  },
+  {
+   "id": "T02.slot",
+   "title": "单杯入指定槽位（T02 局部，非整项 T02）",
+   "parent": "T02"
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+﻿phase,case_id,independent_success,runtime_check,failed_tool,simulation_seconds
+active_view_development,control_2500,True,UNVERIFIED,,36.76999999999897
+active_view_development,fresh_480100,True,PASS,,40.27000000000325
+active_view_frozen_test,position_840100,True,PASS,,34.76999999999653
+active_view_frozen_test,position_840101,True,PASS,,34.76999999999653
+active_view_frozen_test,position_840102,True,PASS,,34.76999999999653
+active_view_frozen_test,position_840103,True,PASS,,34.76999999999653
+active_view_frozen_test,joint_840300,False,NOT_EVALUATED,grasp_cup,20.255999999999652
+active_view_frozen_test,joint_840301,False,NOT_EVALUATED,grasp_cup,20.255999999999652
+active_view_frozen_test,joint_840302,True,PASS,,38.270000000000806
+active_view_frozen_test,joint_840303,False,NOT_EVALUATED,grasp_cup,18.25600000000076
+active_view_boundary,active_boundary_01,False,UNVERIFIED,,36.869999999999095
+active_view_boundary,active_boundary_02,False,UNVERIFIED,,36.869999999999095

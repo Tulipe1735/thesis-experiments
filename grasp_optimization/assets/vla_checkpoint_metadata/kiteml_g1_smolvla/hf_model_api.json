@@ -1,0 +1,54 @@
+{
+  "_id": "6a2d4dc9054da149bfb6c21c",
+  "id": "kiteml/G1-ego-test-smolvla",
+  "private": false,
+  "tags": [
+    "safetensors",
+    "region:us"
+  ],
+  "downloads": 11,
+  "likes": 0,
+  "modelId": "kiteml/G1-ego-test-smolvla",
+  "author": "kiteml",
+  "sha": "cf2f88ba6d5db3f3647b453438a0a1904e07919f",
+  "lastModified": "2026-06-13T12:32:18.000Z",
+  "gated": false,
+  "disabled": false,
+  "config": {},
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "policy_postprocessor.json"
+    },
+    {
+      "rfilename": "policy_postprocessor_step_0_unnormalizer_processor.safetensors"
+    },
+    {
+      "rfilename": "policy_preprocessor.json"
+    },
+    {
+      "rfilename": "policy_preprocessor_step_5_normalizer_processor.safetensors"
+    },
+    {
+      "rfilename": "train_config.json"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2026-06-13T12:32:09.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 148811856,
+      "BF16": 301234320
+    },
+    "total": 450046176
+  },
+  "usedStorage": 1197794884
+}

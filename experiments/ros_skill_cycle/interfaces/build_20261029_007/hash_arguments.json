@@ -1,0 +1,29 @@
+{
+  "package_name": "thesis_skill_interfaces",
+  "idl_tuples": [
+    "/home/tulipe/projects/thesis-experiments/experiments/ros_skill_cycle/interfaces/build_20261029_007/idl:action/ExecuteSkill.idl"
+  ],
+  "output_dir": "/home/tulipe/projects/thesis-experiments/experiments/ros_skill_cycle/interfaces/build_20261029_007/description",
+  "include_paths": [
+    "std_srvs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/std_srvs",
+    "unique_identifier_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/unique_identifier_msgs",
+    "diagnostic_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/diagnostic_msgs",
+    "trajectory_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/trajectory_msgs",
+    "builtin_interfaces:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/builtin_interfaces",
+    "service_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/service_msgs",
+    "type_description_interfaces:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/type_description_interfaces",
+    "rosgraph_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/rosgraph_msgs",
+    "composition_interfaces:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/composition_interfaces",
+    "control_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/control_msgs",
+    "controller_manager_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/controller_manager_msgs",
+    "pal_statistics_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/pal_statistics_msgs",
+    "rmw_dds_common:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/rmw_dds_common",
+    "rcl_interfaces:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/rcl_interfaces",
+    "geometry_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/geometry_msgs",
+    "statistics_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/statistics_msgs",
+    "action_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/action_msgs",
+    "std_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/std_msgs",
+    "lifecycle_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/lifecycle_msgs",
+    "sensor_msgs:/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/share/sensor_msgs"
+  ]
+}

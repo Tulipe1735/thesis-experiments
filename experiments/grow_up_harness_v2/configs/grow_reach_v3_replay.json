@@ -1,0 +1,43 @@
+{
+ "train": {
+  "seed": 81101,
+  "count": 1,
+  "radius_rad": 0.3
+ },
+ "heldout": {
+  "seed": 82101,
+  "count": 1,
+  "radius_rad": 0.3
+ },
+ "proposer": {
+  "backend": "ollama",
+  "model": "qwen3.5:4b",
+  "timeout_s": 300
+ },
+ "critic": null,
+ "caps": {
+  "simulation_s": 30.0,
+  "commands": 200,
+  "wall_s": 300.0
+ },
+ "per_task": {
+  "fast_tries": 2,
+  "library_shown": 3,
+  "max_physical_attempts": 0,
+  "max_gate_rejections": 4,
+  "gate_steps": 8
+ },
+ "controls": {
+  "positive": "all"
+ },
+ "heldout_scratch": false,
+ "consumed_dev_seeds": [
+  81001,
+  82001,
+  91001
+ ],
+ "prediction": "Both registered replay tasks retain success; integer-tick recorder has no gaps above 0.051 s; frozen library unchanged.",
+ "falsification": "Any replay verdict change, sample gap above 0.051 s, or negative control success.",
+ "parent_store": "experiments/grow_up_harness_v2/runs/artifact_v2_migration_20261107_001/store",
+ "evaluator_version": "explicit-pose-replay-v3"
+}

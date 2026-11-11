@@ -1,0 +1,9 @@
+LOADING_NATIVE_PANTRY
+libEGL warning: failed to open /dev/dri/renderD128: Permission denied
+
+libEGL warning: failed to open /dev/dri/renderD128: Permission denied
+
+libEGL warning: failed to open /dev/dri/card0: Permission denied
+
+NATIVE_PANTRY_READY 43 motors; native room + head RGB-D; free base
+FOURVIEW_RIG_PREVIEW_READY

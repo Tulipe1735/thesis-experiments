@@ -1,0 +1,399 @@
+{
+  "repository": "unitreerobotics/unitree_ros",
+  "commit": "5994d4faef0a9cadd3287f8de0199a67eeb2a259",
+  "xml_blob_sha": "e522a9c585c5de6de11268e4a47f078119ad5a79",
+  "files": [
+    {
+      "path": "robots/g1_description/meshes/pelvis.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "691a779b9c9f4c97f48eaa9edf9eb336ca3b4411",
+      "size": 1060884,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/691a779b9c9f4c97f48eaa9edf9eb336ca3b4411"
+    },
+    {
+      "path": "robots/g1_description/meshes/pelvis_contour_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42434339abf5a0a3816f890389e3e61af3b1e03c",
+      "size": 1805184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/42434339abf5a0a3816f890389e3e61af3b1e03c"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hip_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5b751c767ecf03b29c707b19f1faf5367e8d33d2",
+      "size": 181684,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/5b751c767ecf03b29c707b19f1faf5367e8d33d2"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hip_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "778437ffe61731915fa4cb7cf2390e9cbe738c43",
+      "size": 192184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/778437ffe61731915fa4cb7cf2390e9cbe738c43"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hip_yaw_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "383093ab96ed3a099ab79f5d6ed144fc0b7067a9",
+      "size": 296284,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/383093ab96ed3a099ab79f5d6ed144fc0b7067a9"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_knee_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2e98e54e8f1980eb62ad25c7a838044c23bbadf",
+      "size": 854884,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/f2e98e54e8f1980eb62ad25c7a838044c23bbadf"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_ankle_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69de8490184afc698f633e34bb74e65351bd4689",
+      "size": 71184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/69de8490184afc698f633e34bb74e65351bd4689"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_ankle_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8864e9f98103190883d1ba027aba5469925f2bca",
+      "size": 653384,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/8864e9f98103190883d1ba027aba5469925f2bca"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hip_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "998a0a0f5c248b217cf82c5088d6d365d9654ecd",
+      "size": 181284,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/998a0a0f5c248b217cf82c5088d6d365d9654ecd"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hip_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "47b2eebdd36c7289679eebb9583c65a15514e194",
+      "size": 192684,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/47b2eebdd36c7289679eebb9583c65a15514e194"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hip_yaw_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "371856427c7cc31ae7463c83f00ef6652c72d672",
+      "size": 296284,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/371856427c7cc31ae7463c83f00ef6652c72d672"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_knee_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76d21a3d81e4e34520c5d6b3f28d7e43c1874364",
+      "size": 852284,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/76d21a3d81e4e34520c5d6b3f28d7e43c1874364"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_ankle_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e77d8a2fe1e5d56fac049833d254d6ffa4f6b350",
+      "size": 71184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/e77d8a2fe1e5d56fac049833d254d6ffa4f6b350"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_ankle_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4261dd7ccf39dd9c54cad37c1982f1d50e6fccc",
+      "size": 653784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/d4261dd7ccf39dd9c54cad37c1982f1d50e6fccc"
+    },
+    {
+      "path": "robots/g1_description/meshes/waist_yaw_link_rev_1_0.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0fabb63d37627cb77f64c5d2a46cf25d4acc66fc",
+      "size": 619984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/0fabb63d37627cb77f64c5d2a46cf25d4acc66fc"
+    },
+    {
+      "path": "robots/g1_description/meshes/waist_roll_link_rev_1_0.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a64f330c592582dc31cdf38f4d08cfff06681c5f",
+      "size": 85884,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/a64f330c592582dc31cdf38f4d08cfff06681c5f"
+    },
+    {
+      "path": "robots/g1_description/meshes/torso_link_rev_1_0.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a759a709750ad97e1f372db0ebbff246daedcc1",
+      "size": 2570584,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/8a759a709750ad97e1f372db0ebbff246daedcc1"
+    },
+    {
+      "path": "robots/g1_description/meshes/logo_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9792098504b64b359fbffa983373e5e6fa1b50a",
+      "size": 243384,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/e9792098504b64b359fbffa983373e5e6fa1b50a"
+    },
+    {
+      "path": "robots/g1_description/meshes/head_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ee5fba15de3ccd4c31774bc7a66de7aeefab770",
+      "size": 932784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/2ee5fba15de3ccd4c31774bc7a66de7aeefab770"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_shoulder_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e698311fb12d3f22f018b668c40dab667c39b8d3",
+      "size": 176784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/e698311fb12d3f22f018b668c40dab667c39b8d3"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_shoulder_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80bca84aca41137f8270fb35e263dcc5d9658e43",
+      "size": 400284,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/80bca84aca41137f8270fb35e263dcc5d9658e43"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_shoulder_yaw_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "281e699055ffafe094f52a440547eb4b64f83bfa",
+      "size": 249184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/281e699055ffafe094f52a440547eb4b64f83bfa"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_elbow_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a96d99ba469960173129084ab6dd3bf8a732a71",
+      "size": 88784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/1a96d99ba469960173129084ab6dd3bf8a732a71"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_wrist_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3c263a7ab3fc1e902bf2513064d4bc666c6b59f",
+      "size": 356184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/f3c263a7ab3fc1e902bf2513064d4bc666c6b59f"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_wrist_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82cc224a8e41251d879502f9809e31d0988ec7f9",
+      "size": 85984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/82cc224a8e41251d879502f9809e31d0988ec7f9"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_wrist_yaw_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31be4fd45fa18987b35b3386fdce2ce98c798774",
+      "size": 318684,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/31be4fd45fa18987b35b3386fdce2ce98c798774"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_palm_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d595ed8fb2f20363c4b20eeb9e5b8f564c52191",
+      "size": 2140184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/7d595ed8fb2f20363c4b20eeb9e5b8f564c52191"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_thumb_0_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3028bb4d6e1ae3d30d2504259c08e4106bbacf63",
+      "size": 8884,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/3028bb4d6e1ae3d30d2504259c08e4106bbacf63"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_thumb_1_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1c080c86e1d11fb0c8e7e58afc57863acc78280",
+      "size": 475984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/d1c080c86e1d11fb0c8e7e58afc57863acc78280"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_thumb_2_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b32e966348f646fe4e39fe929a10c6d2c766579",
+      "size": 1521784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/8b32e966348f646fe4e39fe929a10c6d2c766579"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_middle_0_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8069369afd690192ef592cbe502082ebb889fd38",
+      "size": 475984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/8069369afd690192ef592cbe502082ebb889fd38"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_middle_1_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89d231d7e896a8ca5955a692980aa7d4a83d8905",
+      "size": 1521784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/89d231d7e896a8ca5955a692980aa7d4a83d8905"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_index_0_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8069369afd690192ef592cbe502082ebb889fd38",
+      "size": 475984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/8069369afd690192ef592cbe502082ebb889fd38"
+    },
+    {
+      "path": "robots/g1_description/meshes/left_hand_index_1_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89d231d7e896a8ca5955a692980aa7d4a83d8905",
+      "size": 1521784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/89d231d7e896a8ca5955a692980aa7d4a83d8905"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_shoulder_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f5b4ed47ade68e83f617ef3fd65cb810e9b0e07",
+      "size": 176784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/3f5b4ed47ade68e83f617ef3fd65cb810e9b0e07"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_shoulder_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "179d61753d48b3a55165b81ded2c14e84deb81c2",
+      "size": 401884,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/179d61753d48b3a55165b81ded2c14e84deb81c2"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_shoulder_yaw_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ba6076a8853edac5e3e17cffd2c256318e88d92",
+      "size": 249984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/2ba6076a8853edac5e3e17cffd2c256318e88d92"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_elbow_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f259e3812efb9985d6463c04d3e8a4b53793a699",
+      "size": 88784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/f259e3812efb9985d6463c04d3e8a4b53793a699"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_wrist_roll_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26868d2282b7e38c2ba40e00968d2c92c421fbd2",
+      "size": 356084,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/26868d2282b7e38c2ba40e00968d2c92c421fbd2"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_wrist_pitch_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da194543c40df9d492abb0553c06cc614a78caae",
+      "size": 79584,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/da194543c40df9d492abb0553c06cc614a78caae"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_wrist_yaw_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d788902867014c5984e6029fce822508579f73dc",
+      "size": 341484,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/d788902867014c5984e6029fce822508579f73dc"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_palm_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ae00a783df3e5744ebce98ab13f9f3591848e7a",
+      "size": 2140184,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/5ae00a783df3e5744ebce98ab13f9f3591848e7a"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_thumb_0_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cae7f18e16605cb9d6b1d1a0cf6e5c5c360a344",
+      "size": 8884,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/1cae7f18e16605cb9d6b1d1a0cf6e5c5c360a344"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_thumb_1_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c141fbf5a61744444b4a6b70d5b8fe947ff167ae",
+      "size": 475984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/c141fbf5a61744444b4a6b70d5b8fe947ff167ae"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_thumb_2_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e942923c50993a56cfeb29040066b1da1f9d5770",
+      "size": 1521784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/e942923c50993a56cfeb29040066b1da1f9d5770"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_middle_0_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f87ad3212b5d52b40d8017e5cf7fc3caf78e51e4",
+      "size": 475984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/f87ad3212b5d52b40d8017e5cf7fc3caf78e51e4"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_middle_1_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6dea51ad93c8a64ec9951f4914fa16f749ea176c",
+      "size": 1521784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/6dea51ad93c8a64ec9951f4914fa16f749ea176c"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_index_0_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f87ad3212b5d52b40d8017e5cf7fc3caf78e51e4",
+      "size": 475984,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/f87ad3212b5d52b40d8017e5cf7fc3caf78e51e4"
+    },
+    {
+      "path": "robots/g1_description/meshes/right_hand_index_1_link.STL",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6dea51ad93c8a64ec9951f4914fa16f749ea176c",
+      "size": 1521784,
+      "url": "https://api.github.com/repos/unitreerobotics/unitree_ros/git/blobs/6dea51ad93c8a64ec9951f4914fa16f749ea176c"
+    }
+  ]
+}

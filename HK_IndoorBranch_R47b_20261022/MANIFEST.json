@@ -1,0 +1,216 @@
+{
+  "format": "HK_INDOOR_HANDOFF_MANIFEST_V1",
+  "package_id": "HK_IndoorBranch_R47b_20261022",
+  "baseline": "HK49 R47b",
+  "frozen_on": "2026-10-22",
+  "files": {
+    "README_CN.md": {
+      "bytes": 2739,
+      "sha256": "f5308ba33fdf97853c38d9e09da9d28d242c5bd1f76edbab0c7c523af7842618"
+    },
+    "START_HERE.html": {
+      "bytes": 3297,
+      "sha256": "0aade8cbd79610479d80053aa75da25c0bfc1ccab4dc1e647177367ffa63f7a2"
+    },
+    "branch/BRANCH_MANIFEST.template.json": {
+      "bytes": 971,
+      "sha256": "ed9d757ac199e7472c8a475d51e8841068b8a5aae35fab044df0bd5b622cb602"
+    },
+    "branch/DH01r10_legacy_coordinate_and_registration.json": {
+      "bytes": 1796,
+      "sha256": "ccabd256e3e03365a70dc15c5b7102f9a9ce339cd083ffaad0324ee01828696a"
+    },
+    "branch/DH01r10_legacy_indoor_cameras_DH01r10.json": {
+      "bytes": 7701,
+      "sha256": "367ab4fa5b5af81468dad7c1e881229d3ffcd40f180377321234461aa3e17a80"
+    },
+    "branch/DH01r10_legacy_indoor_semantic_ids_DH01r10.json": {
+      "bytes": 859,
+      "sha256": "bed739ba7d84e145a1aed92b8fec9c5214a35652de6e7bc72aa20735d0be2200"
+    },
+    "branch/EPISODE.template.json": {
+      "bytes": 584,
+      "sha256": "e5c524325930db13e3d8c60ea54faac0eb8990b161f0709dd46b26696657e299"
+    },
+    "branch/TABLETOP_TASK.template.json": {
+      "bytes": 661,
+      "sha256": "1e5e67ef40abcfc5a0e558623cb06aa2888c702f6be0853fe77b94390b5b3d62"
+    },
+    "branch/requested_base_changes.json": {
+      "bytes": 150,
+      "sha256": "6eb6d64ab4e46185f20dd8c5716abd43c8e7fdc42faef4dde52a1463b1e847f4"
+    },
+    "branch/submission/README.txt": {
+      "bytes": 188,
+      "sha256": "50114e8f9b1c3db7c2602ce5a9d63d67401325aecb6b483c1519cb68473d71de"
+    },
+    "branch/work/README.txt": {
+      "bytes": 126,
+      "sha256": "1422b4670fe3d802a1d2288863ff1025d634815cdea599d72adfbbeff5b081c7"
+    },
+    "docs/分支开发与合并约定.md": {
+      "bytes": 4719,
+      "sha256": "ee18fb1d127673f22bc311723e455daf8507952729659ebddbe2ec97cbd30b50"
+    },
+    "docs/桌面任务测试起步.md": {
+      "bytes": 2126,
+      "sha256": "cba79327c186f3466862c961a4c29349b7863cb45b712798970944e1a56a3f25"
+    },
+    "environment.json": {
+      "bytes": 1635,
+      "sha256": "78c24befb83374931edef93e392bca9d5084fdffdc9c2e6afd5492750ef5bc71"
+    },
+    "legacy_physics_DH01r10/README.txt": {
+      "bytes": 542,
+      "sha256": "812f0494c87c71cc9a8d115a6968c94a38d233829c6b9ecc77d670effe334500"
+    },
+    "legacy_physics_DH01r10/physics_registered.mjs": {
+      "bytes": 2954,
+      "sha256": "93c054f84cd834af644e9ee3d1d0a241eeb94fdfc1b9e3e272e27d4e2969c7df"
+    },
+    "legacy_physics_DH01r10/registered_scene_manifest.json": {
+      "bytes": 715536,
+      "sha256": "57d00a4ee312ddb5a274516ec4246e314074d33518d66dcf391f29e199146ab1"
+    },
+    "legacy_physics_DH01r10/vendor/rapier/rapier.mjs": {
+      "bytes": 2219371,
+      "sha256": "1ade6875c663c1398f490d4fa67837386b2d7e0aad45fe54e9b7af52b8198a49"
+    },
+    "legacy_physics_DH01r10/verify_registered.mjs": {
+      "bytes": 4954,
+      "sha256": "1684adff3d69fd8d7ffefee1695279cab1da44f83dad393d2e6fd5cbee702e28"
+    },
+    "preview/01_街区总览_R46e.png": {
+      "bytes": 5708981,
+      "sha256": "bd74eb55ac9f38c761c0b7b1a96a5ac3f390e6dc6e4fa5931d704ed2da33de9b"
+    },
+    "preview/02_内庭水景与玻璃连廊_R35.png": {
+      "bytes": 1476826,
+      "sha256": "231761e07676c997f2667479f67148af969d4197600864b1f499001948a88daf"
+    },
+    "preview/03_玻璃连廊内部_R22f.png": {
+      "bytes": 1209309,
+      "sha256": "33b79496727033b63ddac35ca6ffcfa16b74e30a2c01505b57d8d9e65dd5ce98"
+    },
+    "preview/IN20_UNMERGED_01_pantry_eye.png": {
+      "bytes": 2488411,
+      "sha256": "33098eb9ce7c52773c4472c7eb8edb3b36807b87df704e106967952e3ffa363a"
+    },
+    "preview/IN20_UNMERGED_09_discussion_eye.png": {
+      "bytes": 2337745,
+      "sha256": "6dfe81299c666e1f0d242bc360c59edb9e46e60c22a69b65b084075f89893217"
+    },
+    "preview/IN20_UNMERGED_16_office_eye.png": {
+      "bytes": 2366099,
+      "sha256": "a9cf8ba4c7384e74df1f696a051191e60d796ecdc6307b202a32aa25e26088aa"
+    },
+    "preview/IN20_UNMERGED_IN18_office_equipment_eye.png": {
+      "bytes": 2242796,
+      "sha256": "beca178ffbc913b5dc76c5f200b40fcda623396ffba35f8705284c7004f5d0c8"
+    },
+    "preview/IN20_UNMERGED_IN20_pantry_appliance_overview.png": {
+      "bytes": 2122171,
+      "sha256": "8e354fa6ec520380226fcc5a38ab141a196b060ec4d7b99011d052b3de5da4a7"
+    },
+    "preview/R47b_gantry_current.png": {
+      "bytes": 1299333,
+      "sha256": "efde3148ae42df9d43559083453923a8f4362bb7debb273397c99e06f0fbecdb"
+    },
+    "scene/HK_District_BASE_R47b.blend": {
+      "bytes": 1781131885,
+      "sha256": "37c562b438bfb41f018a251cacf1c0f803028301a6a0853a1bf433685368c40c"
+    },
+    "supplement_IN20/CURRENT_INTERIOR.json": {
+      "bytes": 878,
+      "sha256": "449fb5748bd85621c6c36beb3d88733c20ab832abfe5d3d8856616d6af66b95a"
+    },
+    "supplement_IN20/DELIVERY_REVIEW_CN.md": {
+      "bytes": 3370,
+      "sha256": "d44c121fc848b7983c88a8a3108906e1b3a07100a10463795ac749e591e89e65"
+    },
+    "supplement_IN20/HK48_Dorset_DH01_IN20.blend": {
+      "bytes": 916053341,
+      "sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8"
+    },
+    "supplement_IN20/REFERENCES_CN.md": {
+      "bytes": 2566,
+      "sha256": "5ceb9a676e1a3fcbbf0c58fccff3e4da858362514dccd08210563537a252a784"
+    },
+    "supplement_IN20/reports/construction.json": {
+      "bytes": 536487,
+      "sha256": "11b865e48d989d79ebc02037fc2434a80f35553c88be9c839a17882bef0ed595"
+    },
+    "supplement_IN20/reports/daily_use_physics.json": {
+      "bytes": 15597,
+      "sha256": "90be39de645c822a139eda624eea84958dba2522f49ec767d155f3b9c98fa4c0"
+    },
+    "supplement_IN20/reports/human_use_audit.json": {
+      "bytes": 39357,
+      "sha256": "07b5854a78f203146f8b043be5c25b85ebeb9e69beabcc2daf6e42a0e0041176"
+    },
+    "supplement_IN20/reports/independent_reopen.json": {
+      "bytes": 409,
+      "sha256": "f2320020ba801d852ff51be587ec177c0ba6d364ec2e90d4470e9eb45df12459"
+    },
+    "supplement_IN20/reports/integration_delta.json": {
+      "bytes": 53999,
+      "sha256": "b111932dbcd97f469a8c155f467f511259c7cfa7629a5c3804239678c3b61467"
+    },
+    "supplement_IN20/reports/native_physics_binding.json": {
+      "bytes": 509,
+      "sha256": "a334f17f16b99c8d0c9b792335258370750d81ba51680a9a183e9ba7a850c9ce"
+    },
+    "supplement_IN20/reports/render_candidate.json": {
+      "bytes": 19136,
+      "sha256": "881efbeff499488c22c8122dc4ae014b6840f7f9a0dfc8b134001e29869ce33f"
+    },
+    "supplement_IN20/reports/runtime_dependencies_verified.json": {
+      "bytes": 7701,
+      "sha256": "2d73fbcbd9bf333b9d49fa35f3f21daa06843b5ebaac0d46e43c71909f038f9c"
+    },
+    "supplement_IN20/reports/scene_manifest.json": {
+      "bytes": 1249695,
+      "sha256": "0c6fcb1f16785ca231e0361a2add46e90d6d71231434980801cc2a82782bf465"
+    },
+    "supplement_IN20/reports/service_access_physics.json": {
+      "bytes": 8867,
+      "sha256": "8104fb6f64f39dcda80247cbba8d3627c14d61da472442204e21f492fa601875"
+    },
+    "supplement_IN20/reports/visual_review.json": {
+      "bytes": 9138,
+      "sha256": "34f4690de67a307bff062401b208530d5c53cb16cf61fbdfaa064265702ee333"
+    },
+    "tools/verify_package.py": {
+      "bytes": 4406,
+      "sha256": "d62c14f62f4b2b502112ec516adb29e8aedba4f1a28aceee19c1913ddd9dfacb"
+    },
+    "validation/HK244_exact_exit_after_R47_reopen_v1.json": {
+      "bytes": 1410,
+      "sha256": "2cce40152d8133c7dfff1a00f705582f8a83d0f423bffd6ff1fe3579c5631e4b"
+    },
+    "validation/HK49_R47_GPU244_independent_eight_after_render.json": {
+      "bytes": 7851,
+      "sha256": "126c9d5a63466f7d4c4e40571f5a8e70b27f86cc8c528fb18d69e9940874d91d"
+    },
+    "validation/HK49_R47_independent_actual_eight_review_v1.json": {
+      "bytes": 20061,
+      "sha256": "14bc4817828cb7867731138e7fbe3c66a07aed22a65bb25d765b58f707b8218a"
+    },
+    "validation/HK49_R47_independent_after_complete_v1.json": {
+      "bytes": 874,
+      "sha256": "b456aa83fba3c6e85a5cd3f599b53c961d1ba148fa6eab96c31ac2efdc8774b9"
+    },
+    "validation/HK49_R47_independent_reopen_audit_v1.json": {
+      "bytes": 1943,
+      "sha256": "de61a46837ee35c7e6078d1216f8cd989f5f6eff610ec1b71f37d644921ee84b"
+    },
+    "validation/package_native_hash_verification.json": {
+      "bytes": 412,
+      "sha256": "155cc00acc24169b5cb446957219bbe6998d67056fa3b395ebebf3afe9c6b02f"
+    },
+    "validation/source_native_record.json": {
+      "bytes": 6171,
+      "sha256": "e44bd5801ceee524d08f2d6635393f1d5ff34d0dd1f87a33e2d5caf052d441e8"
+    }
+  }
+}

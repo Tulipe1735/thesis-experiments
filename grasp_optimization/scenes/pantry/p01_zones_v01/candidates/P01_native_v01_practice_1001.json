@@ -1,0 +1,150 @@
+{
+  "candidate_sha256": "6d0128ddc7388030c745fb0f28ba502bd5e22709d521e474a097ee94660f7b52",
+  "config_sha256": "234fd034d69f89d59e090549f878c8cde82b54b60a47468eb570d5eb5fb5f533",
+  "cup_bottom_world_xyz_m": [
+    59.42898831530991,
+    -67.10612180390117,
+    17.310501373291014
+  ],
+  "cup_root_name": "DH_2F_mug_06",
+  "cup_table_xy_m": [
+    0.32387844266554333,
+    0.3010112899878764
+  ],
+  "goal": {
+    "hold_seconds": 1.0,
+    "min_lift_m": 0.1,
+    "name": "HeldLifted"
+  },
+  "initial_snapshot": null,
+  "instance_id": "P01_native_v01_practice_1001",
+  "physical_task_trials": 0,
+  "position_checks": [
+    {
+      "collision_checked": false,
+      "grasp_proven": false,
+      "iterations_in_seed": 6,
+      "joint_targets_rad": {
+        "left_elbow_joint": 0.3393997550641794,
+        "left_shoulder_pitch_joint": -0.5536213557739674,
+        "left_shoulder_roll_joint": 0.40187106215413,
+        "left_shoulder_yaw_joint": 0.4077772226817603,
+        "left_wrist_pitch_joint": 0.17812923075261927,
+        "left_wrist_roll_joint": -0.008894653938554641,
+        "left_wrist_yaw_joint": 0.10406486462670587
+      },
+      "label": "cup_center",
+      "orientation_constrained": false,
+      "palm_position_pelvis_m": [
+        0.3589613414449491,
+        0.3238550246090651,
+        0.21600867718232608
+      ],
+      "position_error_m": 3.683081064370845e-05,
+      "position_ik_passed": true,
+      "side": "left",
+      "standing_checked": false,
+      "target_pelvis_xyz_m": [
+        0.3589887100121236,
+        0.32387844266554333,
+        0.21600099182128896
+      ]
+    },
+    {
+      "collision_checked": false,
+      "grasp_proven": false,
+      "iterations_in_seed": 7,
+      "joint_targets_rad": {
+        "left_elbow_joint": 0.2728876741927839,
+        "left_shoulder_pitch_joint": -0.7417097480020949,
+        "left_shoulder_roll_joint": 0.4730887054224433,
+        "left_shoulder_yaw_joint": 0.43974951723705485,
+        "left_wrist_pitch_joint": 0.15896756962692643,
+        "left_wrist_roll_joint": -0.018219389634391285,
+        "left_wrist_yaw_joint": 0.10698533594976042
+      },
+      "label": "lift_point",
+      "orientation_constrained": false,
+      "palm_position_pelvis_m": [
+        0.3588555586369572,
+        0.32384103647993745,
+        0.31603157051942354
+      ],
+      "position_error_m": 0.00014164592549699241,
+      "position_ik_passed": true,
+      "side": "left",
+      "standing_checked": false,
+      "target_pelvis_xyz_m": [
+        0.3589887100121236,
+        0.32387844266554333,
+        0.31600099182128893
+      ]
+    },
+    {
+      "collision_checked": false,
+      "grasp_proven": false,
+      "iterations_in_seed": 8,
+      "joint_targets_rad": {
+        "left_elbow_joint": 0.30617677233311946,
+        "left_shoulder_pitch_joint": -0.8876677517859518,
+        "left_shoulder_roll_joint": 0.5226281892927663,
+        "left_shoulder_yaw_joint": 0.4450185598171852,
+        "left_wrist_pitch_joint": 0.17854607413654425,
+        "left_wrist_roll_joint": -0.023831162170508017,
+        "left_wrist_yaw_joint": 0.10220004856250503
+      },
+      "label": "approach_point",
+      "orientation_constrained": false,
+      "palm_position_pelvis_m": [
+        0.3587207563871018,
+        0.32383422925633715,
+        0.3660369530335955
+      ],
+      "position_error_m": 0.000273947402810321,
+      "position_ik_passed": true,
+      "side": "left",
+      "standing_checked": false,
+      "target_pelvis_xyz_m": [
+        0.3589887100121236,
+        0.32387844266554333,
+        0.366000991821289
+      ]
+    }
+  ],
+  "rejected_proposals": 0,
+  "robot_stance": {
+    "color": "yellow",
+    "floor_marker_rectangle_xy_m": [
+      -0.25,
+      0.25,
+      0.51,
+      0.81
+    ],
+    "label": "B",
+    "meaning": "Foot-area sketch only; full-body collision and standing not validated",
+    "pelvis_height_above_floor_m": 0.793,
+    "pelvis_table_xy_m": [
+      0,
+      0.66
+    ],
+    "pelvis_yaw_in_table_rad": -1.5707963267948966,
+    "preferred_arm": "left",
+    "side": "kitchen_side"
+  },
+  "seed": 1001,
+  "split": "practice",
+  "status": "NATIVE_BOUND_LAYOUT_POSITION_IK_ONLY",
+  "validation": {
+    "conservative_footprint": true,
+    "continuous_approach": null,
+    "hand_orientation": null,
+    "native_object_binding": true,
+    "physics_stability": null,
+    "position_ik": true,
+    "robot_collision": null,
+    "standing": null,
+    "visibility": null
+  },
+  "version": "P01-native-zones-0.1.0",
+  "yaw_in_table_rad": -0.9107048097199297
+}

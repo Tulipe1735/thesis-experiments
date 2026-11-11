@@ -1,0 +1,34 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from thesis_skill_interfaces/action/ExecuteSkill.action
+// generated code does not contain a copyright notice
+
+
+module thesis_skill_interfaces {
+  module action {
+    struct ExecuteSkill_Goal {
+      string skill_id;
+
+      string skill_version;
+
+      string request_id;
+
+      string parameters_json;
+    };
+    struct ExecuteSkill_Result {
+      string execution_status;
+
+      string runtime_check;
+
+      string reason;
+
+      string evidence_id;
+    };
+    struct ExecuteSkill_Feedback {
+      string stage;
+
+      string event;
+
+      double simulation_seconds;
+    };
+  };
+};

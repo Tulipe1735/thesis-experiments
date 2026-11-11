@@ -1,0 +1,253 @@
+{
+  "status": "small_metadata_and_source_audited_model_weights_not_downloaded_loading_and_inference_unverified",
+  "model_id": "kiteml/G1-ego-test-smolvla",
+  "revision": "cf2f88ba6d5db3f3647b453438a0a1904e07919f",
+  "model_parameters": 450046176,
+  "weights": {
+    "path": "model.safetensors",
+    "bytes": 1197789224,
+    "lfs_sha256_reported_by_hf": "4885e1a224e8dae4284f9e1c903b68f1902a27f6bedf0a7b0dfffe70425e3b63",
+    "downloaded": false
+  },
+  "required_bundle_files": [
+    "model.safetensors",
+    "config.json",
+    "policy_preprocessor.json",
+    "policy_postprocessor.json",
+    "policy_preprocessor_step_5_normalizer_processor.safetensors",
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors"
+  ],
+  "all_remote_files_bytes": 1197814391,
+  "implementation": {
+    "repository": "huggingface/lerobot",
+    "suggested_tag_for_preflight": "v0.4.4",
+    "suggested_commit_for_preflight": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+    "author_training_commit_published": false,
+    "load_verified": false,
+    "python_requirement": ">=3.10",
+    "smolvla_extra_required": true,
+    "transformers_requirement_from_tag": ">=4.57.1,<5.0.0",
+    "tokenizer_and_architecture_dependency": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct"
+  },
+  "source_dataset": {
+    "repo_id": "unitreerobotics/G1_Dex3_ToastedBread_Dataset",
+    "inspected_revision": "02cb29161f5adb2981a072aa35b408d82a556d07",
+    "training_revision_recorded": false,
+    "fps": 30,
+    "recorded_task": "Place bread in toaster; after toasting hand toast to human",
+    "joint_names": [
+      "kLeftShoulderPitch",
+      "kLeftShoulderRoll",
+      "kLeftShoulderYaw",
+      "kLeftElbow",
+      "kLeftWristRoll",
+      "kLeftWristPitch",
+      "kLeftWristYaw",
+      "kRightShoulderPitch",
+      "kRightShoulderRoll",
+      "kRightShoulderYaw",
+      "kRightElbow",
+      "kRightWristRoll",
+      "kRightWristPitch",
+      "kRightWristYaw",
+      "kLeftHandThumb0",
+      "kLeftHandThumb1",
+      "kLeftHandThumb2",
+      "kLeftHandMiddle0",
+      "kLeftHandMiddle1",
+      "kLeftHandIndex0",
+      "kLeftHandIndex1",
+      "kRightHandThumb0",
+      "kRightHandThumb1",
+      "kRightHandThumb2",
+      "kRightHandIndex0",
+      "kRightHandIndex1",
+      "kRightHandMiddle0",
+      "kRightHandMiddle1"
+    ],
+    "state_names_equal_action_names": true
+  },
+  "observation": {
+    "state": {
+      "key": "observation.state",
+      "shape_BD": [
+        1,
+        28
+      ],
+      "units": "rad",
+      "dtype": "float32",
+      "joint_names": [
+        "kLeftShoulderPitch",
+        "kLeftShoulderRoll",
+        "kLeftShoulderYaw",
+        "kLeftElbow",
+        "kLeftWristRoll",
+        "kLeftWristPitch",
+        "kLeftWristYaw",
+        "kRightShoulderPitch",
+        "kRightShoulderRoll",
+        "kRightShoulderYaw",
+        "kRightElbow",
+        "kRightWristRoll",
+        "kRightWristPitch",
+        "kRightWristYaw",
+        "kLeftHandThumb0",
+        "kLeftHandThumb1",
+        "kLeftHandThumb2",
+        "kLeftHandMiddle0",
+        "kLeftHandMiddle1",
+        "kLeftHandIndex0",
+        "kLeftHandIndex1",
+        "kRightHandThumb0",
+        "kRightHandThumb1",
+        "kRightHandThumb2",
+        "kRightHandIndex0",
+        "kRightHandIndex1",
+        "kRightHandMiddle0",
+        "kRightHandMiddle1"
+      ]
+    },
+    "training_video_keys": [
+      "observation.images.cam_left_high",
+      "observation.images.cam_right_high",
+      "observation.images.cam_left_wrist",
+      "observation.images.cam_right_wrist"
+    ],
+    "training_rgb_shape_CHW": [
+      3,
+      480,
+      640
+    ],
+    "raw_camera_RGB_HWC_to_policy": "uint8 RGB -> float32 CHW /255 -> add batch",
+    "policy_video_shape_BCHW": [
+      1,
+      3,
+      480,
+      640
+    ],
+    "policy_video_range": [
+      0,
+      1
+    ],
+    "task_key": "task",
+    "task_value_type": "list[str] when already batched"
+  },
+  "action": {
+    "native_predict_method": "SmolVLAPolicy.predict_action_chunk",
+    "shape_BTD": [
+      1,
+      50,
+      28
+    ],
+    "representation_before_postprocessor": "mean_std_normalized_model_output",
+    "postprocessor_required": true,
+    "representation_after_postprocessor": "absolute_joint_q_target_rad",
+    "semantics_evidence": "Checkpoint action/state normalization min/max exactly match official source dataset stats, means/stds within 3e-8. Official producer records IK sol_q and Dex3 q_target as actions.*.qpos and sends them to .q motor commands. Exact original recorder/converter training revision was not published.",
+    "aloha_delta": false,
+    "need_to_add_current_q": false,
+    "max_action_dim_padding": 32
+  },
+  "normalization": {
+    "state": "MEAN_STD",
+    "action": "MEAN_STD",
+    "images": "IDENTITY",
+    "required_preprocessor_stats": "policy_preprocessor_step_5_normalizer_processor.safetensors",
+    "required_postprocessor_stats": "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+    "decoded_stats_file": "normalization_decoded.json",
+    "raw_min_max_equal_current_source_dataset": true,
+    "mean_std_max_rounding_error_lt": 3e-08
+  },
+  "workspace_adapter": {
+    "left_arm_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "right_arm_indices": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "left_hand_indices": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "right_hand_indices": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "right_hand_model_to_workspace_permutation": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      3,
+      4
+    ],
+    "left_hand_permutation": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "automatic_sign_inversion": false
+  },
+  "single_head_preflight": {
+    "supported_by_suggested_native_prepare_images": true,
+    "provide_only_real_image_under_expected_key": "observation.images.cam_left_high",
+    "do_not_copy_image_into_missing_views": true,
+    "empty_cameras": 0,
+    "interpretation": "Real VLA inference with reduced views and domain shift; not training-view equivalence or validated cup policy",
+    "exact_camera_extrinsics_published": false
+  },
+  "hardware": {
+    "available_gpu_vram_gib": 8,
+    "local_inference_feasible_to_attempt": true,
+    "inference_measured": false,
+    "training_batch8_official_indicative_peak_gb": [
+      10,
+      16
+    ],
+    "suggested_training_profile_only_after_data_available": {
+      "batch_size": 1,
+      "freeze_vision_encoder": true,
+      "train_expert_only": true,
+      "max_action_dim": 32,
+      "state_action_dim": 28,
+      "camera_count": 1
+    },
+    "training_on_8gb_guaranteed": false
+  },
+  "gaps": [
+    "No robot/cup closed-loop success evidence for this checkpoint",
+    "Four training camera views vs single physical head camera",
+    "Model author did not publish exact training library/recorder/converter commit",
+    "No weights downloaded or loading/inference measured in this research",
+    "Cup demonstration dataset and adapted checkpoint still needed",
+    "Robot standing/contact controller still not verified"
+  ],
+  "execution_authorized_by_research": false,
+  "preflight_should_return_actions_only": true
+}

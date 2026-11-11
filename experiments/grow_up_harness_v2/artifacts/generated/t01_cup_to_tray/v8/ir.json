@@ -1,0 +1,201 @@
+{
+  "budget_s": 180.0,
+  "close_angles": {
+    "left_hand_index_0_joint": -0.8,
+    "left_hand_index_1_joint": -0.6,
+    "left_hand_middle_0_joint": -0.8,
+    "left_hand_middle_1_joint": -0.6,
+    "left_hand_thumb_0_joint": 0.0,
+    "left_hand_thumb_1_joint": 0.65,
+    "left_hand_thumb_2_joint": 0.65
+  },
+  "parameters": {
+    "approach_seconds": 2.0,
+    "correction_step_m": 0.04,
+    "correction_tolerance_m": 0.004,
+    "hold_before_open_s": 1.5,
+    "place_above_m": 0.13,
+    "place_lower_m": 0.03,
+    "retreat_m": 0.045,
+    "retreat_seconds": 2.0,
+    "settle_after_open_s": 1.5,
+    "step_m": 0.035,
+    "vertical_clear_m": 0.12
+  },
+  "phases": {
+    "correct": [
+      {
+        "op": "recenter_cup",
+        "step_m": {
+          "param": "correction_step_m"
+        },
+        "tolerance_m": {
+          "param": "correction_tolerance_m"
+        }
+      }
+    ],
+    "lift": [
+      {
+        "clearance_m": {
+          "param": "vertical_clear_m"
+        },
+        "execution": "linear",
+        "op": "raise_clear",
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "execution": "linear",
+        "op": "walk_to",
+        "orientation": "keep",
+        "step_m": null,
+        "to": {
+          "place": "above",
+          "slot": null
+        },
+        "yaw": {
+          "grasp": true
+        }
+      }
+    ],
+    "plan": [
+      {
+        "execution": "walk",
+        "op": "walk_to",
+        "orientation": "keep",
+        "step_m": null,
+        "to": {
+          "literal": [
+            -0.07,
+            0.34,
+            0.09
+          ]
+        },
+        "yaw": {
+          "literal": 0.0
+        }
+      },
+      {
+        "execution": "walk",
+        "op": "walk_to",
+        "orientation": "yaw",
+        "step_m": null,
+        "to": {
+          "literal": [
+            -0.04,
+            0.34,
+            0.3
+          ]
+        },
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "op": "joints",
+        "seconds": 1.0,
+        "targets": {
+          "waist_pitch_joint": {
+            "grasp_waist": true
+          }
+        }
+      },
+      {
+        "op": "wait",
+        "seconds": 1.0
+      },
+      {
+        "op": "line_to",
+        "orientation": "yaw",
+        "seconds": 2.0,
+        "to": {
+          "literal": [
+            -0.04,
+            0.34,
+            0.3
+          ]
+        },
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "op": "line_to",
+        "orientation": "yaw",
+        "seconds": 2.0,
+        "to": {
+          "observed": "grasp.approach_start"
+        },
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "op": "line_to",
+        "orientation": "yaw",
+        "seconds": 2.0,
+        "to": {
+          "observed": "grasp.xyz"
+        },
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "op": "close_hand",
+        "seconds": 2.0
+      },
+      {
+        "op": "wait",
+        "seconds": 0.5
+      }
+    ],
+    "release": [
+      {
+        "execution": "walk",
+        "height_m": {
+          "param": "place_lower_m"
+        },
+        "op": "descend_to_lower",
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "op": "wait",
+        "seconds": {
+          "param": "hold_before_open_s"
+        }
+      },
+      {
+        "op": "open_hand",
+        "seconds": 2.0
+      },
+      {
+        "op": "wait",
+        "seconds": {
+          "param": "settle_after_open_s"
+        }
+      },
+      {
+        "distance_m": {
+          "param": "retreat_m"
+        },
+        "op": "retreat_up",
+        "steps": 2,
+        "yaw": {
+          "grasp": true
+        }
+      },
+      {
+        "op": "wait",
+        "seconds": 1.2
+      },
+      {
+        "op": "finish"
+      }
+    ]
+  },
+  "slots": {}
+}

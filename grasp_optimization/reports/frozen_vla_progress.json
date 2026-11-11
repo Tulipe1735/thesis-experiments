@@ -1,0 +1,43 @@
+{
+  "recorded_at": "2026-10-24T02:00:06.244685+08:00",
+  "status": "FROZEN_VISUAL_GENERALIZATION_LIMITS_AND_VLA_SHORT_PROBE_RECORDED",
+  "frozen_visual": {
+    "placements": 8,
+    "successful_placements": 3,
+    "reset_repetitions": 16,
+    "successful_repetitions": 6,
+    "exact_reset_reproduction": true,
+    "failure_groups": {
+      "NO_REACHABLE_VISUAL_TARGET_PATH": 4,
+      "INSUFFICIENT_THUMB_AND_FINGER_LOAD": 1
+    },
+    "max_visual_position_error_mm": 3.0749137574475918
+  },
+  "handoff": {
+    "same_initial_state_verified": true,
+    "requested_budget_s": 0.2,
+    "applied_action_s": 0.10599999999994125,
+    "applied_frames": 4,
+    "inference_calls": 1,
+    "inference_wait_s": 9.829248267999901,
+    "status": "RIGHT_PALM_DEPARTURE",
+    "extension_performed": false,
+    "direct_reference_success": true,
+    "noop_success": false,
+    "vla_success": false
+  },
+  "new_astra_requests": 0,
+  "weight_training": false,
+  "regression_tests_passed": 30,
+  "formal_success_rate_claim": false,
+  "remaining": [
+    "Reachable approach planning coverage",
+    "Thumb opposition sensitivity at seed 1100",
+    "VLA non-task-arm motion and task/camera distribution mismatch"
+  ],
+  "videos": [
+    "deliverables/P01_VLA_pregrasp_short.mp4",
+    "deliverables/P01_matched_direct_reference.mp4",
+    "deliverables/P01_pregrasp_comparison.mp4"
+  ]
+}

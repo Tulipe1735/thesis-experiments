@@ -1,0 +1,625 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill_record.v1",
+  "title": "Agent skill record for the Grow Up harness",
+  "description": "One skill an agent demonstrated on saved initial states. Separates the declarative card from the distilled program, and records which of them was actually validated.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "validation",
+    "provenance",
+    "scope",
+    "retrieval",
+    "preconditions",
+    "postconditions",
+    "failure_exits",
+    "physical_constraints",
+    "card",
+    "program",
+    "interfaces",
+    "composition",
+    "binding",
+    "evidence",
+    "reliability",
+    "limits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "skill_record.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{2,63}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "validated",
+        "rejected",
+        "retired"
+      ]
+    },
+    "validation": {
+      "enum": [
+        "paired",
+        "repair_lineage",
+        "expanded"
+      ]
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "form",
+        "author",
+        "first_run"
+      ],
+      "description": "Which kind of artifact this is. The three forms must never be added together as one capability.",
+      "properties": {
+        "form": {
+          "enum": [
+            "engineering_composition",
+            "generated_program",
+            "learned_policy"
+          ]
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        },
+        "first_run": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generation_note": {
+          "type": "string"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task",
+        "assets",
+        "initial_states"
+      ],
+      "properties": {
+        "task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "stage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "initial_states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description",
+        "keywords"
+      ],
+      "description": "What a planner matches against when deciding whether to use this skill.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keywords": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "embedding_model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Closed predicate names that must hold before the first step.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "postconditions": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Closed predicate names the independent evaluator checks at the end.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "failure_exits": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Typed exits. A skill without a failure exit cannot be composed.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "condition"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "condition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recovery": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "physical_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_single_move_m",
+        "release_height_m"
+      ],
+      "description": "Body limits the skill relies on. Values are registered constants, not per-run tuning.",
+      "properties": {
+        "max_single_move_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "release_height_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "placement_tolerance_m": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "contact_load_max_N": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "status"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "status": {
+          "enum": [
+            "untested",
+            "validated",
+            "rejected"
+          ]
+        },
+        "evidence_arm": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "description": "The declarative card. sha256 is optional: the validator derives it and compares the text to the evidence run's recorded skill_card."
+    },
+    "program": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "entry",
+        "status"
+      ],
+      "properties": {
+        "module": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "entry": {
+          "type": "string",
+          "minLength": 1
+        },
+        "emits": {
+          "enum": [
+            "commands",
+            "steps"
+          ]
+        },
+        "status": {
+          "enum": [
+            "untested",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "acceptance_run": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "acceptance_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "description": "The distilled program. sha256 is optional: the validator derives it and compares it to the acceptance run's recorded source hash."
+    },
+    "interfaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observations",
+        "commands",
+        "guards"
+      ],
+      "properties": {
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "guards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uses",
+        "used_by"
+      ],
+      "description": "Composition edges. Voyager-style reuse is only possible when these are explicit.",
+      "properties": {
+        "uses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "used_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plant_sha256",
+        "evaluator_sha256",
+        "simulation_budget_s"
+      ],
+      "properties": {
+        "plant_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "evaluator_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "simulation_budget_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "description": "Identity of the physics, the judge and the budget. Source provenance is not duplicated here: it lives in each evidence run's registration.json."
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paired",
+        "runs"
+      ],
+      "properties": {
+        "paired": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "without",
+            "with"
+          ],
+          "properties": {
+            "without": {
+              "$ref": "#/$defs/arm"
+            },
+            "with": {
+              "$ref": "#/$defs/arm"
+            }
+          }
+        },
+        "runs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/run"
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "reliability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "episodes",
+        "successes",
+        "rate",
+        "wilson_lower_95"
+      ],
+      "description": "Recomputed by the validator from evidence.runs; a stored value is only a cache.",
+      "properties": {
+        "episodes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "successes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "wilson_lower_95": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "limits": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rule": {
+          "type": "string"
+        },
+        "blocking": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "promoted_on": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "change",
+          "evidence"
+        ],
+        "properties": {
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "change": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "arm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arm",
+        "episodes",
+        "successes"
+      ],
+      "properties": {
+        "arm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "episodes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "successes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "arm",
+        "verified_success"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verified_success": {
+          "type": "boolean"
+        },
+        "stable_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "margin_m": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "commands": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "simulation_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "outcome": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

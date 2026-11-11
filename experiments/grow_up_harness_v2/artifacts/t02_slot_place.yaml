@@ -1,0 +1,219 @@
+schema_version: artifact.v1
+id: t02_slot_place
+version: 1
+kind: skill
+provenance:
+  form: engineering_composition
+  author: composition of the T01 artifact with a slot offset
+  first_run: experiments/grow_up_harness_v2/runs/t02_single_cup_probe_20261105_001
+  note: Single cup into a designated tray slot; the first half of T02.
+scope:
+  task: T02
+  assets:
+  - DH_2F_mug_06
+  - rectangular_low_rim_v1
+  stage: single_room_tabletop
+  initial_states:
+  - path: experiments/t0_agent_v1/tray_20261025_001/episodes/2400_T02_scripted/initial_state.npz
+    sha256: a0bd3982b53d8903f238ac3c291e18e858a0ab57c85d01883bca3ca441859947
+contract:
+  preconditions:
+  - target_visible
+  - hand_empty
+  - tray_visible
+  - guard_clear
+  postconditions:
+  - cup_base_inside_tray_support_region
+  - tray_floor_support_ge_0.5N
+  - cup_released_hand_contact_lt_0.1N
+  - cup_upright_and_stable_ge_1s
+  failure_exits:
+  - code: GRASP_UNREACHABLE
+    condition: no candidate (waist, yaw) passes the dry-run IK check
+    recovery: report the failure; the cup is outside the arm envelope at every tried waist
+  - code: RELEASE_TOO_HIGH
+    condition: the hand opens while the palm is above tray floor + 0.12 m
+    recovery: lower in <=5 cm steps, then open
+  - code: REAPPROACH_AFTER_RELEASE
+    condition: the hand closes or the palm drops below tray floor + 0.10 m after release
+    recovery: retreat and finish
+  - code: MOVE_TOO_LONG
+    condition: one plain move exceeds 0.05 m of palm travel
+    recovery: split the move
+assumptions:
+  max_single_move_m: 0.05
+  release_height_m: 0.03
+  placement_tolerance_m: 0.013
+  contact_load_max_N: 0.1
+  notes:
+  - tray inner half-extent [0.214, 0.054] m with cup radius 0.041 m gives a +/-0.013 m band in y
+  - the lean to waist pitch -0.10 rad is required for the approach path to stay reachable
+binding:
+  plant_sha256: 39301e1a017cc16a2da016dfea2a0a0b8675e9750d8ac578e7e72d666c814426
+  evaluator_sha256: b94d53c5651ad4c2c415f0dab578d950e2c3a04dcc883ee8181b4358bafa5fd7
+  simulation_budget_s: 180.0
+interfaces:
+  observations:
+  - cup_bottoms_m
+  - tray_floor_center_m
+  - left_palm
+  - grasp_probe
+  commands:
+  - move
+  - joints
+  - wait
+  - finish
+  guards:
+  - MAX_MOVE_M
+  - RELEASE_TOO_HIGH
+  - REAPPROACH_AFTER_RELEASE
+ir:
+  budget_s: 180.0
+  parameters:
+    step_m: 0.035
+    retreat_m: 0.045
+    vertical_clear_m: 0.18
+    place_above_m: 0.2
+    place_lower_m: 0.03
+    hold_before_open_s: 1.5
+    settle_after_open_s: 1.5
+    correction_step_m: 0.04
+    correction_tolerance_m: 0.004
+    approach_seconds: 2.0
+    retreat_seconds: 2.0
+    carry_seconds: 8.0
+  close_angles:
+    left_hand_thumb_0_joint: 0.0
+    left_hand_thumb_1_joint: 0.65
+    left_hand_thumb_2_joint: 0.65
+    left_hand_middle_0_joint: -0.8
+    left_hand_middle_1_joint: -0.6
+    left_hand_index_0_joint: -0.8
+    left_hand_index_1_joint: -0.6
+  phases:
+    plan:
+    - op: walk_to
+      to:
+        literal:
+        - -0.07
+        - 0.34
+        - 0.09
+      yaw:
+        literal: 0.0
+      orientation: keep
+    - op: walk_to
+      to:
+        literal:
+        - -0.04
+        - 0.34
+        - 0.3
+      yaw:
+        grasp: true
+      orientation: yaw
+    - op: joints
+      targets:
+        waist_pitch_joint:
+          grasp_waist: true
+      seconds: 1.0
+    - op: wait
+      seconds: 1.0
+    - op: move_to
+      to:
+        literal:
+        - -0.04
+        - 0.34
+        - 0.3
+      yaw:
+        grasp: true
+      orientation: yaw
+    - op: walk_to
+      to:
+        observed: grasp.approach_start
+      yaw:
+        grasp: true
+      orientation: yaw
+    - op: walk_to
+      to:
+        observed: grasp.xyz
+      yaw:
+        grasp: true
+      orientation: yaw
+    - op: close_hand
+      seconds: 2.0
+    - op: wait
+      seconds: 0.5
+    lift:
+    - op: raise_clear
+      clearance_m:
+        param: vertical_clear_m
+      yaw:
+        grasp: true
+    - op: line_to
+      to:
+        place: above
+        slot: slot_0
+      yaw:
+        grasp: true
+      orientation: keep
+      seconds:
+        param: carry_seconds
+    correct:
+    - op: recenter_cup
+      tolerance_m:
+        param: correction_tolerance_m
+      step_m:
+        param: correction_step_m
+    release:
+    - op: descend_to_lower
+      height_m:
+        param: place_lower_m
+      yaw:
+        grasp: true
+    - op: wait
+      seconds:
+        param: hold_before_open_s
+    - op: open_hand
+      seconds: 2.0
+    - op: wait
+      seconds:
+        param: settle_after_open_s
+    - op: retreat_up
+      distance_m:
+        param: retreat_m
+      steps: 2
+      yaw:
+        grasp: true
+    - op: wait
+      seconds: 1.2
+    - op: finish
+  slots:
+    slot_0:
+    - -0.09
+    - 0.0
+    slot_1:
+    - 0.0
+    - 0.0
+    slot_2:
+    - 0.09
+    - 0.0
+evidence:
+  runs: []
+limits:
+- 'Draft: the designated slot has never been reached.'
+- 'Generated T02 baseline, 4 cases (seeds 4001-4004), zero model: 0/4 slot, 1/4 tray.'
+- '4001 reaches the tray upright (margin +7.9 mm) but the slot error is 13.5 cm: the straight-line carry
+  stops at the first failed guarded waypoint.'
+- 4002 is rejected by the 5 cm move guard; 4003 aborts at t=0 because grasp_probe is empty; 4004 knocks
+  a cup over (tilt 81 deg) while crossing the tray.
+- The earlier single-cup check tested only the tray criterion and wrongly reported success; it now also
+  requires slot_error <= 15 mm.
+- Slot offsets assume the tray long axis is x in the pelvis frame; tray yaw is ignored.
+- T02 needs its own approach and carry calibration; copying the T01 parameters with a slot offset is not
+  enough.
+projections:
+  code:
+    path: experiments/grow_up_harness_v2/artifacts/generated/t02_slot_place/program.py
+    entry: plan
+  skill:
+    path: experiments/grow_up_harness_v2/artifacts/generated/t02_slot_place/SKILL.md
+status: draft

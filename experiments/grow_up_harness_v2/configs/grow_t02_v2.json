@@ -1,0 +1,56 @@
+{
+ "train": {
+  "seed": 92101,
+  "count": 2,
+  "radius_m": 0.002
+ },
+ "heldout": {
+  "seed": 93101,
+  "count": 2,
+  "radius_m": 0.002
+ },
+ "proposer": {
+  "backend": "ollama",
+  "model": "qwen3.5:4b",
+  "timeout_s": 300
+ },
+ "critic": {
+  "backend": "ollama",
+  "model": "qwen3.5:4b",
+  "timeout_s": 300,
+  "temperature": 0
+ },
+ "caps": {
+  "simulation_s": 240.0,
+  "commands": 1650,
+  "wall_s": 1800.0
+ },
+ "per_task": {
+  "fast_tries": 2,
+  "library_shown": 3,
+  "max_physical_attempts": 3,
+  "max_gate_rejections": 4,
+  "gate_steps": 8
+ },
+ "controls": {
+  "positive": "all"
+ },
+ "heldout_scratch": true,
+ "consumed_dev_seeds": [
+  2400,
+  2401,
+  2402,
+  2501,
+  4001,
+  4002,
+  4003,
+  4004,
+  92901
+ ],
+ "prediction": "Negative wait fails. Visual positive passes on all four tasks. The engineering composite t02_three_cup_replay@8398f5db4447 solves all train and held-out store tasks through FAST at 2 mm jitter, about 1270 commands and 1550 wall s each, so train makes zero proposer calls and adds no agent-authored artifact. The from-scratch qwen3.5:4b arm solves 0/2. Any FAST success belongs to the engineering column, not the agent column.",
+ "falsification": "Negative succeeds (void). Any FAST failure with a passing positive falsifies the open-loop prediction and opens SLOW. Any scratch success falsifies 0/2. Policy receiving private object poses, the held-out phase changing the store, or a single-cup result reported as full T02 invalidates the run. Positive failure skips the task without replacement.",
+ "parent_store": "experiments/grow_up_harness_v2/runs/t02_replay_store_20261107_001/store",
+ "evaluator_version": "t02-three-cup-strict-v1",
+ "positive_reference": "visual_engineering",
+ "caps_note": "post-change caps; v1 was 180 s / 1200 commands / 1200 s wall. See runs/t02_worker_budget_20261107_001 and runs/t02_worker_dev_20261107_001."
+}

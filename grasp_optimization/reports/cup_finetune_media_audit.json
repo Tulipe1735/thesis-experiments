@@ -1,0 +1,72 @@
+[
+  {
+    "file": "deliverables/P01_cup_original_anchor.mp4",
+    "sha256": "d772fb855c26f5b71b97142cdb798af3afc0f7ae90b69efa2fcfb9edb187c813",
+    "bytes": 644096,
+    "decoded_without_error": true,
+    "stream": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 1080,
+      "r_frame_rate": "20/1",
+      "nb_frames": "130"
+    },
+    "duration_s": 6.5
+  },
+  {
+    "file": "deliverables/P01_cup_statistics_only_anchor.mp4",
+    "sha256": "fcd0b698d30d4a47f03af35bf62487863a22c864d3c4f10ce71e9bc4b654ce10",
+    "bytes": 227391,
+    "decoded_without_error": true,
+    "stream": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 1080,
+      "r_frame_rate": "20/1",
+      "nb_frames": "44"
+    },
+    "duration_s": 2.2
+  },
+  {
+    "file": "deliverables/P01_cup_finetuned_anchor.mp4",
+    "sha256": "df6006d0e3513a4d74131010e36435c67eb1f8fd15d60082ba36bd966c7cbcbf",
+    "bytes": 226817,
+    "decoded_without_error": true,
+    "stream": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 1080,
+      "r_frame_rate": "20/1",
+      "nb_frames": "44"
+    },
+    "duration_s": 2.2
+  },
+  {
+    "file": "deliverables/P01_cup_finetuned_new1300.mp4",
+    "sha256": "69c60e256ae40ad66e212b4a4a0b5f7ebd96ffe12dea96e1cac32b7dba12130b",
+    "bytes": 364592,
+    "decoded_without_error": true,
+    "stream": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 1080,
+      "r_frame_rate": "20/1",
+      "nb_frames": "87"
+    },
+    "duration_s": 4.35
+  },
+  {
+    "file": "deliverables/P01_cup_finetune_comparison.mp4",
+    "sha256": "a4315c9f019e94cd74142435cabb302ba1cf249d3ebb510fab341a95668bd0d8",
+    "bytes": 258287,
+    "decoded_without_error": true,
+    "stream": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 1120,
+      "r_frame_rate": "20/1",
+      "nb_frames": "44"
+    },
+    "duration_s": 2.2
+  }
+]

@@ -1,0 +1,8 @@
+test_thirty_hz_samples_do_not_accumulate_drift_on_500hz_clock (test_fourview_dataset.FourViewCaptureClockTests.test_thirty_hz_samples_do_not_accumulate_drift_on_500hz_clock) ... ok
+test_export_preserves_four_videos_and_fifty_action_step_shape (test_fourview_dataset.RecordedFourViewDatasetTests.test_export_preserves_four_videos_and_fifty_action_step_shape) ... skipped 'Native camera demos not collected'
+test_native_recording_has_real_states_targets_and_no_depth_or_truth_features (test_fourview_dataset.RecordedFourViewDatasetTests.test_native_recording_has_real_states_targets_and_no_depth_or_truth_features) ... skipped 'Native camera demos not collected'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.021s
+
+OK (skipped=2)

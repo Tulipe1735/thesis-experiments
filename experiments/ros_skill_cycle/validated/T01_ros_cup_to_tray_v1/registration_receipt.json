@@ -1,0 +1,14 @@
+{
+  "status": "registered",
+  "registry": "experiments/t0_agent_v1/skill_registry/T01_ros_cup_to_tray_v1.json",
+  "registry_sha256": "a8617244d7ad78a9a77e62923f97e37bbef3c110bd3a464292ef07683dc25a7f",
+  "audit_sha256": "71baac57be6f15d576efbd9361f82ae3fd4be6a2f13cb81047d6d0b2eb42d2c3",
+  "manifest_sha256": "11d24d72f6be1276ce11f578519a6bd3ddd97d52e96e7ae4b5baaac45ba6bc2c",
+  "source_copies_sha256": {
+    "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1/implementation/execution.py": "04206fe3c58d714d5fdc9d812d5476d02643545470a0455f0986aefd2ddfa0c2",
+    "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1/implementation/public_check.py": "480ec161220516174121eeec9a210c989918b12b5aa3ceb3241c870e2c7386b3",
+    "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1/policy.json": "c90dc3a8a5d1c26cbdbe407592288dda5d52980db265e97055b44cb5052a5650"
+  },
+  "new_physical_episodes": 0,
+  "model_requests": 0
+}

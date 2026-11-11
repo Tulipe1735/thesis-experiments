@@ -1,0 +1,384 @@
+{
+  "training_selected_step": 300,
+  "optimizer_steps": 700,
+  "offline_validation": {
+    "original": {
+      "mean_mse_rad2": 0.4562683254480362,
+      "left_hand_mse_rad2": 0.5815651044249535
+    },
+    "statistics_only": {
+      "mean_mse_rad2": 0.008777877024840564,
+      "left_hand_mse_rad2": 0.004538142022283864
+    },
+    "finetuned": {
+      "mean_mse_rad2": 0.004939340695273131,
+      "left_hand_mse_rad2": 0.001532587868950941
+    }
+  },
+  "action_mse_reduction_vs_statistics_only": 0.43729666281547774,
+  "physical": {
+    "selected_training_step": 300,
+    "pairs": [
+      {
+        "seed": 1000,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1300,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1301,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1302,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1303,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      }
+    ],
+    "fresh_attempted": 4,
+    "fresh_pregrasp_ready": 4,
+    "fresh_successes": {
+      "original": 0,
+      "statistics_only": 0,
+      "finetuned": 0
+    },
+    "anchor_successes": {
+      "original": 0,
+      "statistics_only": 0,
+      "finetuned": 0
+    },
+    "primary_comparison": "finetuned versus statistics_only",
+    "small_practice_sample": true,
+    "no_physical_test_tuning": true,
+    "Astra_calls": 0
+  },
+  "trials": [
+    {
+      "seed": 1000,
+      "variant": "original",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.30206006029074306,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.4499999999999531,
+      "inference_calls": 3,
+      "raw_to_applied_left_element_change_fraction": 0.9030612244897959,
+      "max_actual_inference_wall_s": 0.6330106330005947,
+      "episode_id": "cup_sft1_1000_original"
+    },
+    {
+      "seed": 1000,
+      "variant": "statistics_only",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.5623433582689907,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.18800000000006278,
+      "inference_calls": 1,
+      "raw_to_applied_left_element_change_fraction": 0.5238095238095238,
+      "max_actual_inference_wall_s": 0.6771051110008557,
+      "episode_id": "cup_sft1_1000_statistics_only"
+    },
+    {
+      "seed": 1000,
+      "variant": "finetuned",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.29916694362921437,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.19000000000006345,
+      "inference_calls": 1,
+      "raw_to_applied_left_element_change_fraction": 0.6904761904761905,
+      "max_actual_inference_wall_s": 0.9207610740013479,
+      "episode_id": "cup_sft1_1000_finetuned"
+    },
+    {
+      "seed": 1300,
+      "variant": "original",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.04735307327699001,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.3160000000000398,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.9142857142857143,
+      "max_actual_inference_wall_s": 0.7844157290001021,
+      "episode_id": "cup_sft1_1300_original"
+    },
+    {
+      "seed": 1300,
+      "variant": "statistics_only",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.19388603399884685,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.1680000000000561,
+      "inference_calls": 1,
+      "raw_to_applied_left_element_change_fraction": 0.5142857142857142,
+      "max_actual_inference_wall_s": 0.7550690499992925,
+      "episode_id": "cup_sft1_1300_statistics_only"
+    },
+    {
+      "seed": 1300,
+      "variant": "finetuned",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.6265737680727801,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.30800000000004424,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.5857142857142857,
+      "max_actual_inference_wall_s": 0.5892705990008835,
+      "episode_id": "cup_sft1_1300_finetuned"
+    },
+    {
+      "seed": 1301,
+      "variant": "original",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.050108032681539516,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.1940000000000648,
+      "inference_calls": 1,
+      "raw_to_applied_left_element_change_fraction": 0.9642857142857143,
+      "max_actual_inference_wall_s": 0.7637884720006696,
+      "episode_id": "cup_sft1_1301_original"
+    },
+    {
+      "seed": 1301,
+      "variant": "statistics_only",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.17471417144979684,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.14200000000004742,
+      "inference_calls": 1,
+      "raw_to_applied_left_element_change_fraction": 0.6714285714285714,
+      "max_actual_inference_wall_s": 1.1890155769997364,
+      "episode_id": "cup_sft1_1301_statistics_only"
+    },
+    {
+      "seed": 1301,
+      "variant": "finetuned",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.2559416157204786,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.2000000000000668,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.6547619047619048,
+      "max_actual_inference_wall_s": 0.6797546050001984,
+      "episode_id": "cup_sft1_1301_finetuned"
+    },
+    {
+      "seed": 1302,
+      "variant": "original",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 1.4663825709249068e-09,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.2000000000000668,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.8928571428571429,
+      "max_actual_inference_wall_s": 0.7171777820003626,
+      "episode_id": "cup_sft1_1302_original"
+    },
+    {
+      "seed": 1302,
+      "variant": "statistics_only",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 1.4663825709249068e-09,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.17200000000005744,
+      "inference_calls": 1,
+      "raw_to_applied_left_element_change_fraction": 0.6666666666666666,
+      "max_actual_inference_wall_s": 0.4238430690002133,
+      "episode_id": "cup_sft1_1302_statistics_only"
+    },
+    {
+      "seed": 1302,
+      "variant": "finetuned",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.3106615386939682,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.3160000000000025,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.7071428571428572,
+      "max_actual_inference_wall_s": 0.45350689699989744,
+      "episode_id": "cup_sft1_1302_finetuned"
+    },
+    {
+      "seed": 1303,
+      "variant": "original",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 1.0621281631983948e-09,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.19999999999988916,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.8809523809523809,
+      "max_actual_inference_wall_s": 0.4309025169986853,
+      "episode_id": "cup_sft1_1303_original"
+    },
+    {
+      "seed": 1303,
+      "variant": "statistics_only",
+      "success": false,
+      "status": "LEFT_PALM_DEPARTURE_CLOSING",
+      "sensor_phase": "closing",
+      "max_lift_cm": 0.12761791308544268,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.19999999999988916,
+      "inference_calls": 2,
+      "raw_to_applied_left_element_change_fraction": 0.5595238095238095,
+      "max_actual_inference_wall_s": 0.6074032920005266,
+      "episode_id": "cup_sft1_1303_statistics_only"
+    },
+    {
+      "seed": 1303,
+      "variant": "finetuned",
+      "success": false,
+      "status": "GRIP_LOST",
+      "sensor_phase": "test_lift",
+      "max_lift_cm": 0.04396346653320338,
+      "terminal_hold_s": 0.0,
+      "longest_strict_hold_s": 0.0,
+      "first_left_opposition_from_start_s": null,
+      "action_time_s": 0.5999999999996675,
+      "inference_calls": 4,
+      "raw_to_applied_left_element_change_fraction": 0.6150793650793651,
+      "max_actual_inference_wall_s": 0.41150119799931417,
+      "episode_id": "cup_sft1_1303_finetuned"
+    }
+  ],
+  "paired_initial_condition_audit": [
+    {
+      "seed": 1000,
+      "same_initial_state": true,
+      "same_first_policy_joints": true,
+      "same_first_four_rgb_hashes": true,
+      "same_recorded_first_wait_physics": true,
+      "right_targets_unchanged": true
+    },
+    {
+      "seed": 1300,
+      "same_initial_state": true,
+      "same_first_policy_joints": true,
+      "same_first_four_rgb_hashes": true,
+      "same_recorded_first_wait_physics": true,
+      "right_targets_unchanged": true
+    },
+    {
+      "seed": 1301,
+      "same_initial_state": true,
+      "same_first_policy_joints": true,
+      "same_first_four_rgb_hashes": true,
+      "same_recorded_first_wait_physics": true,
+      "right_targets_unchanged": true
+    },
+    {
+      "seed": 1302,
+      "same_initial_state": true,
+      "same_first_policy_joints": true,
+      "same_first_four_rgb_hashes": true,
+      "same_recorded_first_wait_physics": true,
+      "right_targets_unchanged": true
+    },
+    {
+      "seed": 1303,
+      "same_initial_state": true,
+      "same_first_policy_joints": true,
+      "same_first_four_rgb_hashes": true,
+      "same_recorded_first_wait_physics": true,
+      "right_targets_unchanged": true
+    }
+  ],
+  "tensor_checkpoint_audit": {
+    "normalization_only": {
+      "tensor_count": 500,
+      "mismatched_tensor_names": [],
+      "matches_logged_parameters": true,
+      "seconds": 57.724574907000715
+    },
+    "best": {
+      "tensor_count": 500,
+      "mismatched_tensor_names": [],
+      "matches_logged_parameters": true,
+      "seconds": 60.94453971300027
+    }
+  },
+  "interpretation": "Small MuJoCo sample from an engineered pregrasp; offline accuracy and physical success are separate."
+}

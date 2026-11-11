@@ -1,0 +1,43 @@
+schema: artifact.v2
+name: t02_cup1_lift_retreat
+task_node: B2.4
+summary: 'Cup 1 retreat without touching the released cup: from the current release
+  pose, lift the palm ~10 cm vertically (FK + damped-least-squares IK on shoulder
+  pitch/roll/yaw and elbow, palm pose propagated to the pelvis from the given body
+  chain), translate back at that height, then step the arm joints onto the recorded
+  cup-1 retreat end pose and hold.'
+contract:
+  pre:
+  - cup_1_held_released
+  - guard_clear
+  post:
+  - cup_1_in_tray
+  - hand_clear_of_tray
+  params:
+    object_count:
+      type: float
+      description: 待归集杯数
+    hold_s:
+      type: float
+      description: 三杯共同末段稳持秒数
+  failure_codes:
+  - NOT_REACHED
+  - NOT_HELD
+  - UNSAFE
+  - BUDGET
+  - INTERFACE
+  - WORKER_ERROR
+scope:
+  task_family: t02_three_cups_v1
+  initial_sha256:
+  - 5676cf3b66a6867c4c90c3f0d101cfa2d5d7cd2af85185a0983cd0620b4221f1
+  plant_sha256: 39301e1a017cc16a2da016dfea2a0a0b8675e9750d8ac578e7e72d666c814426
+provenance:
+  author: deepseek-v4.1-flash
+  parents: []
+  created_on: t02_92301_001
+  note: inline leaf of a composite reply
+kind: leaf
+implementation:
+  language: python
+  source: t02_cup1_lift_retreat.py

@@ -1,0 +1,35 @@
+schema: artifact.v2
+name: t03_orange_to_platter_program
+task_node: B4.4
+summary: Immutable native T03 program selects already-authored grasp, placement and
+  finish IDs; actual effects judged only from independent trajectory
+contract:
+  pre:
+  - valid_near_side_T03_orange
+  - guard_clear
+  post:
+  - T03_component_program_selected
+  params: {}
+  failure_codes:
+  - INVOCATION
+  - PERCEPTION
+  - GRASP
+  - PLACE
+  - FINISH
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: engineering_composition_of_DeepSeek_components
+  parents:
+  - t03_adaptive_recipe@2dda5cb43808
+  - t03_placement_target@a885ee81cbca
+  - t03_post_release_finish@015a7bf0e39f
+  - hand_open@22732f29f263
+  created_on: '2026-11-11'
+  note: Root is a fixed ID dispatcher, not a newly generated controller. All three
+    learned source digests frozen and physically composed without reset.
+kind: leaf
+implementation:
+  language: python

@@ -1,0 +1,33 @@
+schema: artifact.v2
+name: t03_orange_to_platter_observed_can
+task_node: B4.4
+summary: Original temporal locate program plus can-route leaf
+contract:
+  pre:
+  - valid_near_side_T03_orange
+  - guard_clear
+  post:
+  - T03_component_program_selected
+  params: {}
+  failure_codes:
+  - INVOCATION
+  - PERCEPTION
+  - GRASP
+  - PLACE
+  - FINISH
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: engineering composition
+  parents:
+  - t03_orange_to_platter_temporal_locate@8382560d6c95
+  - t03_observed_can_route@00d6ef67286a
+  created_on: '2026-11-11'
+  note: T03 fixed component-ID root + optional approach_ref selects only prechecked
+    default/top_down/null at ready preflight; observed gray can, original grasp endpoint/yaw
+    unchanged; runtime t03-rgbd-can-approach-v1
+kind: leaf
+implementation:
+  language: python

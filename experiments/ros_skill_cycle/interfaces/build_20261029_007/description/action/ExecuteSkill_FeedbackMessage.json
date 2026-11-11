@@ -1,0 +1,95 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "thesis_skill_interfaces/action/ExecuteSkill_FeedbackMessage",
+      "fields": [
+        {
+          "name": "goal_id",
+          "type": {
+            "type_id": 1,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": "unique_identifier_msgs/msg/UUID"
+          },
+          "default_value": ""
+        },
+        {
+          "name": "feedback",
+          "type": {
+            "type_id": 1,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": "thesis_skill_interfaces/action/ExecuteSkill_Feedback"
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": [
+      {
+        "type_name": "thesis_skill_interfaces/action/ExecuteSkill_Feedback",
+        "fields": [
+          {
+            "name": "stage",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "event",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "simulation_seconds",
+            "type": {
+              "type_id": 11,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          }
+        ]
+      },
+      {
+        "type_name": "unique_identifier_msgs/msg/UUID",
+        "fields": [
+          {
+            "name": "uuid",
+            "type": {
+              "type_id": 51,
+              "capacity": 16,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          }
+        ]
+      }
+    ]
+  },
+  "type_hashes": [
+    {
+      "type_name": "thesis_skill_interfaces/action/ExecuteSkill_FeedbackMessage",
+      "hash_string": "RIHS01_e88e4010dc3db54bb180a400a989f18bd4adfc98a36a8b2d7d57bb824b588fe2"
+    },
+    {
+      "type_name": "thesis_skill_interfaces/action/ExecuteSkill_Feedback",
+      "hash_string": "RIHS01_02109625afee16b1352cd6748e68316f5fc0320d53effc777052286db8fee06a"
+    },
+    {
+      "type_name": "unique_identifier_msgs/msg/UUID",
+      "hash_string": "RIHS01_1b8e8aca958cbea28fe6ef60bf6c19b683c97a9ef60bb34752067d0f2f7ab437"
+    }
+  ]
+}

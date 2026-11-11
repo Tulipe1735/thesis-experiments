@@ -1,0 +1,36 @@
+{
+  "reference_episode": "direct_008",
+  "exact_array_equality": {
+    "success_repeat_001": {
+      "time": true,
+      "qpos": true,
+      "qvel": true,
+      "joint_targets": true,
+      "actuator_force": true
+    },
+    "frozen_success_1000": {
+      "time": true,
+      "qpos": true,
+      "qvel": true,
+      "joint_targets": true,
+      "actuator_force": true
+    },
+    "final_reference_1000": {
+      "time": true,
+      "qpos": true,
+      "qvel": true,
+      "joint_targets": true,
+      "actuator_force": true
+    }
+  },
+  "original_source_unchanged": {
+    "pantry_robot.py": true,
+    "pantry_scene.py": true,
+    "experiment_log.py": true,
+    "render_pantry_episode.py": true,
+    "view_pantry_episode.py": true,
+    "assets/robot_profile.json": true,
+    "scenes/pantry/p01_zones_v01/zone_config.json": true,
+    "scenes/pantry/p01_zones_v01/human_review.json": true
+  }
+}

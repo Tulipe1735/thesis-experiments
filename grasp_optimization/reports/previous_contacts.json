@@ -1,0 +1,65 @@
+{
+  "pantry_agent_20261023_214553_515599": {
+    "time": 71.76400000001415,
+    "contacts": [],
+    "force_note": "Recomputed from saved integration state, not a new physical step"
+  },
+  "pantry_agent_20261023_230023_592610": {
+    "time": 35.207999999997064,
+    "contacts": [
+      {
+        "bodies": [
+          "world",
+          "right_hand_index_1_link"
+        ],
+        "geoms": [
+          "room_contact_482",
+          "geom_759"
+        ],
+        "sources": [
+          "Pantry island body",
+          "geom_759"
+        ],
+        "normal_force_N": 4.297119845643267,
+        "penetration_m": 0.00032898033836914475,
+        "position_sim_m": [
+          -0.27344369651889494,
+          0.39983381709843546,
+          0.6212925850277695
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "bodies": [
+          "world",
+          "right_hand_index_1_link"
+        ],
+        "geoms": [
+          "room_contact_482",
+          "geom_759"
+        ],
+        "sources": [
+          "Pantry island body",
+          "geom_759"
+        ],
+        "normal_force_N": 4.120340942907346,
+        "penetration_m": 0.00031647606759793723,
+        "position_sim_m": [
+          -0.2735363133546005,
+          0.3998400692338211,
+          0.6217983186945487
+        ],
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      }
+    ],
+    "force_note": "Recomputed from saved integration state, not a new physical step"
+  }
+}

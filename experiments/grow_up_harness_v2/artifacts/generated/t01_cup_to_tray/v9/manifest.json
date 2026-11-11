@@ -1,0 +1,24 @@
+{
+  "schema_version": "artifact.v1",
+  "artifact": {
+    "id": "t01_cup_to_tray",
+    "version": 9,
+    "digest": "8d9baf1c7c85ea98481adc0ddf75108d122a5d1146435286d5986b8a5df26252"
+  },
+  "dependencies": {
+    "generator": {
+      "path": "experiments/grow_up_harness_v2/harness/artifact.py",
+      "sha256": "26e87b31f7fd1627df2d51b2dd129a796c1ddb20422247c80f8ea67aaf9d38d0"
+    },
+    "binding": {
+      "plant_sha256": "e86012f1605c84e31f29102b04754de76a5be01354acb274c6029db6c334d7c6",
+      "evaluator_sha256": "b94d53c5651ad4c2c415f0dab578d950e2c3a04dcc883ee8181b4358bafa5fd7",
+      "simulation_budget_s": 180.0
+    }
+  },
+  "generated": {
+    "experiments/grow_up_harness_v2/artifacts/generated/t01_cup_to_tray/v9/program.py": "d4e07dbd9d1f939ce2bd7a92086c2b3774b94817fffa697568ff17943d9178e7",
+    "experiments/grow_up_harness_v2/artifacts/generated/t01_cup_to_tray/v9/SKILL.md": "0c577fb24395894aff933a69497ac72e5b9836eada886401a40f60f9c1dec0f4",
+    "experiments/grow_up_harness_v2/artifacts/generated/t01_cup_to_tray/v9/ir.json": "55894d79de6da32478ed721f8f55c8228fa3c5c0a3ddf725ddd05b1c8b435210"
+  }
+}

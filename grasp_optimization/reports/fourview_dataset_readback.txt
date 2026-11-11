@@ -1,0 +1,122 @@
+/mnt/c/Users/23660/Documents/Codex/2026-10-23/files-mentioned-by-the-user-hk/work/vla-env/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+  warnings.warn(
+{
+  "status": "validated",
+  "validated": true,
+  "repo_id": "local/g1-cup-fourview-engineered-v1",
+  "fps": 30,
+  "camera_keys": [
+    "observation.images.cam_left_high",
+    "observation.images.cam_right_high",
+    "observation.images.cam_left_wrist",
+    "observation.images.cam_right_wrist"
+  ],
+  "total_frames": 1170,
+  "total_episodes": 6,
+  "split_episode_indices": {
+    "train": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "validation": [
+      4,
+      5
+    ]
+  },
+  "normalization_split": "train",
+  "video_backend": "pyav",
+  "device": "cpu",
+  "native_versions": {
+    "lerobot": "0.4.4",
+    "torch": "2.7.1",
+    "torchvision": "0.22.1",
+    "av": "15.1.0"
+  },
+  "codebase_version": "v3.0",
+  "decoded_items": [
+    {
+      "index": 0,
+      "episode_index": 0,
+      "frame_index": 0,
+      "visual_shape_CHW": [
+        3,
+        480,
+        640
+      ],
+      "action_shape": [
+        50,
+        28
+      ],
+      "padded_action_steps": 0
+    },
+    {
+      "index": 194,
+      "episode_index": 0,
+      "frame_index": 194,
+      "visual_shape_CHW": [
+        3,
+        480,
+        640
+      ],
+      "action_shape": [
+        50,
+        28
+      ],
+      "padded_action_steps": 49
+    },
+    {
+      "index": 780,
+      "episode_index": 4,
+      "frame_index": 0,
+      "visual_shape_CHW": [
+        3,
+        480,
+        640
+      ],
+      "action_shape": [
+        50,
+        28
+      ],
+      "padded_action_steps": 0
+    }
+  ],
+  "video_header_checks": [
+    {
+      "path": "videos/observation.images.cam_left_high/chunk-000/file-000.mp4",
+      "frames": 1170
+    },
+    {
+      "path": "videos/observation.images.cam_right_high/chunk-000/file-000.mp4",
+      "frames": 1170
+    },
+    {
+      "path": "videos/observation.images.cam_left_wrist/chunk-000/file-000.mp4",
+      "frames": 1170
+    },
+    {
+      "path": "videos/observation.images.cam_right_wrist/chunk-000/file-000.mp4",
+      "frames": 1170
+    }
+  ],
+  "checks": {
+    "manifest_and_feature_schema": true,
+    "independent_success_reports": true,
+    "native_joint_order_and_numeric_hashes": true,
+    "nominal_and_physics_clocks": true,
+    "all_video_header_counts_shapes_fps": true,
+    "training_only_native_statistics": true,
+    "native_cpu_fourview_decode": true,
+    "action_horizon_50x28_and_padding": true,
+    "at_least_one_unpadded_action_horizon": true
+  },
+  "validation_scope": "local dataset schema, values, timing, encoding and native readback",
+  "source_teacher_control_hz": 500,
+  "vla_command_rate_caps_certified": false,
+  "runtime_guard_note": "500Hz teacher targets sampled at30Hz need not satisfy tighter VLA command caps; runtime guards still apply",
+  "checkpoint_statistics_modified": false,
+  "weight_updates": false,
+  "independent_task_benchmark": false,
+  "output": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/datasets/cup_fourview_v1"
+}

@@ -1,0 +1,32 @@
+schema: artifact.v2
+name: t03_orange_to_platter_local_pose
+task_node: B4.4
+summary: Temporal locate plus observed-can local grasp-offset route leaf
+contract:
+  pre:
+  - valid_near_side_T03_orange
+  - guard_clear
+  post:
+  - T03_component_program_selected
+  params: {}
+  failure_codes:
+  - INVOCATION
+  - PERCEPTION
+  - GRASP
+  - PLACE
+  - FINISH
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: engineering composition
+  parents:
+  - t03_orange_to_platter_observed_can@047e5bfdcfa0
+  - t03_observed_can_pose@ec94d1e18d90
+  created_on: '2026-11-11'
+  note: T03 immutable component IDs + observed_can_pose selection over finite RGB-D-relative
+    native XY offsets and top_down; runtime t03-rgbd-can-local-offset-v2
+kind: leaf
+implementation:
+  language: python

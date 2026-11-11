@@ -1,0 +1,2 @@
+CHECKPOINT_TENSOR_AUDIT normalization_only 500 all match
+CHECKPOINT_TENSOR_AUDIT best 500 all match

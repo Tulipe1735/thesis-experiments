@@ -1,0 +1,14 @@
+{
+ "train": {"seed": 81101, "count": 12, "radius_rad": 0.3},
+ "heldout": {"seed": 82101, "count": 6, "radius_rad": 0.3},
+ "proposer": {"backend": "opencode_go", "model": "deepseek-v4.1-flash", "timeout_s": 600},
+ "critic": {"backend": "ollama", "model": "qwen3.5:4b", "timeout_s": 300, "temperature": 0},
+ "caps": {"simulation_s": 30.0, "commands": 200, "wall_s": 300.0},
+ "per_task": {"fast_tries": 2, "library_shown": 3, "max_physical_attempts": 3, "max_gate_rejections": 4, "gate_steps": 8},
+ "controls": {"positive": "all"},
+ "heldout_scratch": true,
+ "parent_library": null,
+ "consumed_dev_seeds": [81001, 82001, 91001],
+ "prediction": "Train: the first task is solved by SLOW within 3 physical attempts; of the remaining 11 train tasks at least 8 are solved by FAST library reuse with 0 proposer calls. Held-out (frozen library, FAST only): at least 5/6 solved with 0 proposer calls; the from-scratch proposer arm solves no more held-out tasks than the library arm and uses at least 6 proposer calls in total.",
+ "falsification": "Any of: negative control succeeds (run void); FAST solves fewer than 6 of the 11 train tasks after the first library entry; held-out library arm solves fewer tasks than the scratch arm. A positive control failure removes that task from the agent arms and is reported, not replaced."
+}

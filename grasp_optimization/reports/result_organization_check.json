@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-10-24T12:15:08.591891+08:00",
+  "work": "organize_saved_results_without_new_experiments",
+  "frozen_manifests": [
+    {
+      "manifest": "validation/frozen_v1/manifest.json",
+      "sha256": "f1b122482ea696c90a43aa5f0753de5fd77d8ae3e299e298a68b2f1468ad58ab",
+      "source_count": 12,
+      "unchanged": true
+    },
+    {
+      "manifest": "validation/vla_handoff_v1/manifest.json",
+      "sha256": "7de5e8778ba4852bf4325d806e59b914e300f5120bf7097170e64bc54c5de1f9",
+      "source_count": 7,
+      "unchanged": true
+    },
+    {
+      "manifest": "validation/frozen_v2/manifest.json",
+      "sha256": "4d9564ce40de817b8ba3be6222db8abeef8d92779ef1e8bd4106a02e1ceb5cde",
+      "source_count": 14,
+      "unchanged": true
+    }
+  ],
+  "mask_source_and_commands_unchanged": true,
+  "engineering_memory_evidence_unchanged": true,
+  "local_document_links_checked": 50,
+  "paired_verdicts_checked": 24,
+  "initial_state_identity_checked_with_saved_hashes": true,
+  "regression_tests": {
+    "source": "reports/v2_final_tests.txt",
+    "passed": 42,
+    "rerun_during_organization": false,
+    "reason": "Only documentation changed; frozen controller sources unchanged."
+  },
+  "comparison_video": {
+    "duration_s": 20.35,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "codec": "h264",
+    "full_ffmpeg_decode_without_errors": true
+  },
+  "artifacts_sha256": {
+    "README_CN.md": "ff51e01f2bc9a0a9d0aac86d21598b9d44225f40c6b7ae17779ea8e6cc3313dc",
+    "DIRECT_GRASP_CN.md": "d6f2b75630e255fcd468a8d56b78d7e1d4721fb88709165b1223e1dee55dbacb",
+    "V2_GRASP_CN.md": "c2ef1145efba20b5b1e1bed50eedc4fddb9f518cef239225789b1f86bcc9d3b6",
+    "reports/v2_progress.json": "5dcb587359f94cf5293aec95a4f07283a3911dd646530fb87fc2f88ff01afe46",
+    "reports/v2_final_tests.txt": "f5721d64231eec5b4273d213f01eae60778426792938f83352a9557552597409",
+    "v2/engineering_memory.json": "103b67f5d25b5db629506818773fafff8eaf6c682ec57ff95da08e677650961f",
+    "deliverables/P01_v2_paired_new_position.mp4": "406e29f8791a55105d734518332da5d536ce16f302d6526bec1cfb39cb27fd27",
+    "deliverables/P01_v2_paired_new_position.json": "b26a84f429c1edd09b561b64bc47967c61cb209b93f7cfc4d531d2aa236e3aa9"
+  },
+  "new_Astra_calls": 0,
+  "new_VLA_inference_calls": 0,
+  "VLA_weight_changes": false
+}

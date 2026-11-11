@@ -1,0 +1,1172 @@
+{
+  "revision": "IN20",
+  "native_sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+  "passed": true,
+  "checks": [
+    {
+      "check": "Station 1 seat→keyboard→screen",
+      "passed": true,
+      "seat": [
+        4.929996490478516,
+        -4.13499641418457,
+        0.4698167145252228
+      ],
+      "keyboard_distance_m": 0.5450038909912109,
+      "screen_distance_m": 0.8048419952392578
+    },
+    {
+      "check": "Station 1 display faces actual seat",
+      "passed": true,
+      "screen_facing_dot": 0.9999590795487165,
+      "first_surface_from_seated_eye": "R10_Monitor 1 blank glass",
+      "eye_to_screen_m": 0.8103437439188965
+    },
+    {
+      "check": "Station 1 usable screen distance",
+      "passed": true,
+      "eye_to_screen_m": 0.8103437439188965
+    },
+    {
+      "check": "Station 1 keyboard spacebar faces seat",
+      "passed": true,
+      "spacebar_forward_offset_m": -0.05299997329711914
+    },
+    {
+      "check": "Station 1 mouse on usable right hand side",
+      "passed": true,
+      "right_offset_m": 0.3599987030029297,
+      "fore_aft_offset_m": 0.01999664306640625
+    },
+    {
+      "check": "Station 1 knee volume has no services or furniture obstruction",
+      "passed": true,
+      "sampled_points": 15,
+      "nominal_knee_width_m": 0.46,
+      "obstructing_objects": []
+    },
+    {
+      "check": "Station 2 seat→keyboard→screen",
+      "passed": true,
+      "seat": [
+        6.329994201660156,
+        -6.295001983642578,
+        0.4698167145252228
+      ],
+      "keyboard_distance_m": 0.5550022125244141,
+      "screen_distance_m": 0.8148403167721767
+    },
+    {
+      "check": "Station 2 display faces actual seat",
+      "passed": true,
+      "screen_facing_dot": 0.9999452669251959,
+      "first_surface_from_seated_eye": "R10_Monitor 2 blank glass",
+      "eye_to_screen_m": 0.8202759342899506
+    },
+    {
+      "check": "Station 2 usable screen distance",
+      "passed": true,
+      "eye_to_screen_m": 0.8202759342899506
+    },
+    {
+      "check": "Station 2 keyboard spacebar faces seat",
+      "passed": true,
+      "spacebar_forward_offset_m": -0.05299805320305406
+    },
+    {
+      "check": "Station 2 mouse on usable right hand side",
+      "passed": true,
+      "right_offset_m": 0.36000442802969723,
+      "fore_aft_offset_m": 0.020004218816094266
+    },
+    {
+      "check": "Station 2 knee volume has no services or furniture obstruction",
+      "passed": true,
+      "sampled_points": 15,
+      "nominal_knee_width_m": 0.46,
+      "obstructing_objects": []
+    },
+    {
+      "check": "Real desktop opening: R10_Desk 1 0 solid veneer top",
+      "passed": true,
+      "native_hole_sample_clear": true,
+      "adjacent_material_sample_present": true
+    },
+    {
+      "check": "Real desktop opening: R10_Desk edge underlay 1 0",
+      "passed": true,
+      "native_hole_sample_clear": true,
+      "adjacent_material_sample_present": true
+    },
+    {
+      "check": "Real desktop opening: R10_Recessed cable cover 1 0",
+      "passed": true,
+      "native_hole_sample_clear": true,
+      "adjacent_material_sample_present": true
+    },
+    {
+      "check": "Real desktop opening: R10_Desk -1 1 solid veneer top",
+      "passed": true,
+      "native_hole_sample_clear": true,
+      "adjacent_material_sample_present": true
+    },
+    {
+      "check": "Real desktop opening: R10_Desk edge underlay -1 1",
+      "passed": true,
+      "native_hole_sample_clear": true,
+      "adjacent_material_sample_present": true
+    },
+    {
+      "check": "Real desktop opening: R10_Recessed cable cover -1 1",
+      "passed": true,
+      "native_hole_sample_clear": true,
+      "adjacent_material_sample_present": true
+    },
+    {
+      "check": "R10_Monitor 1 cable → Station 1 monitor power inlet",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 monitor power inlet socket housing",
+      "device": "R10_Monitor 1 bezel"
+    },
+    {
+      "check": "R10_Monitor 1 cable → Station 1 monitor plug cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 monitor plug cord exit socket housing",
+      "device": "IN16_Station 1 fused 13A plug 0"
+    },
+    {
+      "check": "IN16_Station 1 fused 13A plug 0 fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.000499725341796875,
+      "socket": "IN16_Station 1 fixed switched three outlet power bar"
+    },
+    {
+      "check": "R10_Monitor 1 cable passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 1 display cable → Station 1 monitor display input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 monitor display input socket housing",
+      "device": "R10_Monitor 1 bezel"
+    },
+    {
+      "check": "IN16_Station 1 display cable → Station 1 computer display output",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 computer display output socket housing",
+      "device": "IN16_Station 1 mini computer body"
+    },
+    {
+      "check": "IN16_Station 1 display cable passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 1 keyboard USB lead → Station 1 keyboard USB exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 keyboard USB exit socket housing",
+      "device": "R10_Keyboard 1 base"
+    },
+    {
+      "check": "IN16_Station 1 keyboard USB lead → Station 1 computer USB input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 computer USB input socket housing",
+      "device": "IN16_Station 1 mini computer body"
+    },
+    {
+      "check": "IN16_Station 1 keyboard USB lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 1 computer DC lead → Station 1 adapter DC output",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 adapter DC output socket housing",
+      "device": "IN16_Station 1 computer power adapter"
+    },
+    {
+      "check": "IN16_Station 1 computer DC lead → Station 1 computer DC input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 computer DC input socket housing",
+      "device": "IN16_Station 1 mini computer body"
+    },
+    {
+      "check": "IN16_Station 1 computer DC lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 1 computer adapter AC lead → Station 1 computer plug cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 computer plug cord exit socket housing",
+      "device": "IN16_Station 1 fused 13A plug 2"
+    },
+    {
+      "check": "IN16_Station 1 fused 13A plug 2 fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.000499725341796875,
+      "socket": "IN16_Station 1 fixed switched three outlet power bar"
+    },
+    {
+      "check": "IN16_Station 1 computer adapter AC lead → Station 1 adapter AC input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 adapter AC input socket housing",
+      "device": "IN16_Station 1 computer power adapter"
+    },
+    {
+      "check": "IN16_Station 1 computer adapter AC lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 1 floor to tray mains feed → Station 1 floor plug cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 floor plug cord exit socket housing",
+      "device": "IN16_Station 1 floor fused plug"
+    },
+    {
+      "check": "IN16_Station 1 floor fused plug fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.0005016326904296875,
+      "socket": "IN16_Station 1 low floor service pod"
+    },
+    {
+      "check": "IN16_Station 1 floor to tray mains feed → Station 1 power bar mains inlet",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 1 power bar mains inlet socket housing",
+      "device": "IN16_Station 1 fixed switched three outlet power bar"
+    },
+    {
+      "check": "IN16_Station 1 floor to tray mains feed passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "R10_Monitor 2 cable → Station 2 monitor power inlet",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 monitor power inlet socket housing",
+      "device": "R10_Monitor 2 bezel"
+    },
+    {
+      "check": "R10_Monitor 2 cable → Station 2 monitor plug cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 monitor plug cord exit socket housing",
+      "device": "IN16_Station 2 fused 13A plug 0"
+    },
+    {
+      "check": "IN16_Station 2 fused 13A plug 0 fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.000499725341796875,
+      "socket": "IN16_Station 2 fixed switched three outlet power bar"
+    },
+    {
+      "check": "R10_Monitor 2 cable passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 2 display cable → Station 2 monitor display input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 monitor display input socket housing",
+      "device": "R10_Monitor 2 bezel"
+    },
+    {
+      "check": "IN16_Station 2 display cable → Station 2 computer display output",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 computer display output socket housing",
+      "device": "IN16_Station 2 mini computer body"
+    },
+    {
+      "check": "IN16_Station 2 display cable passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 2 keyboard USB lead → Station 2 keyboard USB exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 keyboard USB exit socket housing",
+      "device": "R10_Keyboard 2 base"
+    },
+    {
+      "check": "IN16_Station 2 keyboard USB lead → Station 2 computer USB input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 computer USB input socket housing",
+      "device": "IN16_Station 2 mini computer body"
+    },
+    {
+      "check": "IN16_Station 2 keyboard USB lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 2 computer DC lead → Station 2 adapter DC output",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 adapter DC output socket housing",
+      "device": "IN16_Station 2 computer power adapter"
+    },
+    {
+      "check": "IN16_Station 2 computer DC lead → Station 2 computer DC input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 computer DC input socket housing",
+      "device": "IN16_Station 2 mini computer body"
+    },
+    {
+      "check": "IN16_Station 2 computer DC lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 2 computer adapter AC lead → Station 2 computer plug cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 computer plug cord exit socket housing",
+      "device": "IN16_Station 2 fused 13A plug 2"
+    },
+    {
+      "check": "IN16_Station 2 fused 13A plug 2 fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.000499725341796875,
+      "socket": "IN16_Station 2 fixed switched three outlet power bar"
+    },
+    {
+      "check": "IN16_Station 2 computer adapter AC lead → Station 2 adapter AC input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 adapter AC input socket housing",
+      "device": "IN16_Station 2 computer power adapter"
+    },
+    {
+      "check": "IN16_Station 2 computer adapter AC lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_Station 2 floor to tray mains feed → Station 2 floor plug cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 floor plug cord exit socket housing",
+      "device": "IN16_Station 2 floor fused plug"
+    },
+    {
+      "check": "IN16_Station 2 floor fused plug fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.0005016326904296875,
+      "socket": "IN16_Station 2 low floor service pod"
+    },
+    {
+      "check": "IN16_Station 2 floor to tray mains feed → Station 2 power bar mains inlet",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Station 2 power bar mains inlet socket housing",
+      "device": "IN16_Station 2 fixed switched three outlet power bar"
+    },
+    {
+      "check": "IN16_Station 2 floor to tray mains feed passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN16_fridge mains lead → Fridge side mains entry",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Fridge side mains entry socket housing",
+      "device": "Fridge left shell"
+    },
+    {
+      "check": "IN16_fridge mains lead → Fridge isolated supply cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Fridge isolated supply cord exit socket housing",
+      "device": "IN16_Fridge isolated supply fused plug"
+    },
+    {
+      "check": "IN16_Fridge isolated supply fused plug fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.00150299072265625,
+      "socket": "IN16_Fridge isolated supply wall face"
+    },
+    {
+      "check": "IN16_microwave mains lead → Microwave side mains entry",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Microwave side mains entry socket housing",
+      "device": "Microwave cavity body"
+    },
+    {
+      "check": "IN16_microwave mains lead → Microwave dry service supply cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Microwave dry service supply cord exit socket housing",
+      "device": "IN16_Microwave dry service supply fused plug"
+    },
+    {
+      "check": "IN16_Microwave dry service supply fused plug fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.00150299072265625,
+      "socket": "IN16_Microwave dry service supply wall face"
+    },
+    {
+      "check": "IN16_water dispenser mains lead → Water dispenser side mains entry",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Water dispenser side mains entry socket housing",
+      "device": "Water machine body"
+    },
+    {
+      "check": "IN16_water dispenser mains lead → Water dispenser dry service supply cord exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Water dispenser dry service supply cord exit socket housin",
+      "device": "IN16_Water dispenser dry service supply fused plug"
+    },
+    {
+      "check": "IN16_Water dispenser dry service supply fused plug fitted to socket",
+      "passed": true,
+      "plug_to_socket_gap_m": 0.00150299072265625,
+      "socket": "IN16_Water dispenser dry service supply wall face"
+    },
+    {
+      "check": "IN16_sink P trap and falling waste arm → Sink drain tailpiece",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Sink drain tailpiece socket housing",
+      "device": "Sink bottom"
+    },
+    {
+      "check": "IN16_sink P trap and falling waste arm → Sink rear waste connection",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.000499725341796875,
+      "connector_to_named_fixture_gap_m": 0.0005035400390625,
+      "connector": "IN16_Sink rear waste connection socket housing",
+      "device": "Cabinet right back"
+    },
+    {
+      "check": "IN16_sink flexible supply 0 → Sink cold stop valve",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.00550079345703125,
+      "connector": "IN16_Sink cold stop valve socket housing",
+      "device": "Cabinet right back"
+    },
+    {
+      "check": "IN16_sink flexible supply 0 → Faucet underside supply 0",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Faucet underside supply 0 socket housing",
+      "device": "Counter top back"
+    },
+    {
+      "check": "IN16_sink flexible supply 1 → Sink hot stop valve",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.00550079345703125,
+      "connector": "IN16_Sink hot stop valve socket housing",
+      "device": "Cabinet right back"
+    },
+    {
+      "check": "IN16_sink flexible supply 1 → Faucet underside supply 1",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Faucet underside supply 1 socket housing",
+      "device": "Counter top back"
+    },
+    {
+      "check": "IN16_dispenser cold water feed → Dispenser side water inlet",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN16_Dispenser side water inlet socket housing",
+      "device": "Water machine body"
+    },
+    {
+      "check": "IN16_dispenser cold water feed → Dispenser wall water service",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.000499725341796875,
+      "connector": "IN16_Dispenser wall water service socket housing",
+      "device": "Kitchen recessed back lining right"
+    },
+    {
+      "check": "IN18_Station 1 mouse USB lead → Station 1 mouse USB exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN18_Station 1 Mouse Mouse cord relief",
+      "device": "R10_Mouse 1 palm"
+    },
+    {
+      "check": "IN18_Station 1 mouse USB lead → Station 1 computer mouse USB input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN18_Station 1 mouse USB fitted plug",
+      "device": "IN16_Station 1 mini computer body"
+    },
+    {
+      "check": "IN18_Station 1 mouse USB lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "IN18_Station 2 mouse USB lead → Station 2 mouse USB exit",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN18_Station 2 Mouse Mouse cord relief",
+      "device": "R10_Mouse 2 palm"
+    },
+    {
+      "check": "IN18_Station 2 mouse USB lead → Station 2 computer mouse USB input",
+      "passed": true,
+      "endpoint_outside_connector_m": 0.0,
+      "connector_to_named_fixture_gap_m": 0.0,
+      "connector": "IN18_Station 2 mouse USB fitted plug",
+      "device": "IN16_Station 2 mini computer body"
+    },
+    {
+      "check": "IN18_Station 2 mouse USB lead passes through actual access without crossing wood",
+      "passed": true,
+      "penetrated_desktop_objects": []
+    },
+    {
+      "check": "Station 1 real computer feet carried by tray base",
+      "passed": true,
+      "feet": [
+        {
+          "foot": "IN18_Station 1 Computer Computer foot -0.059 -0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        },
+        {
+          "foot": "IN18_Station 1 Computer Computer foot -0.059 0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        },
+        {
+          "foot": "IN18_Station 1 Computer Computer foot 0.059 -0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        },
+        {
+          "foot": "IN18_Station 1 Computer Computer foot 0.059 0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        }
+      ]
+    },
+    {
+      "check": "Station 2 real computer feet carried by tray base",
+      "passed": true,
+      "feet": [
+        {
+          "foot": "IN18_Station 2 Computer Computer foot -0.059 -0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        },
+        {
+          "foot": "IN18_Station 2 Computer Computer foot -0.059 0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        },
+        {
+          "foot": "IN18_Station 2 Computer Computer foot 0.059 -0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        },
+        {
+          "foot": "IN18_Station 2 Computer Computer foot 0.059 0.054",
+          "foot_to_tray_m": 0.0,
+          "foot_to_case_m": 0.0
+        }
+      ]
+    },
+    {
+      "check": "Dispenser carried by shelf and contact feet",
+      "passed": true,
+      "appliance_bottom_z": 1.4110009670257568,
+      "shelf_top_z": 1.4099993705749512,
+      "number_of_contact_feet": 4
+    },
+    {
+      "check": "Dispenser bracket 2.650 has real shelf and rear fixing contact",
+      "passed": true,
+      "leaf_to_leg_gap_m": 0.0,
+      "leaf_to_shelf_gap_m": 0.0,
+      "leg_to_rear_gap_m": 0.0
+    },
+    {
+      "check": "Dispenser bracket 3.485 has real shelf and rear fixing contact",
+      "passed": true,
+      "leaf_to_leg_gap_m": 0.0,
+      "leaf_to_shelf_gap_m": 0.0,
+      "leg_to_rear_gap_m": 0.0
+    },
+    {
+      "check": "Discussion table has joined pedestal and tabletop",
+      "passed": true
+    },
+    {
+      "check": "R10_Cabinet document tray settles on actual support",
+      "passed": true,
+      "bottom_to_support_gap_m": 2.0116567611694336e-07
+    },
+    {
+      "check": "R09_Table capped pen settles on actual support",
+      "passed": true,
+      "bottom_to_support_gap_m": 0.0002022385597229004
+    },
+    {
+      "check": "R09_Dry erase marker 0 settles on actual support",
+      "passed": true,
+      "bottom_to_support_gap_m": 9.834766387939453e-05
+    },
+    {
+      "check": "R09_Dry erase marker 1 settles on actual support",
+      "passed": true,
+      "bottom_to_support_gap_m": 9.834766387939453e-05
+    },
+    {
+      "check": "DH_2F_office_entry native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 6,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_discussion_entry native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 10,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_office_cabinet native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 1,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_cabinet_01 native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 1,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_cabinet_02 native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 1,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_cabinet_03 native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 1,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_fridge_left native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 5,
+      "intersections": []
+    },
+    {
+      "check": "DH_2F_fridge_right native leaf sweep clear of major furniture",
+      "passed": true,
+      "angles_sampled": 9,
+      "leaves": 5,
+      "intersections": []
+    }
+  ],
+  "check_count": 101,
+  "errors": [],
+  "stations": [
+    {
+      "station": 1,
+      "chair": "R10_Office_chair_1",
+      "eye_to_screen_m": 0.8103437439188965,
+      "seat_to_keyboard_m": 0.5450038909912109,
+      "seat_to_screen_m": 0.8048419952392578
+    },
+    {
+      "station": 2,
+      "chair": "R10_Office_chair_4",
+      "eye_to_screen_m": 0.8202759342899506,
+      "seat_to_keyboard_m": 0.5550022125244141,
+      "seat_to_screen_m": 0.8148403167721767
+    }
+  ],
+  "connections": [
+    {
+      "cable": "R10_Monitor 1 cable",
+      "length_m": 0.6880607341880922,
+      "ends": [
+        {
+          "connector": "IN16_Station 1 monitor power inlet socket housing",
+          "device": "R10_Monitor 1 bezel",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 1 monitor plug cord exit socket housing",
+          "device": "IN16_Station 1 fused 13A plug 0",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 1 display cable",
+      "length_m": 0.610850131437327,
+      "ends": [
+        {
+          "connector": "IN16_Station 1 monitor display input socket housing",
+          "device": "R10_Monitor 1 bezel",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 1 computer display output socket housing",
+          "device": "IN16_Station 1 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 1 keyboard USB lead",
+      "length_m": 0.6978040495025563,
+      "ends": [
+        {
+          "connector": "IN16_Station 1 keyboard USB exit socket housing",
+          "device": "R10_Keyboard 1 base",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 1 computer USB input socket housing",
+          "device": "IN16_Station 1 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 1 computer DC lead",
+      "length_m": 0.0742380369258131,
+      "ends": [
+        {
+          "connector": "IN16_Station 1 adapter DC output socket housing",
+          "device": "IN16_Station 1 computer power adapter",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 1 computer DC input socket housing",
+          "device": "IN16_Station 1 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 1 computer adapter AC lead",
+      "length_m": 0.18986646852202027,
+      "ends": [
+        {
+          "connector": "IN16_Station 1 computer plug cord exit socket housing",
+          "device": "IN16_Station 1 fused 13A plug 2",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 1 adapter AC input socket housing",
+          "device": "IN16_Station 1 computer power adapter",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 1 floor to tray mains feed",
+      "length_m": 0.9891830065794671,
+      "ends": [
+        {
+          "connector": "IN16_Station 1 floor plug cord exit socket housing",
+          "device": "IN16_Station 1 floor fused plug",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 1 power bar mains inlet socket housing",
+          "device": "IN16_Station 1 fixed switched three outlet power bar",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "R10_Monitor 2 cable",
+      "length_m": 0.6880635079335715,
+      "ends": [
+        {
+          "connector": "IN16_Station 2 monitor power inlet socket housing",
+          "device": "R10_Monitor 2 bezel",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 2 monitor plug cord exit socket housing",
+          "device": "IN16_Station 2 fused 13A plug 0",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 2 display cable",
+      "length_m": 0.6108441389153975,
+      "ends": [
+        {
+          "connector": "IN16_Station 2 monitor display input socket housing",
+          "device": "R10_Monitor 2 bezel",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 2 computer display output socket housing",
+          "device": "IN16_Station 2 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 2 keyboard USB lead",
+      "length_m": 0.6978055386710432,
+      "ends": [
+        {
+          "connector": "IN16_Station 2 keyboard USB exit socket housing",
+          "device": "R10_Keyboard 2 base",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 2 computer USB input socket housing",
+          "device": "IN16_Station 2 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 2 computer DC lead",
+      "length_m": 0.07424039856646743,
+      "ends": [
+        {
+          "connector": "IN16_Station 2 adapter DC output socket housing",
+          "device": "IN16_Station 2 computer power adapter",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 2 computer DC input socket housing",
+          "device": "IN16_Station 2 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 2 computer adapter AC lead",
+      "length_m": 0.18986487718671213,
+      "ends": [
+        {
+          "connector": "IN16_Station 2 computer plug cord exit socket housing",
+          "device": "IN16_Station 2 fused 13A plug 2",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 2 adapter AC input socket housing",
+          "device": "IN16_Station 2 computer power adapter",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_Station 2 floor to tray mains feed",
+      "length_m": 0.9891736707553822,
+      "ends": [
+        {
+          "connector": "IN16_Station 2 floor plug cord exit socket housing",
+          "device": "IN16_Station 2 floor fused plug",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Station 2 power bar mains inlet socket housing",
+          "device": "IN16_Station 2 fixed switched three outlet power bar",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_fridge mains lead",
+      "length_m": 0.46852008490225094,
+      "ends": [
+        {
+          "connector": "IN16_Fridge side mains entry socket housing",
+          "device": "Fridge left shell",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Fridge isolated supply cord exit socket housing",
+          "device": "IN16_Fridge isolated supply fused plug",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_microwave mains lead",
+      "length_m": 0.1594905429057444,
+      "ends": [
+        {
+          "connector": "IN16_Microwave side mains entry socket housing",
+          "device": "Microwave cavity body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Microwave dry service supply cord exit socket housing",
+          "device": "IN16_Microwave dry service supply fused plug",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_water dispenser mains lead",
+      "length_m": 0.5804979635433454,
+      "ends": [
+        {
+          "connector": "IN16_Water dispenser side mains entry socket housing",
+          "device": "Water machine body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Water dispenser dry service supply cord exit socket housin",
+          "device": "IN16_Water dispenser dry service supply fused plug",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_sink P trap and falling waste arm",
+      "length_m": 0.4521720470877927,
+      "ends": [
+        {
+          "connector": "IN16_Sink drain tailpiece socket housing",
+          "device": "Sink bottom",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Sink rear waste connection socket housing",
+          "device": "Cabinet right back",
+          "endpoint_gap_m": 0.000499725341796875,
+          "attachment_gap_m": 0.0005035400390625
+        }
+      ]
+    },
+    {
+      "cable": "IN16_sink flexible supply 0",
+      "length_m": 0.4843444701707481,
+      "ends": [
+        {
+          "connector": "IN16_Sink cold stop valve socket housing",
+          "device": "Cabinet right back",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.00550079345703125
+        },
+        {
+          "connector": "IN16_Faucet underside supply 0 socket housing",
+          "device": "Counter top back",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_sink flexible supply 1",
+      "length_m": 0.3909195740659034,
+      "ends": [
+        {
+          "connector": "IN16_Sink hot stop valve socket housing",
+          "device": "Cabinet right back",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.00550079345703125
+        },
+        {
+          "connector": "IN16_Faucet underside supply 1 socket housing",
+          "device": "Counter top back",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN16_dispenser cold water feed",
+      "length_m": 0.2531660908966912,
+      "ends": [
+        {
+          "connector": "IN16_Dispenser side water inlet socket housing",
+          "device": "Water machine body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN16_Dispenser wall water service socket housing",
+          "device": "Kitchen recessed back lining right",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.000499725341796875
+        }
+      ]
+    },
+    {
+      "cable": "IN18_Station 1 mouse USB lead",
+      "length_m": 0.9082717757998858,
+      "ends": [
+        {
+          "connector": "IN18_Station 1 Mouse Mouse cord relief",
+          "device": "R10_Mouse 1 palm",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN18_Station 1 mouse USB fitted plug",
+          "device": "IN16_Station 1 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    },
+    {
+      "cable": "IN18_Station 2 mouse USB lead",
+      "length_m": 0.9082712171998842,
+      "ends": [
+        {
+          "connector": "IN18_Station 2 Mouse Mouse cord relief",
+          "device": "R10_Mouse 2 palm",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        },
+        {
+          "connector": "IN18_Station 2 mouse USB fitted plug",
+          "device": "IN16_Station 2 mini computer body",
+          "endpoint_gap_m": 0.0,
+          "attachment_gap_m": 0.0
+        }
+      ]
+    }
+  ],
+  "opening_sweeps": [
+    {
+      "joint": "DH_2F_office_entry",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_discussion_entry",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_office_cabinet",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_cabinet_01",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_cabinet_02",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_cabinet_03",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_fridge_left",
+      "intersections": []
+    },
+    {
+      "joint": "DH_2F_fridge_right",
+      "intersections": []
+    }
+  ],
+  "scene_saved": false,
+  "limits": "Geometric daily-use checks of the opened interiors, not electrical, water-flow or appliance-control simulation; does not establish full-city collision completeness."
+}

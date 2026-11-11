@@ -1,0 +1,13 @@
+﻿case_id,group,nominal,selected,repaired,regressed,same_actual_initial,nominal_public,selected_public
+orientation_830200,orientation,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+position_830101,position,True,True,False,False,True,FAIL,FAIL
+joint_830300,joint,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+orientation_830202,orientation,True,True,False,False,True,FAIL,FAIL
+position_830102,position,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+joint_830302,joint,False,False,False,False,True,NOT_EVALUATED,NOT_EVALUATED
+joint_830301,joint,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+joint_830303,joint,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+orientation_830201,orientation,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+position_830103,position,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+orientation_830203,orientation,True,True,False,False,True,UNVERIFIED,UNVERIFIED
+position_830100,position,True,True,False,False,True,UNVERIFIED,UNVERIFIED

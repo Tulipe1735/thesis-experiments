@@ -1,0 +1,13 @@
+{
+  "protected_objects": 29969,
+  "changed_protected": [],
+  "original_materials_changed": [],
+  "original_transforms_changed": [],
+  "semantic_roots_changed": [],
+  "semantic_ids_unique": true,
+  "environment_preserved": true,
+  "passed": true,
+  "native_sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+  "native_matches_constructed_sha": true,
+  "all_file_images_packed": true
+}

@@ -1,0 +1,89 @@
+schema: artifact.v2
+name: t02_cup1_lift_clear_then_recorded
+task_node: T02
+summary: 'Three-cup collection: keep the recorded place/retreat leaves, but replace
+  the cup-1 retreat with a proprioceptive Cartesian retreat that lifts the palm ~10
+  cm straight up out of the tray before any horizontal motion, then settles exactly
+  onto the recorded cup-1 retreat end pose; cups 2 and 3 keep their recorded (contact-free)
+  retreats, and the last recorded retreat supplies the >=1 s joint hold.'
+contract:
+  pre:
+  - three_cups_on_table
+  - hand_empty
+  - guard_clear
+  post:
+  - three_cups_stable_in_tray
+  params:
+    object_count:
+      type: float
+      description: 待归集杯数
+    hold_s:
+      type: float
+      description: 三杯共同末段稳持秒数
+  failure_codes:
+  - NOT_REACHED
+  - NOT_HELD
+  - UNSAFE
+  - BUDGET
+  - INTERFACE
+  - WORKER_ERROR
+scope:
+  task_family: t02_three_cups_v1
+  initial_sha256:
+  - 5676cf3b66a6867c4c90c3f0d101cfa2d5d7cd2af85185a0983cd0620b4221f1
+  plant_sha256: 39301e1a017cc16a2da016dfea2a0a0b8675e9750d8ac578e7e72d666c814426
+provenance:
+  author: deepseek-v4.1-flash
+  parents: []
+  created_on: t02_92301_001
+  note: 'Diagnosis: the only defective event was the start of t02_cup1_retreat, where
+    the index/middle finger links swept +y at cup height and pushed the just-released
+    cup 6-8 mm, pushing it to/over the 1 mm footprint margin; 25 other placements
+    moved <=0.3 mm, i.e. no contact. Fix targets only that: the new leaf reconstructs
+    the palm pose from the given pelvis kinematic chain (verified: FK reproduces the
+    observed left_palm to <0.1 mm at the initial pose), lifts the palm vertically
+    with a damped-least-squares Jacobian IK on the 4 proximal arm joints (<=0.028
+    rad per 0.15 s command, well inside the 0.03 / 0.30 rate bound, <=0.03 m Cartesian
+    per command), translates back over the body at that height, and finally snaps
+    the 7 arm joints onto the recorded t02_cup1_retreat end pose, so t02_cup2_place
+    starts from exactly the same configuration as in the recorded sequence. No cup/tray
+    estimate is required at run time, only joint targets. New leaves enter the library
+    only if the whole composite passes.'
+kind: composite
+ir:
+- use: t02_cup1_place
+  params:
+    object_count:
+      task: object_count
+    hold_s:
+      task: hold_s
+- use: t02_cup1_lift_retreat
+  params:
+    object_count:
+      task: object_count
+    hold_s:
+      task: hold_s
+- use: t02_cup2_place
+  params:
+    object_count:
+      task: object_count
+    hold_s:
+      task: hold_s
+- use: t02_cup2_retreat
+  params:
+    object_count:
+      task: object_count
+    hold_s:
+      task: hold_s
+- use: t02_cup3_place
+  params:
+    object_count:
+      task: object_count
+    hold_s:
+      task: hold_s
+- use: t02_cup3_retreat
+  params:
+    object_count:
+      task: object_count
+    hold_s:
+      task: hold_s

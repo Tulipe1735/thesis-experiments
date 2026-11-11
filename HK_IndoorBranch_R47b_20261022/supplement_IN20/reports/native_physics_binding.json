@@ -1,0 +1,11 @@
+{
+  "revision": "IN20",
+  "native_sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+  "manifest_sha256": "0c6fcb1f16785ca231e0361a2add46e90d6d71231434980801cc2a82782bf465",
+  "registered_joint_count": 10,
+  "registered_prop_count": 13,
+  "native_colliders_checked": 1089,
+  "errors": [],
+  "passed": true,
+  "scope": "New and public native collision geometry and registered interaction poses. Existing protected room collision approximations retained; no full-city physics claim."
+}

@@ -1,0 +1,36 @@
+[INFO] [1793244270.908901057] [thesis_t01.controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
+[INFO] [1793244270.909275691] [thesis_t01.controller_manager]: Enforcing command limits is disabled. Command limits from URDF will be ignored.
+[INFO] [1793244270.910206206] [thesis_t01.controller_manager]: Loading hardware 'MujocoAdapter' 
+[INFO] [1793244270.910280638] [thesis_t01.controller_manager]: Loaded hardware 'MujocoAdapter' from plugin 'thesis_kernel/MujocoSystem'
+[INFO] [1793244270.910319407] [thesis_t01.controller_manager]: Initialize hardware 'MujocoAdapter' 
+[INFO] [1793244270.911914869] [thesis_t01.controller_manager]: Successful initialization of hardware 'MujocoAdapter'
+[WARN] [1793244270.911959690] [pal_statistics]: Unable to register entity state_interface.probe_joint_1/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911965108] [pal_statistics]: Unable to register entity state_interface.probe_joint_1/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911967336] [pal_statistics]: Unable to register entity state_interface.probe_joint_2/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911969385] [pal_statistics]: Unable to register entity state_interface.probe_joint_2/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911982794] [pal_statistics]: Unable to register entity command_interface.probe_joint_1/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911986591] [pal_statistics]: Unable to register entity command_interface.probe_joint_1/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911989779] [pal_statistics]: Unable to register entity command_interface.probe_joint_2/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244270.911992036] [pal_statistics]: Unable to register entity command_interface.probe_joint_2/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[INFO] [1793244270.914599571] [thesis_t01.controller_manager]: Subscribing to '/thesis_t01/robot_description' topic for robot description.
+[INFO] [1793244270.914627179] [thesis_t01.controller_manager]: Activating component 'MujocoAdapter'.
+[INFO] [1793244270.914643303] [resource_manager]: 'configure' hardware 'MujocoAdapter' 
+[INFO] [1793244270.914646769] [resource_manager]: Successful 'configure' of hardware 'MujocoAdapter'
+[INFO] [1793244270.914649227] [resource_manager]: 'activate' hardware 'MujocoAdapter' 
+[INFO] [1793244270.914651741] [resource_manager]: Successful 'activate' of hardware 'MujocoAdapter'
+[INFO] [1793244270.914690739] [thesis_t01.controller_manager]: Registering statistics for : MujocoAdapter
+[INFO] [1793244270.916843616] [thesis_t01.controller_manager]: Loading controller 'mujoco_references'
+[INFO] [1793244270.916984637] [thesis_t01.controller_manager]: Controller 'mujoco_references' node arguments: 
+[INFO] [1793244270.919643158] [thesis_t01.controller_manager]: Configuring controller: 'mujoco_references'
+[INFO] [1793244270.919720644] [thesis_t01.controller_manager]: Loading controller 'competing_references'
+[INFO] [1793244270.919764381] [thesis_t01.controller_manager]: Controller 'competing_references' node arguments: 
+[INFO] [1793244270.922137896] [thesis_t01.controller_manager]: Configuring controller: 'competing_references'
+[INFO] [1793244270.922859920] [thesis_t01.controller_manager]: Activating controllers: [ mujoco_references ]
+[INFO] [1793244270.923944773] [thesis_t01.controller_manager]: Requested controller switch from non-realtime loop
+[INFO] [1793244270.923992499] [thesis_t01.controller_manager]: Successfully switched controllers!
+[INFO] [1793244270.926292614] [thesis_t01.controller_manager]: Activating controllers: [ competing_references ]
+[WARN] [1793244270.926314683] [thesis_t01.controller_manager]: Unable to activate controller 'competing_references' since the command interface 'probe_joint_1/position' is currently claimed by another controller.
+[INFO] [1793244270.928168714] [thesis_t01.controller_manager.pal_statistics]: Async messages lost 0
+[INFO] [1793244270.928184949] [thesis_t01.controller_manager.pal_statistics]: publish_async_failures_ 0
+[INFO] [1793244270.928930854] [thesis_t01.controller_manager.pal_statistics]: Async messages lost 0
+[INFO] [1793244270.928945158] [thesis_t01.controller_manager.pal_statistics]: publish_async_failures_ 0

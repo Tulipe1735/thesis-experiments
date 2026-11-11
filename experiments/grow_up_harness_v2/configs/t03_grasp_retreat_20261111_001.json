@@ -1,0 +1,127 @@
+{
+  "date": "2026-11-11",
+  "output": "outputs/t03_grasp_retreat_20261111_001",
+  "bundles": {
+    "parent": "outputs/artifacts/t03_pose_index_20261111_001.json",
+    "candidate": "outputs/artifacts/t03_pose_index_retreat_20261111_001.json"
+  },
+  "focuses": [
+    {
+      "stage": "preflight",
+      "mechanism_trigger": "默认路线被净空筛选拒绝，返回替代位姿或 null"
+    },
+    {
+      "stage": "close_and_test",
+      "mechanism_trigger": "闭手前拇指-手指对齐超阈值，或 grip_settle 触发保护"
+    },
+    {
+      "stage": "lift_and_hold",
+      "mechanism_trigger": "实际grip_settle与2cm试提通过后，主抬升发生非目标接触保护（上一轮中指末节碰罐）"
+    }
+  ],
+  "focus_cap": 3,
+  "handoff": {
+    "approach": [
+      "closed_hand_clearance_at_arrival",
+      "retreat_path_clearance_at_arrival"
+    ],
+    "close_and_test": [
+      "thumb_finger_alignment_at_arrival",
+      "grip_settle_force_window"
+    ],
+    "lift_and_hold": [
+      "lift_clearance_margin",
+      "regrasp_recovery_available"
+    ]
+  },
+  "baselines": {
+    "negative": "每个有效初态真实 wait 2s，成功则整批作废",
+    "engineering_positive": "同初态index修订parent；未证实完整正例，不筛掉失败任务",
+    "original_failure": "同初态index修订复现主抬升禁止接触失败",
+    "treatment": "Codex人工及仿真真值辅助工程修订；原生4cm后退抬升，code/本地显式skill调用"
+  },
+  "prediction": {
+    "mapping": "同工件、同实际初态，code/skill 轨迹逐字节一致",
+    "task": "旧index配方同已消耗初态复现主抬升碰罐失败；新增4cm后退抬升避免中指碰罐，预测候选完整T03成功1/1；失败则推翻，不再本轮调参",
+    "single_factor": "相对index修订，仅lift_retreat_m从0到0.04；其他组件和参数不变"
+  },
+  "falsification": [
+    "负对照成功、接口/保护失效或 code/skill 不一致则停止；不补抽、不重试",
+    "食指仍触碰非目标物则几何预测被推翻；出现 TOUCH_ALIGNMENT_FAILED 或新稳持失败则记录副作用，不改本轮配方",
+    "上游阻塞不计抓持失败，不对未触发阶段宣称修复；本轮预算结束后停止，新修订另登记"
+  ],
+  "train_seed_start": 713000,
+  "train_count": 0,
+  "holdout_seed_start": 813000,
+  "holdout_count": 0,
+  "train_position_partition": "train",
+  "holdout_position_partition": "train",
+  "holdout_axis": "本轮仅训练，不开启新留出；旧613000..613003已用于诊断，保留已消耗身份",
+  "grid": {
+    "x_centers_m": [
+      0.28,
+      0.34,
+      0.4
+    ],
+    "y_centers_m": [
+      0.25,
+      0.32,
+      0.39
+    ],
+    "jitter_m": 0.008
+  },
+  "asset_index_cycle": [
+    1,
+    2,
+    5
+  ],
+  "consumed_dev_seeds": [
+    113000,
+    113001,
+    113002,
+    113003,
+    113004,
+    113005,
+    113006,
+    113007,
+    313000,
+    313001,
+    313002,
+    313003,
+    513000,
+    513001,
+    513002,
+    513003,
+    613000,
+    613001,
+    613002,
+    613003
+  ],
+  "pair_order_seed": 20261111,
+  "caps": {
+    "wall_s": 1200,
+    "physical_episodes": 4,
+    "model_calls": 0
+  },
+  "episode_caps": {
+    "simulation_s": 300.0,
+    "commands": 3000,
+    "wall_s": 240.0
+  },
+  "previous": "outputs/t03_index_regression_20261111_002",
+  "assistance": {
+    "author": "Codex engineering candidate",
+    "diagnosis": "consumed613003 index修订通过settle与2cm试提，主抬升中指末节与distractor_2约0.343N禁止接触；真值诊断辅助",
+    "model_calls": 0,
+    "handoff_status": "declared measurements, not presumed passed; no new runtime safety gate"
+  },
+  "imported_training_tasks": [
+    {
+      "source": "outputs/t03_index_regression_20261111_002/tasks/train/T03_pose_test_613003",
+      "id": "T03_pose_test_613003",
+      "identity": "consumed old holdout reused as diagnostic training; not generalization",
+      "sampling": "reuse exact saved instance, robot_initial, scene and actual parameters; no resampling"
+    }
+  ],
+  "import_fix": "Prior import001 could not resolve relocated XML mesh file paths before any physical episode. Preserve failure; resolve only file resource paths against original scene directory in002. Geometry, controller and saved initial state unchanged."
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "artifact.v1",
+  "artifact": {
+    "id": "t02_slot_place",
+    "version": 1,
+    "digest": "f910158e12d49d955c0eda37303920d15cbe7a13c2261db9aec17a6dc692229d"
+  },
+  "generated": {
+    "experiments/grow_up_harness_v2/artifacts/generated/t02_slot_place/program.py": "c83635a9ebfdbcb6a5e6a6555a4c40e4a1d204d33e5c3cfec730d3a7e1e7f6d6",
+    "experiments/grow_up_harness_v2/artifacts/generated/t02_slot_place/SKILL.md": "20a318481acf608378cecfe73643031b7b1dab571348a7587486345bb89c1780",
+    "experiments/grow_up_harness_v2/artifacts/generated/t02_slot_place/ir.json": "5314f3ab9454476fef8d39558babf2710a778f813638c2f165f2bac0ff1af6c9"
+  }
+}

@@ -1,0 +1,13 @@
+string skill_id
+string skill_version
+string request_id
+string parameters_json
+---
+string execution_status
+string runtime_check
+string reason
+string evidence_id
+---
+string stage
+string event
+float64 simulation_seconds

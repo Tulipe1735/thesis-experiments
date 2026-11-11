@@ -1,0 +1,13 @@
+{
+  "schema_version": "artifact.v1",
+  "artifact": {
+    "id": "t01_cup_to_tray",
+    "version": 2,
+    "digest": "a5823dfebfdf7d2f294b8dfcce412c87b1bbd57fa78766cc66b7e4551d421930"
+  },
+  "generated": {
+    "experiments/grow_up_harness_v2/artifacts/generated/t01_cup_to_tray/program.py": "066f211446efdd27eff913915ff3426f37433be70012a45a5e782d8db906efee",
+    "experiments/grow_up_harness_v2/artifacts/generated/t01_cup_to_tray/SKILL.md": "baa25ee48e2c7f6cea113d10aa98e6ac9074bfa7e3f12f1a90ea556b07fcd26a",
+    "experiments/grow_up_harness_v2/artifacts/generated/t01_cup_to_tray/ir.json": "484b9025fa6624168894450cd75f3c6b4ec7bdf9d72ad5222d8440a2a479bc5f"
+  }
+}

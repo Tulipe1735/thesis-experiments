@@ -1,0 +1,66 @@
+{
+ "train": {
+  "seed": 92301,
+  "reuse": {
+   "registration": "experiments/grow_up_harness_v2/runs/t02_ladder_10mm_20261107_001/registration.json",
+   "task_ids": [
+    "t02_92301_001"
+   ],
+   "reason": "chosen because the frozen replay failed on it (runs/t02_ladder_10mm_20261107_001, margin 0.088 mm); its visual positive passed. Development initial, not held-out."
+  }
+ },
+ "heldout": {
+  "seed": 93201,
+  "count": 2,
+  "radius_m": 0.015
+ },
+ "proposer": {
+  "backend": "opencode_go",
+  "model": "deepseek-v4.1-flash",
+  "timeout_s": 600
+ },
+ "critic": {
+  "backend": "opencode_go",
+  "model": "deepseek-v4.1-flash",
+  "timeout_s": 600,
+  "temperature": 0
+ },
+ "caps": {
+  "simulation_s": 300.0,
+  "commands": 2200,
+  "wall_s": 2700.0
+ },
+ "per_task": {
+  "fast_tries": 2,
+  "library_shown": 7,
+  "max_physical_attempts": 3,
+  "max_gate_rejections": 4,
+  "gate_steps": 8
+ },
+ "controls": {
+  "positive": "all"
+ },
+ "heldout_scratch": true,
+ "consumed_dev_seeds": [
+  2400,
+  2401,
+  2402,
+  2501,
+  4001,
+  4002,
+  4003,
+  4004,
+  92901,
+  92101,
+  93101,
+  92201,
+  92301
+ ],
+ "prediction": "Negative wait fails. Visual positive passes on t02_92301_001 again. FAST runs t02_three_cup_split and fails there again with the first cup margin below 1 mm, because the simulation is deterministic and the split composite has the same schedule. SLOW then opens. With the per-cup leaves, the human diagnosis and per-cup feedback, I expect DeepSeek to reach at least one physical attempt that passes the interface gate; whether any attempt succeeds within 3 is uncertain, roughly even odds. On 2 fresh 15 mm held-out tasks the frozen library solves at least 1 by FAST. From-scratch DeepSeek solves 0 of 2.",
+ "falsification": "A negative success voids the run. FAST succeeding on t02_92301_001 means the failure did not reproduce and the training premise is wrong. Any artifact entering the store without an independent success, the held-out phase changing the store, the policy receiving private object poses, or an agent success reported without its human diagnostic hint invalidates the claim. A positive failure skips the task without replacement.",
+ "parent_store": "experiments/grow_up_harness_v2/runs/t02_split_store_20261107_001/store",
+ "evaluator_version": "t02-three-cup-strict-v1",
+ "positive_reference": "visual_engineering",
+ "caps_note": "post-change caps, loosening approved by the user 2026-11-07; v2 was 240 s / 1650 / 1800 s",
+ "human_diagnosis": "In earlier replay episodes the first cup placed (evaluator body task_cup_3; library leaves t02_cup1_place and t02_cup1_retreat) twice ended near or outside the required 1 mm footprint margin. Frame by frame it was resting on the tray floor from about 56 s; during the recorded pelvis-backward retreat (about 58.6-60.4 s, the start of t02_cup1_retreat) the left index and middle finger links touched it and pushed it 6-8 mm toward +y in the tray frame. In 25 other cup placements a cup moved at most 0.3 mm after release. Not established: why the cup reached that position, the threshold, or whether any particular change fixes it."
+}

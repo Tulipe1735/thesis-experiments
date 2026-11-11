@@ -1,0 +1,267 @@
+{
+  "placements": 8,
+  "repetitions": 16,
+  "successful_placements": 3,
+  "successful_runs": 6,
+  "duplicate_resets_are_not_independent_trials": true,
+  "frozen_sources_unchanged": true,
+  "pairs": [
+    {
+      "seed": 1003,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 0
+    },
+    {
+      "seed": 1004,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 2
+    },
+    {
+      "seed": 1100,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 0
+    },
+    {
+      "seed": 1101,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 2
+    },
+    {
+      "seed": 1102,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 0
+    },
+    {
+      "seed": 1103,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 0
+    },
+    {
+      "seed": 1104,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 2
+    },
+    {
+      "seed": 1105,
+      "exact_repeat_arrays": {
+        "time": true,
+        "qpos": true,
+        "qvel": true,
+        "joint_targets": true,
+        "actuator_force": true
+      },
+      "successes": 0
+    }
+  ],
+  "formal_success_rate_claim": false,
+  "manifest_sha256": "f1b122482ea696c90a43aa5f0753de5fd77d8ae3e299e298a68b2f1468ad58ab",
+  "failure_groups": {
+    "NO_REACHABLE_VISUAL_TARGET_PATH": 4,
+    "INSUFFICIENT_THUMB_AND_FINGER_LOAD": 1
+  },
+  "placements_detail": [
+    {
+      "seed": 1003,
+      "success": false,
+      "stop_reason": "NO_REACHABLE_VISUAL_TARGET_PATH",
+      "visual_position_error_mm": 2.9422071375714713,
+      "max_lift_cm": -0.0039239999999995945,
+      "strict_hold_s": 0.0,
+      "last_stage": "raise_clear",
+      "last_tactile_gate": null,
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {},
+      "episode_id": "frozen_v1_1003_repeat_1"
+    },
+    {
+      "seed": 1004,
+      "success": true,
+      "stop_reason": null,
+      "visual_position_error_mm": 3.0289800113849115,
+      "max_lift_cm": 12.019098949270134,
+      "strict_hold_s": 1.6999999999990578,
+      "last_stage": "tactile_final_gate",
+      "last_tactile_gate": {
+        "stage": "tactile_final_gate",
+        "passed": true,
+        "digit_load_N": {
+          "thumb": 20.59586120613842,
+          "index": 10.363433677471992,
+          "middle": 10.200445821105285
+        },
+        "source": "simulated_hand_tactile_totals_no_object_identity",
+        "not_independent_task_success": true
+      },
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {
+        "left_thumb": 20.57598900400481,
+        "left_middle": 10.183269219369073,
+        "left_index": 10.386789614939412
+      },
+      "episode_id": "frozen_v1_1004_repeat_1"
+    },
+    {
+      "seed": 1100,
+      "success": false,
+      "stop_reason": "INSUFFICIENT_THUMB_AND_FINGER_LOAD",
+      "visual_position_error_mm": 3.0030845048612633,
+      "max_lift_cm": 0.12132981300609913,
+      "strict_hold_s": 0.0,
+      "last_stage": "tactile_grip_gate",
+      "last_tactile_gate": {
+        "stage": "tactile_grip_gate",
+        "passed": false,
+        "digit_load_N": {
+          "thumb": 0.0,
+          "index": 1.1719182559414711,
+          "middle": 0.3164800184515443
+        },
+        "source": "simulated_hand_tactile_totals_no_object_identity",
+        "not_independent_task_success": true
+      },
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {
+        "left_middle": 0.29795208001004303,
+        "left_index": 1.184322492444011
+      },
+      "episode_id": "frozen_v1_1100_repeat_1"
+    },
+    {
+      "seed": 1101,
+      "success": true,
+      "stop_reason": null,
+      "visual_position_error_mm": 3.0749137574475918,
+      "max_lift_cm": 12.090086398569454,
+      "strict_hold_s": 1.6499999999990855,
+      "last_stage": "tactile_final_gate",
+      "last_tactile_gate": {
+        "stage": "tactile_final_gate",
+        "passed": true,
+        "digit_load_N": {
+          "thumb": 20.779053754669896,
+          "index": 11.216661467808368,
+          "middle": 10.70241675096181
+        },
+        "source": "simulated_hand_tactile_totals_no_object_identity",
+        "not_independent_task_success": true
+      },
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {
+        "left_thumb": 20.778979830335167,
+        "left_middle": 10.702442563282034,
+        "left_index": 11.21742459755308
+      },
+      "episode_id": "frozen_v1_1101_repeat_1"
+    },
+    {
+      "seed": 1102,
+      "success": false,
+      "stop_reason": "NO_REACHABLE_VISUAL_TARGET_PATH",
+      "visual_position_error_mm": 3.0025294343936957,
+      "max_lift_cm": -0.0039239999999995945,
+      "strict_hold_s": 0.0,
+      "last_stage": "raise_clear",
+      "last_tactile_gate": null,
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {},
+      "episode_id": "frozen_v1_1102_repeat_1"
+    },
+    {
+      "seed": 1103,
+      "success": false,
+      "stop_reason": "NO_REACHABLE_VISUAL_TARGET_PATH",
+      "visual_position_error_mm": 3.0453641372779883,
+      "max_lift_cm": -0.0039239999999995945,
+      "strict_hold_s": 0.0,
+      "last_stage": "raise_clear",
+      "last_tactile_gate": null,
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {},
+      "episode_id": "frozen_v1_1103_repeat_1"
+    },
+    {
+      "seed": 1104,
+      "success": true,
+      "stop_reason": null,
+      "visual_position_error_mm": 2.9857084427940364,
+      "max_lift_cm": 12.086374762632213,
+      "strict_hold_s": 1.6999999999990578,
+      "last_stage": "tactile_final_gate",
+      "last_tactile_gate": {
+        "stage": "tactile_final_gate",
+        "passed": true,
+        "digit_load_N": {
+          "thumb": 21.24370419376126,
+          "index": 11.376150314931408,
+          "middle": 11.275071657926881
+        },
+        "source": "simulated_hand_tactile_totals_no_object_identity",
+        "not_independent_task_success": true
+      },
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {
+        "left_thumb": 21.24367282903931,
+        "left_middle": 11.273414477785199,
+        "left_index": 11.377671831161248
+      },
+      "episode_id": "frozen_v1_1104_repeat_1"
+    },
+    {
+      "seed": 1105,
+      "success": false,
+      "stop_reason": "NO_REACHABLE_VISUAL_TARGET_PATH",
+      "visual_position_error_mm": 3.0648665225754907,
+      "max_lift_cm": -0.0039239999999995945,
+      "strict_hold_s": 0.0,
+      "last_stage": "raise_clear",
+      "last_tactile_gate": null,
+      "max_non_cup_hand_contact_per_point_N": 0.0,
+      "final_cup_contact_digit_loads": {},
+      "episode_id": "frozen_v1_1105_repeat_1"
+    }
+  ],
+  "max_visual_position_error_mm": 3.0749137574475918,
+  "scope": "Engineering controller stability; Astra and VLA are not invoked by this suite"
+}

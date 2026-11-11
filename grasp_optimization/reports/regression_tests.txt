@@ -1,0 +1,11 @@
+test_exact_reproduction_from_identical_initial_state (test_recorded_grasp.RecordedGraspTests.test_exact_reproduction_from_identical_initial_state) ... ok
+test_no_grasp_weld_and_fixed_camera (test_recorded_grasp.RecordedGraspTests.test_no_grasp_weld_and_fixed_camera) ... ok
+test_open_hand_negative_control_stops_before_lift (test_recorded_grasp.RecordedGraspTests.test_open_hand_negative_control_stops_before_lift) ... ok
+test_original_failure_does_not_satisfy_goal (test_recorded_grasp.RecordedGraspTests.test_original_failure_does_not_satisfy_goal) ... ok
+test_real_success_satisfies_current_goal (test_recorded_grasp.RecordedGraspTests.test_real_success_satisfies_current_goal) ... ok
+test_strict_independent_verdicts_and_memory_retrieval (test_recorded_grasp.RecordedGraspTests.test_strict_independent_verdicts_and_memory_retrieval) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.363s
+
+OK

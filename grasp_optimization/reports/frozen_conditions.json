@@ -1,0 +1,48 @@
+{
+  "seed": 1000,
+  "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+  "head_camera": {
+    "version": "pantry_head_wide_v2",
+    "parent": "torso_link",
+    "fovy_deg": 58,
+    "yaw_left_offset_rad": 0.25,
+    "pitch_up_offset_rad": 0.25,
+    "factory_calibration": false
+  },
+  "physics_timestep_s": 0.002,
+  "scene_runtime": "native-pantry-runtime-0.2.1",
+  "controller": {
+    "seed": 1000,
+    "branch": "direct-grasp-diagnostic",
+    "model_requests": 0,
+    "execution_mode": "privileged_cup_relative_engineering_controller",
+    "formal_task_snapshot": false,
+    "cup_in_palm_m": [
+      0.045,
+      -0.055,
+      -0.052
+    ],
+    "close_angles": [
+      0.0,
+      0.65,
+      0.65,
+      -0.8,
+      -0.6,
+      -0.8,
+      -0.6
+    ],
+    "palm_yaw_rad": 0.7,
+    "camera_version": "pantry_head_wide_v2",
+    "cup_binding": false,
+    "controller_version": "cup-relative-direct-v1",
+    "source_sha256": {
+      "run_direct_grasp.py": "a1cb0e76c3760d169e195dd6aa62bf5f6597852ee750489d7fa9a167463233a1",
+      "pantry_robot.py": "664904079bfa5ed6d1b72c617d830e650ed65d2f2f1dd70cb894edd770a8564c",
+      "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+      "diagnose_grasp.py": "04d138ae2f6be790e0c17cb728d6b474e724d10f84f9613f03569fa722cf8eef",
+      "verify_grasp.py": "44df10a280096380a089a4ad0bb2a82fb051a2f1d18d88573cdee57086789858"
+    },
+    "initial_state_sha256": "0bdce0c6f2607813f1cbcbcd0d3e7be7d47bf4ae76483f3ab2d0e0a23cc44b36"
+  },
+  "freeze_scope": "engineering reference, not an accepted formal task snapshot"
+}

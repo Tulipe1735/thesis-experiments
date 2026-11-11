@@ -1,0 +1,134 @@
+{
+  "model_id": "kiteml/G1-ego-test-smolvla",
+  "revision": "cf2f88ba6d5db3f3647b453438a0a1904e07919f",
+  "weights_downloaded": false,
+  "files": [
+    {
+      "path": "config.json",
+      "url": "https://huggingface.co/kiteml/G1-ego-test-smolvla/raw/cf2f88ba6d5db3f3647b453438a0a1904e07919f/config.json",
+      "bytes": 2666,
+      "sha256": "5aa3493e6fb7bb3da1dcd669083bc5a32f0fb9c6c1e14d6eaf0eec90838271fa"
+    },
+    {
+      "path": "train_config.json",
+      "url": "https://huggingface.co/kiteml/G1-ego-test-smolvla/raw/cf2f88ba6d5db3f3647b453438a0a1904e07919f/train_config.json",
+      "bytes": 6898,
+      "sha256": "d26e9dfc4d3f0bcd896932ce9644aeb24084552af547ad5563f602f3300f1e8e"
+    },
+    {
+      "path": "policy_preprocessor.json",
+      "url": "https://huggingface.co/kiteml/G1-ego-test-smolvla/raw/cf2f88ba6d5db3f3647b453438a0a1904e07919f/policy_preprocessor.json",
+      "bytes": 2103,
+      "sha256": "1922ac505f1f46f3c63916ff7c1bd64fd994a4a6961f51d9df54c72313efb56b"
+    },
+    {
+      "path": "policy_postprocessor.json",
+      "url": "https://huggingface.co/kiteml/G1-ego-test-smolvla/raw/cf2f88ba6d5db3f3647b453438a0a1904e07919f/policy_postprocessor.json",
+      "bytes": 661,
+      "sha256": "501615ffb67201f4a2a737f6f21fe42827220f5749effcb13afaaa02668016db"
+    },
+    {
+      "path": "source_dataset/meta/info.json",
+      "url": "https://huggingface.co/datasets/unitreerobotics/G1_Dex3_ToastedBread_Dataset/raw/02cb29161f5adb2981a072aa35b408d82a556d07/meta/info.json",
+      "revision": "02cb29161f5adb2981a072aa35b408d82a556d07",
+      "bytes": 6592,
+      "sha256": "0c0c87873d87d302abd98a1b2171ef56c13dc3609517a02fadd65ef5e309b716"
+    },
+    {
+      "path": "source_dataset/README.md",
+      "url": "https://huggingface.co/datasets/unitreerobotics/G1_Dex3_ToastedBread_Dataset/raw/02cb29161f5adb2981a072aa35b408d82a556d07/README.md",
+      "revision": "02cb29161f5adb2981a072aa35b408d82a556d07",
+      "bytes": 8735,
+      "sha256": "fec1c167f576413cc2969c410371fecf3d09876247ff679fc83377300b2602ee"
+    },
+    {
+      "path": "source_dataset/meta/stats.json",
+      "url": "https://huggingface.co/datasets/unitreerobotics/G1_Dex3_ToastedBread_Dataset/raw/02cb29161f5adb2981a072aa35b408d82a556d07/meta/stats.json",
+      "revision": "02cb29161f5adb2981a072aa35b408d82a556d07",
+      "bytes": 14565,
+      "sha256": "1fa4ae8f67279060d7b7ea604ca8a31be936c83dda0887708f2fd6ea9cebf3ec"
+    },
+    {
+      "path": "policy_preprocessor_step_5_normalizer_processor.safetensors",
+      "url": "https://huggingface.co/kiteml/G1-ego-test-smolvla/resolve/cf2f88ba6d5db3f3647b453438a0a1904e07919f/policy_preprocessor_step_5_normalizer_processor.safetensors",
+      "bytes": 5660,
+      "sha256": "be7d3fc67d9425585e8401145c9b2ed52745e86a40f8e989aa53d90cff5d8ea9",
+      "purpose": "normalization statistics only; not model weights"
+    },
+    {
+      "path": "policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+      "url": "https://huggingface.co/kiteml/G1-ego-test-smolvla/resolve/cf2f88ba6d5db3f3647b453438a0a1904e07919f/policy_postprocessor_step_0_unnormalizer_processor.safetensors",
+      "bytes": 5660,
+      "sha256": "be7d3fc67d9425585e8401145c9b2ed52745e86a40f8e989aa53d90cff5d8ea9",
+      "purpose": "normalization statistics only; not model weights"
+    }
+  ],
+  "remote_files": [
+    {
+      "type": "file",
+      "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519,
+      "path": ".gitattributes"
+    },
+    {
+      "type": "file",
+      "oid": "b1f68b3e59e3b2c25754a0f0005e920854562c42",
+      "size": 2666,
+      "path": "config.json"
+    },
+    {
+      "type": "file",
+      "oid": "b2ad0d9304099ccac32f2a7fc69e787683d6a335",
+      "size": 1197789224,
+      "lfs": {
+        "oid": "4885e1a224e8dae4284f9e1c903b68f1902a27f6bedf0a7b0dfffe70425e3b63",
+        "size": 1197789224,
+        "pointerSize": 135
+      },
+      "xetHash": "e2f9c251ddcf568694c7ed4e2b87607f9dfeb12d7949c01b577b2e747c21ffb4",
+      "path": "model.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "326635e3bfe2bc1c3317257ea730232394ffef81",
+      "size": 661,
+      "path": "policy_postprocessor.json"
+    },
+    {
+      "type": "file",
+      "oid": "4d9e946c0fa328197b0cf13f05a10adab8ef4bb6",
+      "size": 5660,
+      "lfs": {
+        "oid": "be7d3fc67d9425585e8401145c9b2ed52745e86a40f8e989aa53d90cff5d8ea9",
+        "size": 5660,
+        "pointerSize": 129
+      },
+      "xetHash": "6e36e3c0b558b28e2ff00753cab50ead47957389b6befeae6c523d23e48f9701",
+      "path": "policy_postprocessor_step_0_unnormalizer_processor.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "293d710779a570510b330df7f50ecdc23dbaf6ff",
+      "size": 2103,
+      "path": "policy_preprocessor.json"
+    },
+    {
+      "type": "file",
+      "oid": "4d9e946c0fa328197b0cf13f05a10adab8ef4bb6",
+      "size": 5660,
+      "lfs": {
+        "oid": "be7d3fc67d9425585e8401145c9b2ed52745e86a40f8e989aa53d90cff5d8ea9",
+        "size": 5660,
+        "pointerSize": 129
+      },
+      "xetHash": "6e36e3c0b558b28e2ff00753cab50ead47957389b6befeae6c523d23e48f9701",
+      "path": "policy_preprocessor_step_5_normalizer_processor.safetensors"
+    },
+    {
+      "type": "file",
+      "oid": "e1a917e511620b5d3f34b544f01a60420d314bf8",
+      "size": 6898,
+      "path": "train_config.json"
+    }
+  ]
+}

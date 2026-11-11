@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "TEMPLATE_NOT_EXECUTABLE",
+  "task_id": null,
+  "scene_baseline_sha256": "37c562b438bfb41f018a251cacf1c0f803028301a6a0853a1bf433685368c40c",
+  "interior_delta_sha256": null,
+  "frame": "TO_BE_DEFINED: global_hk or local_room",
+  "units": "metres",
+  "seed": null,
+  "backend": {
+    "name": null,
+    "version": null,
+    "time_step_seconds": null,
+    "gravity_m_s2": null
+  },
+  "support_surfaces": [],
+  "objects": [],
+  "robot": null,
+  "cameras": [],
+  "observations": null,
+  "actions": null,
+  "reset": null,
+  "success_criteria": null,
+  "failure_criteria": null,
+  "timeout_seconds": null
+}

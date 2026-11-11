@@ -1,0 +1,551 @@
+Exporting episode 0: seed=1000, split=train, T=195
+Map:   0%|          | 0/195 [00:00<?, ? examples/s]Map: 100%|██████████| 195/195 [00:00<00:00, 2565.68 examples/s]
+[libx264 @ 0x3cb049c0] frame I:98    Avg QP:26.45  size:  4850
+[libx264 @ 0x3cb049c0] frame P:97    Avg QP:25.44  size:   186
+[libx264 @ 0x3cb049c0] mb I  I16..4: 19.4% 65.5% 15.1%
+[libx264 @ 0x3cb049c0] mb P  I16..4:  0.5%  0.6%  0.0%  P16..4:  8.1%  0.5%  0.1%  0.0%  0.0%    skip:90.1%
+[libx264 @ 0x3cb049c0] 8x8 transform intra:65.4% inter:64.6%
+[libx264 @ 0x3cb049c0] coded y,uvDC,uvAC intra: 18.8% 9.9% 5.7% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb049c0] i16 v,h,dc,p: 47% 22% 18% 12%
+[libx264 @ 0x3cb049c0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 39% 29% 20%  3%  2%  1%  4%  1%  1%
+[libx264 @ 0x3cb049c0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 34% 30% 13%  6%  3%  4%  4%  4%  2%
+[libx264 @ 0x3cb049c0] i8c dc,h,v,p: 88%  8%  4%  0%
+[libx264 @ 0x3cb049c0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb049c0] kb/s:607.14
+[libx264 @ 0x3cb35ec0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb35ec0] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb35ec0] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb35ec0] frame I:98    Avg QP:26.42  size:  4780
+[libx264 @ 0x3cb35ec0] frame P:97    Avg QP:25.49  size:   192
+[libx264 @ 0x3cb35ec0] mb I  I16..4: 17.4% 68.2% 14.4%
+[libx264 @ 0x3cb35ec0] mb P  I16..4:  0.5%  0.6%  0.0%  P16..4:  8.8%  0.6%  0.1%  0.0%  0.0%    skip:89.4%
+[libx264 @ 0x3cb35ec0] 8x8 transform intra:68.1% inter:66.7%
+[libx264 @ 0x3cb35ec0] coded y,uvDC,uvAC intra: 18.6% 10.3% 5.7% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb35ec0] i16 v,h,dc,p: 44% 26% 17% 13%
+[libx264 @ 0x3cb35ec0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 45% 28% 16%  2%  2%  1%  4%  1%  1%
+[libx264 @ 0x3cb35ec0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 31% 14%  5%  3%  4%  5%  3%  2%
+[libx264 @ 0x3cb35ec0] i8c dc,h,v,p: 88%  8%  4%  0%
+[libx264 @ 0x3cb35ec0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb35ec0] kb/s:599.39
+[libx264 @ 0x3cb35ec0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb35ec0] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb35ec0] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb35ec0] frame I:98    Avg QP:27.69  size:  6045
+[libx264 @ 0x3cb35ec0] frame P:97    Avg QP:27.36  size:   206
+[libx264 @ 0x3cb35ec0] mb I  I16..4: 15.8% 64.1% 20.1%
+[libx264 @ 0x3cb35ec0] mb P  I16..4:  0.6%  1.3%  0.0%  P16..4:  6.9%  0.9%  0.1%  0.0%  0.0%    skip:90.2%
+[libx264 @ 0x3cb35ec0] 8x8 transform intra:64.2% inter:84.5%
+[libx264 @ 0x3cb35ec0] coded y,uvDC,uvAC intra: 21.6% 9.5% 3.8% inter: 0.1% 0.1% 0.0%
+[libx264 @ 0x3cb35ec0] i16 v,h,dc,p: 31% 24% 17% 28%
+[libx264 @ 0x3cb35ec0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 44% 25% 22%  1%  1%  1%  2%  2%  1%
+[libx264 @ 0x3cb35ec0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 25% 17%  4%  3%  7%  3%  4%  4%
+[libx264 @ 0x3cb35ec0] i8c dc,h,v,p: 90%  6%  4%  0%
+[libx264 @ 0x3cb35ec0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb35ec0] kb/s:753.67
+[libx264 @ 0x3cb35ec0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb35ec0] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb35ec0] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb35ec0] frame I:98    Avg QP:27.27  size:  3976
+[libx264 @ 0x3cb35ec0] frame P:97    Avg QP:25.28  size:   110
+[libx264 @ 0x3cb35ec0] mb I  I16..4: 19.0% 63.7% 17.3%
+[libx264 @ 0x3cb35ec0] mb P  I16..4:  0.3%  0.3%  0.0%  P16..4:  3.3%  0.2%  0.1%  0.0%  0.0%    skip:95.9%
+[libx264 @ 0x3cb35ec0] 8x8 transform intra:63.6% inter:40.9%
+[libx264 @ 0x3cb35ec0] coded y,uvDC,uvAC intra: 16.6% 0.0% 0.0% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb35ec0] i16 v,h,dc,p: 37% 31% 22% 11%
+[libx264 @ 0x3cb35ec0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 48% 25% 19%  1%  1%  1%  2%  2%  1%
+[libx264 @ 0x3cb35ec0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 40% 26% 13%  4%  2%  3%  6%  5%  1%
+[libx264 @ 0x3cb35ec0] i8c dc,h,v,p: 100%  0%  0%  0%
+[libx264 @ 0x3cb35ec0] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb35ec0] kb/s:492.76
+Exporting episode 1: seed=1100, split=train, T=195
+Map:   0%|          | 0/195 [00:00<?, ? examples/s]Map: 100%|██████████| 195/195 [00:00<00:00, 3634.95 examples/s]
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:26.57  size:  4998
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:26.11  size:   188
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 18.3% 66.8% 14.9%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.5%  0.7%  0.0%  P16..4:  8.1%  0.5%  0.1%  0.0%  0.0%    skip:90.2%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:66.7% inter:51.6%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 19.5% 10.1% 5.8% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 41% 26% 20% 14%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 39% 28% 20%  4%  2%  1%  4%  1%  2%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 34% 30% 13%  6%  3%  5%  4%  3%  2%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 88%  8%  4%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:625.31
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb04380] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb04380] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cae56c0] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:26.66  size:  5023
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:26.42  size:   197
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 16.6% 68.4% 15.0%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.5%  0.7%  0.0%  P16..4:  8.8%  0.6%  0.1%  0.0%  0.0%    skip:89.3%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:68.2% inter:49.0%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 19.6% 10.1% 5.8% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 40% 26% 20% 14%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 45% 27% 16%  2%  2%  1%  3%  1%  2%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 29% 15%  5%  3%  5%  4%  3%  3%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 88%  8%  4%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:629.37
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c9d4f40] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c9d4f40] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cade100] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.53  size:  5655
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:26.04  size:   196
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 18.4% 63.1% 18.5%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.9%  1.2%  0.0%  P16..4:  6.8%  0.8%  0.1%  0.0%  0.0%    skip:90.2%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:62.9% inter:83.6%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 20.1% 8.7% 3.6% inter: 0.1% 0.2% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 36% 25% 19% 21%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 36% 28% 29%  1%  1%  1%  1%  2%  2%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 36% 23% 17%  4%  3%  7%  3%  4%  4%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 90%  6%  4%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:705.45
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c9d26c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb60840] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cb02f40] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.49  size:  3974
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:25.00  size:   111
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 17.4% 65.3% 17.4%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.3%  0.3%  0.0%  P16..4:  3.5%  0.2%  0.0%  0.0%  0.0%    skip:95.7%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:65.2% inter:44.4%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 16.7% 0.0% 0.0% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 30% 34% 24% 12%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 47% 24% 21%  1%  1%  1%  2%  2%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 40% 27% 13%  4%  2%  3%  6%  5%  1%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 100%  0%  0%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:492.65
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb325c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb325c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cae17c0] Starting second pass: moving the moov atom to the beginning of the file
+Exporting episode 2: seed=1102, split=train, T=195
+Map:   0%|          | 0/195 [00:00<?, ? examples/s]Map: 100%|██████████| 195/195 [00:00<00:00, 3437.80 examples/s]
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:26.08  size:  3270
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:28.18  size:   158
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 13.3% 77.9%  8.7%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.3%  0.2%  0.0%  P16..4:  6.6%  0.5%  0.1%  0.0%  0.0%    skip:92.3%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:77.8% inter:51.3%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 14.8% 1.0% 0.2% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 34% 28% 23% 16%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 34% 16%  3%  2%  1%  3%  2%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 22% 18% 13%  5%  2%  5%  7%  4%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 98%  1%  1%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:413.17
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb45180] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb45180] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cadd340] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:25.95  size:  3292
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:30.46  size:   154
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 12.8% 78.6%  8.6%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.3%  0.3%  0.0%  P16..4:  6.5%  0.5%  0.1%  0.0%  0.0%    skip:92.3%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:78.4% inter:48.0%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 14.5% 0.9% 0.2% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 38% 30% 17% 15%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 46% 30% 13%  3%  2%  1%  3%  1%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 19% 25% 18% 13%  6%  2%  6%  5%  5%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 99%  1%  1%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:415.47
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c9d26c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c9d26c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cb61a00] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.82  size:  5122
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:26.84  size:   210
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 20.9% 61.7% 17.4%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.8%  0.9%  0.0%  P16..4:  8.1%  0.8%  0.1%  0.0%  0.0%    skip:89.3%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:61.5% inter:84.4%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 19.7% 8.6% 3.3% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 33% 35% 17% 15%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 31% 27% 35%  1%  1%  1%  1%  1%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 24% 17%  4%  3%  7%  3%  4%  4%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 90%  7%  3%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:642.78
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c9cffc0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cab3d40] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3c90c000] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.96  size:  4425
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:23.83  size:   131
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 12.6% 70.4% 17.0%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.5%  0.3%  0.0%  P16..4:  5.1%  0.2%  0.0%  0.0%  0.0%    skip:93.8%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:70.1% inter:37.5%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 18.1% 1.4% 0.0% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 20% 49% 15% 17%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 49% 21% 19%  3%  2%  2%  2%  1%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 36% 28% 16%  4%  4%  3%  6%  2%  2%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 98%  1%  0%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:549.38
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cade800] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cade800] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3a3bd480] Starting second pass: moving the moov atom to the beginning of the file
+Exporting episode 3: seed=1207, split=train, T=195
+Map:   0%|          | 0/195 [00:00<?, ? examples/s]Map: 100%|██████████| 195/195 [00:00<00:00, 3846.34 examples/s]
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:25.72  size:  3372
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:28.12  size:   157
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 13.9% 77.1%  8.9%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.3%  0.3%  0.0%  P16..4:  6.5%  0.5%  0.1%  0.0%  0.0%    skip:92.3%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:77.0% inter:41.4%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 15.3% 1.1% 0.2% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 38% 25% 22% 16%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 35% 15%  4%  2%  1%  3%  2%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 21% 19% 13%  5%  3%  5%  6%  4%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 99%  1%  0%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:425.50
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb0cfc0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb0cfc0] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cae3480] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:25.39  size:  3431
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:30.35  size:   158
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 14.5% 76.6%  8.9%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.3%  0.4%  0.0%  P16..4:  6.9%  0.4%  0.1%  0.0%  0.0%    skip:91.8%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:76.4% inter:54.7%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 15.2% 1.0% 0.2% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 43% 28% 16% 13%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 45% 30% 13%  3%  3%  1%  3%  1%  2%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 24% 19% 11%  6%  3%  5%  5%  6%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 99%  1%  1%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:432.73
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca867c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cab2b00] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cb09a40] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.69  size:  5018
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:25.73  size:   208
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 20.3% 62.2% 17.5%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  1.0%  0.9%  0.0%  P16..4:  7.7%  0.7%  0.1%  0.0%  0.0%    skip:89.5%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:61.9% inter:75.6%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 19.4% 8.7% 3.4% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 31% 36% 20% 13%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 27% 34%  1%  1%  1%  1%  1%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 23% 18%  5%  3%  7%  3%  4%  4%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 90%  7%  3%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:630.06
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cae3480] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cae3480] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3c9d4f40] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.88  size:  4424
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:23.84  size:   126
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 12.7% 70.3% 17.0%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.5%  0.2%  0.0%  P16..4:  4.7%  0.2%  0.1%  0.0%  0.0%    skip:94.3%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:70.1% inter:42.9%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 18.1% 1.4% 0.0% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 20% 49% 15% 17%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 50% 21% 19%  2%  2%  2%  2%  1%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 28% 16%  4%  3%  3%  6%  2%  2%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 98%  1%  0%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:548.59
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb09a40] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb09a40] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cab7480] Starting second pass: moving the moov atom to the beginning of the file
+Exporting episode 4: seed=1002, split=validation, T=195
+Map:   0%|          | 0/195 [00:00<?, ? examples/s]Map: 100%|██████████| 195/195 [00:00<00:00, 2993.69 examples/s]
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:26.74  size:  4394
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:27.24  size:   191
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 16.0% 70.9% 13.2%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.5%  0.6%  0.0%  P16..4:  8.2%  0.5%  0.1%  0.0%  0.0%    skip:90.0%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:70.7% inter:53.8%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 17.8% 8.7% 4.8% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 41% 24% 20% 15%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 31% 19%  3%  2%  1%  4%  2%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 30% 34% 13%  6%  3%  4%  5%  4%  2%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 89%  8%  2%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:552.87
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb39540] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb39540] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3ca34ec0] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:25.98  size:  4539
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:26.54  size:   200
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 15.9% 70.2% 13.9%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.4%  0.6%  0.0%  P16..4:  9.4%  0.6%  0.1%  0.0%  0.0%    skip:89.0%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:70.1% inter:55.1%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 18.2% 9.3% 4.9% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 41% 25% 19% 15%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 41% 29% 17%  2%  3%  2%  3%  1%  2%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 28% 33% 16%  6%  3%  4%  4%  3%  3%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 89%  8%  3%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:571.46
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca0ff40] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca0ff40] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3ca34ec0] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.56  size:  5967
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:26.14  size:   194
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 16.7% 63.5% 19.8%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.8%  1.1%  0.0%  P16..4:  6.5%  0.8%  0.2%  0.0%  0.0%    skip:90.7%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:63.4% inter:79.0%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 20.8% 9.1% 3.6% inter: 0.1% 0.1% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 32% 24% 21% 23%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 38% 27% 28%  1%  1%  1%  2%  2%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 35% 24% 17%  4%  3%  7%  3%  4%  3%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 91%  5%  4%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:742.90
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb611c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca0b280] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cb08700] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb0cb00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb0cb00] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb0cb00] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb0cb00] frame I:98    Avg QP:27.49  size:  3959
+[libx264 @ 0x3cb0cb00] frame P:97    Avg QP:24.30  size:   115
+[libx264 @ 0x3cb0cb00] mb I  I16..4: 12.7% 70.5% 16.7%
+[libx264 @ 0x3cb0cb00] mb P  I16..4:  0.4%  0.3%  0.0%  P16..4:  3.5%  0.2%  0.0%  0.0%  0.0%    skip:95.6%
+[libx264 @ 0x3cb0cb00] 8x8 transform intra:70.4% inter:80.0%
+[libx264 @ 0x3cb0cb00] coded y,uvDC,uvAC intra: 16.7% 0.0% 0.0% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb0cb00] i16 v,h,dc,p: 23% 42% 19% 17%
+[libx264 @ 0x3cb0cb00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 42% 27% 21%  2%  2%  1%  2%  2%  1%
+[libx264 @ 0x3cb0cb00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 34% 31% 13%  4%  3%  3%  7%  4%  2%
+[libx264 @ 0x3cb0cb00] i8c dc,h,v,p: 100%  0%  0%  0%
+[libx264 @ 0x3cb0cb00] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb0cb00] kb/s:491.23
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca34ec0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca34ec0] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3caad140] Starting second pass: moving the moov atom to the beginning of the file
+Exporting episode 5: seed=1200, split=validation, T=195
+Map:   0%|          | 0/195 [00:00<?, ? examples/s]Map: 100%|██████████| 195/195 [00:00<00:00, 3393.38 examples/s]
+[libx264 @ 0x3cb33800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb33800] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb33800] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb33800] frame I:98    Avg QP:27.09  size:  5142
+[libx264 @ 0x3cb33800] frame P:97    Avg QP:25.97  size:   187
+[libx264 @ 0x3cb33800] mb I  I16..4: 15.6% 68.7% 15.8%
+[libx264 @ 0x3cb33800] mb P  I16..4:  0.5%  0.6%  0.0%  P16..4:  8.0%  0.5%  0.1%  0.0%  0.0%    skip:90.3%
+[libx264 @ 0x3cb33800] 8x8 transform intra:68.5% inter:51.2%
+[libx264 @ 0x3cb33800] coded y,uvDC,uvAC intra: 19.9% 10.0% 5.8% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb33800] i16 v,h,dc,p: 34% 29% 20% 16%
+[libx264 @ 0x3cb33800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 41% 28% 18%  4%  2%  1%  4%  1%  2%
+[libx264 @ 0x3cb33800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 29% 14%  6%  3%  4%  4%  4%  3%
+[libx264 @ 0x3cb33800] i8c dc,h,v,p: 88%  8%  4%  0%
+[libx264 @ 0x3cb33800] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb33800] kb/s:642.61
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb09a40] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb09a40] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3cae3480] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb6be80] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb6be80] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb6be80] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb6be80] frame I:98    Avg QP:26.57  size:  5114
+[libx264 @ 0x3cb6be80] frame P:97    Avg QP:26.44  size:   195
+[libx264 @ 0x3cb6be80] mb I  I16..4: 15.9% 69.0% 15.1%
+[libx264 @ 0x3cb6be80] mb P  I16..4:  0.4%  0.6%  0.0%  P16..4:  9.1%  0.6%  0.1%  0.0%  0.0%    skip:89.2%
+[libx264 @ 0x3cb6be80] 8x8 transform intra:68.9% inter:62.9%
+[libx264 @ 0x3cb6be80] coded y,uvDC,uvAC intra: 19.8% 10.3% 5.8% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb6be80] i16 v,h,dc,p: 38% 29% 19% 14%
+[libx264 @ 0x3cb6be80] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 45% 27% 16%  3%  2%  1%  3%  1%  2%
+[libx264 @ 0x3cb6be80] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 29% 16%  5%  3%  4%  4%  4%  3%
+[libx264 @ 0x3cb6be80] i8c dc,h,v,p: 88%  8%  4%  0%
+[libx264 @ 0x3cb6be80] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb6be80] kb/s:640.14
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca572c0] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca7cbc0] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3ca34b80] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cab7240] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cab7240] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cab7240] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cab7240] frame I:98    Avg QP:27.37  size:  5375
+[libx264 @ 0x3cab7240] frame P:97    Avg QP:25.91  size:   205
+[libx264 @ 0x3cab7240] mb I  I16..4: 22.1% 60.2% 17.7%
+[libx264 @ 0x3cab7240] mb P  I16..4:  1.1%  1.1%  0.0%  P16..4:  7.1%  0.8%  0.1%  0.0%  0.0%    skip:89.9%
+[libx264 @ 0x3cab7240] 8x8 transform intra:59.9% inter:84.9%
+[libx264 @ 0x3cab7240] coded y,uvDC,uvAC intra: 20.1% 9.0% 3.3% inter: 0.1% 0.1% 0.0%
+[libx264 @ 0x3cab7240] i16 v,h,dc,p: 46% 22% 16% 15%
+[libx264 @ 0x3cab7240] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 28% 32% 31%  1%  1%  1%  1%  2%  1%
+[libx264 @ 0x3cab7240] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 31% 24% 18%  4%  3%  8%  3%  4%  4%
+[libx264 @ 0x3cab7240] i8c dc,h,v,p: 90%  6%  4%  0%
+[libx264 @ 0x3cab7240] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cab7240] kb/s:672.81
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb34740] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3ca0e240] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3ca572c0] Starting second pass: moving the moov atom to the beginning of the file
+[libx264 @ 0x3cb33800] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x3cb33800] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x3cb33800] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=2 lookahead_threads=2 sliced_threads=1 slices=2 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=1 b_pyramid=0 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=2 keyint_min=1 scenecut=40 intra_refresh=0 rc_lookahead=2 rc=crf mbtree=1 crf=30.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[libx264 @ 0x3cb33800] frame I:98    Avg QP:27.36  size:  3977
+[libx264 @ 0x3cb33800] frame P:97    Avg QP:25.06  size:   106
+[libx264 @ 0x3cb33800] mb I  I16..4: 18.2% 64.4% 17.4%
+[libx264 @ 0x3cb33800] mb P  I16..4:  0.3%  0.3%  0.0%  P16..4:  3.0%  0.2%  0.0%  0.0%  0.0%    skip:96.3%
+[libx264 @ 0x3cb33800] 8x8 transform intra:64.4% inter:26.9%
+[libx264 @ 0x3cb33800] coded y,uvDC,uvAC intra: 16.6% 0.0% 0.0% inter: 0.0% 0.0% 0.0%
+[libx264 @ 0x3cb33800] i16 v,h,dc,p: 34% 32% 23% 11%
+[libx264 @ 0x3cb33800] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 47% 24% 20%  1%  1%  1%  3%  2%  1%
+[libx264 @ 0x3cb33800] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 40% 27% 13%  4%  2%  3%  6%  5%  2%
+[libx264 @ 0x3cb33800] i8c dc,h,v,p: 100%  0%  0%  0%
+[libx264 @ 0x3cb33800] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x3cb33800] kb/s:492.25
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb09a40] Auto-inserting h264_mp4toannexb bitstream filter
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x3cb09a40] Auto-inserting h264_mp4toannexb bitstream filter
+[mp4 @ 0x3ca572c0] Starting second pass: moving the moov atom to the beginning of the file
+/mnt/c/Users/23660/Documents/Codex/2026-10-23/files-mentioned-by-the-user-hk/work/vla-env/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+  warnings.warn(
+{
+  "status": "validated",
+  "validated": true,
+  "repo_id": "local/g1-cup-fourview-engineered-v1",
+  "fps": 30,
+  "camera_keys": [
+    "observation.images.cam_left_high",
+    "observation.images.cam_right_high",
+    "observation.images.cam_left_wrist",
+    "observation.images.cam_right_wrist"
+  ],
+  "total_frames": 1170,
+  "total_episodes": 6,
+  "split_episode_indices": {
+    "train": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "validation": [
+      4,
+      5
+    ]
+  },
+  "normalization_split": "train",
+  "video_backend": "pyav",
+  "device": "cpu",
+  "native_versions": {
+    "lerobot": "0.4.4",
+    "torch": "2.7.1",
+    "torchvision": "0.22.1",
+    "av": "15.1.0"
+  },
+  "codebase_version": "v3.0",
+  "decoded_items": [
+    {
+      "index": 0,
+      "episode_index": 0,
+      "frame_index": 0,
+      "visual_shape_CHW": [
+        3,
+        480,
+        640
+      ],
+      "action_shape": [
+        50,
+        28
+      ],
+      "padded_action_steps": 0
+    },
+    {
+      "index": 194,
+      "episode_index": 0,
+      "frame_index": 194,
+      "visual_shape_CHW": [
+        3,
+        480,
+        640
+      ],
+      "action_shape": [
+        50,
+        28
+      ],
+      "padded_action_steps": 49
+    },
+    {
+      "index": 780,
+      "episode_index": 4,
+      "frame_index": 0,
+      "visual_shape_CHW": [
+        3,
+        480,
+        640
+      ],
+      "action_shape": [
+        50,
+        28
+      ],
+      "padded_action_steps": 0
+    }
+  ],
+  "video_header_checks": [
+    {
+      "path": "videos/observation.images.cam_left_high/chunk-000/file-000.mp4",
+      "frames": 1170
+    },
+    {
+      "path": "videos/observation.images.cam_right_high/chunk-000/file-000.mp4",
+      "frames": 1170
+    },
+    {
+      "path": "videos/observation.images.cam_left_wrist/chunk-000/file-000.mp4",
+      "frames": 1170
+    },
+    {
+      "path": "videos/observation.images.cam_right_wrist/chunk-000/file-000.mp4",
+      "frames": 1170
+    }
+  ],
+  "checks": {
+    "manifest_and_feature_schema": true,
+    "independent_success_reports": true,
+    "native_joint_order_and_numeric_hashes": true,
+    "nominal_and_physics_clocks": true,
+    "all_video_header_counts_shapes_fps": true,
+    "training_only_native_statistics": true,
+    "native_cpu_fourview_decode": true,
+    "action_horizon_50x28_and_padding": true,
+    "at_least_one_unpadded_action_horizon": true
+  },
+  "validation_scope": "local dataset schema, values, timing, encoding and native readback",
+  "source_teacher_control_hz": 500,
+  "vla_command_rate_caps_certified": false,
+  "runtime_guard_note": "500Hz teacher targets sampled at30Hz need not satisfy tighter VLA command caps; runtime guards still apply",
+  "checkpoint_statistics_modified": false,
+  "weight_updates": false,
+  "independent_task_benchmark": false,
+  "output": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/datasets/cup_fourview_v1"
+}

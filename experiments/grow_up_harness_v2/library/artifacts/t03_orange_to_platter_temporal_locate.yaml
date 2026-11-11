@@ -1,0 +1,33 @@
+schema: artifact.v2
+name: t03_orange_to_platter_temporal_locate
+task_node: B4.4
+summary: Frozen grasp/place/finish plus prior-seeded current RGB-D locate branch
+contract:
+  pre:
+  - valid_near_side_T03_orange
+  - guard_clear
+  post:
+  - T03_component_program_selected
+  params: {}
+  failure_codes:
+  - INVOCATION
+  - PERCEPTION
+  - GRASP
+  - PLACE
+  - FINISH
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: Codex engineering reference
+  parents:
+  - t03_orange_to_platter_locate_branch@7f3ffaf9f735
+  - t03_orange_to_platter_program@5294bac99816
+  - t03_locate_residual_consensus@9f60498b923c
+  created_on: '2026-11-11'
+  note: V2 locate re-observation initializes from prior estimate only with independent
+    current RGB-D evidence. Reuses identical band selector.
+kind: leaf
+implementation:
+  language: python

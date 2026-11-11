@@ -1,0 +1,30 @@
+In file included from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/controller_interface/controller_interface/controller_interface_base.hpp:29,
+                 from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/controller_interface/controller_interface/chainable_controller_interface.hpp:23,
+                 from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/controller_manager/controller_manager/controller_manager.hpp:25,
+                 from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/native_control.cpp:14:
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_command_interface.hpp: In constructor ‘hardware_interface::LoanedCommandInterface::LoanedCommandInterface(hardware_interface::CommandInterface&)’:
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_command_interface.hpp:36:54: warning: ‘hardware_interface::LoanedCommandInterface::LoanedCommandInterface(hardware_interface::CommandInterface&, Deleter&&)’ is deprecated: Replaced by the new version using shared_ptr [-Wdeprecated-declarations]
+   36 |   : LoanedCommandInterface(command_interface, nullptr)
+      |                                                      ^
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_command_interface.hpp:40:66: note: declared here
+   40 |   [[deprecated("Replaced by the new version using shared_ptr")]] LoanedCommandInterface(
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/controller_interface/controller_interface/controller_interface_base.hpp:30:
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_state_interface.hpp: In constructor ‘hardware_interface::LoanedStateInterface::LoanedStateInterface(const hardware_interface::StateInterface&)’:
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_state_interface.hpp:35:50: warning: ‘hardware_interface::LoanedStateInterface::LoanedStateInterface(const hardware_interface::StateInterface&, Deleter&&)’ is deprecated: Replaced by the new version using shared_ptr [-Wdeprecated-declarations]
+   35 |   : LoanedStateInterface(state_interface, nullptr)
+      |                                                  ^
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_state_interface.hpp:39:66: note: declared here
+   39 |   [[deprecated("Replaced by the new version using shared_ptr")]] LoanedStateInterface(
+      |                                                                  ^~~~~~~~~~~~~~~~~~~~
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/native_control.cpp: In member function ‘virtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn thesis_kernel::MujocoSystem::on_init(const hardware_interface::HardwareInfo&)’:
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/native_control.cpp:37:53: warning: ‘virtual rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn hardware_interface::HardwareComponentInterface::on_init(const hardware_interface::HardwareInfo&)’ is deprecated: Use on_init(const HardwareComponentInterfaceParams & params) instead. [-Wdeprecated-declarations]
+   37 |     if (hardware_interface::SystemInterface::on_init(info) != CallbackReturn::SUCCESS)
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+In file included from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/actuator_interface.hpp:18,
+                 from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/actuator.hpp:18,
+                 from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/resource_manager.hpp:23,
+                 from /home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/controller_manager/controller_manager/controller_manager.hpp:45:
+/home/tulipe/projects/thesis-experiments/experiments/t01_revision/runtime/ros_jazzy_20261029_002/rootfs/opt/ros/jazzy/include/hardware_interface/hardware_interface/hardware_component_interface.hpp:140:26: note: declared here
+  140 |   virtual CallbackReturn on_init(const HardwareInfo & hardware_info);
+      |                          ^~~~~~~

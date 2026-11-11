@@ -1,0 +1,119 @@
+{
+  "checked_at": "2026-10-24T16:15:06.471450+08:00",
+  "frozen_manifests": [
+    {
+      "manifest": "validation/frozen_v1/manifest.json",
+      "sha256": "f1b122482ea696c90a43aa5f0753de5fd77d8ae3e299e298a68b2f1468ad58ab",
+      "unchanged": true
+    },
+    {
+      "manifest": "validation/vla_handoff_v1/manifest.json",
+      "sha256": "7de5e8778ba4852bf4325d806e59b914e300f5120bf7097170e64bc54c5de1f9",
+      "unchanged": true
+    },
+    {
+      "manifest": "validation/frozen_v2/manifest.json",
+      "sha256": "4d9564ce40de817b8ba3be6222db8abeef8d92779ef1e8bd4106a02e1ceb5cde",
+      "unchanged": true
+    },
+    {
+      "manifest": "validation/vla_live_mask_v3/manifest.json",
+      "sha256": "e772eeea034416986fb06038c8fc82bbdc2fbf8aec5d5924434c2ee07b7a6be7",
+      "unchanged": true
+    }
+  ],
+  "local_document_links_checked": 71,
+  "tests_passed": 50,
+  "new_VLA_inferences": 3,
+  "Astra_calls": 0,
+  "training": false,
+  "videos": [
+    {
+      "path": "deliverables/P01_VLA_live_v3_all28.mp4",
+      "sha256": "d5364b736fa36cae3a6fcf95ab15c7a4e8ba8f828a885da3fd004cc2edf3c6bb",
+      "decode_ok": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 540
+          }
+        ],
+        "format": {
+          "duration": "7.200000"
+        }
+      }
+    },
+    {
+      "path": "deliverables/P01_VLA_live_v3_comparison.mp4",
+      "sha256": "50d4ab7009d177f622055a5b8c7961be7cf39c8be33d53bf19b9b8755884efdb",
+      "decode_ok": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080
+          }
+        ],
+        "format": {
+          "duration": "8.600000"
+        }
+      }
+    },
+    {
+      "path": "deliverables/P01_VLA_live_v3_direct_reference.mp4",
+      "sha256": "187f36bfa93284cc6c6c599926d915710e1128e1089fc9869d4f1e4c9eddd9c4",
+      "decode_ok": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 540
+          }
+        ],
+        "format": {
+          "duration": "8.600000"
+        }
+      }
+    },
+    {
+      "path": "deliverables/P01_VLA_live_v3_right_hold.mp4",
+      "sha256": "eef5efb6c3e5ca2ffd4153ae0b7dd22f5f4a13ac82bd702e570c0105cdf2688d",
+      "decode_ok": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 540
+          }
+        ],
+        "format": {
+          "duration": "2.100000"
+        }
+      }
+    }
+  ],
+  "artifacts_sha256": {
+    "vla_live_probe.py": "74c5aedddd7b90f8e14e8f5ec5783669ce455ffbbc09af9e9ca9b546b50ff662",
+    "tests/test_vla_live_probe.py": "1da4c4406a56a5a0528e5133380ded44da35b8ebb80b3612ad2320b8f5b21cb5",
+    "VLA_LIVE_V3_CN.md": "eae44326c10365d27f7802433252f2200742b271fe135e47b7eec35c7255a139",
+    "README_CN.md": "a6dc139ddb8361508565dd06d94472f072813e0e8c268dd0685a09f3d46689c3",
+    "Watch_VLA_live_v3.cmd": "9f10ac6826cbeb238e969d85834423a64f9461ca571b66ecc05df241051c8e2c",
+    "run.sh": "786b12d8dd214c52e4ec0f093d339af9170b4da5e47c0b1c685ac4f7e44c5864",
+    "validation/vla_live_mask_v3/summary.json": "a9d6dd7f3e8a5143ab7def3b62262ec51aa8df6402841eaa15f4d77721d065e8",
+    "validation/vla_live_mask_v3/experiment_memory.json": "ce024fbdbe047c1bd0c636c60f7b1bc1f21d9805a5abbefab78b14cf17d31d95",
+    "reports/vla_live_v3_tests.txt": "dcda28242f5972d9bbb9a064455980298ea6c729ced6142ff08ea12bd569e33b"
+  },
+  "progress_gate_passed": false,
+  "extension_performed": false,
+  "comparison_preview_visually_inspected": true,
+  "exact_initial_state_and_runtime_target_checks": "reports/vla_live_v3_tests.txt"
+}

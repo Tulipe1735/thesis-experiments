@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-11",
+  "output": "outputs/t03_grasp_retreat_eval_20261111_001",
+  "bundles": {
+    "parent": "outputs/artifacts/t03_pose_index_20261111_001.json",
+    "candidate": "outputs/artifacts/t03_pose_index_retreat_20261111_001.json"
+  },
+  "focuses": [
+    {
+      "stage": "preflight",
+      "mechanism_trigger": "默认路线被净空筛选拒绝，返回替代位姿或 null"
+    },
+    {
+      "stage": "close_and_test",
+      "mechanism_trigger": "闭手前拇指-手指对齐超阈值，或 grip_settle 触发保护"
+    },
+    {
+      "stage": "lift_and_hold",
+      "mechanism_trigger": "实际grip_settle与2cm试提通过后，主抬升发生非目标接触保护（上一轮中指末节碰罐）"
+    }
+  ],
+  "focus_cap": 3,
+  "handoff": {
+    "approach": [
+      "closed_hand_clearance_at_arrival",
+      "retreat_path_clearance_at_arrival"
+    ],
+    "close_and_test": [
+      "thumb_finger_alignment_at_arrival",
+      "grip_settle_force_window"
+    ],
+    "lift_and_hold": [
+      "lift_clearance_margin",
+      "regrasp_recovery_available"
+    ]
+  },
+  "baselines": {
+    "negative": "每个合法初态真实wait2s，任一负对照成功整批作废",
+    "engineering_positive": "仅缩食指冻结parent同初态执行；不保证每个新初态成功，不以失败排除留出",
+    "original_failure": "同初态parent逐任务配对；只有parent实际失败且candidate完整成功才计修复",
+    "treatment": "唯一冻结的Codex工程候选：缩食指＋4cm后退抬升；code与本地显式skill ID调用，人工及仿真真值诊断辅助来自训练"
+  },
+  "prediction": {
+    "mapping": "4对code/skill在相同初态与预算下轨迹逐字节一致",
+    "task": "不确定；预测最终候选至少2/4完整T03成功，且成功数不少于parent",
+    "mechanism": "主抬升保护若未触发或被上游阻塞，不将整体成功率当作该机制收益；保护事件按阶段及arm报告",
+    "single_factor": "冻结候选与parent仅lift_retreat_m 0→0.04；其余数值及定位/路线/放置/释放组件相同"
+  },
+  "falsification": [
+    "任一负对照成功、评价/保护/隔离接口失效或code/skill轨迹不一致，停止并记为无效批次",
+    "候选成功少于2/4则任务预测被推翻；少于parent则不劣于parent预测被推翻",
+    "不以成功初态替换失败，不使用留出失败诊断或改写候选；若后续用于优化须明确标记已消耗",
+    "焦点统计只依据已记录的触发；未记录的数值对齐或净空不能当作已通过"
+  ],
+  "train_seed_start": 713000,
+  "train_count": 0,
+  "holdout_seed_start": 813000,
+  "holdout_count": 4,
+  "train_position_partition": "train",
+  "holdout_position_partition": "train",
+  "holdout_axis": "冻结同分布新实例：已见资产、原训练位置网格的新采样；不是新位置或新资产泛化",
+  "grid": {
+    "x_centers_m": [
+      0.28,
+      0.34,
+      0.4
+    ],
+    "y_centers_m": [
+      0.25,
+      0.32,
+      0.39
+    ],
+    "jitter_m": 0.008
+  },
+  "asset_index_cycle": [
+    1,
+    2,
+    5
+  ],
+  "consumed_dev_seeds": [
+    113000,
+    113001,
+    113002,
+    113003,
+    113004,
+    113005,
+    113006,
+    113007,
+    313000,
+    313001,
+    313002,
+    313003,
+    513000,
+    513001,
+    513002,
+    513003,
+    613000,
+    613001,
+    613002,
+    613003,
+    713000,
+    713001,
+    713002,
+    713003
+  ],
+  "pair_order_seed": 20261111,
+  "caps": {
+    "wall_s": 3600,
+    "physical_episodes": 16,
+    "model_calls": 0
+  },
+  "episode_caps": {
+    "simulation_s": 300.0,
+    "commands": 3000,
+    "wall_s": 240.0
+  },
+  "previous": "outputs/t03_grasp_retreat_20261111_001",
+  "assistance": {
+    "author": "Codex engineering candidate",
+    "diagnosis": "consumed613003 index修订通过settle与2cm试提，主抬升中指末节与distractor_2约0.343N禁止接触；真值诊断辅助",
+    "model_calls": 0,
+    "handoff_status": "declared measurements, not presumed passed; no new runtime safety gate"
+  },
+  "study_question": "最终冻结后退抬升版在4个未参与优化的新实例上是否优于仅缩食指版；单因素为lift_retreat_m 0→0.04",
+  "selection": "用户在完整训练成功后明确要求新留出。唯一最终checkpoint，不按留出表现选择、修改或重试候选。全部合法性拒绝和策略失败保留，不替换、不补抽。",
+  "training_evidence": {
+    "run": "outputs/t03_grasp_retreat_20261111_001",
+    "candidate_bundle_id": "t03_pose@fd9e4ea720d3",
+    "verdict": "outputs/t03_grasp_retreat_20261111_001/train/T03_pose_test_613003/code/verdict.json",
+    "identity": "consumed613003 diagnostic training; truth-assisted Codex engineering success, not holdout",
+    "reuse": "train directory symlink points to completed immutable training evidence; no training rerun counted in this evaluation"
+  }
+}

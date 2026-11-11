@@ -1,0 +1,68 @@
+[
+  {
+    "type": "file",
+    "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+    "size": 1519,
+    "path": ".gitattributes"
+  },
+  {
+    "type": "file",
+    "oid": "b1f68b3e59e3b2c25754a0f0005e920854562c42",
+    "size": 2666,
+    "path": "config.json"
+  },
+  {
+    "type": "file",
+    "oid": "b2ad0d9304099ccac32f2a7fc69e787683d6a335",
+    "size": 1197789224,
+    "lfs": {
+      "oid": "4885e1a224e8dae4284f9e1c903b68f1902a27f6bedf0a7b0dfffe70425e3b63",
+      "size": 1197789224,
+      "pointerSize": 135
+    },
+    "xetHash": "e2f9c251ddcf568694c7ed4e2b87607f9dfeb12d7949c01b577b2e747c21ffb4",
+    "path": "model.safetensors"
+  },
+  {
+    "type": "file",
+    "oid": "326635e3bfe2bc1c3317257ea730232394ffef81",
+    "size": 661,
+    "path": "policy_postprocessor.json"
+  },
+  {
+    "type": "file",
+    "oid": "4d9e946c0fa328197b0cf13f05a10adab8ef4bb6",
+    "size": 5660,
+    "lfs": {
+      "oid": "be7d3fc67d9425585e8401145c9b2ed52745e86a40f8e989aa53d90cff5d8ea9",
+      "size": 5660,
+      "pointerSize": 129
+    },
+    "xetHash": "6e36e3c0b558b28e2ff00753cab50ead47957389b6befeae6c523d23e48f9701",
+    "path": "policy_postprocessor_step_0_unnormalizer_processor.safetensors"
+  },
+  {
+    "type": "file",
+    "oid": "293d710779a570510b330df7f50ecdc23dbaf6ff",
+    "size": 2103,
+    "path": "policy_preprocessor.json"
+  },
+  {
+    "type": "file",
+    "oid": "4d9e946c0fa328197b0cf13f05a10adab8ef4bb6",
+    "size": 5660,
+    "lfs": {
+      "oid": "be7d3fc67d9425585e8401145c9b2ed52745e86a40f8e989aa53d90cff5d8ea9",
+      "size": 5660,
+      "pointerSize": 129
+    },
+    "xetHash": "6e36e3c0b558b28e2ff00753cab50ead47957389b6befeae6c523d23e48f9701",
+    "path": "policy_preprocessor_step_5_normalizer_processor.safetensors"
+  },
+  {
+    "type": "file",
+    "oid": "e1a917e511620b5d3f34b544f01a60420d314bf8",
+    "size": 6898,
+    "path": "train_config.json"
+  }
+]

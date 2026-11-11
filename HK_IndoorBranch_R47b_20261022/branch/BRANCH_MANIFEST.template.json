@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "branch_id": "IN_SENIOR_20261022",
+  "owner": "学长室内分支（请填写姓名或团队）",
+  "baseline": {
+    "revision": "HK49 R47b",
+    "sha256": "37c562b438bfb41f018a251cacf1c0f803028301a6a0853a1bf433685368c40c"
+  },
+  "collection_root": "IN_SENIOR_20261022",
+  "object_prefix": "INS22__",
+  "scope_status": "TO_BE_DEFINED",
+  "registration": {
+    "authoring_coordinates": "global_hk",
+    "building_id": null,
+    "building_object_names": [],
+    "floor_label": null,
+    "floor_HKPD_m": null,
+    "entrance_anchor_HK_xyz_m": null,
+    "local_to_hk": null,
+    "source_and_confidence": null
+  },
+  "new_objects": [],
+  "modified_base_objects": [],
+  "stable_ids": [],
+  "external_assets": [],
+  "source_files": [],
+  "task_packages": [],
+  "validation": {
+    "independent_reopen": false,
+    "visual_views": [],
+    "physics_checks": [],
+    "merge_ready": false
+  },
+  "known_limitations": []
+}

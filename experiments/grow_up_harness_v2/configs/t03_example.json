@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-11",
+  "output": "outputs/t03_example_20261111_001",
+  "bundles": {
+    "candidate": "outputs/artifacts/t03_pose.json",
+    "parent": "outputs/artifacts/t03_route.json"
+  },
+  "focuses": [
+    {
+      "stage": "preflight",
+      "mechanism_trigger": "默认路线因当前 RGB-D 易拉罐净空不足被拒绝，局部位姿 leaf 选择替代路线或明确拒绝"
+    }
+  ],
+  "focus_cap": 3,
+  "handoff": {},
+  "baselines": {
+    "negative": "每个有效初态真实 wait 2s，成功则整批作废",
+    "engineering_positive": "同初态 parent；失败保留，不筛掉 T03 训练任务",
+    "original_failure": "同初态 parent 的原始失败，全部保留",
+    "treatment": "冻结的局部位姿候选，code 执行与本地 skill ID 调用"
+  },
+  "prediction": {
+    "mapping": "同工件、同实际初态，code/skill 轨迹逐字节一致",
+    "task": "不预设修复收益；这份示例仅说明现有候选的比较入口"
+  },
+  "falsification": [
+    "负对照成功、接口/保护失效或 code/skill 不一致则停止；不补抽、不重试"
+  ],
+  "train_seed_start": 713000,
+  "train_count": 4,
+  "holdout_seed_start": 813000,
+  "holdout_count": 4,
+  "train_position_partition": "train",
+  "holdout_position_partition": "train",
+  "holdout_axis": "已见资产与训练网格的新实例，不是新位置或新资产泛化",
+  "grid": {
+    "x_centers_m": [
+      0.28,
+      0.34,
+      0.4
+    ],
+    "y_centers_m": [
+      0.25,
+      0.32,
+      0.39
+    ],
+    "jitter_m": 0.008
+  },
+  "asset_index_cycle": [
+    1,
+    2,
+    5
+  ],
+  "consumed_dev_seeds": [],
+  "pair_order_seed": 20261111,
+  "caps": {
+    "wall_s": 3600,
+    "physical_episodes": 32,
+    "model_calls": 0
+  },
+  "episode_caps": {
+    "simulation_s": 300.0,
+    "commands": 3000,
+    "wall_s": 240.0
+  }
+}

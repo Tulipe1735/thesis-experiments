@@ -1,0 +1,132 @@
+{
+  "checked_at": "2026-10-24T17:20:31.106721+08:00",
+  "frozen_manifests": [
+    {
+      "manifest": "validation/frozen_v1/manifest.json",
+      "sha256": "f1b122482ea696c90a43aa5f0753de5fd77d8ae3e299e298a68b2f1468ad58ab",
+      "sources_unchanged": true
+    },
+    {
+      "manifest": "validation/vla_handoff_v1/manifest.json",
+      "sha256": "7de5e8778ba4852bf4325d806e59b914e300f5120bf7097170e64bc54c5de1f9",
+      "sources_unchanged": true
+    },
+    {
+      "manifest": "validation/frozen_v2/manifest.json",
+      "sha256": "4d9564ce40de817b8ba3be6222db8abeef8d92779ef1e8bd4106a02e1ceb5cde",
+      "sources_unchanged": true
+    },
+    {
+      "manifest": "validation/vla_live_mask_v3/manifest.json",
+      "sha256": "e772eeea034416986fb06038c8fc82bbdc2fbf8aec5d5924434c2ee07b7a6be7",
+      "sources_unchanged": true
+    },
+    {
+      "manifest": "validation/fourview_v1/manifest.json",
+      "sha256": "bf8439a649bbf974093dc5cbe9331b1d181373a2e9ba8c6940f362dea780ea71",
+      "sources_unchanged": true
+    },
+    {
+      "manifest": "demonstrations/cup_fourview_v1/collection_manifest.json",
+      "sha256": "e19896ff7ac6de9cdd77a177946b9c68b0b24dc389546f1645c42a2265c4da6e",
+      "sources_unchanged": true
+    }
+  ],
+  "camera_conditions": 3,
+  "task_policy_calls": 6,
+  "warmup_policy_calls": 2,
+  "Astra_calls": 0,
+  "weights_updated": false,
+  "tests_passed": 61,
+  "document_links_checked": 84,
+  "dataset_native_validation": true,
+  "final_dataset_readback": true,
+  "native_dataset_features": [
+    "observation.images.cam_left_high",
+    "observation.images.cam_right_high",
+    "observation.images.cam_left_wrist",
+    "observation.images.cam_right_wrist",
+    "observation.state",
+    "action"
+  ],
+  "dataset_frames": 1170,
+  "teacher_trajectories_all_exact": true,
+  "videos": [
+    {
+      "path": "deliverables/P01_fourview_VLA_original_weights.mp4",
+      "sha256": "64f7676041b1715c63b8612101460451d29ec59b2dc4820268b2e269cd2b7258",
+      "decode_passed": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 1080,
+            "r_frame_rate": "20/1"
+          }
+        ],
+        "format": {
+          "duration": "11.200000"
+        }
+      }
+    },
+    {
+      "path": "deliverables/P01_fourview_left_only_control.mp4",
+      "sha256": "34b229d250b9547760a3fa4552b137e5b44ac1116a5827fa60e8ac7f2b9a2f91",
+      "decode_passed": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 1080,
+            "r_frame_rate": "20/1"
+          }
+        ],
+        "format": {
+          "duration": "11.200000"
+        }
+      }
+    },
+    {
+      "path": "deliverables/P01_fourview_engineered_demo.mp4",
+      "sha256": "889703245d28574babef4d84d7aa0ddd5f48cef8f49f53e95dbcc6ee119d582d",
+      "decode_passed": true,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 1080,
+            "r_frame_rate": "30/1"
+          }
+        ],
+        "format": {
+          "duration": "6.500000"
+        }
+      }
+    }
+  ],
+  "camera_and_demo_video_previews_visually_inspected": true,
+  "artifact_sha256": {
+    "fourview_camera.py": "9a83333cb86ca09b56c9d9994e5e02ba7be0d8c8d35de15b38486c21a11eb49c",
+    "fourview_policy.py": "340a3525c1baa71314525b4aa81806cd9f50e5b68e10e4e3f17bae1d0f05effc",
+    "fourview_worker.py": "a410d8194f4cdcad62946c91490a4cfea68ea134f75a47fac37acfe58ee5191e",
+    "fourview_trial.py": "ee35dd681026b8f54b750be11e62d69379d1c393d27bba6c872cca13362a8a48",
+    "collect_fourview_demos.py": "13e235414bb6e86ff70154f21dccf68eb4653b8d95359d91aa7571bad40c4328",
+    "export_fourview_demos.py": "532eb08bf7763071c30c21115781f3a046e559801a2fc7ded730d29cb6887e97",
+    "FOURVIEW_DEMOS_CN.md": "b382d6fdd928eba587560043488103fbb37f84fbf4b7d8399348b255331d1e35",
+    "README_CN.md": "b11d5342d4bf56f7fd8b83027447e69433594ac30c41c02f2e0b63c22a784b72",
+    "datasets/cup_fourview_v1/README_CN.md": "06f4a5b9758abeb8416c1a8f5a416bb9ff0f087be837e0ac935d719dfba158a0",
+    "render_fourview_episode.py": "7e7b515c5c3d11c0dec0871e2f3e2ac981fbe8bd1fc9d0da4b472c86be3e5912",
+    "run.sh": "f43bc8356421d1a01af3f32f55871a1661c181219f5e8eb15836fc803ba4cc6b",
+    "reports/fourview_dataset_readback.txt": "37fb0a60d45ecd35c09f631f4807cbfd8116a04a2bbf09d1a5f6250de8d65de0",
+    "validation/fourview_v1/summary.json": "8a6d279b4efd898f2766131ad8d9f90e0b0b71066048796cf3e34d75168c926c",
+    "datasets/cup_fourview_v1/conversion_report.json": "947bc5322e71441430fccf0a8318a31ac6659ec3235b8725c4d87f549f25b453",
+    "demonstrations/cup_fourview_v1/teacher_reproducibility.json": "97957f19aaa7f50bd09ef5bc81571df1a8232f1f66ea9c55564a1a17d5ad69fd",
+    "reports/fourview_final_tests.txt": "34461b65421b396641571ec284486ec75d02ab9f97022bec699f35c67fd6786b"
+  }
+}

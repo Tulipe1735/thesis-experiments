@@ -1,0 +1,32 @@
+schema: artifact.v2
+name: t03_post_release_finish
+task_node: B4.4
+summary: After actual release and backward clearance, dwell without unnecessary unsafe
+  extra raise
+contract:
+  pre:
+  - released
+  - hand_clear_after_backward_retreat
+  - guard_clear
+  post:
+  - post_release_dwell_not_task_success
+  params: {}
+  failure_codes:
+  - SCHEMA
+  - CONTACT_REMAINS
+  - FINISH_BUDGET
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: DeepSeek with Codex diagnosis
+  parents:
+  - t03_placement_target@a885ee81cbca
+  created_on: '2026-11-11'
+  note: Only replaces optional post-release raise; learned grasp and placement reused
+    by ID, independent evaluator v2 explicitly authorized.
+kind: leaf
+implementation:
+  language: python
+  source: t03_post_release_finish.py

@@ -1,0 +1,86 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "thesis_skill_interfaces/action/ExecuteSkill_GetResult_Response",
+      "fields": [
+        {
+          "name": "status",
+          "type": {
+            "type_id": 2,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "result",
+          "type": {
+            "type_id": 1,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": "thesis_skill_interfaces/action/ExecuteSkill_Result"
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": [
+      {
+        "type_name": "thesis_skill_interfaces/action/ExecuteSkill_Result",
+        "fields": [
+          {
+            "name": "execution_status",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "runtime_check",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "reason",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "evidence_id",
+            "type": {
+              "type_id": 17,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          }
+        ]
+      }
+    ]
+  },
+  "type_hashes": [
+    {
+      "type_name": "thesis_skill_interfaces/action/ExecuteSkill_GetResult_Response",
+      "hash_string": "RIHS01_7dbd20037e84f0cb743c98bd8669f2fcd24fbdb51a20df21abcc0a41f7448b49"
+    },
+    {
+      "type_name": "thesis_skill_interfaces/action/ExecuteSkill_Result",
+      "hash_string": "RIHS01_7334789f5197cc5bd38da4849a0753096084588269a52a8f361f0ac0445a75be"
+    }
+  ]
+}

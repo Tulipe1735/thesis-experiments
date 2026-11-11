@@ -1,0 +1,19 @@
+{
+  "branch": "interior",
+  "revision": "IN20",
+  "native": "/home/zhaowangbo/.local/share/hongkong-dorset/project/branches/interior/native/HK48_Dorset_DH01_IN20.blend",
+  "native_sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+  "baseline": "DH01-r10",
+  "visual_review": "reports/IN20/visual_review.json",
+  "rendered_views_this_candidate": 14,
+  "human_use_native_checks": 101,
+  "daily_use_checks": 14,
+  "fixture_approach_routes": 2,
+  "native_colliders_checked": 1089,
+  "reviewed_at_unix": 1790931108.5663965,
+  "reviewer": "Codex actual PNGs and independent native geometry",
+  "user_acceptance": "pending",
+  "root_canonical_modified": false,
+  "integration_delta": "reports/IN20/integration_delta.json",
+  "scope": "办公设备实物参考重建、完整线路、门禁排列与日常设施检查，追加背壳返修；供用户验收"
+}

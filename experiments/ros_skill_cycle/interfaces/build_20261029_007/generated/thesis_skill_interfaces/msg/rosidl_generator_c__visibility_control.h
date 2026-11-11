@@ -1,0 +1,6 @@
+#pragma once
+#define ROSIDL_GENERATOR_C_PUBLIC_thesis_skill_interfaces __attribute__((visibility("default")))
+#define ROSIDL_GENERATOR_C_PUBLIC_TYPE_thesis_skill_interfaces 
+#define ROSIDL_GENERATOR_C_LOCAL_thesis_skill_interfaces 
+#define ROSIDL_GENERATOR_C_EXPORT_thesis_skill_interfaces 
+#define ROSIDL_GENERATOR_C_IMPORT_thesis_skill_interfaces 

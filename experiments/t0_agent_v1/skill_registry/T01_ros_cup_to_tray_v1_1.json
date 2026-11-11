@@ -1,0 +1,363 @@
+{
+  "schema_version": "skill_registry.v1",
+  "skill_id": "T01_ros_cup_to_tray",
+  "skill_version": "1.1.0",
+  "name": "T01 ROS 技能：有界修订与一次主动观察核验",
+  "status": "validated_skill",
+  "formal_promotion": true,
+  "promotion_date": "2026-10-29",
+  "boundary": "simulation",
+  "validation_level": "expanded",
+  "foundation_validation_level": "paired",
+  "task": {
+    "task_id": "T01",
+    "robot": "G1 + dual Dex3-1",
+    "target_count": 1,
+    "cup": "DH_2F_mug_06 known white 41mm radius class",
+    "compatible_trays": [
+      "rectangular_low_rim_v1",
+      "marked_long_tray_v1"
+    ]
+  },
+  "authorship": "Engineering-assisted observation mechanism; automatic acceptance gate; parent bounded candidate screening preserved",
+  "artifact": {
+    "kind": "bounded_engineering_tool_composition_with_active_observation",
+    "bundle": "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1_1",
+    "manifest": "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1_1/manifest.json",
+    "manifest_sha256": "0e7ff892d166ca795eb6f9e523799ae3cfc1a8b8c27b5637f4a856e1d3911aaf",
+    "tested_recipe": "experiments/ros_skill_cycle/runs/active_view_20261029_001/recipe",
+    "tested_manifest_sha256": "52313188181f68717e29eada2ff7423fe2185161ad6e346078171b17bda54c3d",
+    "executable_bytes_identical_to_tested_recipe": true,
+    "policy": {
+      "guard": true,
+      "gain": 0.5,
+      "active_verification": true
+    }
+  },
+  "runtime_contract": {
+    "goal": {
+      "skill_id": "T01_ros_cup_to_tray",
+      "skill_version": "1.1.0",
+      "parameters": {
+        "target": "single_visible_cup_to_marked_tray"
+      }
+    },
+    "transport": "real thesis_skill_interfaces/action/ExecuteSkill; isolated endpoint per cold-start instance",
+    "public_success": "Action SUCCEEDED only when frozen public visual proxy passes",
+    "uncertainty": "Action ABORTED with runtime_check=UNVERIFIED; physical outcome remains independently evaluated",
+    "private_evaluation_never_returned_to_execution_client": true,
+    "observed_selected_and_boundary_false_positive_success": 0,
+    "active_observation": {
+      "delta_m": [
+        0.0,
+        0.04,
+        0.04
+      ],
+      "duration_s": 2.0,
+      "maximum_attempts": 1,
+      "trigger": "public instantaneous postcondition insufficient",
+      "preflight": "original continuous IK and self-collision"
+    }
+  },
+  "limitations": [
+    "Simulation only; no physical robot, new shape-family or long-horizon claim",
+    "Automated bounded parameter selection, not model weight training or discovery of low-level control",
+    "Public runtime proxy is incomplete and can abstain on true physical successes; report coverage with success",
+    "Expanded observations describe these registered within-family initials only; no population guarantee",
+    "Generic mid-motion cancel/resume and complete G1 ROS robot description remain outside this run",
+    "The parent12 and v1.1 new8 are distinct cohorts and different programs; report full-task failures and public-check coverage separately",
+    "v1.1 succeeds on 5/8 new initials; 3 grasp failures remain and must not be removed from the denominator"
+  ],
+  "model_requests": 0,
+  "weight_updates": 0,
+  "source_evidence_preserved": true,
+  "parent_skill": "T01_visual_handoff_damped_v1; reused engineering primitives and known candidate family",
+  "parent_registry": "experiments/t0_agent_v1/skill_registry/T01_ros_cup_to_tray_v1.json",
+  "parent_registry_sha256": "a8617244d7ad78a9a77e62923f97e37bbef3c110bd3a464292ef07683dc25a7f",
+  "observation_validation": {
+    "audit": "experiments/ros_skill_cycle/audits/active_view_20261029_001_audit_001/audit.json",
+    "audit_sha256": "84a39f5f10eea6b5620fd2746009ce76101e972cd82ae3fb5ad56086e76b3a6d",
+    "groups": {
+      "development": {
+        "requests": 2,
+        "physical_episodes": 2,
+        "independent_successes": 2,
+        "public_passes": 1,
+        "runtime_status_counts": {
+          "UNVERIFIED": 1,
+          "PASS": 1
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 1,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 77.04000000000222,
+        "low_level_commands": 137
+      },
+      "frozen_test": {
+        "requests": 8,
+        "physical_episodes": 8,
+        "independent_successes": 5,
+        "public_passes": 5,
+        "runtime_status_counts": {
+          "PASS": 5,
+          "NOT_EVALUATED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 0,
+        "execution_rejections": 0,
+        "execution_failures": 3,
+        "simulation_seconds": 236.11799999998698,
+        "low_level_commands": 443
+      },
+      "boundary": {
+        "requests": 2,
+        "physical_episodes": 2,
+        "independent_successes": 0,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "UNVERIFIED": 2
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 0,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 73.73999999999819,
+        "low_level_commands": 134
+      }
+    },
+    "gate": {
+      "passed": true,
+      "independent_successes": 2,
+      "public_passes": 1
+    },
+    "independent_unit": "actual initial state, 8 prospective new initials for v1.1",
+    "no_causal_comparison_with_parent_test": true
+  },
+  "parent_validation": {
+    "development": {
+      "nominal": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 3,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "FAIL": 1,
+          "UNVERIFIED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 3,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 141.3639999999889,
+        "low_level_commands": 259
+      },
+      "gain025": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 3,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "FAIL": 1,
+          "UNVERIFIED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 3,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 144.3639999999926,
+        "low_level_commands": 261
+      },
+      "gain050": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 4,
+        "public_passes": 1,
+        "runtime_status_counts": {
+          "PASS": 1,
+          "UNVERIFIED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 3,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 144.3639999999926,
+        "low_level_commands": 261
+      },
+      "gain075": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 3,
+        "public_passes": 1,
+        "runtime_status_counts": {
+          "PASS": 1,
+          "UNVERIFIED": 2,
+          "NOT_EVALUATED": 1
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 2,
+        "execution_rejections": 0,
+        "execution_failures": 1,
+        "simulation_seconds": 139.86399999998707,
+        "low_level_commands": 257
+      }
+    },
+    "frozen_new_initials": {
+      "nominal": {
+        "requests": 12,
+        "physical_episodes": 12,
+        "independent_successes": 11,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "UNVERIFIED": 9,
+          "FAIL": 2,
+          "NOT_EVALUATED": 1
+        },
+        "runtime_false_failures": 2,
+        "false_positive_success": 0,
+        "unverified_successes": 9,
+        "execution_rejections": 0,
+        "execution_failures": 1,
+        "simulation_seconds": 405.19199999995647,
+        "low_level_commands": 751
+      },
+      "selected": {
+        "requests": 12,
+        "physical_episodes": 12,
+        "independent_successes": 11,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "UNVERIFIED": 9,
+          "FAIL": 2,
+          "NOT_EVALUATED": 1
+        },
+        "runtime_false_failures": 2,
+        "false_positive_success": 0,
+        "unverified_successes": 9,
+        "execution_rejections": 0,
+        "execution_failures": 1,
+        "simulation_seconds": 408.1919999999575,
+        "low_level_commands": 753
+      }
+    },
+    "frozen_repaired": 0,
+    "frozen_regressed": 0,
+    "boundary": {
+      "requests": 6,
+      "physical_episodes": 4,
+      "independent_successes": 0,
+      "public_passes": 0,
+      "runtime_status_counts": {
+        "NOT_EVALUATED": 4,
+        "UNVERIFIED": 2
+      },
+      "runtime_false_failures": 0,
+      "false_positive_success": 0,
+      "unverified_successes": 0,
+      "execution_rejections": 2,
+      "execution_failures": 2,
+      "simulation_seconds": 110.2439999999926,
+      "low_level_commands": 206
+    },
+    "audit": "experiments/ros_skill_cycle/audits/cycle_20261029_008_audit_001/audit.json",
+    "audit_sha256": "71baac57be6f15d576efbd9361f82ae3fd4be6a2f13cb81047d6d0b2eb42d2c3"
+  },
+  "parent_candidate_selection": {
+    "arm": "gain050",
+    "repaired": 1,
+    "regressed": 0,
+    "successes": 4,
+    "low_level_commands": 261,
+    "gain": 0.5,
+    "accepted": true,
+    "rule": "successes descending, low-level command cost ascending, gain ascending; repair/no-regression gate"
+  },
+  "validation": {
+    "paired_confirmation": {
+      "audit": "experiments/ros_skill_cycle/runs/active_view_confirmation_20261029_001/audit.json",
+      "audit_sha256": "5ebc271f16cd517d1d88ae2512bf4f40ba7e3f4eb8ffdf13f234fe6db55065fc",
+      "baseline_job": "experiments/ros_skill_cycle/runs/cycle_20261029_008/jobs/orientation_280201__nominal",
+      "candidate_job": "experiments/ros_skill_cycle/runs/active_view_confirmation_20261029_001/jobs/orientation_280201__active_view",
+      "actual_initial_sha256": "e44cc4bff59c19d7398889d6a684d9d8d22d8a9cf7fe36882ef57d470d5e97a2",
+      "baseline_success": false,
+      "candidate_success": true,
+      "new_physical_episodes": 1,
+      "new_generalization_initials": 0
+    },
+    "development": {
+      "requests": 2,
+      "physical_episodes": 2,
+      "independent_successes": 2,
+      "public_passes": 1,
+      "runtime_status_counts": {
+        "UNVERIFIED": 1,
+        "PASS": 1
+      },
+      "runtime_false_failures": 0,
+      "false_positive_success": 0,
+      "unverified_successes": 1,
+      "execution_rejections": 0,
+      "execution_failures": 0,
+      "simulation_seconds": 77.04000000000222,
+      "low_level_commands": 137
+    },
+    "frozen_new_initials": {
+      "requests": 8,
+      "physical_episodes": 8,
+      "independent_successes": 5,
+      "public_passes": 5,
+      "runtime_status_counts": {
+        "PASS": 5,
+        "NOT_EVALUATED": 3
+      },
+      "runtime_false_failures": 0,
+      "false_positive_success": 0,
+      "unverified_successes": 0,
+      "execution_rejections": 0,
+      "execution_failures": 3,
+      "simulation_seconds": 236.11799999998698,
+      "low_level_commands": 443
+    },
+    "boundary": {
+      "requests": 2,
+      "physical_episodes": 2,
+      "independent_successes": 0,
+      "public_passes": 0,
+      "runtime_status_counts": {
+        "UNVERIFIED": 2
+      },
+      "runtime_false_failures": 0,
+      "false_positive_success": 0,
+      "unverified_successes": 0,
+      "execution_rejections": 0,
+      "execution_failures": 0,
+      "simulation_seconds": 73.73999999999819,
+      "low_level_commands": 134
+    },
+    "audit": "experiments/ros_skill_cycle/audits/active_view_20261029_001_audit_001/audit.json",
+    "audit_sha256": "84a39f5f10eea6b5620fd2746009ce76101e972cd82ae3fb5ad56086e76b3a6d",
+    "full_task_denominator": 8,
+    "full_task_independent_successes": 5,
+    "full_task_public_passes": 5,
+    "retained_failure_cases": [
+      "joint_840300",
+      "joint_840301",
+      "joint_840303"
+    ],
+    "retained_failure_stage": "grasp_cup: INSUFFICIENT_THUMB_AND_FINGER_LOAD",
+    "same_version_paired_foundation": true
+  },
+  "scope": {
+    "validation": "bounded within-family simulation capability, not external accreditation",
+    "action": "T01-specific prebound skill/version instance with a unique endpoint",
+    "automation": "Scripted candidate screening and engineering-authored observation revision",
+    "freeze": "Both new-initial tests and registration confirmation execute the same frozen v1.1 recipe"
+  }
+}

@@ -1,0 +1,978 @@
+{
+  "recorded_at": "2026-10-24T01:41:33.932077+08:00",
+  "status": "ASTRA_HEAD_RGBD_ENGINEERED_GRASP_VERIFIED",
+  "successful_live_astra_episodes": [
+    "astra_vision_live_1000",
+    "astra_vision_live_1002"
+  ],
+  "actual_gateway_responses": 16,
+  "network_blocked_request_attempts": 1,
+  "api_retries_after_service_error": 0,
+  "vla_training": false,
+  "policy_reads_cup_pose_truth": false,
+  "formal_success_rate": null,
+  "new_memory_reuse_effect_verified": false,
+  "regression_tests_passed": 20,
+  "original_direct_sources_unchanged": {
+    "run_direct_grasp.py": true,
+    "pantry_robot.py": true,
+    "pantry_scene.py": true,
+    "diagnose_grasp.py": true,
+    "verify_grasp.py": true
+  },
+  "dependencies": {
+    "mujoco": "3.17.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pillow": "13.0.0"
+  },
+  "episodes": [
+    {
+      "episode_id": "vision_local_1000",
+      "configuration": {
+        "seed": 1000,
+        "branch": "vision-direct-v1",
+        "model_requests": 0,
+        "execution_mode": "head_RGBD_and_proprioception_with_simulated_tactile",
+        "controller_version": "vision-grasp-v1",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "VLA_weight_changes": false,
+        "formal_task_snapshot": false,
+        "memory": {
+          "source": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/final_reference_1000/episode_memory.json",
+          "sha256": "88c26d2a6a506783ad61e082a38b498e9d25eb446edb42dcd035f99c9fb48d90",
+          "kind": "engineering_parameter_reference_not_agent_learned_skill",
+          "parameters": {
+            "cup_in_palm_m": [
+              0.045,
+              -0.055,
+              -0.052
+            ],
+            "close_angles": [
+              0.0,
+              0.65,
+              0.65,
+              -0.8,
+              -0.6,
+              -0.8,
+              -0.6
+            ],
+            "palm_yaw_rad": 0.7,
+            "controller_version": "cup-relative-direct-v1"
+          }
+        },
+        "source_sha256": {
+          "vision_grasp.py": "1b87adcfaa215a66278f0f49a1b77deb5e47f222a307e6ccc479ab8472c6b62d",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "1aee07ebfc80e32de4d4b87d46820a4abaa7b8acfc135bdaabd169ab7e062803",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": true,
+        "agent_declared_done": false,
+        "simulation_seconds": 18.770000000000476,
+        "max_lift_m": 0.12082679042508415,
+        "longest_held_lifted_seconds": 1.7180000000000013,
+        "max_pelvis_tilt_deg": 0.0692931166752243,
+        "max_pelvis_drift_m": 0.0009250620998451233,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.1208246905982504,
+        "longest_strict_hold_s": 1.6499999999990855,
+        "max_pelvis_tilt_deg": 0.06910528839343782,
+        "max_pelvis_drift_m": 0.0009157379271899641,
+        "max_cup_contact_penetration_m": 0.0005997037203651845,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11694235599573721,
+          "cup_lowest_clearance_m": 0.11683878602185804,
+          "cup_tilt_deg": 0.8364055471350459,
+          "pelvis_tilt_deg": 0.05511597767909325,
+          "pelvis_drift_m": 0.0002169231763969038,
+          "digit_normal_load_N": {
+            "left_thumb": 22.73164326385737,
+            "left_middle": 11.1751687353263,
+            "left_index": 12.581651846432067
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0005690368214404853
+        },
+        "frames": 376
+      },
+      "visual_evidence_audit": {
+        "kind": "offline_only_truth_audit_not_policy_input",
+        "estimates": [
+          {
+            "observation_id": "obs_001",
+            "observation_time": 0.7500000000000006,
+            "nearest_recorded_truth_time": 0.7500000000000006,
+            "time_gap_s": 0.0,
+            "position_error_m": [
+              0.0022476629800649017,
+              0.0020545612343494946,
+              0.0003653921907950386
+            ],
+            "error_norm_m": 0.0030670380158615497,
+            "circle_fit_rms_m": 0.0011854501551996656
+          },
+          {
+            "observation_id": "obs_002",
+            "observation_time": 4.249999999999754,
+            "nearest_recorded_truth_time": 4.251999999999754,
+            "time_gap_s": 0.0019999999999997797,
+            "position_error_m": [
+              0.0022283619032449353,
+              0.0020815917014608276,
+              0.0003661965557744118
+            ],
+            "error_norm_m": 0.0030712734656629026,
+            "circle_fit_rms_m": 0.00117961886053749
+          }
+        ],
+        "max_visual_position_error_m": 0.0030712734656629026,
+        "commanded_hold_audit": {
+          "commanded_hold_start_s": 17.270000000000476,
+          "commanded_hold_end_s": 18.770000000000476,
+          "independently_held_within_command_s": 1.4499999999991964,
+          "excludes_subsequent_model_wait": true,
+          "minimum_cup_lift_m": 0.11597275600845158
+        }
+      }
+    },
+    {
+      "episode_id": "vision_local_1002",
+      "configuration": {
+        "seed": 1002,
+        "branch": "vision-direct-v1",
+        "model_requests": 0,
+        "execution_mode": "head_RGBD_and_proprioception_with_simulated_tactile",
+        "controller_version": "vision-grasp-v1",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "VLA_weight_changes": false,
+        "formal_task_snapshot": false,
+        "memory": {
+          "source": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/final_reference_1000/episode_memory.json",
+          "sha256": "88c26d2a6a506783ad61e082a38b498e9d25eb446edb42dcd035f99c9fb48d90",
+          "kind": "engineering_parameter_reference_not_agent_learned_skill",
+          "parameters": {
+            "cup_in_palm_m": [
+              0.045,
+              -0.055,
+              -0.052
+            ],
+            "close_angles": [
+              0.0,
+              0.65,
+              0.65,
+              -0.8,
+              -0.6,
+              -0.8,
+              -0.6
+            ],
+            "palm_yaw_rad": 0.7,
+            "controller_version": "cup-relative-direct-v1"
+          }
+        },
+        "source_sha256": {
+          "vision_grasp.py": "ac4878551b53ac266450c8df104ab94ab9a8ebd36105cf95ac7f93d42030a545",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "5bc7d5d3267f284cd426c324e59c3b3aca62bf308ff46588846a75bf42a2cd03",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": false,
+        "agent_declared_done": false,
+        "simulation_seconds": 4.249999999999754,
+        "max_lift_m": 0.0,
+        "longest_held_lifted_seconds": 0.0,
+        "max_pelvis_tilt_deg": 0.013913031455590112,
+        "max_pelvis_drift_m": 0.00040832346430667334,
+        "protection": null,
+        "agent_stop_reason": "NO_REACHABLE_VISUAL_TARGET_PATH",
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      }
+    },
+    {
+      "episode_id": "vision_reach_1002",
+      "configuration": {
+        "seed": 1002,
+        "branch": "vision-direct-v1",
+        "model_requests": 0,
+        "execution_mode": "head_RGBD_and_proprioception_with_simulated_tactile",
+        "controller_version": "vision-grasp-v1",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "VLA_weight_changes": false,
+        "formal_task_snapshot": false,
+        "memory": {
+          "source": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/final_reference_1000/episode_memory.json",
+          "sha256": "88c26d2a6a506783ad61e082a38b498e9d25eb446edb42dcd035f99c9fb48d90",
+          "kind": "engineering_parameter_reference_not_agent_learned_skill",
+          "parameters": {
+            "cup_in_palm_m": [
+              0.045,
+              -0.055,
+              -0.052
+            ],
+            "close_angles": [
+              0.0,
+              0.65,
+              0.65,
+              -0.8,
+              -0.6,
+              -0.8,
+              -0.6
+            ],
+            "palm_yaw_rad": 0.7,
+            "controller_version": "cup-relative-direct-v1"
+          }
+        },
+        "source_sha256": {
+          "vision_grasp.py": "ac4878551b53ac266450c8df104ab94ab9a8ebd36105cf95ac7f93d42030a545",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "5820ce27bd6d61a886506b0b93650ddbf3e065da58b39bcfced9c6e7231cc253",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": false,
+        "agent_declared_done": false,
+        "simulation_seconds": 13.770000000001268,
+        "max_lift_m": 0.002471660460234837,
+        "longest_held_lifted_seconds": 0.0,
+        "max_pelvis_tilt_deg": 0.11940960353963546,
+        "max_pelvis_drift_m": 0.001278170043985096,
+        "protection": null,
+        "agent_stop_reason": "INSUFFICIENT_THUMB_AND_FINGER_LOAD",
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      }
+    },
+    {
+      "episode_id": "vision_transfer_1001",
+      "configuration": {
+        "seed": 1001,
+        "branch": "vision-direct-v1",
+        "model_requests": 0,
+        "execution_mode": "head_RGBD_and_proprioception_with_simulated_tactile",
+        "controller_version": "vision-grasp-v1",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "VLA_weight_changes": false,
+        "formal_task_snapshot": false,
+        "memory": {
+          "source": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/final_reference_1000/episode_memory.json",
+          "sha256": "88c26d2a6a506783ad61e082a38b498e9d25eb446edb42dcd035f99c9fb48d90",
+          "kind": "engineering_parameter_reference_not_agent_learned_skill",
+          "parameters": {
+            "cup_in_palm_m": [
+              0.045,
+              -0.055,
+              -0.052
+            ],
+            "close_angles": [
+              0.0,
+              0.65,
+              0.65,
+              -0.8,
+              -0.6,
+              -0.8,
+              -0.6
+            ],
+            "palm_yaw_rad": 0.7,
+            "controller_version": "cup-relative-direct-v1"
+          }
+        },
+        "source_sha256": {
+          "vision_grasp.py": "ac4878551b53ac266450c8df104ab94ab9a8ebd36105cf95ac7f93d42030a545",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "5820ce27bd6d61a886506b0b93650ddbf3e065da58b39bcfced9c6e7231cc253",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": true,
+        "agent_declared_done": false,
+        "simulation_seconds": 18.754000000000485,
+        "max_lift_m": 0.12076928537618481,
+        "longest_held_lifted_seconds": 1.7200000000000013,
+        "max_pelvis_tilt_deg": 0.068589498163354,
+        "max_pelvis_drift_m": 0.0009034221519876623,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.1206480776095471,
+        "longest_strict_hold_s": 1.6999999999990578,
+        "max_pelvis_tilt_deg": 0.06853037669747529,
+        "max_pelvis_drift_m": 0.0009034221519876623,
+        "max_cup_contact_penetration_m": 0.0007344791505555951,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "3795104cc7ff5c2ddd3bcdd73299f2c11acb597169a9df632e7e6ca6e11566ff",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11707651272256192,
+          "cup_lowest_clearance_m": 0.11667643883525414,
+          "cup_tilt_deg": 1.2501015442212835,
+          "pelvis_tilt_deg": 0.05029670211347661,
+          "pelvis_drift_m": 0.00017015457061142136,
+          "digit_normal_load_N": {
+            "left_thumb": 20.123949637730828,
+            "left_middle": 11.005557256069709,
+            "left_index": 10.428700417123375
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.00041401157953150936
+        },
+        "frames": 376
+      },
+      "visual_evidence_audit": {
+        "kind": "offline_only_truth_audit_not_policy_input",
+        "estimates": [
+          {
+            "observation_id": "obs_001",
+            "observation_time": 0.7500000000000006,
+            "nearest_recorded_truth_time": 0.7500000000000006,
+            "time_gap_s": 0.0,
+            "position_error_m": [
+              0.0021473422213709736,
+              0.0021791251840594383,
+              0.0003443975575608549
+            ],
+            "error_norm_m": 0.003078680701394412,
+            "circle_fit_rms_m": 0.001185413865108497
+          },
+          {
+            "observation_id": "obs_002",
+            "observation_time": 4.249999999999754,
+            "nearest_recorded_truth_time": 4.251999999999754,
+            "time_gap_s": 0.0019999999999997797,
+            "position_error_m": [
+              0.0021784159356375565,
+              0.002164134231223802,
+              0.0003458484973636322
+            ],
+            "error_norm_m": 0.0030900783392210254,
+            "circle_fit_rms_m": 0.0011781151164466806
+          }
+        ],
+        "max_visual_position_error_m": 0.0030900783392210254,
+        "commanded_hold_audit": {
+          "commanded_hold_start_s": 17.254000000000485,
+          "commanded_hold_end_s": 18.754000000000485,
+          "independently_held_within_command_s": 1.4499999999991964,
+          "excludes_subsequent_model_wait": true,
+          "minimum_cup_lift_m": 0.11618730555492074
+        }
+      }
+    },
+    {
+      "episode_id": "vision_torso_1002",
+      "configuration": {
+        "seed": 1002,
+        "branch": "vision-direct-v1",
+        "model_requests": 0,
+        "execution_mode": "head_RGBD_and_proprioception_with_simulated_tactile",
+        "controller_version": "vision-grasp-v1",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "VLA_weight_changes": false,
+        "formal_task_snapshot": false,
+        "memory": {
+          "source": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/final_reference_1000/episode_memory.json",
+          "sha256": "88c26d2a6a506783ad61e082a38b498e9d25eb446edb42dcd035f99c9fb48d90",
+          "kind": "engineering_parameter_reference_not_agent_learned_skill",
+          "parameters": {
+            "cup_in_palm_m": [
+              0.045,
+              -0.055,
+              -0.052
+            ],
+            "close_angles": [
+              0.0,
+              0.65,
+              0.65,
+              -0.8,
+              -0.6,
+              -0.8,
+              -0.6
+            ],
+            "palm_yaw_rad": 0.7,
+            "controller_version": "cup-relative-direct-v1"
+          }
+        },
+        "source_sha256": {
+          "vision_grasp.py": "7aeebeb95076fb1f6cbc15ed5b422c3679e993353bea6841e29e0022a92e41e1",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "84b301a1e3694c8547eb8bf483c40d81d13397c43b045b7be6d23b063539a2f5",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": true,
+        "agent_declared_done": false,
+        "simulation_seconds": 21.26999999999909,
+        "max_lift_m": 0.12115820987008297,
+        "longest_held_lifted_seconds": 1.7320000000000013,
+        "max_pelvis_tilt_deg": 0.11329070300897638,
+        "max_pelvis_drift_m": 0.0011801654951783497,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12115778572661107,
+        "longest_strict_hold_s": 1.6999999999990578,
+        "max_pelvis_tilt_deg": 0.1128560052157005,
+        "max_pelvis_drift_m": 0.001168773435127149,
+        "max_cup_contact_penetration_m": 0.0007465954482490498,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "26a19b24583f281dff6ed87b0653dc35a7b365734febadf1d7b130c4a42b0ef9",
+        "no_external_base_force": true,
+        "final": {
+          "time": 21.2519999999991,
+          "lift_m": 0.11710392627014388,
+          "cup_lowest_clearance_m": 0.11643897136022097,
+          "cup_tilt_deg": 1.6161843314866877,
+          "pelvis_tilt_deg": 0.0629019284409454,
+          "pelvis_drift_m": 0.00030459281170863955,
+          "digit_normal_load_N": {
+            "left_thumb": 20.59173817082743,
+            "left_middle": 9.961023167638858,
+            "left_index": 9.549374884938647
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0004220574477861819
+        },
+        "frames": 426
+      },
+      "visual_evidence_audit": {
+        "kind": "offline_only_truth_audit_not_policy_input",
+        "estimates": [
+          {
+            "observation_id": "obs_001",
+            "observation_time": 0.7500000000000006,
+            "nearest_recorded_truth_time": 0.7500000000000006,
+            "time_gap_s": 0.0,
+            "position_error_m": [
+              0.00240406716517666,
+              0.0018516747075189577,
+              0.0003899208525847131
+            ],
+            "error_norm_m": 0.003059456884550973,
+            "circle_fit_rms_m": 0.0011890198853025359
+          },
+          {
+            "observation_id": "obs_002",
+            "observation_time": 4.249999999999754,
+            "nearest_recorded_truth_time": 4.251999999999754,
+            "time_gap_s": 0.0019999999999997797,
+            "position_error_m": [
+              0.0024044111870545892,
+              0.0018258682598230047,
+              0.0003907454344853345
+            ],
+            "error_norm_m": 0.0030442848180210536,
+            "circle_fit_rms_m": 0.001183910669494665
+          },
+          {
+            "observation_id": "obs_003",
+            "observation_time": 6.749999999999479,
+            "nearest_recorded_truth_time": 6.751999999999478,
+            "time_gap_s": 0.0019999999999997797,
+            "position_error_m": [
+              0.002406980611118159,
+              0.0018363605585590692,
+              0.0003752535856835493
+            ],
+            "error_norm_m": 0.003050670584789266,
+            "circle_fit_rms_m": 0.0011900817444041748
+          }
+        ],
+        "max_visual_position_error_m": 0.003059456884550973,
+        "commanded_hold_audit": {
+          "commanded_hold_start_s": 19.76999999999909,
+          "commanded_hold_end_s": 21.26999999999909,
+          "independently_held_within_command_s": 1.4499999999991964,
+          "excludes_subsequent_model_wait": true,
+          "minimum_cup_lift_m": 0.11618791485577185
+        }
+      }
+    },
+    {
+      "episode_id": "astra_vision_1000",
+      "configuration": {
+        "seed": 1000,
+        "branch": "Astra-head-RGBD-engineered-tools-v1",
+        "model": "gpt-6",
+        "max_model_calls": 7,
+        "execution_mode": "Astra_supervision_of_engineered_visual_grasp_tools",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "spectator_used_by_agent": false,
+        "VLA_connected": false,
+        "formal_task_snapshot": false,
+        "latency_semantics": "advance actual model wall time with held joint targets",
+        "source_sha256": {
+          "run_vision_astra.py": "f7005b74df0627fb5542fd704c8cff37b8a80fd8ef2d798a7fec042458917e7f",
+          "vision_grasp.py": "ac4878551b53ac266450c8df104ab94ab9a8ebd36105cf95ac7f93d42030a545",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "5820ce27bd6d61a886506b0b93650ddbf3e065da58b39bcfced9c6e7231cc253",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": false,
+        "agent_declared_done": false,
+        "simulation_seconds": 0.7860000000000006,
+        "max_lift_m": 0.0,
+        "longest_held_lifted_seconds": 0.0,
+        "max_pelvis_tilt_deg": 0.01027771826648902,
+        "max_pelvis_drift_m": 0.00032551453641029466,
+        "protection": null,
+        "agent_stop_reason": "ASTRA_GATEWAY_ERROR",
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "summary": {
+        "environment": {
+          "independent_success": false,
+          "agent_declared_done": false,
+          "simulation_seconds": 0.7860000000000006,
+          "max_lift_m": 0.0,
+          "longest_held_lifted_seconds": 0.0,
+          "max_pelvis_tilt_deg": 0.01027771826648902,
+          "max_pelvis_drift_m": 0.00032551453641029466,
+          "protection": null,
+          "agent_stop_reason": "ASTRA_GATEWAY_ERROR",
+          "vla_connected": false,
+          "vla_tool_calls": 0,
+          "vla_applied_action_frames": 0,
+          "vla_inference_calls": 0,
+          "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+          "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+          "native_geometry_objects": 877,
+          "task_snapshot_accepted": false,
+          "runtime_version": "native-pantry-runtime-0.2.1",
+          "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+        },
+        "actual_model_requests": 1,
+        "decision_calls": 0,
+        "final_phase": "initial",
+        "failure": {
+          "kind": "gateway",
+          "status": null,
+          "message": "<urlopen error [Errno 1] Operation not permitted>",
+          "retry_after": null
+        },
+        "finished_by_agent": false
+      },
+      "agent_authored_memory": false
+    },
+    {
+      "episode_id": "astra_vision_live_1000",
+      "configuration": {
+        "seed": 1000,
+        "branch": "Astra-head-RGBD-engineered-tools-v1",
+        "model": "gpt-6",
+        "max_model_calls": 7,
+        "execution_mode": "Astra_supervision_of_engineered_visual_grasp_tools",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "spectator_used_by_agent": false,
+        "VLA_connected": false,
+        "formal_task_snapshot": false,
+        "latency_semantics": "advance actual model wall time with held joint targets",
+        "source_sha256": {
+          "run_vision_astra.py": "f7005b74df0627fb5542fd704c8cff37b8a80fd8ef2d798a7fec042458917e7f",
+          "vision_grasp.py": "ac4878551b53ac266450c8df104ab94ab9a8ebd36105cf95ac7f93d42030a545",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "5820ce27bd6d61a886506b0b93650ddbf3e065da58b39bcfced9c6e7231cc253",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": true,
+        "agent_declared_done": false,
+        "simulation_seconds": 43.07600000000668,
+        "max_lift_m": 0.12087879114559863,
+        "longest_held_lifted_seconds": 5.995999999999562,
+        "max_pelvis_tilt_deg": 0.06947020874988345,
+        "max_pelvis_drift_m": 0.0009252226387376204,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12073941153412604,
+        "longest_strict_hold_s": 5.948000000007269,
+        "max_pelvis_tilt_deg": 0.06938906898103231,
+        "max_pelvis_drift_m": 0.0009182542330926121,
+        "max_cup_contact_penetration_m": 0.0006236639529178816,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 43.05000000000665,
+          "lift_m": 0.11683320423980215,
+          "cup_lowest_clearance_m": 0.1166979314125034,
+          "cup_tilt_deg": 0.8817212259399417,
+          "pelvis_tilt_deg": 0.05471357144765087,
+          "pelvis_drift_m": 0.00021331917297232378,
+          "digit_normal_load_N": {
+            "left_thumb": 23.870705298440562,
+            "left_middle": 11.177647665142144,
+            "left_index": 11.842270361786273
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0005074074225909741
+        },
+        "frames": 862
+      },
+      "visual_evidence_audit": {
+        "kind": "offline_only_truth_audit_not_policy_input",
+        "estimates": [
+          {
+            "observation_id": "obs_002",
+            "observation_time": 5.46399999999962,
+            "nearest_recorded_truth_time": 5.451999999999622,
+            "time_gap_s": 0.011999999999998678,
+            "position_error_m": [
+              0.002262113051749004,
+              0.0020324814834699056,
+              0.00036442413602991164
+            ],
+            "error_norm_m": 0.0030628322498077445,
+            "circle_fit_rms_m": 0.0011815359650879397
+          },
+          {
+            "observation_id": "obs_003",
+            "observation_time": 8.963999999999663,
+            "nearest_recorded_truth_time": 8.951999999999659,
+            "time_gap_s": 0.012000000000004007,
+            "position_error_m": [
+              0.0022318250045362253,
+              0.002081415649350271,
+              0.0003648372689075696
+            ],
+            "error_norm_m": 0.0030735061719504107,
+            "circle_fit_rms_m": 0.0011792055116723462
+          }
+        ],
+        "max_visual_position_error_m": 0.0030735061719504107,
+        "commanded_hold_audit": {
+          "commanded_hold_start_s": 37.300000000001454,
+          "commanded_hold_end_s": 38.800000000001454,
+          "independently_held_within_command_s": 1.4980000000018308,
+          "excludes_subsequent_model_wait": true,
+          "minimum_cup_lift_m": 0.11602510311445258
+        }
+      },
+      "summary": {
+        "environment": {
+          "independent_success": true,
+          "agent_declared_done": false,
+          "simulation_seconds": 43.07600000000668,
+          "max_lift_m": 0.12087879114559863,
+          "longest_held_lifted_seconds": 5.995999999999562,
+          "max_pelvis_tilt_deg": 0.06947020874988345,
+          "max_pelvis_drift_m": 0.0009252226387376204,
+          "protection": null,
+          "agent_stop_reason": null,
+          "vla_connected": false,
+          "vla_tool_calls": 0,
+          "vla_applied_action_frames": 0,
+          "vla_inference_calls": 0,
+          "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+          "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+          "native_geometry_objects": 877,
+          "task_snapshot_accepted": false,
+          "runtime_version": "native-pantry-runtime-0.2.1",
+          "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+        },
+        "actual_model_requests": 7,
+        "decision_calls": 6,
+        "final_phase": "complete",
+        "failure": null,
+        "finished_by_agent": true
+      },
+      "agent_authored_memory": true
+    },
+    {
+      "episode_id": "astra_vision_live_1002",
+      "configuration": {
+        "seed": 1002,
+        "branch": "Astra-head-RGBD-engineered-tools-v1",
+        "model": "gpt-6",
+        "max_model_calls": 9,
+        "execution_mode": "Astra_supervision_of_engineered_visual_grasp_tools",
+        "policy_reads_cup_ground_truth": false,
+        "contact_object_identity_used_by_policy": false,
+        "spectator_used_by_agent": false,
+        "VLA_connected": false,
+        "formal_task_snapshot": false,
+        "latency_semantics": "advance actual model wall time with held joint targets",
+        "source_sha256": {
+          "run_vision_astra.py": "0b2adb3564f3e725407dadde72ce63556120d39f361f142895cef6ea36a87c67",
+          "vision_grasp.py": "714bddca19d5ca3720afd04b59782b7c9279c0b2bd1dafeb25d24046d3171525",
+          "rgbd_cup.py": "e6a8f521414baf543fa073f445fbff7ac610c070057ca3002c6e3a7f7872fe5e",
+          "arm_planner.py": "84b301a1e3694c8547eb8bf483c40d81d13397c43b045b7be6d23b063539a2f5",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b"
+        }
+      },
+      "environment": {
+        "independent_success": true,
+        "agent_declared_done": false,
+        "simulation_seconds": 51.94800000001752,
+        "max_lift_m": 0.12103376726166815,
+        "longest_held_lifted_seconds": 7.791999999999364,
+        "max_pelvis_tilt_deg": 0.11339060619344953,
+        "max_pelvis_drift_m": 0.0011885031286240802,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12097081391556896,
+        "longest_strict_hold_s": 7.70000000000941,
+        "max_pelvis_tilt_deg": 0.1133436989153906,
+        "max_pelvis_drift_m": 0.001186882425967311,
+        "max_cup_contact_penetration_m": 0.0005407446563696654,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "26a19b24583f281dff6ed87b0653dc35a7b365734febadf1d7b130c4a42b0ef9",
+        "no_external_base_force": true,
+        "final": {
+          "time": 51.900000000017464,
+          "lift_m": 0.11669935367228268,
+          "cup_lowest_clearance_m": 0.11470768771755191,
+          "cup_tilt_deg": 3.4580706485622628,
+          "pelvis_tilt_deg": 0.06247010910764843,
+          "pelvis_drift_m": 0.0002992801546640762,
+          "digit_normal_load_N": {
+            "left_thumb": 21.07069691415304,
+            "left_middle": 10.81992770528098,
+            "left_index": 9.799687757194501
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0004496164568362155
+        },
+        "frames": 1039
+      },
+      "visual_evidence_audit": {
+        "kind": "offline_only_truth_audit_not_policy_input",
+        "estimates": [
+          {
+            "observation_id": "obs_002",
+            "observation_time": 4.56199999999972,
+            "nearest_recorded_truth_time": 4.551999999999721,
+            "time_gap_s": 0.009999999999998899,
+            "position_error_m": [
+              0.0024049093994439885,
+              0.001852203732211788,
+              0.0003898240212044102
+            ],
+            "error_norm_m": 0.003060426547503027,
+            "circle_fit_rms_m": 0.0011890784056562715
+          },
+          {
+            "observation_id": "obs_003",
+            "observation_time": 8.061999999999362,
+            "nearest_recorded_truth_time": 8.051999999999358,
+            "time_gap_s": 0.01000000000000334,
+            "position_error_m": [
+              0.0024072213983670765,
+              0.0018257717243227445,
+              0.00038944909319366117
+            ],
+            "error_norm_m": 0.0030462809861012746,
+            "circle_fit_rms_m": 0.0011839106559059262
+          },
+          {
+            "observation_id": "obs_006",
+            "observation_time": 16.79400000000157,
+            "nearest_recorded_truth_time": 16.800000000001567,
+            "time_gap_s": 0.005999999999996675,
+            "position_error_m": [
+              0.0024062008048723604,
+              0.0018364586860025733,
+              0.0003755840868291671
+            ],
+            "error_norm_m": 0.0030501551149149765,
+            "circle_fit_rms_m": 0.001190081228366338
+          }
+        ],
+        "max_visual_position_error_m": 0.003060426547503027,
+        "commanded_hold_audit": {
+          "commanded_hold_start_s": 44.386000000010114,
+          "commanded_hold_end_s": 45.886000000010114,
+          "independently_held_within_command_s": 1.450000000001772,
+          "excludes_subsequent_model_wait": true,
+          "minimum_cup_lift_m": 0.11608950688883746
+        }
+      },
+      "summary": {
+        "environment": {
+          "independent_success": true,
+          "agent_declared_done": false,
+          "simulation_seconds": 51.94800000001752,
+          "max_lift_m": 0.12103376726166815,
+          "longest_held_lifted_seconds": 7.791999999999364,
+          "max_pelvis_tilt_deg": 0.11339060619344953,
+          "max_pelvis_drift_m": 0.0011885031286240802,
+          "protection": null,
+          "agent_stop_reason": null,
+          "vla_connected": false,
+          "vla_tool_calls": 0,
+          "vla_applied_action_frames": 0,
+          "vla_inference_calls": 0,
+          "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+          "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+          "native_geometry_objects": 877,
+          "task_snapshot_accepted": false,
+          "runtime_version": "native-pantry-runtime-0.2.1",
+          "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+        },
+        "actual_model_requests": 9,
+        "decision_calls": 8,
+        "final_phase": "complete",
+        "failure": null,
+        "finished_by_agent": true
+      },
+      "agent_authored_memory": true
+    }
+  ],
+  "setup_failures": [
+    {
+      "folder": "episodes/vision_initial_1000",
+      "log": "vision_initial_1000.log",
+      "reason": "MuJoCo imported before EGL environment setup; corrected before subsequent runs"
+    }
+  ],
+  "videos": [
+    "deliverables/P01_Astra_RGBD_success.mp4",
+    "deliverables/P01_Astra_RGBD_reach_recovery.mp4"
+  ],
+  "limits": [
+    "Engineered grasp phase tools, not end-to-end VLA autonomy",
+    "White upright known-radius cup under fixed simulated illumination",
+    "No full collision planner",
+    "No held-out success-rate evaluation"
+  ]
+}

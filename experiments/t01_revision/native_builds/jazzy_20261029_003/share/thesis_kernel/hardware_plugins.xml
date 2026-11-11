@@ -1,0 +1,1 @@
+<library path="thesis_kernel"><class name="thesis_kernel/MujocoSystem" type="thesis_kernel::MujocoSystem" base_class_type="hardware_interface::SystemInterface"/></library>

@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "phase": "candidate",
+  "native_sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+  "user_acceptance": "pending",
+  "reviewer": "Codex, every listed actual saved-native image individually viewed",
+  "reviewed_at_unix": 1790931105.058789,
+  "actual_images_viewed": [
+    "IN18_office_monitor_rear",
+    "IN20_monitor_underside",
+    "IN20_microwave_front",
+    "IN18_office_equipment_eye",
+    "16_office_eye",
+    "17_office_reverse",
+    "IN18_office_keyboard_macro",
+    "IN18_office_mouse_macro",
+    "IN18_office_entry_reader",
+    "01_pantry_eye",
+    "09_discussion_eye",
+    "DH01_stair_landing",
+    "IN20_pantry_appliance_overview",
+    "IN19_dispenser_grate"
+  ],
+  "accepted_images": [
+    {
+      "camera": "IN18_office_monitor_rear",
+      "image_sha256": "8e9ba9ba28da90f28fcdd1cf1cd7d46f36975f8b2f3082ad540e21d9eb67ee22",
+      "observation": "实际保存工程的背部近景已查看。上一轮裸露的银色接口背板现在由连续黑色后壳遮蔽；接线仍朝下，支架、底座和桌面线缆可见。黑色塑料与金属支架的反射不同，外壳边缘没有新增悬空部件。此视角不检验键盘文字，也不声称精确复制 Dell 的全部接口。"
+    },
+    {
+      "camera": "IN20_monitor_underside",
+      "image_sha256": "9dee69af2672b6ce8e24897bc30d1bdc8b6acf6d5fb86b4ae05b19205e5b44de",
+      "observation": "实际底部近景已查看。新增后壳位于接口后侧，朝下的接口开口仍露出，右侧已连接的两根线缆从插头自然下垂并经过支架附近；未见外壳封住插头或线缆的情况。支架遮住部分中央接口，照片不作为每个端口均完整可见的证明。"
+    },
+    {
+      "camera": "IN20_microwave_front",
+      "image_sha256": "0f2fdeb2e1615d05bd91d83c5e5d6a8550472d52cd6c3d34344fed1c41f63b31",
+      "observation": "实际正面近景已查看。微波炉整机、玻璃门、把手、上下两只旋钮及刻度、电源插头和旁边插座全部在画面内，下方搁板和上方空间也可见，修复了上一轮切掉旋钮的取景。暗色门玻璃下的穿孔层未在这张图中清晰显现，不宣称其照片可见；00:00 为静态显示，未模拟电器工作。"
+    },
+    {
+      "camera": "IN18_office_equipment_eye",
+      "image_sha256": "beca178ffbc913b5dc76c5f200b40fcda623396ffba35f8705284c7004f5d0c8",
+      "observation": "已查看本版原办公室设备近景。屏幕的有效显示面、窄边框、静态文件浏览器界面及椅背轻微反射可见；金属支架和底座实际落在木桌上，线缆经过支架及桌面真实开口。下方可见独立键帽与字标。该特写裁掉屏幕上沿和键盘前半部，不能代替完整设备及鼠标检查，另由办公室整体和独立键鼠近景补足。"
+    },
+    {
+      "camera": "16_office_eye",
+      "image_sha256": "a9cf8ba4c7384e74df1f696a051191e60d796ecdc6307b202a32aa25e26088aa",
+      "observation": "已查看本版办公室整体机位。近处工位的键盘在座位与显示器之间，鼠标在右侧垫面，显示器、支架、基座及真实开口的相对尺度一致；远处相向工位可见显示器后壳与走线。原木桌、白色网椅、绿墙和窗外原香港街区保留。此图能展示设备放回原房间的状态，作为文档办公室照片；窗外旧城市模型的模糊建筑不在本轮修订范围，未声称已经精修。"
+    },
+    {
+      "camera": "17_office_reverse",
+      "image_sha256": "57af8ebc2d956a82296f1653cab3fa193a39c55351708666c11c2ea044ee06ed",
+      "observation": "已查看办公室反向整体图。两套设备的前后方向、椅位、桌面承托和鼠标方向与主视图一致，前工位屏幕、键盘及鼠标均完整可辨；后工位背壳没有重新暴露银色接口背板。玻璃隔断、出入口、原白板及原灯具保持，未见新增设备阻挡门口。整体视图中的键帽文字不足以逐项辨认，另以键盘近景核验。"
+    },
+    {
+      "camera": "IN18_office_keyboard_macro",
+      "image_sha256": "114a47fa9b77a7444979d731b10a0ae7b032e0c71b91b74e232a8e29cb97b4d2",
+      "observation": "已逐项查看实际键盘近景中可见的字母区、长 Enter/Shift/Backspace、方向键、导航区和部分数字区。独立凹面键帽有高度与间隙，主字符、上下层字符和 Windows/Menu 图标落在键面内；未见上一版数字副字标越界。键盘边缘与 USB 线真实连接。照片裁掉最左侧和数字区最右列，其完整104键结构另由本版原生尺寸及字标检查核验，不把此图说成全键盘无裁切。"
+    },
+    {
+      "camera": "IN18_office_mouse_macro",
+      "image_sha256": "5d3400b6c0d41eed31c5ad6d77d3fdf9eb86c1b253259f69b0dcd2355b87aa7d",
+      "observation": "已查看实际鼠标近景。封闭圆弧外壳、顶部按钮分缝、带横向纹理的滚轮、底部装配边及有线出口均可辨，鼠标实际放在垫面上，未再露出穿过外壳的支撑块。塑料、橡胶滚轮和桌面垫材的反射不同；形体参考 M100 的尺寸与照片，未声称是厂家精确CAD。"
+    },
+    {
+      "camera": "IN18_office_entry_reader",
+      "image_sha256": "083c676166e9d0d0287fce475c8c532ba6743f8e8f8a69e482751714bd5002df",
+      "observation": "已查看本版门禁正面照片。从左到右依次为1–2–3、4–5–6、7–8–9、*–0–#，修复了第一轮横向倒序的数字；键块和字标接触，表面明暗及边缘阴影可辨。门框、长把手、原安装板及墙体保留。此照片验收的是字标方向与现有安装关系，不把通用门禁形体称作核实过型号的现场设备。"
+    },
+    {
+      "camera": "01_pantry_eye",
+      "image_sha256": "33098eb9ce7c52773c4472c7eb8edb3b36807b87df704e106967952e3ffa363a",
+      "observation": "已查看本版茶水间整体图。原木格栅天花、沙发、台面、壁柜、冰箱、饮水机、微波炉、洗手台及实验桌的位置保持，与日常入口及通路关系一致，设备有实际搁板和台面承托。桌上杯瓶及原实验道具保留，没有为本轮照片重摆。此图用于文档茶水间展示；设备小字与格栅另用近景检查，电器、水流功能未在此照片中证明。"
+    },
+    {
+      "camera": "09_discussion_eye",
+      "image_sha256": "6dfe81299c666e1f0d242bc360c59edb9e46e60c22a69b65b084075f89893217",
+      "observation": "已查看本版讨论室整体图。原圆桌、三个布面座椅、木质/金属支撑、台面杯子和笔记本位置连续一致，墙面印刷、圆形白板、灯具及电源面板保留。可见接触阴影，未见杯子、笔记本或座椅悬空；本轮未重新布置该房间，不把这张再拍照片称作新增的租户实测室内。用于替换文档讨论室图片。"
+    },
+    {
+      "camera": "DH01_stair_landing",
+      "image_sha256": "2c793fe05bcf5b924ff5159ee9f2ef1973fa9e5395ea84ba0b9ba3b2a5bcbeb7",
+      "observation": "已查看保存工程的楼梯与平台全景。三段楼梯和休息平台连续，木踏面、黑色防滑条、扶手转折、栏杆及可见立柱底座真实接合，未见新增设备阻断通路；原墙面和材料保持。本图覆盖实际踏步及平台，可作为文档照片。此前仅拍到墙与扶手而未拍到踏步/底座的旧细节机位没有收入最终验收图集。上下通行另由本版自然物理检查验证。"
+    },
+    {
+      "camera": "IN20_pantry_appliance_overview",
+      "image_sha256": "8e354fa6ec520380226fcc5a38ab141a196b060ec4d7b99011d052b3de5da4a7",
+      "observation": "已查看本版设施整体近景。饮水机与微波炉完整处于画面中，冷热标识、出水嘴、滴水托盘、两层搁板、下层两只旋钮和各自电源接线可见。两层设备都有实际承托，电线落到各自插座，白色供水线接向墙内设施接合处。画面侧边部分裁掉冰箱及水槽，不将此图称作所有厨房设备无裁切的总图；电器/水流未模拟。"
+    },
+    {
+      "camera": "IN19_dispenser_grate",
+      "image_sha256": "713488fc02229b1f1b36c134fdeb4c9d14f71c211e0976d3661b98fd57b981a8",
+      "observation": "已查看本版滴水格栅实际近景。独立金属条之间有真实空隙和托盘暗部，条面、边框、前侧折边及接合位置可辨，表面反射保留细微差异。该结构与旧连续实心格栅标记不同，是附加实体条；未把暗部声称为流体排水模拟或逐孔功能试验。"
+    }
+  ],
+  "room_materials_and_lighting_unchanged": true,
+  "limits": [
+    "Real product dimensions and photographs as reference, not verified tenant equipment or exact OEM CAD.",
+    "Monitor interface is static. Electric appliances, water and electronic circuits not simulated.",
+    "Dark retained underdesk connections were checked by native geometry; no complete visible port-appearance claim.",
+    "This does not certify the complete city or every indoor asset as photographically equivalent."
+  ]
+}

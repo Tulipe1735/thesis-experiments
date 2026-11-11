@@ -1,0 +1,283 @@
+{
+  "schema_version": "skill_record.v1",
+  "id": "t01_cup_to_tray",
+  "version": 10,
+  "status": "validated",
+  "validation": "paired",
+  "provenance": {
+    "form": "engineering_composition",
+    "author": "engineering distillation of agent episodes; card authored by engineering",
+    "first_run": "experiments/grow_up_harness_v2/runs/t01_agent_pilot_20261105_002",
+    "generation_note": "The card is text. The program is a hand-written parameterisation of the command sequence the S1C0 agent produced; no learned policy is involved."
+  },
+  "scope": {
+    "task": "T01",
+    "assets": [
+      "DH_2F_mug_06",
+      "rectangular_low_rim_v1"
+    ],
+    "stage": "single_room_tabletop",
+    "initial_states": [
+      {
+        "path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/initial_state.npz",
+        "sha256": "6b9e061e1f20757cbeed66cd4bffbf0d1f5b2ec5ae928b01a2c748b445f18941"
+      }
+    ]
+  },
+  "retrieval": {
+    "description": "Pick the single upright cup and place it on the tray floor, released and settled.",
+    "keywords": [
+      "grasp",
+      "cup",
+      "tray",
+      "single_room",
+      "tabletop",
+      "place"
+    ],
+    "embedding_model": null
+  },
+  "preconditions": [
+    "target_visible",
+    "hand_empty",
+    "tray_visible",
+    "guard_clear"
+  ],
+  "postconditions": [
+    "cup_base_inside_tray_support_region",
+    "tray_floor_support_ge_0.5N",
+    "cup_released_hand_contact_lt_0.1N",
+    "cup_upright_and_stable_ge_1s"
+  ],
+  "failure_exits": [
+    {
+      "code": "RELEASE_TOO_HIGH",
+      "condition": "palm above tray floor + 0.12 m when the hand opens",
+      "recovery": "lower in <=5 cm steps, then open"
+    },
+    {
+      "code": "REAPPROACH_AFTER_RELEASE",
+      "condition": "hand closes or palm drops below tray floor + 0.10 m after release",
+      "recovery": "retreat and finish; the episode ends at release"
+    },
+    {
+      "code": "MOVE_TOO_LONG",
+      "condition": "one plain move exceeds 0.05 m of palm travel",
+      "recovery": "split the move"
+    },
+    {
+      "code": "POSE_IK_REJECTED",
+      "condition": "the target palm pose is outside the arm workspace",
+      "recovery": "move nearer, or change waist pitch and re-probe"
+    }
+  ],
+  "physical_constraints": {
+    "max_single_move_m": 0.05,
+    "release_height_m": 0.03,
+    "placement_tolerance_m": 0.013,
+    "contact_load_max_N": 0.1,
+    "notes": [
+      "tray inner half-extent [0.214, 0.054] m, cup radius 0.041 m, so the placement band is +/-0.013 m in y",
+      "waist pitch -0.10 rad is required for the approach to stay reachable"
+    ]
+  },
+  "card": {
+    "text": "Reach the cup in five phases, a few short commands each. 1) Clear: lift the palm to about (-0.07, 0.34, 0.09) keeping the current wrist orientation, then raise it to (-0.04, 0.34, 0.30) with a level palm. Each leg is several moves of at most 5 cm; one long move drifts the base. 2) Lean: set waist_pitch_joint to about -0.10 rad, wait 1 s, and move back to the clear pose; without this lean the approach stops about 20 cm short. 3) Approach: the grasp pose is cup_bottoms_m minus the rotated cup_in_palm_m from grasp_probe; start from approach_start_xyz_m and walk to grasp_xyz_m in steps of 2-3 cm, keeping the palm yaw. 4) Close: set the thumb to 0.0/0.65/0.65 rad and index and middle to -0.8/-0.6 rad, wait, then lift in 3-5 cm steps to 12 cm and check that the cup stayed with the hand. 5) Place: use place_probe, not the tray centre. Move the palm to place_probe.above_xyz_m with the same palm yaw, then lower to place_probe.lower_xyz_m; that puts the cup bottom at place_probe.cup_bottom_at_lower_m over the tray centre. Aiming the palm at the tray centre leaves the cup one cup_in_palm away and it lands beside the tray. Do not open the hand before the palm is at or below place_probe.release_palm_below_z_m; releasing higher is refused as RELEASE_TOO_HIGH and the cup topples. Open the hand fully, wait 0.5 s without moving, then retreat upward in 5 cm steps and call finish. The episode ends at release: touching or re-grasping the cup afterwards is refused as REAPPROACH_AFTER_RELEASE. Let the scene settle for at least 1 s before finishing. No single move may exceed 5 cm of palm travel; longer moves are rejected, so split them. Use 2 s or more per move; a large jump in one command trips tracking protection. If grasp_xyz_m is rejected, change waist_pitch_joint by 0.05 rad, wait, and read grasp_probe again. If a probe reports POSE_IK_REJECTED, move nearer before retrying. Never infer successful placement from a completed motion.",
+    "status": "validated",
+    "evidence_arm": "S1C0"
+  },
+  "program": {
+    "module": "experiments/grow_up_harness_v2/skills/t01_cup_to_tray_v1/program.py",
+    "entry": "plan",
+    "emits": "commands",
+    "status": "accepted",
+    "acceptance_run": "experiments/grow_up_harness_v2/runs/t01_program_check_20261105_015/result.json",
+    "acceptance_note": "Accepted on control_2500: verified, stable 7.20 s, 51 commands, verdict hash unchanged from _013."
+  },
+  "interfaces": {
+    "observations": [
+      "cup_bottoms_m",
+      "tray_floor_center_m",
+      "left_palm",
+      "grasp_probe",
+      "place_probe",
+      "joints"
+    ],
+    "commands": [
+      "move",
+      "joints",
+      "wait",
+      "finish"
+    ],
+    "guards": [
+      "MAX_MOVE_M",
+      "RELEASE_TOO_HIGH",
+      "REAPPROACH_AFTER_RELEASE"
+    ]
+  },
+  "composition": {
+    "uses": [],
+    "used_by": []
+  },
+  "binding": {
+    "plant_sha256": "e86012f1605c84e31f29102b04754de76a5be01354acb274c6029db6c334d7c6",
+    "evaluator_sha256": "b94d53c5651ad4c2c415f0dab578d950e2c3a04dcc883ee8181b4358bafa5fd7",
+    "simulation_budget_s": 180.0
+  },
+  "evidence": {
+    "paired": {
+      "without": {
+        "arm": "S0C0",
+        "episodes": 4,
+        "successes": 0
+      },
+      "with": {
+        "arm": "S1C0",
+        "episodes": 4,
+        "successes": 3
+      }
+    },
+    "runs": [
+      {
+        "path": "experiments/grow_up_harness_v2/runs/t01_agent_pilot_20261105_002/S1C0",
+        "arm": "S1C0",
+        "verified_success": true,
+        "stable_s": 5.25,
+        "margin_m": 0.006457,
+        "commands": 39,
+        "simulation_s": 79.25,
+        "outcome": "AGENT_FINISH"
+      },
+      {
+        "path": "experiments/grow_up_harness_v2/runs/t01_agent_pilot_20261105_003/S1C0",
+        "arm": "S1C0",
+        "verified_success": true,
+        "stable_s": 6.4,
+        "margin_m": 0.00874,
+        "commands": 42,
+        "simulation_s": 80.05,
+        "outcome": "AGENT_FINISH"
+      },
+      {
+        "path": "experiments/grow_up_harness_v2/runs/t01_agent_pilot_20261105_004/S1C0",
+        "arm": "S1C0",
+        "verified_success": true,
+        "stable_s": 2.1,
+        "margin_m": 0.002467,
+        "commands": 38,
+        "simulation_s": 71.25,
+        "outcome": "AGENT_FINISH"
+      },
+      {
+        "path": "experiments/grow_up_harness_v2/runs/t01_agent_pilot_20261105_005/S1C0",
+        "arm": "S1C0",
+        "verified_success": false,
+        "stable_s": 0.0,
+        "margin_m": -0.023921,
+        "commands": 35,
+        "simulation_s": 67.75,
+        "outcome": "AGENT_FINISH"
+      }
+    ],
+    "criteria": {
+      "success_rate_without": 0.0,
+      "success_rate_with": 0.75,
+      "fisher_one_sided_p": 0.0714,
+      "median_stable_s": 5.25,
+      "transfer_episodes": 16,
+      "transfer_successes": 8,
+      "transfer_run": "experiments/grow_up_harness_v2/runs/t01_program_transfer_repl3_20261105_001/results.json",
+      "transfer_by_group": "position 1/4, orientation 3/4, asset 3/4, joint 1/4",
+      "perception_run": "experiments/grow_up_harness_v2/runs/t01_perception_check_20261105_001/results.json",
+      "cup_perception_error_max_m": 0.0031,
+      "cup_perception_error_mean_m": 0.0024,
+      "tray_perception_error_max_m": 0.0006,
+      "general_generator_template": "TP03",
+      "general_generator_cases": 12,
+      "general_generator_within_reach": 0,
+      "general_generator_note": "TP03 cups sit 0.65-1.06 m from the registered pelvis; the left arm reaches 0.45 m forward.",
+      "transfer_suite": "experiments/cordis_t01/runs/t01_variation_repl3_20261105_001",
+      "post_hoc_11_of_16_superseded": true,
+      "repl1_9_of_16": "experiments/grow_up_harness_v2/runs/t01_program_transfer_repl_20261105_001",
+      "repl2_8_of_16": "experiments/grow_up_harness_v2/runs/t01_program_transfer_repl2_20261105_001"
+    }
+  },
+  "reliability": {
+    "episodes": 4,
+    "successes": 3,
+    "rate": 0.75,
+    "wilson_lower_95": 0.30064184258240184
+  },
+  "limits": [
+    "Validated on one saved initial state; the paired result is 0/4 vs 3/4.",
+    "Fresh-seed replication with the current program: 8/16 (position 1/4, orientation 3/4, asset 3/4, joint 1/4).",
+    "Three independent seed blocks give 9/16, 8/16 and 8/16; widening yaw from 2 to 6 did not help.",
+    "The waist sweep removed every GRASP_UNREACHABLE failure (5 in repl2, 0 in repl3), but the pass count did not move.",
+    "The remaining failures are placement near-misses: 6 of 8 land within 6.4 mm of the 1 mm margin and lean 6-12 deg on the rim.",
+    "Correcting the placement further is not validated; the 2-3 mm perception bias is the same order as the gap.",
+    "Lowering the release height from 3.0 cm to 1.5 cm failed its own control acceptance (-1.6 mm, 8.6 deg) and was reverted; the artifact is byte-identical to v9.",
+    "The general generator's TP03 template is out of scope for a stationary single arm: 0/18 table cells sit inside the 0.45 m forward reach.",
+    "n=4 per arm; one-sided Fisher exact p = 0.071, so the paired difference is suggestive, not significant.",
+    "Simulation only; no physical robot."
+  ],
+  "promotion": {
+    "rule": "A record becomes validated only when the card is paired-validated and the program passes its own acceptance run on the same saved state.",
+    "blocking": [
+      "no cross-initial-state replication",
+      "n=4 per arm; Wilson lower bound 0.30",
+      "placement margin 2.7-9.6 mm inside a 13 mm band"
+    ],
+    "promoted_on": "2026-11-05"
+  },
+  "history": [
+    {
+      "version": 1,
+      "change": "first record: card validated 0/4 vs 3/4, program distilled and rejected",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_agent_pilot_20261105_002.._005"
+    },
+    {
+      "version": 2,
+      "change": "program split into plan/correct/release; release recomputed from the observed palm; acceptance passed 3/3",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_check_20261105_004.._006"
+    },
+    {
+      "version": 3,
+      "change": "retreat step 5.0 -> 4.5 cm so the 5 cm guard cannot reject it; re-accepted",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_check_20261105_007"
+    },
+    {
+      "version": 4,
+      "change": "lift re-anchored on the observed palm; grasp yaw chosen by IK feasibility; transfer measured on 16 generated cases (6 pass)",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_transfer_20261105_002"
+    },
+    {
+      "version": 5,
+      "change": "scope pinned to mug + rectangular tray; perception error measured against simulator truth (not the bottleneck)",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_perception_check_20261105_001"
+    },
+    {
+      "version": 6,
+      "change": "vertical-first lift: asset group 1/4 -> 4/4, generated cases 6/16 -> 11/16",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_transfer_20261105_003"
+    },
+    {
+      "version": 7,
+      "change": "general-generator TP03 adapter built; blocked by body placement, 0/12 within reach",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_general_smoke_20261105_002"
+    },
+    {
+      "version": 8,
+      "change": "fresh-seed replication replaces the post-hoc number: 9/16, with reachability as the dominant failure",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_transfer_repl_20261105_001"
+    },
+    {
+      "version": 9,
+      "change": "waist sweep in grasp_probe; repl3: reachability failures eliminated, placement near-misses remain",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_transfer_repl3_20261105_001"
+    },
+    {
+      "version": 10,
+      "change": "tried a 1.5 cm release height; rejected by the control gate, reverted unchanged",
+      "evidence": "experiments/grow_up_harness_v2/runs/t01_program_check_20261105_016"
+    }
+  ]
+}

@@ -1,0 +1,874 @@
+{
+  "recorded_at": "2026-10-24T01:06:42.422313+08:00",
+  "status": "PHYSICAL_DIRECT_CONTROL_SUCCESS_NOT_AUTONOMOUS_AGENT_SUCCESS",
+  "episodes": [
+    {
+      "episode_id": "baseline_001",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": {
+        "verified_success": false,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.025913782842933997,
+        "longest_strict_hold_s": 0.0,
+        "max_pelvis_tilt_deg": 0.5609129316885756,
+        "max_pelvis_drift_m": 0.0042158002497390745,
+        "max_cup_contact_penetration_m": 0.0005676766701384514,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 72.0000000000136,
+          "lift_m": -0.0005008194541503697,
+          "cup_lowest_clearance_m": -8.219730541769721e-07,
+          "cup_tilt_deg": 3.306651113363206e-06,
+          "pelvis_tilt_deg": 0.003100517053676341,
+          "pelvis_drift_m": 0.00014476533419491871,
+          "digit_normal_load_N": {},
+          "opposing_contacts": false,
+          "non_hand_support_load_N": 1.8639000044318466,
+          "held": false,
+          "max_penetration_m": 7.022517651342157e-07
+        },
+        "frames": 1441
+      },
+      "max_lift_m": 0.025929465152510378,
+      "hold_s": 0.0,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-frozen-baseline",
+        "model_requests": 0,
+        "camera_version": "pantry_head_wide_v2",
+        "execution_mode": "replay_old_action_arguments_with_current_runtime",
+        "formal_task_snapshot": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_001",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.05,
+          -0.045,
+          -0.055
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_002",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.006217122408650022,
+      "hold_s": 0.0,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.08,
+          -0.04,
+          -0.055
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_003",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": null,
+      "protection": "BASE_DRIFT_PROTECTION",
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_004",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": "behind_high_11: POSE_IK_REJECTED",
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_005",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": "behind_high_11: TRACKING_PROTECTION",
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_006",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": "lower_behind_03: ENDPOINT_TRACKING_ERROR",
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.0,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_007",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": null,
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": "approach_open_05: POSE_IK_REJECTED",
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.0,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "direct_008",
+      "seed": 1000,
+      "controller_success": true,
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12060192468402686,
+        "longest_strict_hold_s": 1.6499999999990855,
+        "max_pelvis_tilt_deg": 0.0689227639176472,
+        "max_pelvis_drift_m": 0.0009097497667542101,
+        "max_cup_contact_penetration_m": 0.0005827170670958357,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11668221047327187,
+          "cup_lowest_clearance_m": 0.11636100066660426,
+          "cup_tilt_deg": 1.1380422032116981,
+          "pelvis_tilt_deg": 0.055229798654736935,
+          "pelvis_drift_m": 0.00021636639898054447,
+          "digit_normal_load_N": {
+            "left_thumb": 21.35502678725254,
+            "left_middle": 12.1932921920499,
+            "left_index": 10.91114774367442
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0005315832876434953
+        },
+        "frames": 376
+      },
+      "max_lift_m": 0.1206052439774894,
+      "hold_s": 1.7140000000000013,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "final_reference_1000",
+      "seed": 1000,
+      "controller_success": true,
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12060192468402686,
+        "longest_strict_hold_s": 1.6499999999990855,
+        "max_pelvis_tilt_deg": 0.0689227639176472,
+        "max_pelvis_drift_m": 0.0009097497667542101,
+        "max_cup_contact_penetration_m": 0.0005827170670958357,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11668221047327187,
+          "cup_lowest_clearance_m": 0.11636100066660426,
+          "cup_tilt_deg": 1.1380422032116981,
+          "pelvis_tilt_deg": 0.055229798654736935,
+          "pelvis_drift_m": 0.00021636639898054447,
+          "digit_normal_load_N": {
+            "left_thumb": 21.35502678725254,
+            "left_middle": 12.1932921920499,
+            "left_index": 10.91114774367442
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0005315832876434953
+        },
+        "frames": 376
+      },
+      "max_lift_m": 0.1206052439774894,
+      "hold_s": 1.7140000000000013,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false,
+        "controller_version": "cup-relative-direct-v1",
+        "source_sha256": {
+          "run_direct_grasp.py": "014e9f9f3088237bf2e480ec7c67f9733a7776c198801db79ecf85ed05e2ff05",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b",
+          "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+          "diagnose_grasp.py": "9b6819cb4b3f7d1660e83d41090c2dd8dabb6c421d2929d1e23d964d9a81d623",
+          "verify_grasp.py": "4dc63b46af9c88f0c34d7ff6776f095048551a57054793a24497f3de112957f2"
+        },
+        "initial_state_sha256": "0bdce0c6f2607813f1cbcbcd0d3e7be7d47bf4ae76483f3ab2d0e0a23cc44b36"
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "frozen_success_1000",
+      "seed": 1000,
+      "controller_success": true,
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12060192468402686,
+        "longest_strict_hold_s": 1.6499999999990855,
+        "max_pelvis_tilt_deg": 0.0689227639176472,
+        "max_pelvis_drift_m": 0.0009097497667542101,
+        "max_cup_contact_penetration_m": 0.0005827170670958357,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11668221047327187,
+          "cup_lowest_clearance_m": 0.11636100066660426,
+          "cup_tilt_deg": 1.1380422032116981,
+          "pelvis_tilt_deg": 0.055229798654736935,
+          "pelvis_drift_m": 0.00021636639898054447,
+          "digit_normal_load_N": {
+            "left_thumb": 21.35502678725254,
+            "left_middle": 12.1932921920499,
+            "left_index": 10.91114774367442
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0005315832876434953
+        },
+        "frames": 376
+      },
+      "max_lift_m": 0.1206052439774894,
+      "hold_s": 1.7140000000000013,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false,
+        "controller_version": "cup-relative-direct-v1",
+        "source_sha256": {
+          "run_direct_grasp.py": "a1cb0e76c3760d169e195dd6aa62bf5f6597852ee750489d7fa9a167463233a1",
+          "pantry_robot.py": "664904079bfa5ed6d1b72c617d830e650ed65d2f2f1dd70cb894edd770a8564c",
+          "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+          "diagnose_grasp.py": "04d138ae2f6be790e0c17cb728d6b474e724d10f84f9613f03569fa722cf8eef",
+          "verify_grasp.py": "44df10a280096380a089a4ad0bb2a82fb051a2f1d18d88573cdee57086789858"
+        },
+        "initial_state_sha256": "0bdce0c6f2607813f1cbcbcd0d3e7be7d47bf4ae76483f3ab2d0e0a23cc44b36"
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "memory_reuse_1001",
+      "seed": 1001,
+      "controller_success": true,
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12062319857644566,
+        "longest_strict_hold_s": 1.6999999999990578,
+        "max_pelvis_tilt_deg": 0.06886347598740472,
+        "max_pelvis_drift_m": 0.0008978687988462089,
+        "max_cup_contact_penetration_m": 0.00046684923353736607,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "3795104cc7ff5c2ddd3bcdd73299f2c11acb597169a9df632e7e6ca6e11566ff",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11708158966244264,
+          "cup_lowest_clearance_m": 0.11682281345356627,
+          "cup_tilt_deg": 1.0516672139680274,
+          "pelvis_tilt_deg": 0.05020195281500053,
+          "pelvis_drift_m": 0.00016840796603163343,
+          "digit_normal_load_N": {
+            "left_thumb": 19.46346871268785,
+            "left_middle": 10.705565245631828,
+            "left_index": 10.059252247757788
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0004238371895819685
+        },
+        "frames": 376
+      },
+      "max_lift_m": 0.12075268029074859,
+      "hold_s": 1.7200000000000013,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1001,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false,
+        "controller_version": "cup-relative-direct-v1",
+        "source_sha256": {
+          "run_direct_grasp.py": "014e9f9f3088237bf2e480ec7c67f9733a7776c198801db79ecf85ed05e2ff05",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b",
+          "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+          "diagnose_grasp.py": "9b6819cb4b3f7d1660e83d41090c2dd8dabb6c421d2929d1e23d964d9a81d623",
+          "verify_grasp.py": "4dc63b46af9c88f0c34d7ff6776f095048551a57054793a24497f3de112957f2"
+        },
+        "initial_state_sha256": "36cbd533d8055603fffc7c331833bc9a9a428609623c31b37f98fad8b043e517",
+        "memory_retrieval": {
+          "path": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/frozen_success_1000/episode_memory.json",
+          "sha256": "1dea8097e609be7ab956636b63ee72d956332b1ed5868c71b1da6fd385bd704a",
+          "usage": "explicit parameter reuse by engineering controller, not Astra"
+        }
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "memory_reuse_1002",
+      "seed": 1002,
+      "controller_success": false,
+      "independent_verification": {
+        "verified_success": false,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": -3.9239999999995945e-05,
+        "longest_strict_hold_s": 0.0,
+        "max_pelvis_tilt_deg": 0.11429489321392364,
+        "max_pelvis_drift_m": 0.0012126661403726075,
+        "max_cup_contact_penetration_m": 0.00025211511411177235,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "26a19b24583f281dff6ed87b0653dc35a7b365734febadf1d7b130c4a42b0ef9",
+        "no_external_base_force": true,
+        "final": {
+          "time": 11.400000000000476,
+          "lift_m": -0.000524987394193932,
+          "cup_lowest_clearance_m": -3.216758906099404e-05,
+          "cup_tilt_deg": 0.009950600111642368,
+          "pelvis_tilt_deg": 0.11098170375510368,
+          "pelvis_drift_m": 0.0011915396994638893,
+          "digit_normal_load_N": {
+            "left_middle": 2.864647357036995
+          },
+          "opposing_contacts": false,
+          "non_hand_support_load_N": 4.176897457859405,
+          "held": false,
+          "max_penetration_m": 3.113712354459675e-05
+        },
+        "frames": 229
+      },
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": "approach_open_06: POSE_IK_REJECTED",
+      "protection": null,
+      "configuration": {
+        "seed": 1002,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false,
+        "controller_version": "cup-relative-direct-v1",
+        "source_sha256": {
+          "run_direct_grasp.py": "014e9f9f3088237bf2e480ec7c67f9733a7776c198801db79ecf85ed05e2ff05",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b",
+          "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+          "diagnose_grasp.py": "9b6819cb4b3f7d1660e83d41090c2dd8dabb6c421d2929d1e23d964d9a81d623",
+          "verify_grasp.py": "4dc63b46af9c88f0c34d7ff6776f095048551a57054793a24497f3de112957f2"
+        },
+        "initial_state_sha256": "921364b9389a6757472a39def2e0006431b201d94a9f527d7970f0dd6fb58694",
+        "memory_retrieval": {
+          "path": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/frozen_success_1000/episode_memory.json",
+          "sha256": "1dea8097e609be7ab956636b63ee72d956332b1ed5868c71b1da6fd385bd704a",
+          "usage": "explicit parameter reuse by engineering controller, not Astra"
+        }
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "negative_no_close",
+      "seed": 1000,
+      "controller_success": false,
+      "independent_verification": {
+        "verified_success": false,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": -3.9239999999995945e-05,
+        "longest_strict_hold_s": 0.0,
+        "max_pelvis_tilt_deg": 0.06705325226881055,
+        "max_pelvis_drift_m": 0.0009097497667542101,
+        "max_cup_contact_penetration_m": 2.129522111825493e-05,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "b3c5d6c1e32e0572040986031663b9cccd6608c2beed17b392a0a0a875150d6e",
+        "no_external_base_force": true,
+        "final": {
+          "time": 13.750000000001261,
+          "lift_m": -0.0005008194553246526,
+          "cup_lowest_clearance_m": -8.223770706639044e-07,
+          "cup_tilt_deg": 3.4150945850063763e-06,
+          "pelvis_tilt_deg": 0.004289312576106605,
+          "pelvis_drift_m": 0.00013325378875412387,
+          "digit_normal_load_N": {},
+          "opposing_contacts": false,
+          "non_hand_support_load_N": 1.8639000495619344,
+          "held": false,
+          "max_penetration_m": 7.026557815378024e-07
+        },
+        "frames": 276
+      },
+      "max_lift_m": 0.0,
+      "hold_s": 0.0,
+      "termination_reason": "NO_OPPOSING_GRIP_OR_FAILED_TEST_LIFT",
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false,
+        "controller_version": "cup-relative-direct-v1",
+        "source_sha256": {
+          "run_direct_grasp.py": "014e9f9f3088237bf2e480ec7c67f9733a7776c198801db79ecf85ed05e2ff05",
+          "pantry_robot.py": "f4f1467d2e1f41052fcf6e14ab344f7ac22caa4ba04a9fa052405d6228d7e69b",
+          "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+          "diagnose_grasp.py": "9b6819cb4b3f7d1660e83d41090c2dd8dabb6c421d2929d1e23d964d9a81d623",
+          "verify_grasp.py": "4dc63b46af9c88f0c34d7ff6776f095048551a57054793a24497f3de112957f2"
+        },
+        "initial_state_sha256": "0bdce0c6f2607813f1cbcbcd0d3e7be7d47bf4ae76483f3ab2d0e0a23cc44b36"
+      },
+      "role": "negative_control_no_finger_closure"
+    },
+    {
+      "episode_id": "success_repeat_001",
+      "seed": 1000,
+      "controller_success": true,
+      "independent_verification": null,
+      "max_lift_m": 0.1206052439774894,
+      "hold_s": 1.7140000000000013,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1000,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false
+      },
+      "role": "development_or_verification_not_formal_trial"
+    },
+    {
+      "episode_id": "transfer_1001",
+      "seed": 1001,
+      "controller_success": true,
+      "independent_verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.12062319857644566,
+        "longest_strict_hold_s": 1.6999999999990578,
+        "max_pelvis_tilt_deg": 0.06886347598740472,
+        "max_pelvis_drift_m": 0.0008978687988462089,
+        "max_cup_contact_penetration_m": 0.00046684923353736607,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "3795104cc7ff5c2ddd3bcdd73299f2c11acb597169a9df632e7e6ca6e11566ff",
+        "no_external_base_force": true,
+        "final": {
+          "time": 18.750000000000487,
+          "lift_m": 0.11708158966244264,
+          "cup_lowest_clearance_m": 0.11682281345356627,
+          "cup_tilt_deg": 1.0516672139680274,
+          "pelvis_tilt_deg": 0.05020195281500053,
+          "pelvis_drift_m": 0.00016840796603163343,
+          "digit_normal_load_N": {
+            "left_thumb": 19.46346871268785,
+            "left_middle": 10.705565245631828,
+            "left_index": 10.008093246043915
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0004238371895819685
+        },
+        "frames": 376
+      },
+      "max_lift_m": 0.12075268029074859,
+      "hold_s": 1.7200000000000013,
+      "termination_reason": null,
+      "protection": null,
+      "configuration": {
+        "seed": 1001,
+        "branch": "direct-grasp-diagnostic",
+        "model_requests": 0,
+        "execution_mode": "privileged_cup_relative_engineering_controller",
+        "formal_task_snapshot": false,
+        "cup_in_palm_m": [
+          0.045,
+          -0.055,
+          -0.052
+        ],
+        "close_angles": [
+          0.0,
+          0.65,
+          0.65,
+          -0.8,
+          -0.6,
+          -0.8,
+          -0.6
+        ],
+        "palm_yaw_rad": 0.7,
+        "camera_version": "pantry_head_wide_v2",
+        "cup_binding": false,
+        "controller_version": "cup-relative-direct-v1",
+        "source_sha256": {
+          "run_direct_grasp.py": "a1cb0e76c3760d169e195dd6aa62bf5f6597852ee750489d7fa9a167463233a1",
+          "pantry_robot.py": "664904079bfa5ed6d1b72c617d830e650ed65d2f2f1dd70cb894edd770a8564c",
+          "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+          "diagnose_grasp.py": "04d138ae2f6be790e0c17cb728d6b474e724d10f84f9613f03569fa722cf8eef",
+          "verify_grasp.py": "44df10a280096380a089a4ad0bb2a82fb051a2f1d18d88573cdee57086789858"
+        },
+        "initial_state_sha256": "36cbd533d8055603fffc7c331833bc9a9a428609623c31b37f98fad8b043e517"
+      },
+      "role": "development_or_verification_not_formal_trial"
+    }
+  ],
+  "model_requests": 0,
+  "vla_weight_updates": 0,
+  "first_success": "direct_008",
+  "current_reference": "final_reference_1000",
+  "transfer_scope": "Seeds 1001 and 1002 evaluated with the same parameters; no tuning after their outcomes",
+  "formal_success_rate": null,
+  "original_work_unchanged": true,
+  "verification_tests_passed": 6,
+  "video": "deliverables/P01_success_verified.mp4",
+  "remaining": [
+    "Replace privileged cup pose with head RGB-D estimation before autonomous claims.",
+    "Handle unreachable approach at seed 1002 without relaxing collision or IK safety.",
+    "Astra integration and VLA fine-tuning are not performed."
+  ],
+  "negative_control_passed": true,
+  "video_decode_verified": true
+}

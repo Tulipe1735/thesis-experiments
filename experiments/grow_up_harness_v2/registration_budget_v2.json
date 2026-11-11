@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-03",
+  "boundary": "simulation",
+  "version": "tp01-budget-v2",
+  "status": "REGISTERED_BEFORE_V2_3",
+  "supersedes": "registration.json.budgets",
+  "reason": "R, the F0 v2 positive control, needs 75.44 s of simulation. The previous 60 s episode cap cut it before the 10 cm lift threshold, and the previous 31.1 s chain budget was far below the measured 75.44 s. The new table is derived from R's stage timings, not from a target number.",
+  "source": {
+    "run": "experiments/grow_up_harness_v2/runs/stage_timing_20261103_001/timing.json",
+    "sha256": "0668caf35dcdf68108b7f93702760747a2ef7add08b781f026fd1c2b14431f4f",
+    "episode": "experiments/grow_up_harness_v2/runs/f0v2_engineering_20261103_001/case_01",
+    "tools_actions_sha256": "4a10499197dbb40145a7e52b1665dd0a5420f6c20c6309f23731b0f713c0f4f9",
+    "actions_sha256": "9d674028cd306b24e6b2fc78fcd4eb184b34aef8c7504b71f0c70b14919a2d11"
+  },
+  "op_budgets_s": {
+    "locate_target": 2.0,
+    "open_hand": 2.0,
+    "reach_target": 48.0,
+    "close_hand": 13.0,
+    "lift_target": 13.0,
+    "hold_stable": 9.0,
+    "check": 0.1
+  },
+  "program_budget_s": 87.1,
+  "episode_cap_s": 120.0,
+  "pairing": {
+    "episodes": 60,
+    "simulation_seconds_per_episode": 120.0,
+    "simulation_seconds_total": 7200.0,
+    "note": "120 episodes x 60 s is impossible because the measured reference needs 75.44 s. 60 x 120 s is the consistent pairing."
+  },
+  "allocation": {
+    "f0": 4,
+    "controls": 8,
+    "practice": 44,
+    "buffer": 4,
+    "total": 60
+  },
+  "calls": {
+    "diagnose": 1,
+    "author_first": 1,
+    "practice_revisions": 44,
+    "repair_compose": 1,
+    "format_retries": 8,
+    "reserve": 5,
+    "total": 60
+  },
+  "unchanged": {
+    "wall_time_s": 28800,
+    "tokens": 1500000,
+    "evaluator": "tabletop-predicates-v1",
+    "minimum_lift_m": 0.1,
+    "stable_s": 1.0,
+    "waist": "fixed",
+    "test_split": "not executed"
+  }
+}

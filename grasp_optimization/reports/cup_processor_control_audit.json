@@ -1,0 +1,17 @@
+{
+  "same_processor_and_config_files": true,
+  "statistics_only_files": {
+    "config.json": "549b7072487fa79643d520538f38cd92b3ed665591d33323403713b7a4a44276",
+    "policy_postprocessor.json": "501615ffb67201f4a2a737f6f21fe42827220f5749effcb13afaaa02668016db",
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors": "d228979c6178b42f0c2b9bcc333ecdaa8302720804d5948c30253879c787dd14",
+    "policy_preprocessor.json": "a6ea18116c8cc12bf6030d0daeb1d4fc32cc8608d2256a46a9c8e75de7102f9b",
+    "policy_preprocessor_step_5_normalizer_processor.safetensors": "d228979c6178b42f0c2b9bcc333ecdaa8302720804d5948c30253879c787dd14"
+  },
+  "finetuned_files": {
+    "config.json": "549b7072487fa79643d520538f38cd92b3ed665591d33323403713b7a4a44276",
+    "policy_postprocessor.json": "501615ffb67201f4a2a737f6f21fe42827220f5749effcb13afaaa02668016db",
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors": "d228979c6178b42f0c2b9bcc333ecdaa8302720804d5948c30253879c787dd14",
+    "policy_preprocessor.json": "a6ea18116c8cc12bf6030d0daeb1d4fc32cc8608d2256a46a9c8e75de7102f9b",
+    "policy_preprocessor_step_5_normalizer_processor.safetensors": "d228979c6178b42f0c2b9bcc333ecdaa8302720804d5948c30253879c787dd14"
+  }
+}

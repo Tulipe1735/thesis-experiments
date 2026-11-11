@@ -1,0 +1,83 @@
+{
+  "offline": {
+    "original": {
+      "mean_mse_rad2": 0.4562683254480362,
+      "left_hand_mse_rad2": 0.5815651044249535
+    },
+    "statistics_only": {
+      "mean_mse_rad2": 0.008777877024840564,
+      "left_hand_mse_rad2": 0.004538142022283864
+    },
+    "finetuned": {
+      "mean_mse_rad2": 0.004939340695273131,
+      "left_hand_mse_rad2": 0.001532587868950941
+    }
+  },
+  "physical": {
+    "selected_training_step": 300,
+    "pairs": [
+      {
+        "seed": 1000,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1300,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1301,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1302,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      },
+      {
+        "seed": 1303,
+        "pregrasp_ready": true,
+        "successes": {
+          "original": false,
+          "statistics_only": false,
+          "finetuned": false
+        }
+      }
+    ],
+    "fresh_attempted": 4,
+    "fresh_pregrasp_ready": 4,
+    "fresh_successes": {
+      "original": 0,
+      "statistics_only": 0,
+      "finetuned": 0
+    },
+    "anchor_successes": {
+      "original": 0,
+      "statistics_only": 0,
+      "finetuned": 0
+    },
+    "primary_comparison": "finetuned versus statistics_only",
+    "small_practice_sample": true,
+    "no_physical_test_tuning": true,
+    "Astra_calls": 0
+  },
+  "paired_conditions_verified": true
+}

@@ -1,0 +1,9 @@
+{
+  "config_sha256": "234fd034d69f89d59e090549f878c8cde82b54b60a47468eb570d5eb5fb5f533",
+  "human_zone_review": true,
+  "decision": "accepted_for_runtime_integration",
+  "user_message": "分区可用",
+  "recorded_at": "2026-10-23T21:40:29.425236+08:00",
+  "scene_for_runtime": "HK_DH01_Pantry_Only_R47b.blend",
+  "annotation_scene_for_reference_only": true
+}

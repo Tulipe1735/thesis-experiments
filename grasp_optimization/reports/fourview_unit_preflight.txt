@@ -1,0 +1,13 @@
+test_camera_quaternion_normalized (test_fourview.FourViewTests.test_camera_quaternion_normalized) ... ok
+test_four_different_image_files_required (test_fourview.FourViewTests.test_four_different_image_files_required) ... ok
+test_only_robot_attached_cameras_added_to_xml (test_fourview.FourViewTests.test_only_robot_attached_cameras_added_to_xml) ... ok
+test_recorded_camera_only_rollout_preserves_physics (test_fourview.FourViewTests.test_recorded_camera_only_rollout_preserves_physics) ... ok
+test_same_left_view_is_shared_in_one_and_four_camera_conditions (test_fourview.FourViewTests.test_same_left_view_is_shared_in_one_and_four_camera_conditions) ... ok
+test_actual_wait_and_matching_slack_are_not_misreported (test_fourview.RecordedFourViewTests.test_actual_wait_and_matching_slack_are_not_misreported) ... skipped 'Camera trials not completed'
+test_camera_count_comparison_is_matched_before_first_action (test_fourview.RecordedFourViewTests.test_camera_count_comparison_is_matched_before_first_action) ... skipped 'Camera trials not completed'
+test_four_view_policy_really_received_all_four_images (test_fourview.RecordedFourViewTests.test_four_view_policy_really_received_all_four_images) ... skipped 'Camera trials not completed'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.027s
+
+OK (skipped=3)

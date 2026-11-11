@@ -1,0 +1,200 @@
+[WARN] [1793244742.100462373] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[WARN] [1793244742.100526851] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[INFO] [1793244742.181994804] [thesis_t01.controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
+[INFO] [1793244742.184197400] [thesis_t01.controller_manager]: Enforcing command limits is disabled. Command limits from URDF will be ignored.
+[INFO] [1793244742.190851822] [thesis_t01.controller_manager]: Loading hardware 'MujocoAdapter' 
+[INFO] [1793244742.190944157] [thesis_t01.controller_manager]: Loaded hardware 'MujocoAdapter' from plugin 'thesis_kernel/MujocoSystem'
+[INFO] [1793244742.190986480] [thesis_t01.controller_manager]: Initialize hardware 'MujocoAdapter' 
+[INFO] [1793244742.193293704] [thesis_t01.controller_manager]: Successful initialization of hardware 'MujocoAdapter'
+[WARN] [1793244742.193589625] [pal_statistics]: Unable to register entity state_interface.left_hip_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193605877] [pal_statistics]: Unable to register entity state_interface.left_hip_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193608958] [pal_statistics]: Unable to register entity state_interface.left_hip_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193611764] [pal_statistics]: Unable to register entity state_interface.left_hip_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193614237] [pal_statistics]: Unable to register entity state_interface.left_hip_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193617193] [pal_statistics]: Unable to register entity state_interface.left_hip_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193620086] [pal_statistics]: Unable to register entity state_interface.left_knee_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193622807] [pal_statistics]: Unable to register entity state_interface.left_knee_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193625418] [pal_statistics]: Unable to register entity state_interface.left_ankle_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193628181] [pal_statistics]: Unable to register entity state_interface.left_ankle_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193630806] [pal_statistics]: Unable to register entity state_interface.left_ankle_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193633597] [pal_statistics]: Unable to register entity state_interface.left_ankle_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193636214] [pal_statistics]: Unable to register entity state_interface.right_hip_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193638786] [pal_statistics]: Unable to register entity state_interface.right_hip_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193645994] [pal_statistics]: Unable to register entity state_interface.right_hip_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193648765] [pal_statistics]: Unable to register entity state_interface.right_hip_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193651300] [pal_statistics]: Unable to register entity state_interface.right_hip_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193659959] [pal_statistics]: Unable to register entity state_interface.right_hip_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193662687] [pal_statistics]: Unable to register entity state_interface.right_knee_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193665210] [pal_statistics]: Unable to register entity state_interface.right_knee_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193667979] [pal_statistics]: Unable to register entity state_interface.right_ankle_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193670640] [pal_statistics]: Unable to register entity state_interface.right_ankle_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193673326] [pal_statistics]: Unable to register entity state_interface.right_ankle_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193675942] [pal_statistics]: Unable to register entity state_interface.right_ankle_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193678448] [pal_statistics]: Unable to register entity state_interface.waist_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193680909] [pal_statistics]: Unable to register entity state_interface.waist_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193683415] [pal_statistics]: Unable to register entity state_interface.waist_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193685957] [pal_statistics]: Unable to register entity state_interface.waist_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193688841] [pal_statistics]: Unable to register entity state_interface.waist_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193691415] [pal_statistics]: Unable to register entity state_interface.waist_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193694001] [pal_statistics]: Unable to register entity state_interface.left_shoulder_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193696644] [pal_statistics]: Unable to register entity state_interface.left_shoulder_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193699224] [pal_statistics]: Unable to register entity state_interface.left_shoulder_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193701763] [pal_statistics]: Unable to register entity state_interface.left_shoulder_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193704271] [pal_statistics]: Unable to register entity state_interface.left_shoulder_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193706748] [pal_statistics]: Unable to register entity state_interface.left_shoulder_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193710550] [pal_statistics]: Unable to register entity state_interface.left_elbow_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193713179] [pal_statistics]: Unable to register entity state_interface.left_elbow_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193715735] [pal_statistics]: Unable to register entity state_interface.left_wrist_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193720020] [pal_statistics]: Unable to register entity state_interface.left_wrist_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193722664] [pal_statistics]: Unable to register entity state_interface.left_wrist_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193725227] [pal_statistics]: Unable to register entity state_interface.left_wrist_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193727727] [pal_statistics]: Unable to register entity state_interface.left_wrist_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193730273] [pal_statistics]: Unable to register entity state_interface.left_wrist_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193732815] [pal_statistics]: Unable to register entity state_interface.left_hand_thumb_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193735371] [pal_statistics]: Unable to register entity state_interface.left_hand_thumb_0_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193737932] [pal_statistics]: Unable to register entity state_interface.left_hand_thumb_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193740446] [pal_statistics]: Unable to register entity state_interface.left_hand_thumb_1_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193742998] [pal_statistics]: Unable to register entity state_interface.left_hand_thumb_2_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193745773] [pal_statistics]: Unable to register entity state_interface.left_hand_thumb_2_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193748370] [pal_statistics]: Unable to register entity state_interface.left_hand_middle_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193750894] [pal_statistics]: Unable to register entity state_interface.left_hand_middle_0_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193753425] [pal_statistics]: Unable to register entity state_interface.left_hand_middle_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193755930] [pal_statistics]: Unable to register entity state_interface.left_hand_middle_1_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193758449] [pal_statistics]: Unable to register entity state_interface.left_hand_index_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193760977] [pal_statistics]: Unable to register entity state_interface.left_hand_index_0_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193763517] [pal_statistics]: Unable to register entity state_interface.left_hand_index_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193766062] [pal_statistics]: Unable to register entity state_interface.left_hand_index_1_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193769770] [pal_statistics]: Unable to register entity state_interface.right_shoulder_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193772464] [pal_statistics]: Unable to register entity state_interface.right_shoulder_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193776413] [pal_statistics]: Unable to register entity state_interface.right_shoulder_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193779073] [pal_statistics]: Unable to register entity state_interface.right_shoulder_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193781667] [pal_statistics]: Unable to register entity state_interface.right_shoulder_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193784178] [pal_statistics]: Unable to register entity state_interface.right_shoulder_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193786761] [pal_statistics]: Unable to register entity state_interface.right_elbow_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193789333] [pal_statistics]: Unable to register entity state_interface.right_elbow_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193791942] [pal_statistics]: Unable to register entity state_interface.right_wrist_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193794542] [pal_statistics]: Unable to register entity state_interface.right_wrist_roll_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193797095] [pal_statistics]: Unable to register entity state_interface.right_wrist_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193799690] [pal_statistics]: Unable to register entity state_interface.right_wrist_pitch_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193802203] [pal_statistics]: Unable to register entity state_interface.right_wrist_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193804724] [pal_statistics]: Unable to register entity state_interface.right_wrist_yaw_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193807436] [pal_statistics]: Unable to register entity state_interface.right_hand_thumb_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193810047] [pal_statistics]: Unable to register entity state_interface.right_hand_thumb_0_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193812638] [pal_statistics]: Unable to register entity state_interface.right_hand_thumb_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193815248] [pal_statistics]: Unable to register entity state_interface.right_hand_thumb_1_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193817779] [pal_statistics]: Unable to register entity state_interface.right_hand_thumb_2_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193820299] [pal_statistics]: Unable to register entity state_interface.right_hand_thumb_2_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193822821] [pal_statistics]: Unable to register entity state_interface.right_hand_index_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193826286] [pal_statistics]: Unable to register entity state_interface.right_hand_index_0_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193828873] [pal_statistics]: Unable to register entity state_interface.right_hand_index_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193831436] [pal_statistics]: Unable to register entity state_interface.right_hand_index_1_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193835264] [pal_statistics]: Unable to register entity state_interface.right_hand_middle_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193837860] [pal_statistics]: Unable to register entity state_interface.right_hand_middle_0_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193840436] [pal_statistics]: Unable to register entity state_interface.right_hand_middle_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193842944] [pal_statistics]: Unable to register entity state_interface.right_hand_middle_1_joint/velocity in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193864949] [pal_statistics]: Unable to register entity command_interface.left_hip_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193868030] [pal_statistics]: Unable to register entity command_interface.left_hip_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193871208] [pal_statistics]: Unable to register entity command_interface.left_hip_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193873713] [pal_statistics]: Unable to register entity command_interface.left_hip_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193876413] [pal_statistics]: Unable to register entity command_interface.left_hip_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193878827] [pal_statistics]: Unable to register entity command_interface.left_hip_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193881541] [pal_statistics]: Unable to register entity command_interface.left_knee_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193883983] [pal_statistics]: Unable to register entity command_interface.left_knee_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193886608] [pal_statistics]: Unable to register entity command_interface.left_ankle_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193888969] [pal_statistics]: Unable to register entity command_interface.left_ankle_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193891623] [pal_statistics]: Unable to register entity command_interface.left_ankle_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193894015] [pal_statistics]: Unable to register entity command_interface.left_ankle_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193896711] [pal_statistics]: Unable to register entity command_interface.right_hip_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193899074] [pal_statistics]: Unable to register entity command_interface.right_hip_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193902872] [pal_statistics]: Unable to register entity command_interface.right_hip_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193905262] [pal_statistics]: Unable to register entity command_interface.right_hip_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193907876] [pal_statistics]: Unable to register entity command_interface.right_hip_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193911575] [pal_statistics]: Unable to register entity command_interface.right_hip_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193914329] [pal_statistics]: Unable to register entity command_interface.right_knee_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193916761] [pal_statistics]: Unable to register entity command_interface.right_knee_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193919575] [pal_statistics]: Unable to register entity command_interface.right_ankle_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193921945] [pal_statistics]: Unable to register entity command_interface.right_ankle_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193924655] [pal_statistics]: Unable to register entity command_interface.right_ankle_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193927052] [pal_statistics]: Unable to register entity command_interface.right_ankle_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193929671] [pal_statistics]: Unable to register entity command_interface.waist_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193932123] [pal_statistics]: Unable to register entity command_interface.waist_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193934733] [pal_statistics]: Unable to register entity command_interface.waist_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193937138] [pal_statistics]: Unable to register entity command_interface.waist_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193940160] [pal_statistics]: Unable to register entity command_interface.waist_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193942535] [pal_statistics]: Unable to register entity command_interface.waist_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193945204] [pal_statistics]: Unable to register entity command_interface.left_shoulder_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193947559] [pal_statistics]: Unable to register entity command_interface.left_shoulder_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193950222] [pal_statistics]: Unable to register entity command_interface.left_shoulder_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193952560] [pal_statistics]: Unable to register entity command_interface.left_shoulder_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193955244] [pal_statistics]: Unable to register entity command_interface.left_shoulder_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193958551] [pal_statistics]: Unable to register entity command_interface.left_shoulder_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193961262] [pal_statistics]: Unable to register entity command_interface.left_elbow_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193963693] [pal_statistics]: Unable to register entity command_interface.left_elbow_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193968478] [pal_statistics]: Unable to register entity command_interface.left_wrist_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193970941] [pal_statistics]: Unable to register entity command_interface.left_wrist_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193973585] [pal_statistics]: Unable to register entity command_interface.left_wrist_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193975980] [pal_statistics]: Unable to register entity command_interface.left_wrist_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193978632] [pal_statistics]: Unable to register entity command_interface.left_wrist_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193981010] [pal_statistics]: Unable to register entity command_interface.left_wrist_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193983648] [pal_statistics]: Unable to register entity command_interface.left_hand_thumb_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193986030] [pal_statistics]: Unable to register entity command_interface.left_hand_thumb_0_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193988664] [pal_statistics]: Unable to register entity command_interface.left_hand_thumb_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193991018] [pal_statistics]: Unable to register entity command_interface.left_hand_thumb_1_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193993606] [pal_statistics]: Unable to register entity command_interface.left_hand_thumb_2_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193995953] [pal_statistics]: Unable to register entity command_interface.left_hand_thumb_2_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.193998604] [pal_statistics]: Unable to register entity command_interface.left_hand_middle_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194000937] [pal_statistics]: Unable to register entity command_interface.left_hand_middle_0_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194003525] [pal_statistics]: Unable to register entity command_interface.left_hand_middle_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194005850] [pal_statistics]: Unable to register entity command_interface.left_hand_middle_1_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194008431] [pal_statistics]: Unable to register entity command_interface.left_hand_index_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194010783] [pal_statistics]: Unable to register entity command_interface.left_hand_index_0_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194014478] [pal_statistics]: Unable to register entity command_interface.left_hand_index_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194016837] [pal_statistics]: Unable to register entity command_interface.left_hand_index_1_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194020841] [pal_statistics]: Unable to register entity command_interface.right_shoulder_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194023223] [pal_statistics]: Unable to register entity command_interface.right_shoulder_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194026166] [pal_statistics]: Unable to register entity command_interface.right_shoulder_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194028529] [pal_statistics]: Unable to register entity command_interface.right_shoulder_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194031170] [pal_statistics]: Unable to register entity command_interface.right_shoulder_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194033528] [pal_statistics]: Unable to register entity command_interface.right_shoulder_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194036173] [pal_statistics]: Unable to register entity command_interface.right_elbow_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194038574] [pal_statistics]: Unable to register entity command_interface.right_elbow_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194041222] [pal_statistics]: Unable to register entity command_interface.right_wrist_roll_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194043610] [pal_statistics]: Unable to register entity command_interface.right_wrist_roll_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194046228] [pal_statistics]: Unable to register entity command_interface.right_wrist_pitch_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194048591] [pal_statistics]: Unable to register entity command_interface.right_wrist_pitch_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194051209] [pal_statistics]: Unable to register entity command_interface.right_wrist_yaw_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194053611] [pal_statistics]: Unable to register entity command_interface.right_wrist_yaw_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194056227] [pal_statistics]: Unable to register entity command_interface.right_hand_thumb_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194058621] [pal_statistics]: Unable to register entity command_interface.right_hand_thumb_0_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194061174] [pal_statistics]: Unable to register entity command_interface.right_hand_thumb_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194063542] [pal_statistics]: Unable to register entity command_interface.right_hand_thumb_1_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194067108] [pal_statistics]: Unable to register entity command_interface.right_hand_thumb_2_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194069456] [pal_statistics]: Unable to register entity command_interface.right_hand_thumb_2_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194072059] [pal_statistics]: Unable to register entity command_interface.right_hand_index_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194075704] [pal_statistics]: Unable to register entity command_interface.right_hand_index_0_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194078327] [pal_statistics]: Unable to register entity command_interface.right_hand_index_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194080689] [pal_statistics]: Unable to register entity command_interface.right_hand_index_1_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194083277] [pal_statistics]: Unable to register entity command_interface.right_hand_middle_0_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194085678] [pal_statistics]: Unable to register entity command_interface.right_hand_middle_0_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194088274] [pal_statistics]: Unable to register entity command_interface.right_hand_middle_1_joint/position in ros2_control, as the registry is not found. Try initializing it!
+[WARN] [1793244742.194090651] [pal_statistics]: Unable to register entity command_interface.right_hand_middle_1_joint/position.is_limited in ros2_control, as the registry is not found. Try initializing it!
+[INFO] [1793244742.201508333] [thesis_t01.controller_manager]: Subscribing to '/thesis_t01/robot_description' topic for robot description.
+[INFO] [1793244742.201536771] [thesis_t01.controller_manager]: Activating component 'MujocoAdapter'.
+[INFO] [1793244742.201552229] [resource_manager]: 'configure' hardware 'MujocoAdapter' 
+[INFO] [1793244742.201555651] [resource_manager]: Successful 'configure' of hardware 'MujocoAdapter'
+[INFO] [1793244742.201565718] [resource_manager]: 'activate' hardware 'MujocoAdapter' 
+[INFO] [1793244742.201568635] [resource_manager]: Successful 'activate' of hardware 'MujocoAdapter'
+[INFO] [1793244742.201599277] [thesis_t01.controller_manager]: Registering statistics for : MujocoAdapter
+[INFO] [1793244742.203846029] [thesis_t01.controller_manager]: Loading controller 'mujoco_references'
+[INFO] [1793244742.203954468] [thesis_t01.controller_manager]: Controller 'mujoco_references' node arguments: 
+[INFO] [1793244742.208277656] [thesis_t01.controller_manager]: Configuring controller: 'mujoco_references'
+[INFO] [1793244742.208377439] [thesis_t01.controller_manager]: Loading controller 'competing_references'
+[INFO] [1793244742.208426594] [thesis_t01.controller_manager]: Controller 'competing_references' node arguments: 
+[INFO] [1793244742.211258440] [thesis_t01.controller_manager]: Configuring controller: 'competing_references'
+[INFO] [1793244742.211447847] [thesis_t01.controller_manager]: Activating controllers: [ mujoco_references ]
+[INFO] [1793244742.212438545] [thesis_t01.controller_manager]: Requested controller switch from non-realtime loop
+[INFO] [1793244742.212512901] [thesis_t01.controller_manager]: Successfully switched controllers!
+[INFO] [1793244806.153942355] [thesis_t01.controller_manager.pal_statistics]: Async messages lost 0
+[INFO] [1793244806.153986110] [thesis_t01.controller_manager.pal_statistics]: publish_async_failures_ 0
+[INFO] [1793244806.155084399] [thesis_t01.controller_manager.pal_statistics]: Async messages lost 0
+[INFO] [1793244806.155100890] [thesis_t01.controller_manager.pal_statistics]: publish_async_failures_ 0

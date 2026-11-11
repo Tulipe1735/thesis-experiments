@@ -1,0 +1,35 @@
+schema: artifact.v2
+name: t02_cup3_retreat
+task_node: B2.4
+summary: 'Cup 3: recorded pelvis-backward retreat, then raise clear of the tray and
+  settle. The hand passes close to the cup it just released.'
+contract:
+  pre:
+  - cup_3_held_released
+  post:
+  - cup_3_in_tray
+  params:
+    object_count:
+      type: float
+      description: 待归集杯数
+    hold_s:
+      type: float
+      description: 三杯共同末段稳持秒数
+  failure_codes:
+  - UNSAFE
+  - BUDGET
+  - NOT_HELD
+scope:
+  task_family: t02_three_cups_v1
+  initial_sha256:
+  - 795db8b4180232e000a9e2cf731ad688a60d30c74e85b177839ab102fb8733f5
+  plant_sha256: 39301e1a017cc16a2da016dfea2a0a0b8675e9750d8ac578e7e72d666c814426
+provenance:
+  author: engineering:recorded_motor_targets_2401
+  parents: []
+  created_on: t02_split_store
+  note: engineering column; open loop; source episode 2401 of tray_20261025_repair_003
+kind: leaf
+implementation:
+  language: python
+  source: t02_cup3_retreat.py

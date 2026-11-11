@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "TEMPLATE_NOT_AN_EXPERIMENT_RESULT",
+  "episode_id": null,
+  "task_config_sha256": null,
+  "scene_baseline_sha256": "37c562b438bfb41f018a251cacf1c0f803028301a6a0853a1bf433685368c40c",
+  "interior_delta_sha256": null,
+  "seed": null,
+  "execution_mode": null,
+  "backend_version": null,
+  "controller_version": null,
+  "initial_state": null,
+  "reset_check": null,
+  "observations_path": null,
+  "actions_path": null,
+  "success": null,
+  "termination_reason": null,
+  "steps": null,
+  "elapsed_seconds": null,
+  "notes": null
+}

@@ -1,0 +1,43 @@
+test_all_trials_including_failures_are_present (test_frozen_validation.FrozenValidationTests.test_all_trials_including_failures_are_present) ... ok
+test_matched_noop_excludes_latency_as_reason_for_departure (test_frozen_validation.FrozenValidationTests.test_matched_noop_excludes_latency_as_reason_for_departure) ... ok
+test_native_targets_are_not_added_to_current_q (test_frozen_validation.FrozenValidationTests.test_native_targets_are_not_added_to_current_q) ... ok
+test_no_policy_truth_in_vla_guard_or_action_function (test_frozen_validation.FrozenValidationTests.test_no_policy_truth_in_vla_guard_or_action_function) ... ok
+test_paired_handoff_uses_identical_integration_state (test_frozen_validation.FrozenValidationTests.test_paired_handoff_uses_identical_integration_state) ... ok
+test_repeated_reset_produces_same_trajectory (test_frozen_validation.FrozenValidationTests.test_repeated_reset_produces_same_trajectory) ... ok
+test_sources_and_evaluation_manifest_unchanged (test_frozen_validation.FrozenValidationTests.test_sources_and_evaluation_manifest_unchanged) ... ok
+test_uniform_proposals_stay_in_approved_zone (test_frozen_validation.FrozenValidationTests.test_uniform_proposals_stay_in_approved_zone) ... ok
+test_vla_guard_stops_right_hand_before_budget (test_frozen_validation.FrozenValidationTests.test_vla_guard_stops_right_hand_before_budget) ... ok
+test_vla_input_has_only_real_head_and_named_joints (test_frozen_validation.FrozenValidationTests.test_vla_input_has_only_real_head_and_named_joints) ... ok
+test_exact_reproduction_from_identical_initial_state (test_recorded_grasp.RecordedGraspTests.test_exact_reproduction_from_identical_initial_state) ... ok
+test_no_grasp_weld_and_fixed_camera (test_recorded_grasp.RecordedGraspTests.test_no_grasp_weld_and_fixed_camera) ... ok
+test_open_hand_negative_control_stops_before_lift (test_recorded_grasp.RecordedGraspTests.test_open_hand_negative_control_stops_before_lift) ... ok
+test_original_failure_does_not_satisfy_goal (test_recorded_grasp.RecordedGraspTests.test_original_failure_does_not_satisfy_goal) ... ok
+test_real_success_satisfies_current_goal (test_recorded_grasp.RecordedGraspTests.test_real_success_satisfies_current_goal) ... ok
+test_strict_independent_verdicts_and_memory_retrieval (test_recorded_grasp.RecordedGraspTests.test_strict_independent_verdicts_and_memory_retrieval) ... ok
+test_adaptive_closure_stops_before_overclosing (test_v2_grasp.V2GraspTests.test_adaptive_closure_stops_before_overclosing) ... ok
+test_longer_reach_uses_bounded_torso_steps_and_new_images (test_v2_grasp.V2GraspTests.test_longer_reach_uses_bounded_torso_steps_and_new_images) ... ok
+test_original_unreachable_fixture_now_has_bounded_plan (test_v2_grasp.V2GraspTests.test_original_unreachable_fixture_now_has_bounded_plan) ... ok
+test_original_versions_remain_frozen (test_v2_grasp.V2GraspTests.test_original_versions_remain_frozen) ... ok
+test_saved_vla_replay_matches_original_before_masking (test_v2_grasp.V2GraspTests.test_saved_vla_replay_matches_original_before_masking) ... ok
+test_thumb_lead_alone_does_not_hide_failure (test_v2_grasp.V2GraspTests.test_thumb_lead_alone_does_not_hide_failure) ... ok
+test_torso_out_of_bounds_and_repeat_budget_rejected (test_v2_grasp.V2GraspTests.test_torso_out_of_bounds_and_repeat_budget_rejected) ... ok
+test_v2_controller_remains_without_scene_truth (test_v2_grasp.V2GraspTests.test_v2_controller_remains_without_scene_truth) ... ok
+test_absent_white_target_is_rejected (test_vision_boundary.VisionBoundaryTests.test_absent_white_target_is_rejected) ... ok
+test_astra_real_decisions_and_reflection_are_saved (test_vision_boundary.VisionBoundaryTests.test_astra_real_decisions_and_reflection_are_saved) ... ok
+test_astra_rejects_extra_arguments_and_code (test_vision_boundary.VisionBoundaryTests.test_astra_rejects_extra_arguments_and_code) ... ok
+test_astra_requests_recovery_then_rechecks_reachability (test_vision_boundary.VisionBoundaryTests.test_astra_requests_recovery_then_rechecks_reachability) ... ok
+test_controller_has_no_truth_access (test_vision_boundary.VisionBoundaryTests.test_controller_has_no_truth_access) ... ok
+test_low_thumb_load_stops_before_full_lift (test_vision_boundary.VisionBoundaryTests.test_low_thumb_load_stops_before_full_lift) ... ok
+test_missing_depth_is_rejected (test_vision_boundary.VisionBoundaryTests.test_missing_depth_is_rejected) ... ok
+test_port_strips_scene_and_spectator_fields (test_vision_boundary.VisionBoundaryTests.test_port_strips_scene_and_spectator_fields) ... ok
+test_reach_adjustment_requires_new_visual_target (test_vision_boundary.VisionBoundaryTests.test_reach_adjustment_requires_new_visual_target) ... ok
+test_rgbd_geometry_matches_audited_fixture (test_vision_boundary.VisionBoundaryTests.test_rgbd_geometry_matches_audited_fixture) ... ok
+test_robot_planner_has_no_task_object (test_vision_boundary.VisionBoundaryTests.test_robot_planner_has_no_task_object) ... ok
+test_scene_fields_do_not_affect_perception (test_vision_boundary.VisionBoundaryTests.test_scene_fields_do_not_affect_perception) ... ok
+test_unreachable_seed_is_rejected_before_motion (test_vision_boundary.VisionBoundaryTests.test_unreachable_seed_is_rejected_before_motion) ... ok
+test_wrong_astra_pixel_is_rejected (test_vision_boundary.VisionBoundaryTests.test_wrong_astra_pixel_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 5.791s
+
+OK

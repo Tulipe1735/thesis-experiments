@@ -1,0 +1,584 @@
+{
+  "action.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      0,
+      4
+    ]
+  },
+  "action.max": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      4,
+      116
+    ]
+  },
+  "action.mean": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      116,
+      228
+    ]
+  },
+  "action.min": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      228,
+      340
+    ]
+  },
+  "action.std": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      340,
+      452
+    ]
+  },
+  "episode_index.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      452,
+      456
+    ]
+  },
+  "episode_index.max": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      456,
+      460
+    ]
+  },
+  "episode_index.mean": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      460,
+      464
+    ]
+  },
+  "episode_index.min": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      464,
+      468
+    ]
+  },
+  "episode_index.std": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      468,
+      472
+    ]
+  },
+  "frame_index.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      472,
+      476
+    ]
+  },
+  "frame_index.max": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      476,
+      480
+    ]
+  },
+  "frame_index.mean": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      480,
+      484
+    ]
+  },
+  "frame_index.min": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      484,
+      488
+    ]
+  },
+  "frame_index.std": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      488,
+      492
+    ]
+  },
+  "index.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      492,
+      496
+    ]
+  },
+  "index.max": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      496,
+      500
+    ]
+  },
+  "index.mean": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      500,
+      504
+    ]
+  },
+  "index.min": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      504,
+      508
+    ]
+  },
+  "index.std": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      508,
+      512
+    ]
+  },
+  "observation.images.cam_left_high.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      512,
+      516
+    ]
+  },
+  "observation.images.cam_left_high.max": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      516,
+      528
+    ]
+  },
+  "observation.images.cam_left_high.mean": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      528,
+      540
+    ]
+  },
+  "observation.images.cam_left_high.min": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      540,
+      552
+    ]
+  },
+  "observation.images.cam_left_high.std": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      552,
+      564
+    ]
+  },
+  "observation.images.cam_left_wrist.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      564,
+      568
+    ]
+  },
+  "observation.images.cam_left_wrist.max": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      568,
+      580
+    ]
+  },
+  "observation.images.cam_left_wrist.mean": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      580,
+      592
+    ]
+  },
+  "observation.images.cam_left_wrist.min": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      592,
+      604
+    ]
+  },
+  "observation.images.cam_left_wrist.std": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      604,
+      616
+    ]
+  },
+  "observation.images.cam_right_high.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      616,
+      620
+    ]
+  },
+  "observation.images.cam_right_high.max": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      620,
+      632
+    ]
+  },
+  "observation.images.cam_right_high.mean": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      632,
+      644
+    ]
+  },
+  "observation.images.cam_right_high.min": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      644,
+      656
+    ]
+  },
+  "observation.images.cam_right_high.std": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      656,
+      668
+    ]
+  },
+  "observation.images.cam_right_wrist.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      668,
+      672
+    ]
+  },
+  "observation.images.cam_right_wrist.max": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      672,
+      684
+    ]
+  },
+  "observation.images.cam_right_wrist.mean": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      684,
+      696
+    ]
+  },
+  "observation.images.cam_right_wrist.min": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      696,
+      708
+    ]
+  },
+  "observation.images.cam_right_wrist.std": {
+    "dtype": "F32",
+    "shape": [
+      3,
+      1,
+      1
+    ],
+    "data_offsets": [
+      708,
+      720
+    ]
+  },
+  "observation.state.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      720,
+      724
+    ]
+  },
+  "observation.state.max": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      724,
+      836
+    ]
+  },
+  "observation.state.mean": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      836,
+      948
+    ]
+  },
+  "observation.state.min": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      948,
+      1060
+    ]
+  },
+  "observation.state.std": {
+    "dtype": "F32",
+    "shape": [
+      28
+    ],
+    "data_offsets": [
+      1060,
+      1172
+    ]
+  },
+  "task_index.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1172,
+      1176
+    ]
+  },
+  "task_index.max": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1176,
+      1180
+    ]
+  },
+  "task_index.mean": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1180,
+      1184
+    ]
+  },
+  "task_index.min": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1184,
+      1188
+    ]
+  },
+  "task_index.std": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1188,
+      1192
+    ]
+  },
+  "timestamp.count": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1192,
+      1196
+    ]
+  },
+  "timestamp.max": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1196,
+      1200
+    ]
+  },
+  "timestamp.mean": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1200,
+      1204
+    ]
+  },
+  "timestamp.min": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1204,
+      1208
+    ]
+  },
+  "timestamp.std": {
+    "dtype": "F32",
+    "shape": [
+      1
+    ],
+    "data_offsets": [
+      1208,
+      1212
+    ]
+  }
+}

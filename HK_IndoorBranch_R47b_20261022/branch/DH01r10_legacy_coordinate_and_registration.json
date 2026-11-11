@@ -1,0 +1,87 @@
+{
+  "scene_version": "v0",
+  "formula": {
+    "X": "E - 839826",
+    "Y": "N - 816525",
+    "Z": "HKPD"
+  },
+  "units": "metres",
+  "axes": {
+    "X": "east",
+    "Y": "north",
+    "Z": "up"
+  },
+  "scene_handedness": "right",
+  "extent_xy_m": [
+    -250,
+    -250,
+    250,
+    250
+  ],
+  "boundary_note": "本轮既有500米区域的工作范围；原native可能保留边界外的上下文几何，不代表扩区。",
+  "registration": {
+    "status": "registered_inferred_fitout",
+    "hk_origin_EN": [
+      839826,
+      816525
+    ],
+    "floor_PD_m": 16.35,
+    "transforms": {
+      "rooms": [
+        [
+          0.7071067094802856,
+          0.7071068286895752,
+          0.0,
+          37.0369987487793
+        ],
+        [
+          -0.7071068286895752,
+          0.7071067094802856,
+          0.0,
+          -66.44400024414062
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          16.350000381469727
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "pantry": [
+        [
+          7.549790126404332e-08,
+          -1.0,
+          0.0,
+          64.5
+        ],
+        [
+          1.0,
+          7.549790126404332e-08,
+          0.0,
+          -70.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          16.350000381469727
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "exact_tenant_floorplan_surveyed": false
+  },
+  "existing_rapier_transform_note": "legacy physics adapter maps Blender (X,Y,Z) to Rapier (X,Z,-Y); do not reapply to the .blend. No UE transform has been certified.",
+  "do_not_move_mirror_or_scale_native": true
+}

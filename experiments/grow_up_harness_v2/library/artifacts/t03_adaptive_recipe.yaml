@@ -1,0 +1,35 @@
+schema: artifact.v2
+name: t03_adaptive_recipe
+task_node: B3.3
+summary: Shared bounded numeric grasp recipe for existing AdaptiveGrasp and T03 place
+  stages
+contract:
+  pre:
+  - valid_T03_task
+  - guard_clear
+  post:
+  - bounded_recipe_proposed_not_task_success
+  params: {}
+  failure_codes:
+  - SCHEMA
+  - GRASP
+  - PLACE
+  - PROTECTION
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: Codex with user-directed contact diagnosis
+  parents:
+  - t03_adaptive_recipe@d9bf257fcf98
+  created_on: '2026-11-11'
+  note: Index closure repair moved consumed613003 failure from grip_settle to main
+    lift (middle distal vs distractor_2). New separately registered revision adds
+    only native lift_retreat_m 0.04 relative to index repair bundle
+    outputs/artifacts/t03_pose_index_20261111_001.json. Truth-assisted Codex
+    engineering candidate; no promotion; all prior failures preserved.
+kind: leaf
+implementation:
+  language: python
+  source: t03_adaptive_recipe.py

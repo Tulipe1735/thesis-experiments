@@ -1,0 +1,639 @@
+{
+  "revision": "IN20",
+  "native_sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+  "manifest": "/home/zhaowangbo/.local/share/hongkong-dorset/project/branches/interior/reports/IN20/scene_manifest.json",
+  "checks": [
+    {
+      "name": "Existing cups and bottles keep their supports",
+      "passed": true,
+      "details": [
+        {
+          "id": "DH_2F_mug_01",
+          "drift": 0.00006256568705313386,
+          "drop": 0.0030536651611328125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_mug_02",
+          "drift": 0.00005394796609394436,
+          "drop": 0.0030574798583984375,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_mug_03",
+          "drift": 0,
+          "drop": 0.0000019073486328125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_mug_04",
+          "drift": 0.00008707208412562047,
+          "drop": 0.01007843017578125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_mug_05",
+          "drift": 0.000027771415288087917,
+          "drop": 0.0030517578125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_mug_06",
+          "drift": 0.00004055078816503391,
+          "drop": 0.0040416717529296875,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_bottle_01",
+          "drift": 0.000041262259774749636,
+          "drop": 0.0030078887939453125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_bottle_02",
+          "drift": 0.000055542830576175834,
+          "drop": 0.0030078887939453125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_bottle_03",
+          "drift": 0.000027508173183166424,
+          "drop": 0.0030078887939453125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_bottle_04",
+          "drift": 0,
+          "drop": 0.010000228881835938,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_bottle_05",
+          "drift": 0.000030517578125,
+          "drop": 0.0040111541748046875,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_discussion_mug",
+          "drift": 0,
+          "drop": 0.0000019073486328125,
+          "speed": 0
+        },
+        {
+          "id": "DH_2F_office_mug",
+          "drift": 0,
+          "drop": 0.0000019073486328125,
+          "speed": 0
+        }
+      ]
+    },
+    {
+      "name": "All registered doors and cabinet leaves reach their open poses",
+      "passed": true,
+      "details": [
+        {
+          "id": "DH_2F_pantry_entry",
+          "angle": 89.95987990499529,
+          "target": 90
+        },
+        {
+          "id": "DH_2F_cabinet_01",
+          "angle": -99.98323194415147,
+          "target": -100
+        },
+        {
+          "id": "DH_2F_cabinet_02",
+          "angle": -99.98323194415147,
+          "target": -100
+        },
+        {
+          "id": "DH_2F_cabinet_03",
+          "angle": -99.98323194415147,
+          "target": -100
+        },
+        {
+          "id": "DH_2F_fridge_left",
+          "angle": -104.97025392250687,
+          "target": -105
+        },
+        {
+          "id": "DH_2F_fridge_right",
+          "angle": 104.9692894379054,
+          "target": 105
+        },
+        {
+          "id": "DH_2F_discussion_entry",
+          "angle": -97.99998699814769,
+          "target": -98
+        },
+        {
+          "id": "DH_2F_office_entry",
+          "angle": -97.99998699814769,
+          "target": -98
+        },
+        {
+          "id": "DH_2F_office_cabinet",
+          "angle": 93.99999388377898,
+          "target": 94
+        },
+        {
+          "id": "DH_2F_pantry_secondary_entry",
+          "angle": -90.00000482967296,
+          "target": -90
+        }
+      ]
+    },
+    {
+      "name": "Doors and cabinet leaves close without residual registered yaw",
+      "passed": true,
+      "details": [
+        {
+          "id": "DH_2F_pantry_entry",
+          "angle": -4.284467028234877e-23
+        },
+        {
+          "id": "DH_2F_cabinet_01",
+          "angle": 3.2491412316021714e-34
+        },
+        {
+          "id": "DH_2F_cabinet_02",
+          "angle": 2.4748394292956843e-34
+        },
+        {
+          "id": "DH_2F_cabinet_03",
+          "angle": 2.4748394292956843e-34
+        },
+        {
+          "id": "DH_2F_fridge_left",
+          "angle": -0.0000011295105650786972
+        },
+        {
+          "id": "DH_2F_fridge_right",
+          "angle": -8.838719266340365e-34
+        },
+        {
+          "id": "DH_2F_discussion_entry",
+          "angle": 6.111589059165953e-20
+        },
+        {
+          "id": "DH_2F_office_entry",
+          "angle": -0.000015730091035623786
+        },
+        {
+          "id": "DH_2F_office_cabinet",
+          "angle": -3.269343663224487e-36
+        },
+        {
+          "id": "DH_2F_pantry_secondary_entry",
+          "angle": -8.077819864177403e-18
+        }
+      ]
+    },
+    {
+      "name": "Preserved HK44 city bridge connects through 1F to the stair",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            84.65,
+            -42.8,
+            9.85
+          ],
+          "actual": [
+            84.64999389648438,
+            -42.76606369018555,
+            9.847073593139648
+          ],
+          "plan_error": 0.03393631036331524,
+          "height_error": 0.00292640686035206
+        },
+        {
+          "target": [
+            65.8,
+            -44.1,
+            9.85
+          ],
+          "actual": [
+            65.83467102050781,
+            -44.09755325317383,
+            9.847000160217284
+          ],
+          "plan_error": 0.03475724720234243,
+          "height_error": 0.002999839782715341
+        },
+        {
+          "target": [
+            61.1,
+            -44.1,
+            9.85
+          ],
+          "actual": [
+            61.13459777832031,
+            -44.0999870300293,
+            9.84699062347412
+          ],
+          "plan_error": 0.034597780751393976,
+          "height_error": 0.0030093765258794036
+        },
+        {
+          "target": [
+            61.1,
+            -42.4,
+            9.85
+          ],
+          "actual": [
+            61.100669860839844,
+            -42.432952880859375,
+            9.847266235351562
+          ],
+          "plan_error": 0.03295968856765809,
+          "height_error": 0.0027337646484379974
+        },
+        {
+          "target": [
+            59.4,
+            -42.1,
+            9.85
+          ],
+          "actual": [
+            59.43353271484375,
+            -42.101707458496094,
+            9.847000160217284
+          ],
+          "plan_error": 0.033576157899739285,
+          "height_error": 0.002999839782715341
+        }
+      ]
+    },
+    {
+      "name": "Three stair flights and two rest landings permit ascent",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            59.4,
+            -46.6,
+            12.0166667
+          ],
+          "actual": [
+            59.399986267089844,
+            -46.566837310791016,
+            12.013763465881347
+          ],
+          "plan_error": 0.03316269205243453,
+          "height_error": 0.0029032341186532307
+        },
+        {
+          "target": [
+            59.4,
+            -51.5,
+            14.1833333
+          ],
+          "actual": [
+            59.39998245239258,
+            -51.46977996826172,
+            14.180433311462401
+          ],
+          "plan_error": 0.0302200368328904,
+          "height_error": 0.002899988537597764
+        },
+        {
+          "target": [
+            59.4,
+            -56.4,
+            16.35
+          ],
+          "actual": [
+            59.40001678466797,
+            -56.368194580078125,
+            16.347098388671874
+          ],
+          "plan_error": 0.031805424350758026,
+          "height_error": 0.0029016113281272737
+        },
+        {
+          "target": [
+            62,
+            -56.4,
+            16.35
+          ],
+          "actual": [
+            61.968162536621094,
+            -56.39961242675781,
+            16.346999206542968
+          ],
+          "plan_error": 0.031839822352225135,
+          "height_error": 0.0030007934570335237
+        },
+        {
+          "target": [
+            62,
+            -57.3,
+            16.35
+          ],
+          "actual": [
+            61.99880599975586,
+            -57.26628875732422,
+            16.347060241699218
+          ],
+          "plan_error": 0.03373238087251226,
+          "height_error": 0.0029397583007835237
+        }
+      ]
+    },
+    {
+      "name": "The same stair permits descent",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            59.4,
+            -51.5,
+            14.1833333
+          ],
+          "actual": [
+            59.39999008178711,
+            -51.532318115234375,
+            14.180437126159667
+          ],
+          "plan_error": 0.03231811675629148,
+          "height_error": 0.002896173840332139
+        },
+        {
+          "target": [
+            59.4,
+            -46.6,
+            12.0166667
+          ],
+          "actual": [
+            59.399986267089844,
+            -46.63111114501953,
+            12.013766326904296
+          ],
+          "plan_error": 0.031111148050482436,
+          "height_error": 0.002900373095704012
+        },
+        {
+          "target": [
+            59.4,
+            -42.1,
+            9.85
+          ],
+          "actual": [
+            59.400001525878906,
+            -42.13225173950195,
+            9.846978225708007
+          ],
+          "plan_error": 0.03225173953804753,
+          "height_error": 0.003021774291992685
+        }
+      ]
+    },
+    {
+      "name": "Pantry connection and corridor remain continuous",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            57.6,
+            -63.35,
+            16.35
+          ],
+          "actual": [
+            57.632930755615234,
+            -63.350006103515625,
+            16.347018280029296
+          ],
+          "plan_error": 0.03293075618085773,
+          "height_error": 0.0029817199707053987
+        },
+        {
+          "target": [
+            56,
+            -63.35,
+            16.35
+          ],
+          "actual": [
+            56.032711029052734,
+            -63.35000991821289,
+            16.346861877441405
+          ],
+          "plan_error": 0.03271103055637011,
+          "height_error": 0.0031381225585960237
+        },
+        {
+          "target": [
+            53.4,
+            -67.2,
+            16.35
+          ],
+          "actual": [
+            53.417484283447266,
+            -67.17445373535156,
+            16.347098388671874
+          ],
+          "plan_error": 0.030956611654903855,
+          "height_error": 0.0029016113281272737
+        },
+        {
+          "target": [
+            49.4,
+            -71,
+            16.35
+          ],
+          "actual": [
+            49.42359924316406,
+            -70.9775161743164,
+            16.34709457397461
+          ],
+          "plan_error": 0.03259519435878313,
+          "height_error": 0.0029054260253928987
+        },
+        {
+          "target": [
+            44.25,
+            -75.35,
+            16.35
+          ],
+          "actual": [
+            44.27811050415039,
+            -75.33131408691406,
+            16.347161331176757
+          ],
+          "plan_error": 0.033754463281825804,
+          "height_error": 0.0028386688232444612
+        }
+      ]
+    },
+    {
+      "name": "A closed secondary door blocks passage",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            58.1,
+            -63.35,
+            16.35
+          ],
+          "actual": [
+            56.696903228759766,
+            -63.350345611572266,
+            16.347098388671874
+          ],
+          "plan_error": 1.4030968138058517,
+          "height_error": 0.0029016113281272737
+        }
+      ]
+    },
+    {
+      "name": "The open secondary door allows passage",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            58.1,
+            -63.35,
+            16.35
+          ],
+          "actual": [
+            58.0650634765625,
+            -63.35000228881836,
+            16.34709648132324
+          ],
+          "plan_error": 0.034936523512475816,
+          "height_error": 0.0029035186767600862
+        }
+      ]
+    },
+    {
+      "name": "The common lobby and original pantry door remain connected",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            65.6,
+            -57.3,
+            16.35
+          ],
+          "actual": [
+            65.5694580078125,
+            -57.300010681152344,
+            16.346922912597655
+          ],
+          "plan_error": 0.030541994055201752,
+          "height_error": 0.0030770874023460237
+        },
+        {
+          "target": [
+            65.6,
+            -61.85,
+            16.35
+          ],
+          "actual": [
+            65.59977722167969,
+            -61.81827926635742,
+            16.34692672729492
+          ],
+          "plan_error": 0.03172151593167446,
+          "height_error": 0.0030732727050803987
+        },
+        {
+          "target": [
+            63.2,
+            -61.85,
+            16.35
+          ],
+          "actual": [
+            63.2330322265625,
+            -61.84957504272461,
+            16.34709457397461
+          ],
+          "plan_error": 0.03303495997215755,
+          "height_error": 0.0029054260253928987
+        }
+      ]
+    },
+    {
+      "name": "Discussion entrance permits normal passage when open",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            35.24448286473751,
+            -69.10625707864762,
+            16.350000381469727
+          ],
+          "actual": [
+            35.266544342041016,
+            -69.08418273925781,
+            16.347037353515624
+          ],
+          "plan_error": 0.031208736602258865,
+          "height_error": 0.002963027954102415
+        }
+      ]
+    },
+    {
+      "name": "Discussion closed entrance blocks passage",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            35.24448286473751,
+            -69.10625707864762,
+            16.350000381469727
+          ],
+          "actual": [
+            35.935020446777344,
+            -68.4156723022461,
+            16.347132720947265
+          ],
+          "plan_error": 0.9766009858724064,
+          "height_error": 0.00286766052246179
+        }
+      ]
+    },
+    {
+      "name": "Office entrance permits normal passage when open",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            37.59561267375946,
+            -71.45738728404045,
+            16.350000381469727
+          ],
+          "actual": [
+            37.61776351928711,
+            -71.43519592285156,
+            16.347100296020507
+          ],
+          "plan_error": 0.0313546881503452,
+          "height_error": 0.0029000854492196027
+        }
+      ]
+    },
+    {
+      "name": "Office closed entrance blocks passage",
+      "passed": true,
+      "details": [
+        {
+          "target": [
+            37.59561267375946,
+            -71.45738728404045,
+            16.350000381469727
+          ],
+          "actual": [
+            38.28440475463867,
+            -70.76859283447266,
+            16.347147979736327
+          ],
+          "plan_error": 0.9741007773517653,
+          "height_error": 0.00285240173339929
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "scope": "Registered physics plus branch finishing geometry, manual hinge motors and human-size capsule; no robot autonomy or full-city physics claim"
+}

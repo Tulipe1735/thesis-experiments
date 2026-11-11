@@ -1,0 +1,11 @@
+{
+  "source_root": "/mnt/c/Users/23660/Documents/Codex/2026-10-23/files-mentioned-by-the-user-hk/outputs/g1_astra_vla",
+  "copied_files": {
+    "smolvla_runtime.py": "849f75d33c6ab18409f3fc631375ed51656bb7e9f8a3d7cc5ca2b96228a9b0fb",
+    "smolvla_worker.py": "05ee335fc8d2f7a8f56502a88d4fed0201dfe237815b47649d0c40c998e5acb7",
+    "smolvla_preview.py": "6d0b3d65b182c89515a7adecba999d507b9e2289bc933d343d72e1e0a40d4d3b",
+    "vla_contract.py": "787444a67733e74ff0166cad5ebaf2ffa55478fefba966a721e9dcbadc0655d8"
+  },
+  "copied_metadata": "assets/vla_checkpoint_metadata/kiteml_g1_smolvla",
+  "weights_copied_to_workspace": false
+}

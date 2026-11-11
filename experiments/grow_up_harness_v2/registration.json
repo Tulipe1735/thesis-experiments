@@ -1,0 +1,640 @@
+{
+  "date": "2026-11-03",
+  "boundary": "simulation",
+  "status": "P2_RUN_PRE_REGISTERED_AGENT_NOT_RUN",
+  "entry": "experiments/grow_up_harness_v2/PROTOCOL.md",
+  "design": "experiments/grow_up_harness_v2/README.md",
+  "task": {
+    "family": "TP01",
+    "split": "train",
+    "instances": [
+      "TP01_train_000",
+      "TP01_train_001",
+      "TP01_train_002",
+      "TP01_train_003",
+      "TP01_train_004",
+      "TP01_train_005",
+      "TP01_train_006",
+      "TP01_train_007"
+    ],
+    "test_split": "registered by hash only, never executed",
+    "manifest": "experiments/t0_agent_v1/tabletop_dataset_20261026_003/train/manifest.json",
+    "gate_population": "experiments/t0_agent_v1/tp01_reach_dataset_20261026_001",
+    "gate_population_note": "The eight frozen train states stay registered as the task family, but they are out of the fixed-waist workspace. F0 v2 selects S* from the four frozen reach states."
+  },
+  "feasibility_gate": {
+    "v1": {
+      "run": "experiments/grow_up_harness_v2/runs/f0_engineering_20261103_004",
+      "dataset": "experiments/t0_agent_v1/tabletop_dataset_20261026_003",
+      "instances": [
+        "TP01_train_000",
+        "TP01_train_001",
+        "TP01_train_002",
+        "TP01_train_003",
+        "TP01_train_004",
+        "TP01_train_005",
+        "TP01_train_006",
+        "TP01_train_007"
+      ],
+      "budget_s": 60,
+      "reference": "experiments/t0_agent_v1/reuse_grasp.py",
+      "successes": 0,
+      "s_star": null,
+      "status": "FEASIBILITY_GATE_FAILED",
+      "causes": {
+        "instances_out_of_reach": {
+          "measured_forward_limit_m": 0.45,
+          "frozen_target_forward_m": [
+            0.661,
+            0.96
+          ]
+        },
+        "base_reference_fails_on_reachable_targets": true,
+        "budget_below_reference_minimum": {
+          "cap_s": 60,
+          "reference_lift_threshold_s": 65.95
+        }
+      }
+    },
+    "v2": {
+      "run": "experiments/grow_up_harness_v2/runs/f0v2_engineering_20261103_001",
+      "dataset": "experiments/t0_agent_v1/tp01_reach_dataset_20261026_001",
+      "dataset_freeze_sha256": "b6e5ad22652efdf449f439088a3d3e4af9969d826db7ecb31990b26f3c6ec654",
+      "instances": [
+        "TP01_reach_train_000",
+        "TP01_reach_train_001",
+        "TP01_reach_train_002",
+        "TP01_reach_train_003"
+      ],
+      "budget_s": 120,
+      "reference_module": "experiments/t0_agent_v1/tp01_adaptive_dev_20261026_015/frozen_sources/experiments/t0_agent_v1/adaptive_reuse_grasp.py",
+      "reference_sha256": "0ce5839cdd47d0fbdd5601ae776967b1fa22b2ea6b07dba706bcf5ad1649da36",
+      "recipe_source": "experiments/t0_agent_v1/tp01_adaptive_dev_20261026_015/registration.json",
+      "recipe_sha256": "c47a33faabcf351c87d6fa8818f1a6c7498da8f775e90ea973ae6a73a2569e5c",
+      "successes": 3,
+      "s_star": "TP01_reach_train_000",
+      "s_star_parent": "TP01_train_000",
+      "status": "FEASIBILITY_GATE_PASSED",
+      "counted_as_agent_success": false,
+      "failed_case_preserved": "TP01_reach_train_002 (bottle): approach_open_03 STOPPED"
+    },
+    "reach_envelope": {
+      "run": "experiments/grow_up_harness_v2/runs/reach_envelope_20261103_002/envelope.json",
+      "forward_limit_m": 0.45,
+      "table_height_in_pelvis_m": 0.1687,
+      "reachable_cells": 51,
+      "total_cells": 272
+    },
+    "budget_probe": {
+      "run": "experiments/grow_up_harness_v2/runs/f0v2_budget_probe_20261103_001",
+      "budget_s": 60,
+      "result": "FEASIBILITY_GATE_FAILED",
+      "error": "pressure_during_test_lift_2cm_52: BUDGET_EXHAUSTED"
+    }
+  },
+  "predicates": {
+    "module": "experiments/grow_up_harness_v2/harness/predicates.py",
+    "version": "tp01-step-predicates-v1",
+    "sha256": "273e1fc470a79850adaf9a08d798f09e38e757175f2ddf80ed8cced30fd592d4",
+    "step_predicates": [
+      "target_visible",
+      "hand_empty",
+      "hand_open",
+      "target_localized",
+      "palm_near_target",
+      "grasp_contact",
+      "holding_target",
+      "target_lifted",
+      "target_stable",
+      "guard_clear"
+    ],
+    "aligned_with_evaluator_limits": {
+      "hand_force_N": 0.1,
+      "linear_speed_m_s": 0.02,
+      "angular_speed_rad_s": 0.2,
+      "stable_s": 1.0,
+      "max_sample_gap_s": 0.051
+    }
+  },
+  "chain": {
+    "steps": [
+      "locate_target",
+      "open_hand",
+      "reach_target",
+      "close_hand",
+      "lift_target",
+      "hold_stable",
+      "check"
+    ],
+    "check_args": {
+      "predicate": "target_stable"
+    },
+    "initial_predicates": [
+      "target_visible",
+      "hand_empty",
+      "guard_clear"
+    ],
+    "budget_s": 31.1,
+    "sequence_check": "harness.ir.validate_sequence",
+    "module": "experiments/grow_up_harness_v2/harness/ops.py"
+  },
+  "evaluator": {
+    "version": "tabletop-predicates-v1",
+    "entry": "experiments/t0_agent_v1/tabletop_training_plant.py::independent_verify",
+    "reads": "integration_states.npz + initial_pose.json only",
+    "goal": "HeldLifted(object, minimum_lift_m=0.10, stable_s=1.0)"
+  },
+  "baselines": {
+    "B0": {
+      "kind": "archived_failure",
+      "episode": "experiments/t0_agent_v1/tp01_training_20261026_003/practice_v2/case_01",
+      "reexecuted": false
+    },
+    "B1": {
+      "kind": "fallback",
+      "program": "experiments/t0_agent_v1/tp01_training_20261026_003/candidate_v2.py",
+      "wrapped_as_op": "tp01_policy_legacy",
+      "status": "FAILED_AS_EXPECTED",
+      "run": "experiments/grow_up_harness_v2/runs/v2_3_b1_fallback_20261103_001/results.json",
+      "failure": "FORBIDDEN_CONTACT",
+      "lineage_root": true,
+      "paired": false,
+      "runtime": "frozen experiments/t0_agent_v1/tabletop_training_plant.py::execute_case with the frozen Worker",
+      "note": "The new Runtime WorkerRunner is validated separately by the synthetic no-op candidate; B1 is the fallback failure episode, not a new-runtime run."
+    },
+    "B2": {
+      "kind": "negative_control",
+      "program": "wait_only",
+      "status": "PASSED",
+      "runs": [
+        "experiments/grow_up_harness_v2/runs/calib_b2_20261103_002/TP01_train_000",
+        "experiments/grow_up_harness_v2/runs/calib_b2_s_star_20261103_001"
+      ],
+      "result": {
+        "verified_task_success": false,
+        "simulation_seconds": 31.0,
+        "actions": 155,
+        "initial_state_matches_manifest": true
+      },
+      "s_star_run": "experiments/grow_up_harness_v2/runs/calib_b2_s_star_20261103_001",
+      "s_star_instance": "TP01_reach_train_000"
+    },
+    "R": {
+      "kind": "positive_control",
+      "reference": "experiments/t0_agent_v1/tp01_adaptive_dev_20261026_015/frozen_sources/experiments/t0_agent_v1/adaptive_reuse_grasp.py",
+      "status": "PASSED",
+      "gate": "F0_v2",
+      "episode": "experiments/grow_up_harness_v2/runs/f0v2_engineering_20261103_001/case_01",
+      "initial_state": "TP01_reach_dataset_20261026_001/train/TP01_reach_train_000"
+    },
+    "T": {
+      "kind": "treatment",
+      "program": "five candidate ops",
+      "status": "NOT_RUN"
+    }
+  },
+  "budgets": {
+    "wall_time_s": 28800,
+    "agent_calls": 120,
+    "tokens": 1500000,
+    "physical_episodes": 120,
+    "simulation_seconds": 7200,
+    "eps_f0": 4,
+    "eps_controls": 8,
+    "eps_practice": 100,
+    "eps_buffer": 8,
+    "call_allocation": {
+      "diagnose": 1,
+      "author_first": 1,
+      "practice_revisions": 100,
+      "repair_compose": 1,
+      "format_retries": 8,
+      "reserve": 9
+    },
+    "superseded_by": "experiments/grow_up_harness_v2/registration_budget_v2.json"
+  },
+  "agent_gateway": {
+    "kind": "opencode",
+    "command": "opencode run --format json --auto --model opencode-go/deepseek-v4.1-flash <prompt>; add --session <ses-id> only to continue an existing session",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "status": "PASSED",
+    "must_pass_before_practice": true,
+    "allowed_inputs": [
+      "public task",
+      "legal observation samples",
+      "op table",
+      "candidate source",
+      "coarse feedback"
+    ],
+    "forbidden_inputs": [
+      "object truth",
+      "evaluator source or thresholds",
+      "test split",
+      "other skill code",
+      "MuJoCo model",
+      "filesystem outside workspace",
+      "network"
+    ],
+    "smoke_run": "experiments/grow_up_harness_v2/runs/gateway_smoke_20261104_001/results.json",
+    "smoke_session_id": "ses_e5bbec7a0ffeVQCrEWokVpkYhB",
+    "smoke_message_id": "msg_1a4413890001p1JW0GNh0smXJk",
+    "smoke_model": "opencode-go/deepseek-v4.1-flash",
+    "smoke_prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+    "smoke_response_sha256": "b24d6d33736ecd5604a4b17bc9c6481039fac362bb7df044ef1c10a2bfd21db6",
+    "smoke_input_tokens": 13682,
+    "smoke_output_tokens": 3,
+    "smoke_cost": 0.0,
+    "smoke_experiment_episodes": 0
+  },
+  "environment": {
+    "python": "/home/tulipe/.venvs/g1-mujoco/bin/python",
+    "python_version": "3.12",
+    "mujoco": "3.17.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pillow": "13.0.0",
+    "renderer": "MUJOCO_GL=egl",
+    "dependencies_record": "grasp_optimization/reports/dependencies.json"
+  },
+  "restored_sources": [
+    {
+      "path": "experiments/grow_up_v2/plant.py",
+      "sha256": "fa319ee540971aa8ba0ca38216c2918bf9087f2a7b612e7c2ddfd42e03426f0c",
+      "restored_from": "experiments/t0_agent_v1/runtime_reference_v2/plant.py",
+      "registered_in": "experiments/t0_agent_v1/tp01_training_20261026_003/registration.json"
+    },
+    {
+      "path": "experiments/grow_up_v2/isolation/worker.py",
+      "sha256": "443c125f1d0234d5b1efceba7d7279d63cb6da076ffbddfb53d27a2712283f81",
+      "restored_from": "experiments/t0_agent_v1/runtime_reference_v2/isolation/worker.py",
+      "registered_in": "experiments/t0_agent_v1/tp01_training_20261026_003/registration.json"
+    },
+    {
+      "path": "experiments/grow_up_v2/isolation/_entry.py",
+      "sha256": "bca3044a772353f5b3dedbb0eb0ed285cdd21300e8d72d414095c05cfc2e6d7b",
+      "restored_from": "experiments/t0_agent_v1/runtime_reference_v2/isolation/_entry.py",
+      "registered_in": "experiments/t0_agent_v1/tp01_training_20261026_003/registration.json"
+    },
+    {
+      "path": "experiments/t0_agent_v1/tray_tools.py",
+      "sha256": "d67e26f56468e8e340035d75ca70b93d30c159b57205bd2c3c8b92ae7e717bbd",
+      "restored_from": "experiments/cordis_tp01/runs/scripted_20261028_001/practice_v0/frozen_sources/experiments/t0_agent_v1/tray_tools.py",
+      "registered_in": "experiments/t0_agent_v1/tp01_transfer_20261026_001/registration.json"
+    }
+  ],
+  "calibration": {
+    "unit_tests": {
+      "command": "MUJOCO_GL=egl ~/.venvs/g1-mujoco/bin/python -B -m unittest discover -s tests -t .",
+      "cwd": "experiments/grow_up_harness_v2",
+      "result": "169 passed"
+    },
+    "b2_negative_control": {
+      "status": "PASSED",
+      "run": "experiments/grow_up_harness_v2/runs/calib_b2_20261103_002/TP01_train_000",
+      "verified_task_success": false,
+      "simulation_seconds": 31.0,
+      "wait_actions": 155,
+      "s_star_run": "experiments/grow_up_harness_v2/runs/calib_b2_s_star_20261103_001",
+      "s_star_instance": "TP01_reach_train_000",
+      "s_star_verified_task_success": false,
+      "s_star_simulation_seconds": 31.0
+    },
+    "f0_engineering_gate": {
+      "status": "PASSED_V2",
+      "detail": "see feasibility_gate",
+      "v1_run": "experiments/grow_up_harness_v2/runs/f0_engineering_20261103_004",
+      "v1_outcome": "FEASIBILITY_GATE_FAILED",
+      "v2_run": "experiments/grow_up_harness_v2/runs/f0v2_engineering_20261103_001",
+      "v2_s_star": "TP01_reach_train_000",
+      "v2_script": "experiments/grow_up_harness_v2/calibration/f0_engineering_v2.py",
+      "v2_command": "MUJOCO_GL=egl LIBGL_ALWAYS_SOFTWARE=1 ~/.venvs/g1-mujoco/bin/python -B experiments/grow_up_harness_v2/calibration/f0_engineering_v2.py --output <dir>",
+      "envelope_script": "experiments/grow_up_harness_v2/calibration/reach_envelope.py",
+      "envelope_command": "MUJOCO_GL=egl LIBGL_ALWAYS_SOFTWARE=1 ~/.venvs/g1-mujoco/bin/python -B experiments/grow_up_harness_v2/calibration/reach_envelope.py --output <dir>"
+    },
+    "audited_episode_recompute": {
+      "status": "PASSED",
+      "run": "experiments/grow_up_harness_v2/runs/audit_recompute_20261103_001/results.json",
+      "matches": 16,
+      "total": 16,
+      "episodes": "experiments/t0_agent_v1/tp01_training_20261026_003/{practice_v1,practice_v2}/case_01..08",
+      "audit": "experiments/t0_agent_v1/tp01_training_20261026_003/audit_20261026_001/verification.json",
+      "read_only": true,
+      "script": "experiments/grow_up_harness_v2/calibration/audit_recompute.py"
+    },
+    "tp01_adapter": {
+      "status": "PASSED",
+      "modules": {
+        "experiments/grow_up_harness_v2/harness/tp01.py": "c3da63814c2d0ff8285f970acd8647ee93d4015594da828b1494e5fa48d47738",
+        "experiments/grow_up_harness_v2/harness/evaluator.py": "9fb33a0b8dc647b5da8d0fa66ba85aef76578f0879de13e79ff8da6096fca2f0"
+      },
+      "tests": [
+        "tests/test_tp01.py",
+        "tests/test_evaluator.py"
+      ],
+      "replay_checked": {
+        "run": "experiments/grow_up_harness_v2/runs/f0v2_engineering_20261103_001",
+        "episodes": [
+          "case_01",
+          "case_02",
+          "case_03",
+          "case_04"
+        ],
+        "matches": 4,
+        "total": 4
+      },
+      "lift_datum": "settled_snapshot.objects[target].position_m[2], same value the evaluator fixes from frames[0]"
+    },
+    "v2_2_runtime": {
+      "status": "SKELETON_PASSED_WORKER_PENDING",
+      "modules": {
+        "experiments/grow_up_harness_v2/harness/runtime.py": "7eb92973f5196ab44455467ff460e01d4e2fed4fff0749cd949f517272d476a8",
+        "experiments/grow_up_harness_v2/harness/router.py": "6c914cf750ca1383cbc948c7866a9853884b66be7dc55be90ad75fd0064e34f0",
+        "experiments/grow_up_harness_v2/harness/tp01.py": "709f454ff52d6fe4ace43b0ee0d34b9ba17d4acb20bee32c36e3bb1e4abf3c70",
+        "experiments/grow_up_harness_v2/harness/evaluator.py": "9fb33a0b8dc647b5da8d0fa66ba85aef76578f0879de13e79ff8da6096fca2f0"
+      },
+      "tests": [
+        "tests/test_runtime.py",
+        "tests/test_router.py"
+      ],
+      "first_acceptance": {
+        "run": "experiments/grow_up_harness_v2/runs/v2_2_r_replay_20261103_003/results.json",
+        "source": "experiments/grow_up_harness_v2/runs/f0v2_engineering_20261103_001/case_01",
+        "requests": 1874,
+        "executed": 1874,
+        "initial_pose_match": true,
+        "verdict_match": true,
+        "passed": true
+      },
+      "covered": [
+        "total and per-step budgets, checked before each dispatch",
+        "closed failure-code set with runtime codes preserved",
+        "one repair replan",
+        "postcondition check",
+        "Blackboard validation and merge",
+        "evidence directory, blackboard JSONL and hashes",
+        "final state hash equals the last saved integration frame",
+        "validate_program plus validate_sequence",
+        "recorded-program replay through the evaluator"
+      ],
+      "pending": [
+        "candidate op execution in the isolated Worker (V2.3)"
+      ],
+      "step0_fixes": [
+        "state_hash uses mj_getState and matches the last integration_states frame; tested against a real plant",
+        "runtime merges through Blackboard and rejects illegal keys and >32 entries",
+        "Budget.dispatch checks step and program remaining before every dispatch; tested that a rejected dispatch never reaches the plant",
+        "router REFUSES when predicate_state is missing instead of assuming the initial predicates"
+      ]
+    },
+    "stage_timing": {
+      "status": "MEASURED",
+      "run": "experiments/grow_up_harness_v2/runs/stage_timing_20261103_001/timing.json",
+      "sha256": "0668caf35dcdf68108b7f93702760747a2ef7add08b781f026fd1c2b14431f4f",
+      "measured_total_s": 75.44,
+      "program_budget_v2_s": 87.1,
+      "episode_cap_v2_s": 120.0,
+      "pairing": "60 x 120 s = 7200 s",
+      "script": "experiments/grow_up_harness_v2/calibration/stage_timing.py"
+    },
+    "v2_3_reference_chain": {
+      "status": "STRICT_PASSED",
+      "program_budget_s": 87.1,
+      "steps_executed": 7,
+      "verified_task_success": true,
+      "verdict_match": true,
+      "modules": {
+        "experiments/grow_up_harness_v2/harness/runtime.py": "0f400b923ba9d69b879aaab9b9a43ff1f1cf0dd0a7d0698848e1e62921a4d31e",
+        "experiments/grow_up_harness_v2/calibration/reference_runners.py": "e277464e78a5d541a711b76caedaee4ac804a080453ee49f566228d7c702d0ab",
+        "experiments/grow_up_harness_v2/calibration/run_reference_chain.py": "e6d3712275e87fa615ad20e094d8e14aca62baf517b9c75a58bdb559137ed57c"
+      },
+      "next": "B1 pairing interpretation and author_ops; Worker wiring is a separate workstream",
+      "exposure_run": {
+        "run": "experiments/grow_up_harness_v2/runs/v2_3_reference_chain_20261103_004/results.json",
+        "post_analysis": "experiments/grow_up_harness_v2/runs/v2_3_reference_chain_20261103_004/post_analysis.json",
+        "post_failures": [
+          {
+            "index": 2,
+            "op_id": "reach_target",
+            "predicate": "palm_near_target"
+          }
+        ]
+      },
+      "strict_run": {
+        "run": "experiments/grow_up_harness_v2/runs/v2_3_reference_chain_20261103_005/results.json",
+        "strict_posts": true,
+        "predicate_version": "tp01-step-predicates-v2",
+        "palm_constants": {
+          "horizontal_m": 0.12,
+          "vertical_m": 0.08
+        },
+        "steps_executed": 7,
+        "post_failures": [],
+        "verified_task_success": true,
+        "verdict_match": true,
+        "passed": true
+      }
+    },
+    "b1_fallback": {
+      "status": "B1_FALLBACK_FAILURE_PRESERVED",
+      "run": "experiments/grow_up_harness_v2/runs/v2_3_b1_fallback_20261103_001/results.json",
+      "episode": "experiments/grow_up_harness_v2/runs/v2_3_b1_fallback_20261103_001/case_01",
+      "label": "B1_fallback",
+      "instance": "TP01_reach_train_000",
+      "verified_task_success": false,
+      "guard": "FORBIDDEN_CONTACT",
+      "simulation_seconds": 11.70800000000058,
+      "initial_state_sha256": "6c7942293a161033ced408d389b167d16c48726c1daee8a18eadf50ec276b920",
+      "source_sha256": "48c155e365397e12a02dff8456bf42b35d95fd48f1fe88e02feab99799887899",
+      "lineage_root": true,
+      "paired": false,
+      "pairing_note": "Pairing waits until the strict seven-step reference chain is a positive example; this episode preserves the fallback failure."
+    },
+    "predicate_v2_check": {
+      "status": "PASSED",
+      "run": "experiments/grow_up_harness_v2/runs/predicate_v2_check_20261104_001/results.json",
+      "cases": {
+        "reference_positive": true,
+        "horizontal_negative": false,
+        "vertical_negative": false,
+        "mixed_frame": "PredicateUnavailable"
+      }
+    },
+    "v2_3_worker": {
+      "status": "PASSED",
+      "module": "experiments/grow_up_harness_v2/harness/worker_runner.py",
+      "sha256": "1d03b786d62ab637f4d9bac8665b91dab11edf274c50d35155ee1e69bf8bed19",
+      "tests": "experiments/grow_up_harness_v2/tests/test_worker_runner.py",
+      "synthetic_positive": "a no-op set_joints candidate runs in the frozen Worker and produces exactly one dispatch; detail carries worker_security",
+      "formal_rejection": "the candidate op is accepted in practice and raises ContractError in formal admission",
+      "check": "candidate_ops_rejected_in_formal_before_promotion",
+      "one_worker_per_step": true,
+      "module_sha256": "1d03b786d62ab637f4d9bac8665b91dab11edf274c50d35155ee1e69bf8bed19"
+    },
+    "v2_4_demo": {
+      "status": "PASSED_SCAFFOLD_ACCEPTANCE_AGENT_NOT_RUN",
+      "run": "experiments/grow_up_harness_v2/runs/v2_4_demo_20261104_002/results.json",
+      "episode": "experiments/grow_up_harness_v2/runs/v2_4_demo_20261104_002/episode",
+      "validation_report": "experiments/grow_up_harness_v2/runs/v2_4_demo_20261104_002/validation_report.json",
+      "check_count": 26,
+      "true_count": 17,
+      "false_checks": [
+        "candidate_ops_execute_in_worker",
+        "candidate_ops_run_in_practice",
+        "verified_task_success",
+        "repair_same_initial_state_script_passes",
+        "repair_same_initial_state_agent_passes",
+        "fallback_pairing_recomputed",
+        "promotion_writes_new_snapshot",
+        "ops_promoted_are_used",
+        "formal_reuse_selects_promoted_skill"
+      ],
+      "reference_passed": true,
+      "reference_verdict_match": true,
+      "counted_as_agent_success": false
+    },
+    "v2_4_modules": {
+      "experiments/grow_up_harness_v2/harness/agent.py": "0b8e6ebff46d2328ba84a75e625d36dfc02b910730505514c96533f0e57841dd",
+      "experiments/grow_up_harness_v2/harness/experience.py": "8a14c2ddfd6ffa6ba26743d3e6012a89ba2bdb5a10d72784bbe54353edc9afc9",
+      "experiments/grow_up_harness_v2/harness/validation.py": "7502ff1596b9774abc7441c1f123fb90f1e991f33bff9c000728cdb1607dee38",
+      "experiments/grow_up_harness_v2/harness/evidence.py": "36b7a90c8cdd90614d17182c7b7ed707060c8ad349de52e38bcb524fd4b18d59",
+      "experiments/grow_up_harness_v2/harness/demo.py": "e857acdb73bc59477edc60476b3b160cec0850bb39784c78bc1def5f3b31abf4"
+    }
+  },
+  "current_run": {
+    "run_id": "p2_agent_20261104_005",
+    "date": "2026-11-04",
+    "status": "PRE_REGISTERED",
+    "output": "experiments/grow_up_harness_v2/runs/p2_agent_20261104_005",
+    "smoke_output": "experiments/grow_up_harness_v2/runs/p2_agent_smoke_20261104_005",
+    "aborted_development_runs": [
+      {
+        "output": "experiments/grow_up_harness_v2/runs/p2_agent_20261104_001",
+        "reason": "The author prompt said 'return action, state, blackboard' and the first candidate returned a tuple; the Worker requires a dict. Aborted before the first practice episode. The partial run is preserved; the prompt rule now says dict and the Worker rejects a tuple.",
+        "counted_as_a_run": false
+      },
+      {
+        "output": "experiments/grow_up_harness_v2/runs/p2_agent_20261104_002",
+        "reason": "Default run id was still the previous value, so the driver stopped at the pre-registration check with zero model calls. The output is preserved as a registration-check failure.",
+        "counted_as_a_run": false
+      },
+      {
+        "output": "experiments/grow_up_harness_v2/runs/p2_agent_20261104_003",
+        "reason": "Aborted during the first author call after the smoke showed the prompt did not state the action contract. The prompt now lists set_joints, wait, done and fail; a new smoke runs before the formal run.",
+        "counted_as_a_run": false
+      },
+      {
+        "output": "experiments/grow_up_harness_v2/runs/p2_agent_20261104_004",
+        "reason": "The first practice episode failed with INVALID_BLACKBOARD. The driver then hit its own exclusive-write bug on practice/index.json, so the run stopped after one episode. The prompt now states the blackboard contract; the index is rewritten.",
+        "counted_as_a_run": false
+      }
+    ],
+    "gateway": {
+      "kind": "opencode",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "command": "opencode run --server <private-url> --format json --auto --model opencode-go/deepseek-v4.1-flash <prompt>",
+      "server": "one private opencode serve process started in the Agent workspace; PWD set to the workspace",
+      "session_policy": "fresh session per call; no --session continuation",
+      "locked": true,
+      "isolation_precheck": "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_007/results.json",
+      "isolation_precheck_passed": true,
+      "isolation_failures_preserved": [
+        "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_001",
+        "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_002",
+        "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_003",
+        "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_004",
+        "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_005",
+        "experiments/grow_up_harness_v2/runs/gateway_author_smoke_20261104_006"
+      ],
+      "isolation_note": "The first six prechecks preserved real races: a shared service answered before the workspace config loaded, and subprocess PWD stayed at the repository root. The passing gate uses a private server with PWD set to the workspace."
+    },
+    "initial_state": {
+      "instance": "TP01_reach_train_000",
+      "alias": "case_01",
+      "dataset": "experiments/t0_agent_v1/tp01_reach_dataset_20261026_001",
+      "initial_state_sha256": "6c7942293a161033ced408d389b167d16c48726c1daee8a18eadf50ec276b920",
+      "evaluator": "tabletop-predicates-v1",
+      "minimum_lift_m": 0.1,
+      "stable_s": 1.0
+    },
+    "budget": {
+      "source": "experiments/grow_up_harness_v2/registration_budget_v2.json",
+      "wall_time_s": 28800,
+      "agent_calls": 60,
+      "tokens": 1500000,
+      "token_accounting": "input + output + reasoning from every step_finish",
+      "physical_episodes": 60,
+      "practice_episodes": 44,
+      "simulation_seconds": 7200,
+      "program_budget_s": 87.1,
+      "episode_cap_s": 120.0
+    },
+    "call_allocation": {
+      "diagnose": 1,
+      "author_first": 1,
+      "practice_revisions": 44,
+      "repair_compose": 1,
+      "format_retries": 8,
+      "reserve": 5,
+      "precheck_outside_run": 3
+    },
+    "practice": {
+      "stop_on_first_success": true,
+      "max_episodes": 44,
+      "max_revision_calls": 44,
+      "failures_preserved": true,
+      "no_cherry_pick": "the final candidate is the last independently verified success, never an earlier good episode",
+      "failure_retention": "every practice episode directory, feedback.json and hashes.json stay in place; no retry replaces a failed episode",
+      "stop_rules": [
+        "stop at the first episode whose independent evaluator returns verified_task_success true",
+        "stop at 44 practice episodes or 44 revision calls",
+        "stop at 60 agent calls",
+        "stop when input + output + reasoning reaches 1,500,000 tokens",
+        "stop at 8 h wall time",
+        "a budget stop leaves P2 incomplete and preserves every failure; the budget is not raised during the run"
+      ]
+    },
+    "verification": {
+      "repair_script": "same saved initial state, deterministic re-execution of the successful practice program",
+      "repair_agent": "one compose call, validated program, same saved initial state; action requests must match the script run item by item",
+      "promotion": "repair_lineage ValidationReport per promoted op and the Skill; promote writes a new snapshot and freezes a new head",
+      "formal_t": "FAST route selects the promoted Skill in formal admission",
+      "scope": "category-level asset scope (cup); one peer cup is attempted, orange and bottle must be refused",
+      "scope_model_note": "TaskSpec.assets now includes the target category and the exact asset id, so Scope(assets={cup}) covers both cup instances while orange and bottle do not."
+    },
+    "observed_cost_note": "The passing precheck's real author_ops call used about 35k tokens (input + output + reasoning). At that rate the 1.5M token cap may bind before 44 practice revisions. The cap is not changed during the run; a token stop is recorded as P2 incomplete.",
+    "registered_before_execution": true,
+    "re_registered_after_development_abort": true,
+    "re_registered_reason": "The first formal attempt was stopped before any practice episode because the author prompt described the act return as a tuple. The budget, allocation, stop rules and S* are unchanged."
+  },
+  "stop_conditions": [
+    "the 16 audited failure verdicts do not reproduce",
+    "B2 is credited as success",
+    "R cannot reproduce a success, or F0 v2 fails on all four reach states",
+    "the worker sandbox cannot be established",
+    "the agent gateway is unavailable"
+  ],
+  "hand_open_fraction": {
+    "open_q_rad": 0.0,
+    "closed_q_rad": {
+      "left_hand_thumb_0_joint": 0.0,
+      "left_hand_thumb_1_joint": 0.65,
+      "left_hand_thumb_2_joint": 0.65,
+      "left_hand_middle_0_joint": -0.8,
+      "left_hand_middle_1_joint": -0.6,
+      "left_hand_index_0_joint": -0.8,
+      "left_hand_index_1_joint": -0.6
+    },
+    "formula": "min over the six joints with closed != open of 1 - clamp((closed - q) / (closed - open), 0, 1); travel past the open anchor clamps to fully open",
+    "source": "grasp_optimization/episodes/final_reference_1000/run_config.json close_angles",
+    "threshold": 0.6,
+    "threshold_owner": "experiments/grow_up_harness_v2/harness/predicates.py THRESHOLDS.min_open_fraction",
+    "check": "test_tp01.HandApertureTests covers reference open=1, reference closed=0, half closure=0.5, wider-open clamps to 1, past-closed clamps to 0"
+  },
+  "predicates_v2": {
+    "version": "tp01-step-predicates-v2",
+    "module": "experiments/grow_up_harness_v2/harness/predicates.py",
+    "sha256": "8d2ad636b50bbe94abd4c2b9390c3a7f583612e842716a473da6c083e354e455",
+    "digest": "12ab7a44359b28d3208bfad1a5f85111962e3c88a29aa965232779cc0c686cb2",
+    "registration": "experiments/grow_up_harness_v2/registration_predicates_v2.json"
+  }
+}

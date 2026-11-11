@@ -1,0 +1,53 @@
+{
+ "train": {
+  "seed": 92001,
+  "count": 1,
+  "radius_m": 0.002
+ },
+ "heldout": {
+  "seed": 93001,
+  "count": 1,
+  "radius_m": 0.002
+ },
+ "proposer": {
+  "backend": "ollama",
+  "model": "qwen3.5:4b",
+  "timeout_s": 300
+ },
+ "critic": {
+  "backend": "ollama",
+  "model": "qwen3.5:4b",
+  "timeout_s": 300,
+  "temperature": 0
+ },
+ "caps": {
+  "simulation_s": 180.0,
+  "commands": 1200,
+  "wall_s": 1200.0
+ },
+ "per_task": {
+  "fast_tries": 2,
+  "library_shown": 3,
+  "max_physical_attempts": 3,
+  "max_gate_rejections": 4,
+  "gate_steps": 8
+ },
+ "controls": {
+  "positive": "all"
+ },
+ "heldout_scratch": true,
+ "consumed_dev_seeds": [
+  2400,
+  2401,
+  2402,
+  2501,
+  4001,
+  4002,
+  4003,
+  4004
+ ],
+ "prediction": "Negative wait fails; positive controls reproduce three-cup collection on sampled instances. Only after applicable library reuse fails does model authorship start. Do not assume agent success or library benefit.",
+ "falsification": "Negative succeeds; positive fails (skip without replacement); policy receives private object poses; heldout phase changes store; any tray-only or single-cup result reported as full T02 success.",
+ "parent_store": null,
+ "evaluator_version": "t02-three-cup-strict-v1"
+}

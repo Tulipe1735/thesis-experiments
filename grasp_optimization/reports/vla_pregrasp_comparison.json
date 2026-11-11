@@ -1,0 +1,716 @@
+{
+  "same_integration_state_verified": true,
+  "branches": {
+    "vla": {
+      "verification": {
+        "verified_success": false,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.00040547788616929203,
+        "longest_strict_hold_s": 0.0,
+        "max_pelvis_tilt_deg": 0.0523339188463382,
+        "max_pelvis_drift_m": 0.0010238471784477488,
+        "max_cup_contact_penetration_m": 0.00037591502919472893,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "906790d9f8b7a6b491fdab598565d6ca0b8babb186b87b5f35819bdfb6feb2dc",
+        "no_external_base_force": true,
+        "final": {
+          "time": 22.671999999998313,
+          "lift_m": 5.274669589994119e-13,
+          "cup_lowest_clearance_m": -8.227356624868065e-07,
+          "cup_tilt_deg": 4.517745487845102e-06,
+          "pelvis_tilt_deg": 0.00474694584929543,
+          "pelvis_drift_m": 0.00013692436773844296,
+          "digit_normal_load_N": {},
+          "opposing_contacts": false,
+          "non_hand_support_load_N": 1.8638999790869157,
+          "held": false,
+          "max_penetration_m": 7.030143734685106e-07
+        },
+        "frames": 219
+      },
+      "environment": {
+        "independent_success": false,
+        "agent_declared_done": false,
+        "simulation_seconds": 22.705999999998294,
+        "max_lift_m": 3.3535166383602544e-05,
+        "longest_held_lifted_seconds": 0.0,
+        "max_pelvis_tilt_deg": 0.052576343959584,
+        "max_pelvis_drift_m": 0.001053794389109073,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": true,
+        "vla_tool_calls": 1,
+        "vla_applied_action_frames": 4,
+        "vla_inference_calls": 1,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "palm_displacement_m": {
+        "left": 0.008281714375806874,
+        "right": 0.021511377933617747
+      },
+      "final_digit_cup_load_N": {}
+    },
+    "noop": {
+      "verification": {
+        "verified_success": false,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 1.2390533044026597e-11,
+        "longest_strict_hold_s": 0.0,
+        "max_pelvis_tilt_deg": 0.017465162643731238,
+        "max_pelvis_drift_m": 0.00022197907557846072,
+        "max_cup_contact_penetration_m": 7.044362290886073e-07,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "906790d9f8b7a6b491fdab598565d6ca0b8babb186b87b5f35819bdfb6feb2dc",
+        "no_external_base_force": true,
+        "final": {
+          "time": 22.671999999998313,
+          "lift_m": 2.479461080895362e-12,
+          "cup_lowest_clearance_m": -8.219570846179636e-07,
+          "cup_tilt_deg": 3.6222548091772e-06,
+          "pelvis_tilt_deg": 0.004266219175208024,
+          "pelvis_drift_m": 0.00013145176744314266,
+          "digit_normal_load_N": {},
+          "opposing_contacts": false,
+          "non_hand_support_load_N": 1.8639000766246905,
+          "held": false,
+          "max_penetration_m": 7.022357955701979e-07
+        },
+        "frames": 219
+      },
+      "environment": {
+        "independent_success": false,
+        "agent_declared_done": false,
+        "simulation_seconds": 22.705999999998294,
+        "max_lift_m": 0.0,
+        "longest_held_lifted_seconds": 0.0,
+        "max_pelvis_tilt_deg": 0.01746830926944832,
+        "max_pelvis_drift_m": 0.00022197907557846072,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "palm_displacement_m": {
+        "left": 0.0015041538620481595,
+        "right": 0.0002531480257553454
+      },
+      "final_digit_cup_load_N": {}
+    },
+    "direct": {
+      "verification": {
+        "verified_success": true,
+        "independent_of_controller_result": true,
+        "method": "recompute geometry and contact forces from saved physical states and recorded motor forces",
+        "sample_interval_s": 0.05,
+        "duration_rule": "last minus first qualifying sample; no interpolation",
+        "max_lift_m": 0.1213448797138339,
+        "longest_strict_hold_s": 1.6999999999990578,
+        "max_pelvis_tilt_deg": 0.06918266027798839,
+        "max_pelvis_drift_m": 0.0005304795424044171,
+        "max_cup_contact_penetration_m": 0.0006078312408515342,
+        "equality_constraints": 0,
+        "initial_integration_state_sha256": "906790d9f8b7a6b491fdab598565d6ca0b8babb186b87b5f35819bdfb6feb2dc",
+        "no_external_base_force": true,
+        "final": {
+          "time": 29.671999999994433,
+          "lift_m": 0.11748096013219,
+          "cup_lowest_clearance_m": 0.11682109381959238,
+          "cup_tilt_deg": 0.91405335218343,
+          "pelvis_tilt_deg": 0.05500413538317586,
+          "pelvis_drift_m": 0.00021654349027971706,
+          "digit_normal_load_N": {
+            "left_thumb": 23.21184409411972,
+            "left_middle": 11.389932721163165,
+            "left_index": 12.124347954300172
+          },
+          "opposing_contacts": true,
+          "non_hand_support_load_N": 0.0,
+          "held": true,
+          "max_penetration_m": 0.0005905450320600263
+        },
+        "frames": 359
+      },
+      "environment": {
+        "independent_success": true,
+        "agent_declared_done": false,
+        "simulation_seconds": 29.705999999994415,
+        "max_lift_m": 0.12087131239069593,
+        "longest_held_lifted_seconds": 1.7200000000000013,
+        "max_pelvis_tilt_deg": 0.06919368802356483,
+        "max_pelvis_drift_m": 0.0005313513945663858,
+        "protection": null,
+        "agent_stop_reason": null,
+        "vla_connected": false,
+        "vla_tool_calls": 0,
+        "vla_applied_action_frames": 0,
+        "vla_inference_calls": 0,
+        "controller": "free base, normal/friction wrench allocation, implicit joint PD; no external base force",
+        "scene_source": "HK_DH01_Pantry_Only_R47b.blend",
+        "native_geometry_objects": 877,
+        "task_snapshot_accepted": false,
+        "runtime_version": "native-pantry-runtime-0.2.1",
+        "grasp_criterion": "same-hand thumb and another digit, opposing normals, no non-hand support"
+      },
+      "palm_displacement_m": {
+        "left": 0.11841017525778329,
+        "right": 0.0009940459774556423
+      },
+      "final_digit_cup_load_N": {
+        "left_thumb": 23.21184409411972,
+        "left_middle": 11.389932721163166,
+        "left_index": 12.124347954300177
+      }
+    }
+  },
+  "vla_result": {
+    "status": "RIGHT_PALM_DEPARTURE",
+    "applied_frames": 4,
+    "nominal_budget_seconds": 0.2,
+    "actual_action_time_s": 0.10599999999994125,
+    "physical_seconds": 10.935999999997694,
+    "model_id": "kiteml/G1-ego-test-smolvla",
+    "revision": "cf2f88ba6d5db3f3647b453438a0a1904e07919f",
+    "chunks": [
+      {
+        "chunk": 1,
+        "inference": {
+          "status": "PREDICTED",
+          "action_file": "/mnt/c/Users/23660/Downloads/HK_IndoorBranch_R47b_20261022/grasp_optimization/episodes/handoff_vla_1000/vla_tool_001/chunk_001_native_absolute.npy",
+          "result": {
+            "inference_seconds": 9.67501191899919,
+            "shape": [
+              1,
+              50,
+              28
+            ],
+            "finite": true,
+            "native_postprocessing_applied": true,
+            "units": "absolute_joint_radians",
+            "current_q_added_again": false,
+            "joint_names": [
+              "left_shoulder_pitch_joint",
+              "left_shoulder_roll_joint",
+              "left_shoulder_yaw_joint",
+              "left_elbow_joint",
+              "left_wrist_roll_joint",
+              "left_wrist_pitch_joint",
+              "left_wrist_yaw_joint",
+              "right_shoulder_pitch_joint",
+              "right_shoulder_roll_joint",
+              "right_shoulder_yaw_joint",
+              "right_elbow_joint",
+              "right_wrist_roll_joint",
+              "right_wrist_pitch_joint",
+              "right_wrist_yaw_joint",
+              "left_hand_thumb_0_joint",
+              "left_hand_thumb_1_joint",
+              "left_hand_thumb_2_joint",
+              "left_hand_middle_0_joint",
+              "left_hand_middle_1_joint",
+              "left_hand_index_0_joint",
+              "left_hand_index_1_joint",
+              "right_hand_thumb_0_joint",
+              "right_hand_thumb_1_joint",
+              "right_hand_thumb_2_joint",
+              "right_hand_index_0_joint",
+              "right_hand_index_1_joint",
+              "right_hand_middle_0_joint",
+              "right_hand_middle_1_joint"
+            ],
+            "range_violation_count": 0,
+            "range_violations": [],
+            "motor_execution": false,
+            "accepted_for_execution": false,
+            "execution_requires_runtime_adapter": true,
+            "camera_variant": "one_real_head_under_cam_left_high_missing_views_omitted",
+            "policy_domain": "G1 Dex3 toasted-bread fine-tune; cup skill not established",
+            "input_joint_radians": [
+              -0.8543164234369793,
+              0.5245802765541409,
+              -0.5880946033846225,
+              0.7964990324068069,
+              -0.8875486160540695,
+              0.015996069604950987,
+              0.6257170815482667,
+              0.34964742995136616,
+              -0.45024681439479197,
+              -7.481916068331898e-05,
+              0.9997719502745083,
+              8.356466507525885e-07,
+              -0.00010363651643524263,
+              -3.4834171085949694e-05,
+              2.698430695963579e-06,
+              0.000478101167990932,
+              7.218071241572341e-05,
+              0.00015978146805392402,
+              6.758220067027482e-07,
+              0.00015083417068676377,
+              -3.1109252501436564e-07,
+              3.183149527509969e-06,
+              3.948577685994231e-06,
+              4.486200228290288e-07,
+              -3.3253445110829706e-05,
+              -4.940252319267858e-06,
+              -3.398385205774139e-05,
+              -5.8821791055583e-06
+            ]
+          },
+          "rng_cuda_sha256_before": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "inference_call": 1,
+          "memory": {
+            "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+            "total_vram_bytes": 8585216000,
+            "peak_allocated_bytes": 1278099968,
+            "peak_reserved_bytes": 1321205760
+          },
+          "request_wall_seconds": 9.829248267999901
+        },
+        "raw_shape": [
+          1,
+          50,
+          28
+        ],
+        "applied_frames": 4,
+        "clipping_count": 0,
+        "slew_limited_count": 99,
+        "largest_raw_change_rad": 1.2549575567245483
+      }
+    ],
+    "schedule": [
+      {
+        "category": "matched_inference_wait",
+        "seconds": 9.829999999998307
+      },
+      {
+        "category": "matched_action_time",
+        "seconds": 0.033999999999981156
+      },
+      {
+        "category": "matched_action_time",
+        "seconds": 0.033999999999981156
+      },
+      {
+        "category": "matched_action_time",
+        "seconds": 0.031999999999982265
+      },
+      {
+        "category": "matched_action_time",
+        "seconds": 0.005999999999996675
+      },
+      {
+        "category": "matched_post_hold",
+        "seconds": 1.0
+      }
+    ],
+    "raw_action_semantics": "native absolute radians; no current q addition",
+    "weights_updated": false,
+    "astra_dispatch": false,
+    "direct_grasp_fallback": false,
+    "input_boundary": "head RGB + named measured joints only; no cup truth or depth",
+    "feedback": {
+      "simulation_seconds": 22.705999999998294,
+      "joints": {
+        "left_hip_pitch_joint": {
+          "q": -3.7361956880373186e-05,
+          "dq": -6.176515120798865e-05,
+          "torque_Nm": 1.6579779737430318,
+          "target": 0.0
+        },
+        "left_hip_roll_joint": {
+          "q": -7.198818245219307e-05,
+          "dq": 0.00021461308548133344,
+          "torque_Nm": -0.3832504299750788,
+          "target": 0.0
+        },
+        "left_hip_yaw_joint": {
+          "q": 0.00011742456914432861,
+          "dq": 0.00023797145070722985,
+          "torque_Nm": 0.025164998230736528,
+          "target": 0.0
+        },
+        "left_knee_joint": {
+          "q": -0.00013555777403473642,
+          "dq": -3.765480274744239e-05,
+          "torque_Nm": 2.6121015603206925,
+          "target": 0.0
+        },
+        "left_ankle_pitch_joint": {
+          "q": -0.00022264520264303004,
+          "dq": -1.9650716307418e-05,
+          "torque_Nm": 2.6999843693057066,
+          "target": 0.0
+        },
+        "left_ankle_roll_joint": {
+          "q": -6.630750573905337e-06,
+          "dq": 0.0026156760205396238,
+          "torque_Nm": 0.0017986863188777097,
+          "target": 0.0
+        },
+        "right_hip_pitch_joint": {
+          "q": -4.745706709287567e-05,
+          "dq": -4.660182021652122e-05,
+          "torque_Nm": 2.0039726930687563,
+          "target": 0.0
+        },
+        "right_hip_roll_joint": {
+          "q": -7.112041148766371e-05,
+          "dq": 0.00022691688613706425,
+          "torque_Nm": 0.4365034246744543,
+          "target": 0.0
+        },
+        "right_hip_yaw_joint": {
+          "q": 0.00012547482077761356,
+          "dq": 0.00021656499645912863,
+          "torque_Nm": -0.11741848055287635,
+          "target": 0.0
+        },
+        "right_knee_joint": {
+          "q": -0.00013212727784121605,
+          "dq": -3.3357772494970714e-05,
+          "torque_Nm": 2.9611958265065015,
+          "target": 0.0
+        },
+        "right_ankle_pitch_joint": {
+          "q": -0.00020446206873714237,
+          "dq": -6.0379830509555366e-05,
+          "torque_Nm": 3.0510251113073354,
+          "target": 0.0
+        },
+        "right_ankle_roll_joint": {
+          "q": -3.4380604336064698e-06,
+          "dq": 0.002715910032029433,
+          "torque_Nm": -0.0005024545387681822,
+          "target": 0.0
+        },
+        "waist_yaw_joint": {
+          "q": 0.24969760924032028,
+          "dq": -0.0020563850397796487,
+          "torque_Nm": 0.07934505233505007,
+          "target": 0.25
+        },
+        "waist_roll_joint": {
+          "q": -6.704178143280304e-05,
+          "dq": 0.0013404007428403678,
+          "torque_Nm": -2.034402263894649,
+          "target": 0.0
+        },
+        "waist_pitch_joint": {
+          "q": -0.14989992556077292,
+          "dq": 0.0002782534587813862,
+          "torque_Nm": -3.8788699207313435,
+          "target": -0.15
+        },
+        "left_shoulder_pitch_joint": {
+          "q": -0.8214702303006662,
+          "dq": -0.002508664465020953,
+          "torque_Nm": -7.8396580883649705,
+          "target": -0.8213607230339055
+        },
+        "left_shoulder_roll_joint": {
+          "q": 0.4934944714417487,
+          "dq": -0.0007704501374615573,
+          "torque_Nm": 2.6550184494163247,
+          "target": 0.4937987419526269
+        },
+        "left_shoulder_yaw_joint": {
+          "q": -0.533560553674448,
+          "dq": 7.165620431457448e-05,
+          "torque_Nm": 1.6289446236319023,
+          "target": -0.5334696297121908
+        },
+        "left_elbow_joint": {
+          "q": 0.7826937207338979,
+          "dq": -0.0011035237501768817,
+          "torque_Nm": -2.2481351443970397,
+          "target": 0.7828058224279367
+        },
+        "left_wrist_roll_joint": {
+          "q": -0.8366641572959269,
+          "dq": 0.0001281100680709462,
+          "torque_Nm": 0.3725422192154042,
+          "target": -0.8366633520234468
+        },
+        "left_wrist_pitch_joint": {
+          "q": -0.031714941859346736,
+          "dq": -0.0003425456326085442,
+          "torque_Nm": -1.12062375764354,
+          "target": -0.03172176989005818
+        },
+        "left_wrist_yaw_joint": {
+          "q": 0.5707568162935469,
+          "dq": -0.00022055880537210666,
+          "torque_Nm": -0.023150151366913008,
+          "target": 0.5708064997495231
+        },
+        "left_hand_thumb_0_joint": {
+          "q": -0.0770771937551212,
+          "dq": 5.269872102023481e-07,
+          "torque_Nm": 0.0005737350770288474,
+          "target": -0.07707721954908303
+        },
+        "left_hand_thumb_1_joint": {
+          "q": 0.07857344300734032,
+          "dq": 7.721169164924335e-05,
+          "torque_Nm": 0.0038863234073857056,
+          "target": 0.0785855196981181
+        },
+        "left_hand_thumb_2_joint": {
+          "q": 0.05009334398579725,
+          "dq": 1.1959395418409149e-05,
+          "torque_Nm": 0.0005867608089059617,
+          "target": 0.050095659891688356
+        },
+        "left_hand_middle_0_joint": {
+          "q": -0.060122107076620517,
+          "dq": -1.944113116070446e-05,
+          "torque_Nm": -0.0010363148710966497,
+          "target": -0.06005997485483236
+        },
+        "left_hand_middle_1_joint": {
+          "q": -0.07651977977841656,
+          "dq": -2.33670043733708e-06,
+          "torque_Nm": -0.0001492865320704695,
+          "target": -0.07650990482487882
+        },
+        "left_hand_index_0_joint": {
+          "q": -0.07486516771888976,
+          "dq": -1.1511468962908327e-05,
+          "torque_Nm": -0.0010242449466620895,
+          "target": -0.07480471610443289
+        },
+        "left_hand_index_1_joint": {
+          "q": -0.07673598711565836,
+          "dq": -1.2320131089693482e-06,
+          "torque_Nm": -0.0001473707505726396,
+          "target": -0.07672636893058545
+        },
+        "right_shoulder_pitch_joint": {
+          "q": 0.3345610194296209,
+          "dq": 0.0010719190552117518,
+          "torque_Nm": -0.6644443846684105,
+          "target": 0.3341506165343737
+        },
+        "right_shoulder_roll_joint": {
+          "q": -0.47715308283840435,
+          "dq": 0.00128857273292463,
+          "torque_Nm": -3.804642647825652,
+          "target": -0.47717719988462326
+        },
+        "right_shoulder_yaw_joint": {
+          "q": 0.0012696019938404518,
+          "dq": 0.0004237688772685466,
+          "torque_Nm": -0.9834376868387105,
+          "target": 0.0012649535252983685
+        },
+        "right_elbow_joint": {
+          "q": 0.9693291251748051,
+          "dq": 0.0004938579786558395,
+          "torque_Nm": -1.0985517929474895,
+          "target": 0.9691432250828348
+        },
+        "right_wrist_roll_joint": {
+          "q": -0.033022743843087385,
+          "dq": -1.877583848980261e-05,
+          "torque_Nm": 0.0476205978369193,
+          "target": -0.03301845040073573
+        },
+        "right_wrist_pitch_joint": {
+          "q": -0.03982970601585271,
+          "dq": 0.00019299486969416924,
+          "torque_Nm": -0.4537723636886146,
+          "target": -0.03990431610809831
+        },
+        "right_wrist_yaw_joint": {
+          "q": 0.04758585280631796,
+          "dq": 0.00018352967504834037,
+          "torque_Nm": -0.2915513042112101,
+          "target": 0.04758416859717537
+        },
+        "right_hand_thumb_0_joint": {
+          "q": -0.07716551131671623,
+          "dq": 5.199941029953529e-07,
+          "torque_Nm": -0.0002778172460374262,
+          "target": -0.0771653010799563
+        },
+        "right_hand_thumb_1_joint": {
+          "q": -0.07602743724188751,
+          "dq": 1.7003879044773847e-05,
+          "torque_Nm": 0.026602519567545058,
+          "target": -0.07604556949768604
+        },
+        "right_hand_thumb_2_joint": {
+          "q": -0.07692413672826705,
+          "dq": 4.906586720032662e-06,
+          "torque_Nm": 0.003944535742442357,
+          "target": -0.07692680481914115
+        },
+        "right_hand_index_0_joint": {
+          "q": 0.07778137442762222,
+          "dq": 0.0002123336860573363,
+          "torque_Nm": -0.012954168492218643,
+          "target": 0.07777900676016244
+        },
+        "right_hand_index_1_joint": {
+          "q": 0.0771997395274371,
+          "dq": 3.3861948561136064e-05,
+          "torque_Nm": -0.0018430750251877681,
+          "target": 0.07719940285989868
+        },
+        "right_hand_middle_0_joint": {
+          "q": 0.07791073340890568,
+          "dq": 0.00022015278839436996,
+          "torque_Nm": -0.012960867921346375,
+          "target": 0.07790594628549852
+        },
+        "right_hand_middle_1_joint": {
+          "q": 0.07721715204205486,
+          "dq": 3.503802455671542e-05,
+          "torque_Nm": -0.0018441067883218087,
+          "target": 0.07721642716644274
+        }
+      },
+      "palms": {
+        "left": {
+          "frame": "current_pelvis",
+          "side": "left",
+          "position_m": [
+            0.3265565783622193,
+            0.30764162704194875,
+            0.21962309453086
+          ],
+          "quaternion_xyzw": [
+            -0.012627405571027364,
+            -0.023297058614837426,
+            0.31701997160603884,
+            0.9480485922627322
+          ]
+        },
+        "right": {
+          "frame": "current_pelvis",
+          "side": "right",
+          "position_m": [
+            0.12578685475211104,
+            -0.320503337536452,
+            -0.10058694209791441
+          ],
+          "quaternion_xyzw": [
+            -0.2613764278307948,
+            0.496386831804426,
+            0.0068358693065673284,
+            0.8277896756280556
+          ]
+        }
+      },
+      "approximate_contact_load_N": {
+        "left": {},
+        "right": {}
+      },
+      "imu": {
+        "pelvis_quaternion_xyzw": [
+          -8.213125541546282e-06,
+          -3.914085317058621e-05,
+          -0.7070985366754126,
+          0.7071150244705807
+        ],
+        "angular_velocity": [
+          0.00012736472835373711,
+          0.00016498526978209958,
+          2.8271532204299125e-05
+        ]
+      },
+      "controller": {
+        "base_mode": "free_floating_contact_wrench_joint_control",
+        "external_base_assistance": false,
+        "guard": null,
+        "max_tilt_deg": 0.052576343959584,
+        "max_drift_m": 0.001053794389109073
+      },
+      "capabilities": {
+        "rgbd": true,
+        "joints": true,
+        "numerical_pose_ik": true,
+        "vla": true
+      }
+    },
+    "final_observation_id": "obs_002"
+  },
+  "largest_first_native_changes": [
+    {
+      "joint": "left_hand_middle_1_joint",
+      "initial_rad": 6.758220067027482e-07,
+      "native_target_rad": -1.2549575567245483,
+      "requested_change_rad": -1.2549582325465551
+    },
+    {
+      "joint": "right_hand_index_1_joint",
+      "initial_rad": -4.940252319267858e-06,
+      "native_target_rad": 1.1141276359558105,
+      "requested_change_rad": 1.1141325762081298
+    },
+    {
+      "joint": "left_wrist_roll_joint",
+      "initial_rad": -0.8875486160540695,
+      "native_target_rad": 0.21698082983493805,
+      "requested_change_rad": 1.1045294458890076
+    },
+    {
+      "joint": "left_hand_index_1_joint",
+      "initial_rad": -3.1109252501436564e-07,
+      "native_target_rad": -1.0177475214004517,
+      "requested_change_rad": -1.0177472103079266
+    },
+    {
+      "joint": "right_hand_middle_0_joint",
+      "initial_rad": -3.398385205774139e-05,
+      "native_target_rad": 0.9692659974098206,
+      "requested_change_rad": 0.9692999812618783
+    },
+    {
+      "joint": "right_hand_thumb_1_joint",
+      "initial_rad": 3.948577685994231e-06,
+      "native_target_rad": -0.9074318408966064,
+      "requested_change_rad": -0.9074357894742925
+    },
+    {
+      "joint": "right_hand_index_0_joint",
+      "initial_rad": -3.3253445110829706e-05,
+      "native_target_rad": 0.9006223678588867,
+      "requested_change_rad": 0.9006556213039976
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "initial_rad": 0.34964742995136616,
+      "native_target_rad": -0.5220738649368286,
+      "requested_change_rad": -0.8717212948881947
+    }
+  ],
+  "effective_progress": false,
+  "extension_performed": false,
+  "weight_updates": false,
+  "astra_invocations": 0,
+  "limitations": [
+    "Only 0.2 s nominal VLA probe; cannot establish longer-horizon capability",
+    "Direct branch has extra close/lift execution after matched time; not equal-duration success-rate test",
+    "Single head view differs from checkpoint training cameras",
+    "Task-specific tuning not performed"
+  ]
+}

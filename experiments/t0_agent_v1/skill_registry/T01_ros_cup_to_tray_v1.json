@@ -1,0 +1,203 @@
+{
+  "schema_version": "skill_registry.v1",
+  "skill_id": "T01_ros_cup_to_tray",
+  "skill_version": "1.0.0",
+  "name": "T01 ROS 2 闭环形成、冷启动调用与独立验收技能",
+  "status": "validated_skill",
+  "formal_promotion": true,
+  "promotion_date": "2026-10-29",
+  "boundary": "simulation",
+  "validation_level": "expanded",
+  "foundation_validation_level": "paired",
+  "task": {
+    "task_id": "T01",
+    "robot": "G1 + dual Dex3-1",
+    "target_count": 1,
+    "cup": "DH_2F_mug_06 known white 41mm radius class",
+    "compatible_trays": [
+      "rectangular_low_rim_v1",
+      "marked_long_tray_v1"
+    ]
+  },
+  "authorship": "Engineering-defined candidate family, automated development screening in ROS workflow; historical gain=.5 already known",
+  "selection": {
+    "arm": "gain050",
+    "repaired": 1,
+    "regressed": 0,
+    "successes": 4,
+    "low_level_commands": 261,
+    "gain": 0.5,
+    "accepted": true,
+    "rule": "successes descending, low-level command cost ascending, gain ascending; repair/no-regression gate"
+  },
+  "artifact": {
+    "kind": "bounded_engineering_tool_composition",
+    "bundle": "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1",
+    "manifest": "experiments/ros_skill_cycle/validated/T01_ros_cup_to_tray_v1/manifest.json",
+    "manifest_sha256": "11d24d72f6be1276ce11f578519a6bd3ddd97d52e96e7ae4b5baaac45ba6bc2c",
+    "tested_recipe": "experiments/ros_skill_cycle/runs/cycle_20261029_008/selected_skill",
+    "tested_manifest_sha256": "c8e7229d3480d25649c61e7f04c6d15d47149523d6ae753e075e6e2ad57f508c",
+    "executable_bytes_identical_to_tested_recipe": true,
+    "policy": {
+      "guard": true,
+      "gain": 0.5
+    }
+  },
+  "validation": {
+    "development": {
+      "nominal": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 3,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "FAIL": 1,
+          "UNVERIFIED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 3,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 141.3639999999889,
+        "low_level_commands": 259
+      },
+      "gain025": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 3,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "FAIL": 1,
+          "UNVERIFIED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 3,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 144.3639999999926,
+        "low_level_commands": 261
+      },
+      "gain050": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 4,
+        "public_passes": 1,
+        "runtime_status_counts": {
+          "PASS": 1,
+          "UNVERIFIED": 3
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 3,
+        "execution_rejections": 0,
+        "execution_failures": 0,
+        "simulation_seconds": 144.3639999999926,
+        "low_level_commands": 261
+      },
+      "gain075": {
+        "requests": 4,
+        "physical_episodes": 4,
+        "independent_successes": 3,
+        "public_passes": 1,
+        "runtime_status_counts": {
+          "PASS": 1,
+          "UNVERIFIED": 2,
+          "NOT_EVALUATED": 1
+        },
+        "runtime_false_failures": 0,
+        "false_positive_success": 0,
+        "unverified_successes": 2,
+        "execution_rejections": 0,
+        "execution_failures": 1,
+        "simulation_seconds": 139.86399999998707,
+        "low_level_commands": 257
+      }
+    },
+    "frozen_new_initials": {
+      "nominal": {
+        "requests": 12,
+        "physical_episodes": 12,
+        "independent_successes": 11,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "UNVERIFIED": 9,
+          "FAIL": 2,
+          "NOT_EVALUATED": 1
+        },
+        "runtime_false_failures": 2,
+        "false_positive_success": 0,
+        "unverified_successes": 9,
+        "execution_rejections": 0,
+        "execution_failures": 1,
+        "simulation_seconds": 405.19199999995647,
+        "low_level_commands": 751
+      },
+      "selected": {
+        "requests": 12,
+        "physical_episodes": 12,
+        "independent_successes": 11,
+        "public_passes": 0,
+        "runtime_status_counts": {
+          "UNVERIFIED": 9,
+          "FAIL": 2,
+          "NOT_EVALUATED": 1
+        },
+        "runtime_false_failures": 2,
+        "false_positive_success": 0,
+        "unverified_successes": 9,
+        "execution_rejections": 0,
+        "execution_failures": 1,
+        "simulation_seconds": 408.1919999999575,
+        "low_level_commands": 753
+      }
+    },
+    "frozen_repaired": 0,
+    "frozen_regressed": 0,
+    "boundary": {
+      "requests": 6,
+      "physical_episodes": 4,
+      "independent_successes": 0,
+      "public_passes": 0,
+      "runtime_status_counts": {
+        "NOT_EVALUATED": 4,
+        "UNVERIFIED": 2
+      },
+      "runtime_false_failures": 0,
+      "false_positive_success": 0,
+      "unverified_successes": 0,
+      "execution_rejections": 2,
+      "execution_failures": 2,
+      "simulation_seconds": 110.2439999999926,
+      "low_level_commands": 206
+    },
+    "audit": "experiments/ros_skill_cycle/audits/cycle_20261029_008_audit_001/audit.json",
+    "audit_sha256": "71baac57be6f15d576efbd9361f82ae3fd4be6a2f13cb81047d6d0b2eb42d2c3"
+  },
+  "runtime_contract": {
+    "goal": {
+      "skill_id": "T01_ros_cup_to_tray",
+      "skill_version": "1.0.0",
+      "parameters": {
+        "target": "single_visible_cup_to_marked_tray"
+      }
+    },
+    "transport": "real thesis_skill_interfaces/action/ExecuteSkill; isolated endpoint per cold-start instance",
+    "public_success": "Action SUCCEEDED only when frozen public visual proxy passes",
+    "uncertainty": "Action ABORTED with runtime_check=UNVERIFIED; physical outcome remains independently evaluated",
+    "private_evaluation_never_returned_to_execution_client": true,
+    "observed_selected_and_boundary_false_positive_success": 0
+  },
+  "limitations": [
+    "Simulation only; no physical robot, new shape-family or long-horizon claim",
+    "Automated bounded parameter selection, not model weight training or discovery of low-level control",
+    "Public runtime proxy is incomplete and can abstain on true physical successes; report coverage with success",
+    "Expanded observations describe these registered within-family initials only; no population guarantee",
+    "Generic mid-motion cancel/resume and complete G1 ROS robot description remain outside this run"
+  ],
+  "model_requests": 0,
+  "weight_updates": 0,
+  "source_evidence_preserved": true,
+  "parent_skill": "T01_visual_handoff_damped_v1; reused engineering primitives and known candidate family"
+}

@@ -1,0 +1,25 @@
+test_exact_reproduction_from_identical_initial_state (test_recorded_grasp.RecordedGraspTests.test_exact_reproduction_from_identical_initial_state) ... ok
+test_no_grasp_weld_and_fixed_camera (test_recorded_grasp.RecordedGraspTests.test_no_grasp_weld_and_fixed_camera) ... ok
+test_open_hand_negative_control_stops_before_lift (test_recorded_grasp.RecordedGraspTests.test_open_hand_negative_control_stops_before_lift) ... ok
+test_original_failure_does_not_satisfy_goal (test_recorded_grasp.RecordedGraspTests.test_original_failure_does_not_satisfy_goal) ... ok
+test_real_success_satisfies_current_goal (test_recorded_grasp.RecordedGraspTests.test_real_success_satisfies_current_goal) ... ok
+test_strict_independent_verdicts_and_memory_retrieval (test_recorded_grasp.RecordedGraspTests.test_strict_independent_verdicts_and_memory_retrieval) ... ok
+test_absent_white_target_is_rejected (test_vision_boundary.VisionBoundaryTests.test_absent_white_target_is_rejected) ... ok
+test_astra_real_decisions_and_reflection_are_saved (test_vision_boundary.VisionBoundaryTests.test_astra_real_decisions_and_reflection_are_saved) ... ok
+test_astra_rejects_extra_arguments_and_code (test_vision_boundary.VisionBoundaryTests.test_astra_rejects_extra_arguments_and_code) ... ok
+test_astra_requests_recovery_then_rechecks_reachability (test_vision_boundary.VisionBoundaryTests.test_astra_requests_recovery_then_rechecks_reachability) ... ok
+test_controller_has_no_truth_access (test_vision_boundary.VisionBoundaryTests.test_controller_has_no_truth_access) ... ok
+test_low_thumb_load_stops_before_full_lift (test_vision_boundary.VisionBoundaryTests.test_low_thumb_load_stops_before_full_lift) ... ok
+test_missing_depth_is_rejected (test_vision_boundary.VisionBoundaryTests.test_missing_depth_is_rejected) ... ok
+test_port_strips_scene_and_spectator_fields (test_vision_boundary.VisionBoundaryTests.test_port_strips_scene_and_spectator_fields) ... ok
+test_reach_adjustment_requires_new_visual_target (test_vision_boundary.VisionBoundaryTests.test_reach_adjustment_requires_new_visual_target) ... ok
+test_rgbd_geometry_matches_audited_fixture (test_vision_boundary.VisionBoundaryTests.test_rgbd_geometry_matches_audited_fixture) ... ok
+test_robot_planner_has_no_task_object (test_vision_boundary.VisionBoundaryTests.test_robot_planner_has_no_task_object) ... ok
+test_scene_fields_do_not_affect_perception (test_vision_boundary.VisionBoundaryTests.test_scene_fields_do_not_affect_perception) ... ok
+test_unreachable_seed_is_rejected_before_motion (test_vision_boundary.VisionBoundaryTests.test_unreachable_seed_is_rejected_before_motion) ... ok
+test_wrong_astra_pixel_is_rejected (test_vision_boundary.VisionBoundaryTests.test_wrong_astra_pixel_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 4.602s
+
+OK

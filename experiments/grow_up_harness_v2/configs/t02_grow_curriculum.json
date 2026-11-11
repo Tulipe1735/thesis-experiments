@@ -1,0 +1,42 @@
+{
+  "train": {
+    "seed": 4101,
+    "count": 4,
+    "task_family": "T02"
+  },
+  "heldout": {
+    "seed": 4201,
+    "count": 2
+  },
+  "proposer": {
+    "backend": "ollama",
+    "model": "qwen3.5:4b",
+    "timeout_s": 300
+  },
+  "critic": null,
+  "caps": {
+    "simulation_s": 180.0,
+    "commands": 300,
+    "wall_s": 450.0
+  },
+  "per_task": {
+    "fast_tries": 2,
+    "library_shown": 3,
+    "max_physical_attempts": 3,
+    "max_gate_rejections": 4,
+    "gate_steps": 12
+  },
+  "controls": {
+    "negative": "wait_only",
+    "positive": "slot_joint_interpolation"
+  },
+  "heldout_scratch": true,
+  "consumed_dev_seeds": [2400, 2401, 2402, 4001, 4002, 4003, 4004],
+  "prediction": "Negative fails. Positives pass (2401 known working from t02_replay_controls_20261107_002). Library exhausted before first SLOW. Composition-first authorship creates slot_offset variants from reach+close+place leaves.",
+  "falsification": "Negative succeeds: void entire run. Any positive fails: skip that task, do not sample replacement.",
+  "parent_store": "runs/t02_v2_migration_20261107_001/store",
+  "evaluator_version": "t02-slot-strict-v1",
+  "frontier_stage": "t02_slot_placement",
+  "slot_target": "slot_0",
+  "note": "Phase 1 uses minimal t02_grasp_stub composite. Phase 2 will expand to full choreography with lift/carry/place/release."
+}

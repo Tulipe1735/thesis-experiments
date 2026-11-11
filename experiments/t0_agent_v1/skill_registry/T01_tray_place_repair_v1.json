@@ -1,0 +1,257 @@
+{
+  "schema_version": "skill_registry.v1",
+  "skill_id": "T01_tray_place_repair_v1",
+  "name": "T01 单杯入托盘修复版",
+  "status": "validated_skill",
+  "validation_level": "repair_lineage",
+  "formal_promotion": true,
+  "promotion_date": "2026-10-25",
+  "boundary": "simulation",
+  "task": {
+    "task_id": "T01",
+    "label": "单杯放入托盘",
+    "scene_id": "pantry",
+    "seed": 2500,
+    "split": "development_repair_validation",
+    "asset_scope": {
+      "cup": "DH_2F_mug_06 upright white cup",
+      "tray": "rectangular_low_rim_v1 with four visible colored pose markers",
+      "robot": "G1 with dual Dex3-1",
+      "target_count": 1
+    },
+    "goal": [
+      "cup base footprint fully inside the tray support region",
+      "tray floor support at least 0.5 N",
+      "hand and other-object contact below 0.1 N",
+      "cup released, upright, and stable together with tray for at least 1 s"
+    ]
+  },
+  "artifact": {
+    "kind": "bounded_engineering_tool_composition",
+    "program": [
+      "inspect",
+      "collect_next",
+      "finish"
+    ],
+    "program_sha256": "5e732948cebf9285d7837e5f53df2efae66d2ad99d305239bfcb1066ca31a43e",
+    "program_hash_encoding": "SHA256 of compact UTF-8 JSON: [\"inspect\",\"collect_next\",\"finish\"]",
+    "execution_binding": "The program exactly matches the ordered tools in both the deterministic scripted replay and the successful Astra decisions log.",
+    "authoring_note": "Astra serialized the program after the successful episode. It is accepted under repair_lineage because it is an exact representation of the already executed successful sequence and adds no unexecuted step or parameter.",
+    "control_boundary": "Astra performs high-level scheduling; perception, grasping, collision checks, IK, transport, release, and retreat are frozen engineered tools. This is not bare-Astra or autonomous low-level joint-skill synthesis."
+  },
+  "prior_t01_development_history": {
+    "role": "Supporting history retained as part of the full T01 repair process; the decisive formal-promotion chain is the seed-2500 repair_lineage below.",
+    "failures": [
+      {
+        "episode": "experiments/t0_agent_v1/tray_20261025_001/episodes/2300_T01_scripted",
+        "failure": "retreat_04: POSE_IK_REJECTED",
+        "external_audit": {
+          "path": "experiments/t0_agent_v1/tray_20261025_001/audits/2300_recomputed_v1/independent_verification.json",
+          "sha256": "d68b60eaaa8b456c03f9082a4fecc0023f9e73abae1ada5d17bb43e5ef7cb773"
+        },
+        "note": "The original verdict file was truncated by NumPy boolean serialization; the immutable trajectory was recomputed externally and the original episode was not modified."
+      },
+      {
+        "episode": "experiments/t0_agent_v1/tray_20261025_001/episodes/2301_T01_scripted",
+        "failure": "raise_clear_of_tray_04: POSE_IK_REJECTED",
+        "independent_verification": {
+          "path": "experiments/t0_agent_v1/tray_20261025_001/episodes/2301_T01_scripted/independent_verification.json",
+          "sha256": "10dd3430829baf8721cf87b98bebece21a80cfbc56290242ff035e6add64073d"
+        }
+      }
+    ],
+    "diagnosis": {
+      "path": "experiments/t0_agent_v1/tray_20261025_001/retreat_diagnosis.json",
+      "sha256": "3ecf09160e1548b448dcf6c924259cd3e817a01984c16cbef7b8f9514dc02661",
+      "method": "offline robot-only IK from saved proprioception; no physics advanced"
+    },
+    "bounded_repair": "Retreat 0.08 m along pelvis -x, then raise 0.08 m, with segmented IK preflight; preserve task predicates and physical thresholds.",
+    "same_initial_state_replays": [
+      {
+        "episode": "experiments/t0_agent_v1/tray_20261025_repair_002/episodes/2300_T01_scripted",
+        "verified_success": true,
+        "terminal_simultaneous_stable_s": 5.921999999999869,
+        "independent_verification": {
+          "path": "experiments/t0_agent_v1/tray_20261025_repair_002/episodes/2300_T01_scripted/independent_verification.json",
+          "sha256": "c815e7481347f19f1e170960c8102403f561c7dd5cd40a909ae4ef4fb7246c07"
+        }
+      },
+      {
+        "episode": "experiments/t0_agent_v1/tray_20261025_repair_002/episodes/2301_T01_scripted",
+        "verified_success": true,
+        "terminal_simultaneous_stable_s": 6.771999999996247,
+        "independent_verification": {
+          "path": "experiments/t0_agent_v1/tray_20261025_repair_002/episodes/2301_T01_scripted/independent_verification.json",
+          "sha256": "a66c754b07d899cdd956c26b671a05da377cea71e10cb2d3374cadbe3671da15"
+        }
+      }
+    ]
+  },
+  "repair_lineage": {
+    "failure": {
+      "episode": "experiments/t0_agent_v1/tray_astra_20261025_001/episodes/2500_T01_astra",
+      "verified_success": false,
+      "failure": "transfer_above_tray_07: POSE_IK_REJECTED",
+      "transport_height_m": 0.14,
+      "ik_position_error_m": 0.007092038645017408,
+      "ik_position_threshold_m": 0.006,
+      "independent_verification_sha256": "3d274e16537755e1a90435e3c59e647987044d9f21cb384c0af10c8c645cde70"
+    },
+    "diagnosis": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_001/transfer_actual_state_diagnosis.json",
+      "sha256": "cffdd0ae8493df34bc79335b4a493e1ff78683310ee1e99da4502390b2758b1b",
+      "observation_boundary": "robot proprioception from the failed state; tray target from head RGB-D markers",
+      "trials": [
+        {
+          "transport_height_m": 0.14,
+          "ik_position_error_m": 0.007092038645017408,
+          "reachable": false
+        },
+        {
+          "transport_height_m": 0.12,
+          "ik_position_error_m": 0.001288433544350802,
+          "reachable": true
+        },
+        {
+          "transport_height_m": 0.1,
+          "ik_position_error_m": 0.0011440033768575198,
+          "reachable": true
+        }
+      ]
+    },
+    "bounded_repair": {
+      "before_tray_tools_sha256": "7f783287ab2df141f1314d99b450196de40b29bd3a1d078655c1a1904bcf10d4",
+      "after_tray_tools_sha256": "d67e26f56468e8e340035d75ca70b93d30c159b57205bd2c3c8b92ae7e717bbd",
+      "changes": [
+        "Use a 0.12 m transport height for the single-cup central slot; retain 0.14 m for multi-cup T02.",
+        "Preflight every segment from the carried-cup transport pose through the lowering pose with CupObstaclePlanner.checked_path.",
+        "Save the checked path as cup_attempt_01/transfer_preflight.json."
+      ],
+      "unchanged": [
+        "0.006 m IK position threshold",
+        "task goal predicates and independent verifier",
+        "safety protections and data permissions",
+        "physical model, assets, and actual initial state"
+      ]
+    },
+    "same_initial_state": {
+      "sha256": "6b9e061e1f20757cbeed66cd4bffbf0d1f5b2ec5ae928b01a2c748b445f18941",
+      "paths": [
+        "experiments/t0_agent_v1/tray_astra_20261025_001/episodes/2500_T01_astra/initial_state.npz",
+        "experiments/t0_agent_v1/tray_20261025_repair_004/episodes/2500_T01_scripted/initial_state.npz",
+        "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/initial_state.npz"
+      ]
+    },
+    "scripted_replay": {
+      "episode": "experiments/t0_agent_v1/tray_20261025_repair_004/episodes/2500_T01_scripted",
+      "verified_success": true,
+      "independent_verification_sha256": "4dec24d3ee5d135e7e5ca60a766542228d8ea3d7c8db2266e58c4b631ed5ee09",
+      "decisions_sha256": "2c0917b5f51d8d84538c08fb94c866b438f7d1a8bcb1e6e5b3707c1f6bad3aa6",
+      "transfer_preflight_sha256": "8037098f3588490d9b8868f78bcabe1a82ae16d00a0f41e03bb835a314b54044"
+    },
+    "astra_replay": {
+      "episode": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra",
+      "verified_success": true,
+      "program_executed": [
+        "inspect",
+        "collect_next",
+        "finish"
+      ],
+      "decisions_sha256": "0b4c76588c0abbd95d1e3acee897d973ee484141b86e0fbb3c76e4701d84004c",
+      "independent_verification_sha256": "4dec24d3ee5d135e7e5ca60a766542228d8ea3d7c8db2266e58c4b631ed5ee09",
+      "trajectory_sha256": "4caaf7f63732c4262214026e9c6c5bd2db45d552729d385f9e0158aef98e0815",
+      "terminal_simultaneous_stable_s": 7.213999999999139,
+      "final_simulation_time_s": 33.7659999999953,
+      "minimum_cup_footprint_margin_m": 0.0061599455306361114,
+      "tray_floor_support_N": 1.8639000476972298,
+      "hand_contact_N": 0.0,
+      "other_object_contact_N": 0.0,
+      "protection_triggered": false,
+      "external_forces": false,
+      "equality_constraints": 0
+    }
+  },
+  "frozen_dependencies": {
+    "source_manifest": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/skill_candidate.json",
+      "sha256": "62345e7739f913e77afefd395df0548e0d96835cb2c13b211e5be49f30306d07"
+    },
+    "tray_tools": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/sources/tray_tools.py",
+      "sha256": "d67e26f56468e8e340035d75ca70b93d30c159b57205bd2c3c8b92ae7e717bbd"
+    },
+    "astra_executor": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/sources/tray_astra.py",
+      "sha256": "8aa3b12003e2343ac0de28c826c0c1f7d255119add4a9e8849aaac35456b7ba8"
+    },
+    "independent_verifier": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/sources/tray_verify.py",
+      "sha256": "b94d53c5651ad4c2c415f0dab578d950e2c3a04dcc883ee8181b4358bafa5fd7"
+    },
+    "model": {
+      "path": "experiments/t0_agent_v1/tray_20261025_001/T01_model.mjb",
+      "sha256": "e86012f1605c84e31f29102b04754de76a5be01354acb274c6029db6c334d7c6"
+    }
+  },
+  "evidence": {
+    "failure_result": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_001/episodes/2500_T01_astra/result.json",
+      "sha256": "d109fe65b10084cbe80f5b0fa12256657a96bc9d1f8d8274f8174414a7c915b5"
+    },
+    "repair_registration": {
+      "path": "experiments/t0_agent_v1/tray_20261025_repair_004/registration.json",
+      "sha256": "f55c64f3fd74f8e4de5398e27c1b97147979bf77e32f3cfd32644d21fdc01f19"
+    },
+    "regression_checks": {
+      "path": "experiments/t0_agent_v1/tray_20261025_repair_004/regression_checks.json",
+      "sha256": "5ff8aeb4814cbeade8abf156b96ed5bfec48d67ccd6e45f7fc1f86c7fc9ce079",
+      "passed": 31,
+      "total": 31
+    },
+    "astra_success_result": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/result.json",
+      "sha256": "a4051d0d6fed0c8e72d7aa0ac5c7b35092b902595339439d5e347a7ac7c64c11"
+    },
+    "integrity_checks": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/integrity_checks.json",
+      "sha256": "317ae664e510517068caf77425da39fb9a72499812c330cae9de64d21eefd378"
+    },
+    "video": {
+      "path": "experiments/t0_agent_v1/tray_astra_20261025_002/media/T01_Astra_repaired_2500.mp4",
+      "sha256": "787a29cfcb1bf68d56ca8f5f0068f6d2f12957a7406137b6d68a8ad22ac12ae6",
+      "playback_rate": 1.0,
+      "policy_used_spectator_view": false
+    }
+  },
+  "validated_scope": {
+    "task": "T01 only",
+    "initial_state": "seed 2500 actual state identified by the frozen initial-state hash",
+    "assets": "one fixed compatible DH_2F_mug_06 cup and one marked rectangular_low_rim_v1 tray",
+    "scene": "pantry MuJoCo scene",
+    "perception": "head RGB-D with all four calibrated tray markers visible",
+    "dependencies": "exact hashes in frozen_dependencies"
+  },
+  "not_validated": [
+    "other seeds or initial states",
+    "other cup or tray types",
+    "unmarked or occluded-marker trays",
+    "T02 multi-cup collection",
+    "bare Astra low-level control",
+    "cross-scene generalization",
+    "physical robot execution"
+  ],
+  "memory_status": {
+    "status": "candidate_only",
+    "source": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/memory.json",
+    "sha256": "c7a30484b3a884a14aac31cb0d60543e6be0c0aa742a8b42cb17f2834b84c15c",
+    "retrieved_memory_path": "experiments/t0_agent_v1/tray_astra_20261025_002/episodes/2500_T01_astra/retrieved_memory.json",
+    "retrieved_memory_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "memories_retrieved_in_astra_success": 0,
+    "formal_promotion": false,
+    "reason": "The successful episode did not retrieve prior memory, and no matched memory-disabled/memory-enabled comparison was run."
+  },
+  "historical_record_policy": {
+    "old_episode_files_modified": false,
+    "note": "Execution-time episode, result, candidate, registration, and integrity files retain formal_promotion=false or formal_skills=0. This registry records the later protocol decision and current formal status without backfilling historical evidence."
+  }
+}

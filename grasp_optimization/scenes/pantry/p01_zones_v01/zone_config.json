@@ -1,0 +1,121 @@
+{
+  "T_table_top_to_hk": [
+    [
+      1.9470718370939721e-07,
+      -1.0,
+      0.0,
+      59.72999954223633
+    ],
+    [
+      1.0,
+      1.9470718370939721e-07,
+      0.0,
+      -67.43000030517578
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      17.310001373291016
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "accepted_initial_snapshot": null,
+  "config_sha256": "234fd034d69f89d59e090549f878c8cde82b54b60a47468eb570d5eb5fb5f533",
+  "continuous_approach_verified": false,
+  "cup": {
+    "collision_model": null,
+    "conservative_footprint_radius_m": 0.08,
+    "height_m": 0.098,
+    "mass_kg_estimate": 0.19,
+    "original_root_world_xyz_m": [
+      59.7400016784668,
+      -67.37999725341797,
+      17.314001083374023
+    ],
+    "spawn_clearance_m": 0.0005
+  },
+  "cup_geometry_names": [
+    "DH_2F_mug_06 porcelain shell",
+    "DH_2F_mug_06 handle"
+  ],
+  "cup_root_name": "DH_2F_mug_06",
+  "directional_ik_verified": false,
+  "edge_margin_m": 0.018,
+  "floor_hkpd_m": 16.350000381469727,
+  "full_body_collision_verified": false,
+  "goal": {
+    "hold_seconds": 1.0,
+    "min_lift_m": 0.1,
+    "name": "HeldLifted"
+  },
+  "physical_task_trials": 0,
+  "placement_zone": {
+    "color": "green",
+    "label": "A",
+    "meaning": "Whole conservative cup footprint plus margin must fit in this region",
+    "rectangle_xy_m": [
+      0.02,
+      0.43,
+      0.07,
+      0.4
+    ]
+  },
+  "practice_seed_range": [
+    1000,
+    1999
+  ],
+  "room_id": "pantry",
+  "sampling_center_rectangle_xy_m": [
+    0.11800000000000001,
+    0.33199999999999996,
+    0.168,
+    0.30200000000000005
+  ],
+  "source_inventory": "native_inventory/native_inventory_20261023_194405_795785/inventory.json",
+  "source_inventory_sha256": "549f6acd96dc7527f507388a0c6be17d3d32a0ee9ad93f1699ab143a00b0a33c",
+  "source_scene": "scenes/pantry/HK_DH01_Pantry_Only_R47b.blend",
+  "source_scene_sha256": "e4053749ec368886b6327d6c98727d7d746bf80b6dc5f0a87a3ed3592e3f3d9b",
+  "stance": {
+    "color": "yellow",
+    "floor_marker_rectangle_xy_m": [
+      -0.25,
+      0.25,
+      0.51,
+      0.81
+    ],
+    "label": "B",
+    "meaning": "Foot-area sketch only; full-body collision and standing not validated",
+    "pelvis_height_above_floor_m": 0.793,
+    "pelvis_table_xy_m": [
+      0,
+      0.66
+    ],
+    "pelvis_yaw_in_table_rad": -1.5707963267948966,
+    "preferred_arm": "left",
+    "side": "kitchen_side"
+  },
+  "stance_marker_aabb_check": {
+    "overlapping_object_names": [],
+    "passed": true,
+    "scope": "Raw obstacle AABBs versus a nominal floor marker, not robot collision"
+  },
+  "standing_verified": false,
+  "status": "PROPOSED_ZONES_REQUIRING_USER_AND_ROBOT_VALIDATION",
+  "support_object_name": "Island composite stone top",
+  "support_rectangle_xy_m": [
+    -2.03,
+    2.03,
+    -0.46,
+    0.46
+  ],
+  "template_id": "P01",
+  "user_zone_review": false,
+  "version": "P01-native-zones-0.1.0",
+  "visibility_verified": false
+}

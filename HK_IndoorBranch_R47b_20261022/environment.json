@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "package_id": "HK_IndoorBranch_R47b_20261022",
+  "freeze_kind": "collaboration_baseline_current_working_scene",
+  "main_native": {
+    "path": "scene/HK_District_BASE_R47b.blend",
+    "revision": "HK49 R47b",
+    "sha256": "37c562b438bfb41f018a251cacf1c0f803028301a6a0853a1bf433685368c40c",
+    "bytes": 1781131885,
+    "includes_DH01_r10": true,
+    "portable_assets_verified": true,
+    "independent_reopen_verified": true,
+    "whole_district_visual_acceptance": false
+  },
+  "supplement": {
+    "path": "supplement_IN20/HK48_Dorset_DH01_IN20.blend",
+    "sha256": "4811471a2c73cabd9a1fef1db8cdc0a44953f699a0ce0852b54e7c297bad71b8",
+    "bytes": 916053341,
+    "merged": false,
+    "user_acceptance": "pending"
+  },
+  "coordinates": {
+    "units": "metres",
+    "axes": "X east, Y north, Z up",
+    "formula": "X=E-839826,Y=N-816525,Z=HKPD",
+    "whole_city_transform_must_remain_unchanged": true
+  },
+  "tested_Blender_version": "4.5.13 LTS",
+  "exterior_work_continues": true,
+  "new_interior_root": "IN_SENIOR_20261022",
+  "tabletop_runtime": {
+    "backend": null,
+    "robot_connected": false,
+    "templates_are_proposals": true
+  },
+  "preview_note": "总览与两张精修近景分别来自R46e/R35/R22f；门架图来自本包R47b；IN20预览为未合并补充。所有版本均在文件名中标注。",
+  "whole_city_resources_observed": {
+    "R46e_overview_peak_RSS_GiB": 40.1944,
+    "R46e_overview_peak_GPU_MiB": 19316,
+    "note": "仅为已有完整城市场景渲染的实测，不是最低硬件要求；独立小室内可另行测量。"
+  }
+}

@@ -1,0 +1,47 @@
+# 原始仿真与模型产物（可再生，不入库）
+*.mjb
+*.npz
+*.npy
+*.safetensors
+*.blend
+*.blend1
+
+# 逐帧观测 / 传感器 / 策略大转储（体积大，可由轨迹重放）
+*.json.gz
+contact_trace.json
+policy_records.json
+obs_*.jpg
+*_depth_m.npy
+
+# Python
+__pycache__/
+*.pyc
+.venv*/
+venv/
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 运行副产物
+MUJOCO_LOG.TXT
+node_modules/
+.alma-snapshots
+
+# 可编辑源码在 library/；所有新导出统一放 outputs/。
+/outputs/
+/archive/
+**/runs/
+**/validation/
+/experiments/t01_revision/runtime/
+/experiments/ros_skill_cycle/exports/
+/experiments/ros_skill_cycle/ros_logs/
+/experiments/t0_agent_v1/*_202*/
+/grasp_optimization/episodes/
+
+# 本地凭据
+.env
+.env.*
+!.env.example

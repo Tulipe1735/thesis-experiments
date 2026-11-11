@@ -1,0 +1,21 @@
+{
+  "source_root": "/mnt/c/Users/23660/Documents/Codex/2026-10-23/files-mentioned-by-the-user-hk/outputs/g1_astra_vla",
+  "source_modified": false,
+  "execution_mode": "deterministic_direct_control_engineering",
+  "model_requests": 0,
+  "vla_weight_changes": false,
+  "files_sha256": {
+    "pantry_robot.py": "6c9b54acebe8966832bf78c2b992b991329d42ec80fdd831d2d623dc0a8df341",
+    "pantry_scene.py": "08d2ac95b975d86b015e639a3ee1428006b6c2b5da319329c867aef7ad8e6afa",
+    "experiment_log.py": "f9578e45c8b5c127e8944404ca8a73b7a58cb5782de5a2339d133715fc9323dd",
+    "render_pantry_episode.py": "28ce3a532afe70a6c6fc333a866b7688feb50e75de0f8c346f6dc99be8d0b78e",
+    "view_pantry_episode.py": "bc949ea0503ba1ee0a2118fc6362d4c58bbc97dc762446fba7d423911bd16a71",
+    "assets/robot_profile.json": "aab37482f1773eb19dd3c7eaa784e63ea2dcc4956689e03f48a2cb6cbed9cfca",
+    "scenes/pantry/p01_zones_v01/zone_config.json": "16be0f9f8d5ca519ce8c7bbb85ae25544a60e9004b1c4b22222666265a8a53ab",
+    "scenes/pantry/p01_zones_v01/human_review.json": "57dc4f64e2cf4f77fd56262ced186fe26bea5bad8820655dc1bebffa348bec34"
+  },
+  "reference_episodes": [
+    "pantry_agent_20261023_214553_515599",
+    "pantry_agent_20261023_230023_592610"
+  ]
+}

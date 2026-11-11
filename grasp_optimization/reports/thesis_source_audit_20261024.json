@@ -1,0 +1,15 @@
+{
+  "source": "validation/cup_finetune_full_v1/results.json",
+  "sha256": "a282c7abdc074c96321a8b0a72e7861b994def96747b9f750115303b7adc4115",
+  "task_trials": 15,
+  "stop_reasons": {
+    "LEFT_PALM_DEPARTURE_CLOSING": 14,
+    "GRIP_LOST": 1
+  },
+  "final_sensor_phases": {
+    "closing": 14,
+    "test_lift": 1
+  },
+  "successes": 0,
+  "raw_records_changed": false
+}

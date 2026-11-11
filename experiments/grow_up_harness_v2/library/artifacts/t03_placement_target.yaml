@@ -1,0 +1,31 @@
+schema: artifact.v2
+name: t03_placement_target
+task_node: B4.1
+summary: Choose a bounded camera-relative in-platter target after actual fruit lift
+contract:
+  pre:
+  - fruit_lifted_and_held
+  - camera_platter_estimate
+  - guard_clear
+  post:
+  - placement_target_selected_not_task_success
+  params: {}
+  failure_codes:
+  - SCHEMA
+  - TRANSFER_COLLISION
+  - PLACE_FAILURE
+scope:
+  task_family: t03_near_orange_curriculum
+  initial_sha256: []
+  plant_sha256: ec0c231bb7f2f056d523d5dea94e1f76253a658b84759bac1b1b585d6165d2b9
+provenance:
+  author: DeepSeek with Codex diagnosis
+  parents:
+  - t03_placement_target@90c911ed34e6
+  created_on: '2026-11-11'
+  note: Local target-selection repair; fixed grasp reused by ID, all failed evidence
+    retained. Candidate only.
+kind: leaf
+implementation:
+  language: python
+  source: t03_placement_target.py

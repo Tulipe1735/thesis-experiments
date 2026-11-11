@@ -1,0 +1,323 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "executable": "/mnt/c/Users/23660/Documents/Codex/2026-10-23/files-mentioned-by-the-user-hk/work/mujoco-env/bin/python",
+  "mujoco": "3.17.0",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "scipy": "1.18.1",
+  "t0_agent_v1": {
+    "verified_date": "2026-10-25",
+    "environment": "existing G1_PYTHON; no new package installation",
+    "scipy_note": "Existing RGB-D estimator dependency, now explicitly recorded."
+  },
+  "t0_diversity": {
+    "verified_date": "2026-10-26",
+    "runtime": "existing G1_PYTHON; MuJoCo 3.17.0, NumPy 2.5.4, Pillow 13.0.0; no new package installation",
+    "external_asset_manifest": "experiments/t0_agent_v1/assets/robosuite_bottle_v1/manifest.json",
+    "external_asset_revision": "5ce6643f3092639d08f7b0f90ed1c6a84f50552c",
+    "boundary": "sampling, initial fixture qualification and native G1 compilation; no robot task execution"
+  },
+  "tabletop_dataset": {
+    "verified_date": "2026-10-26",
+    "runtime": "existing G1_PYTHON; MuJoCo 3.17.0, NumPy 2.5.4; no new package installation",
+    "asset_generation": "local parameter specimens and the existing pinned robosuite bottle adapter",
+    "design_skill": "experimental-design 1.5; custom deterministic stratification, no DOE wrapper dependencies installed",
+    "design_reference": "https://doi.org/10.48550/arXiv.2609.00065",
+    "boundary": "train/test task generation and initial physics qualification; no agent practice or skill synthesis",
+    "active_dataset": "experiments/t0_agent_v1/tabletop_dataset_20261026_003",
+    "per_template_counts": {
+      "train": 8,
+      "test": 4
+    },
+    "evidence_reuse": "frozen original initial states and physics checks; no additional simulation or Astra calls for the subset"
+  },
+  "tp01_training_adapter": {
+    "verified_date": "2026-10-26",
+    "runtime": "existing G1_PYTHON; MuJoCo 3.17.0, NumPy 2.5.4, Pillow 13.0.0; no new package installation",
+    "worker_isolation": "existing libseccomp2 2.5.5-1ubuntu3.1; existing grow_up_v2 isolated worker",
+    "active_preparation": "experiments/t0_agent_v1/tp01_training_20261026_002",
+    "active_training": "experiments/t0_agent_v1/tp01_training_20261026_003",
+    "status": "approved online bounded run completed; two candidates both failed 0/8; candidate only, no grasp joint commands",
+    "author_transport": "existing gateway routes and credentials; generation timeout extended from 55 to 180 seconds after one retained timeout",
+    "astra_generation_requests": 3,
+    "returned_candidates": 2,
+    "known_reported_tokens": 33658,
+    "timed_out_request_usage": "unknown",
+    "training_case_evaluations": 16,
+    "physics_stepped_episodes": 8,
+    "test_episodes": 0,
+    "verification": "experiments/t0_agent_v1/tp01_training_20261026_003/audit_20261026_001/verification.json"
+  },
+  "tp01_four_case_transfer": {
+    "verified_date": "2026-10-27",
+    "boundary": "simulation",
+    "runtime": "existing G1_PYTHON; no new package installation",
+    "packages": {
+      "mujoco": "3.17.0",
+      "numpy": "2.5.4",
+      "pillow": "13.0.0",
+      "scipy": "1.18.1"
+    },
+    "active_dataset": "experiments/t0_agent_v1/tp01_reach_dataset_20261026_001",
+    "active_training": "experiments/t0_agent_v1/tp01_adaptive_dev_20261027_036",
+    "status": "four fixed training cases passed; independently reproduced; engineering-assisted candidate",
+    "candidate": "experiments/t0_agent_v1/tp01_adaptive_dev_20261027_036/frozen_skill_candidate.json",
+    "memory_candidate": "experiments/t0_agent_v1/tp01_adaptive_dev_20261027_036/memory_candidate_v2.json",
+    "verification": "experiments/t0_agent_v1/tp01_adaptive_dev_20261027_036/final_audit/verification.json",
+    "online_stage_final_success": 3,
+    "final_success": 4,
+    "training_instances": 4,
+    "known_astra_requests": 14,
+    "known_astra_tokens": 245324,
+    "latest_online_phase_tokens": 88930,
+    "test_instances_executed": 0,
+    "formal_skill_promotions": 0,
+    "model_weight_updates": 0,
+    "current_prompt": "experiments/t0_agent_v1/tp01_control_diagnosis_20261026_001/agent_prompt_20261027_v9.txt",
+    "actual_online_prompt": "experiments/t0_agent_v1/tp01_transfer_20261027_001/agent_prompt.txt"
+  },
+  "cordis_visual_handoff_guard": {
+    "date": "2026-10-28",
+    "boundary": "simulation",
+    "status": "completed_negative_mechanism_result_with_invalid_initial_retained",
+    "dependencies": "existing pinned Cordis 4.0.6-alpha.1 and existing G1_PYTHON MuJoCo/NumPy/SciPy/Pillow; no installation",
+    "entrypoint": "experiments/cordis_t01/evaluate_guard.mjs",
+    "qualified_entrypoint": "experiments/cordis_t01/qualify_guard_initials.py --launch",
+    "development": "experiments/cordis_t01/runs/handoff_guard_dev_physical_20261028_001/results.json",
+    "comparison": "experiments/cordis_t01/runs/handoff_guard_comparison_20261028_001",
+    "conditions": [
+      "plain_baseline",
+      "plain_guard",
+      "cordis_guard"
+    ],
+    "fresh_cases": 6,
+    "known_regressions": 2,
+    "scheduled_comparison_episodes": 24,
+    "completed_comparison_episodes": 24,
+    "eligible_fresh_cases": 5,
+    "invalid_fresh_cases_retained": 1,
+    "qualified_result": "experiments/cordis_t01/runs/handoff_guard_comparison_20261028_001/qualified_comparison_addendum.json",
+    "original_audit_status": "failed_due_to_invalid_initial_state",
+    "formal_skill_promotions": 0,
+    "default_enabled": false,
+    "model_requests": 0
+  },
+  "cordis_t01_variation_validation": {
+    "date": "2026-10-28",
+    "boundary": "simulation",
+    "status": "completed_and_independently_checked",
+    "entrypoint": "experiments/cordis_t01/evaluate_variation.mjs",
+    "preparation": "experiments/cordis_t01/prepare_variation.py",
+    "dependencies": "same pinned Cordis and existing G1_PYTHON as cordis_t01_composition; no package installation",
+    "lockfile": "experiments/cordis_t01/package-lock.json",
+    "scheduled_new_cases": 16,
+    "known_control_cases": 1,
+    "physical_episodes": 17,
+    "new_case_successes": 12,
+    "known_control_successes": 1,
+    "result": "experiments/cordis_t01/runs/t01_variation_20261028_001/results.json",
+    "audit": "experiments/cordis_t01/runs/t01_variation_20261028_001/audit.json",
+    "model_requests": 0
+  },
+  "cordis_t01_composition": {
+    "date": "2026-10-28",
+    "boundary": "simulation",
+    "node_version": "22.23.2",
+    "packages": {
+      "@deepseek-ai/cordis": "4.0.6-alpha.1",
+      "@deepseek-ai/cosmokit": "1.8.7-alpha.1",
+      "@standard-schema/spec": "1.1.0"
+    },
+    "lockfile": "experiments/cordis_t01/package-lock.json",
+    "python": "existing G1_PYTHON; no Python package installation",
+    "mode": "scripted T01 grasp/place skill composition; no model API",
+    "entrypoint": "experiments/cordis_t01/run.mjs",
+    "status": "completed_and_independently_checked",
+    "scope": "one known development initial, seed 2500; no randomized generalization claim",
+    "result": "experiments/cordis_t01/runs/t01_composition_20261028_001/result.json",
+    "audit": "experiments/cordis_t01/runs/t01_composition_20261028_001/audit.json",
+    "physical_trials": 1,
+    "verified_successes": 1,
+    "external_model_requests": 0
+  },
+  "cordis_tp01_reproduction": {
+    "date": "2026-10-28",
+    "boundary": "simulation",
+    "node_version": "22.23.2",
+    "packages": {
+      "@deepseek-ai/cordis": "4.0.6-alpha.1",
+      "@deepseek-ai/cosmokit": "1.8.7-alpha.1",
+      "@standard-schema/spec": "1.1.0"
+    },
+    "lockfile": "experiments/cordis_tp01/package-lock.json",
+    "python": "existing G1_PYTHON; no Python package installation",
+    "mode": "scripted recorded TP01 parameter candidates; no model API or new weight training",
+    "entrypoint": "experiments/cordis_tp01/run.mjs",
+    "status": "completed_and_independently_checked",
+    "result": "experiments/cordis_tp01/runs/scripted_20261028_001/reproduction.json",
+    "audit": "experiments/cordis_tp01/runs/scripted_20261028_001/reproduction_audit.json",
+    "physical_trials": 37,
+    "case_versions": 80,
+    "external_model_requests": 0
+  },
+  "t01_visual_revision_20261029": {
+    "date": "2026-10-29",
+    "boundary": "simulation",
+    "status": "paired_and_frozen_audits_passed",
+    "runtime": "existing G1_PYTHON; candidate and evaluator unchanged across comparison arms",
+    "new_physical_episodes": 18,
+    "development": {
+      "paired_initials": 3,
+      "nominal_successes": 2,
+      "candidate_successes": 3
+    },
+    "frozen": {
+      "paired_initials": 6,
+      "nominal_successes": 5,
+      "candidate_successes": 5
+    },
+    "entrypoint": "experiments/t01_revision/pipeline.py",
+    "skill_registry": "experiments/t0_agent_v1/skill_registry/T01_visual_handoff_damped_v1.json",
+    "formal_skill_promotions": 1,
+    "model_requests": 0,
+    "model_weight_updates": 0,
+    "source": "experiments/t01_revision/runs/frozen_gain050_20261029_001/audit.json",
+    "design_reference": "https://doi.org/10.48550/arXiv.2609.00065"
+  },
+  "ros2_t01_control_kernel_20261029": {
+    "date": "2026-10-29",
+    "boundary": "simulation",
+    "status": "native_reproduction_completed",
+    "ros_distribution": "jazzy",
+    "ros2_control_version": "4.48.1",
+    "rclcpp_version": "28.1.22",
+    "rclpy_version": "7.1.12",
+    "installation": "signed Debian packages extracted in experiment directory; no system install",
+    "package_manifest": "experiments/t01_revision/runtime/ros_jazzy_20261029_002/manifest.json",
+    "downloaded_packages": 260,
+    "native_build": "experiments/t01_revision/native_builds/jazzy_20261029_003",
+    "entrypoint": "experiments/t01_revision/native_reproduce.py",
+    "new_physical_episodes": 2,
+    "actuator_interfaces": 43,
+    "control_period_s": 0.002,
+    "probe": "experiments/t01_revision/native_probes/jazzy_20261029_004/result.json",
+    "native_audit": "experiments/t01_revision/runs/native_reproduction_audit_20261029_001/audit.json",
+    "generic_skill_action_implemented": false,
+    "model_requests": 0,
+    "upper_layer": "ROS 2 node, four module roles, local skill calls, real topic telemetry"
+  },
+  "ros2_skill_formation_20261029": {
+    "date": "2026-10-29",
+    "boundary": "simulation",
+    "status": "completed_and_registered",
+    "runtime": "Existing pinned G1 Python + extracted Jazzy packages; no new system install or model download",
+    "ros_distribution": "jazzy",
+    "ros2_control_version": "4.48.1",
+    "rclcpp_version": "28.1.22",
+    "rclpy_version": "7.1.12",
+    "package_manifest": "experiments/t01_revision/runtime/ros_jazzy_20261029_002/manifest.json",
+    "generated_interfaces": "experiments/ros_skill_cycle/interfaces/build_20261029_007/build.json",
+    "interface": "thesis_skill_interfaces/action/ExecuteSkill",
+    "action_scope": "Real T01-specific, prebound version, independent process, unique endpoint per instance",
+    "generic_multi_skill_router": false,
+    "mid_motion_cancel_resume": false,
+    "full_g1_ros_description": false,
+    "control_period_s": 0.002,
+    "actuator_interfaces": 43,
+    "new_physical_episodes": 57,
+    "task_action_requests": 59,
+    "main": "experiments/ros_skill_cycle/runs/cycle_20261029_008",
+    "observation_revision": "experiments/ros_skill_cycle/runs/active_view_20261029_001",
+    "paired_confirmation": "experiments/ros_skill_cycle/runs/active_view_confirmation_20261029_001",
+    "audits": [
+      "experiments/ros_skill_cycle/audits/cycle_20261029_008_audit_001/audit.json",
+      "experiments/ros_skill_cycle/audits/active_view_20261029_001_audit_001/audit.json",
+      "experiments/ros_skill_cycle/runs/active_view_confirmation_20261029_001/audit.json"
+    ],
+    "registry": [
+      "experiments/t0_agent_v1/skill_registry/T01_ros_cup_to_tray_v1.json",
+      "experiments/t0_agent_v1/skill_registry/T01_ros_cup_to_tray_v1_1.json"
+    ],
+    "model_requests": 0,
+    "model_weight_updates": 0,
+    "source_evidence_preserved": true,
+    "source": "~/projects/thesis/paper/grow-up-root-down.md §12",
+    "design_reference": "https://doi.org/10.48550/arXiv.2609.00065"
+  },
+  "g1_locomotion_feasibility_probe_20261030": {
+    "status": "temporary_offline_feasibility_probe_not_integrated",
+    "date": "2026-10-30",
+    "boundary": "simulation only",
+    "upstream": "https://github.com/SunnyDeshpande/visuomotor-rl-humanoid-locomotion",
+    "commit": "342e36f47ab074b8317d75c97b38ab56f98bd26c",
+    "license": "MIT",
+    "artifact": "weights/g1_deploy_walk_policy.onnx",
+    "sha256": "6cc6c71dc1d900bc240ade207cc7987b786d90503b9c899edc12ab44fcc56d62",
+    "runtime": "onnxruntime==1.22.1; isolated temporary installation; no installed project dependency changed",
+    "notes": "No robot or Skill success implied; model/plant compatibility not yet established."
+  },
+  "local_vlm_cup_semantics_probe_20261030": {
+    "date": "2026-10-30",
+    "scope": "offline semantic classification of selected consumed simulated images, no robot policy integration",
+    "runtime": "local Ollama server 0.40.2, client 0.40.13; loopback only",
+    "model": "qwen3.5:4b",
+    "model_digest": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "model_quantization": "Q4_K_M",
+    "source_evidence": "experiments/ros_skill_cycle/probes/local_vlm_cup_semantics_20261030_001",
+    "extra_package_installation": false,
+    "status": "development diagnostic; no independent or physical task success"
+  },
+  "grow_up_harness_v2_artifact_toolchain": {
+    "pydantic": "2.11.7",
+    "pydantic_core": "2.33.2",
+    "PyYAML": "6.0.2",
+    "installed_into": "~/.venvs/g1-mujoco",
+    "installed_on": "2026-11-05",
+    "reason": "YAML artifact definition, strict schema validation and IR compilation for harness v2 skills; cv2 is needed by the live code-policy branch to read RGB-D",
+    "opencv-python-headless": "4.12.0.88"
+  },
+  "smolvla_inference_20261105": {
+    "date": "2026-11-05",
+    "boundary": "simulation",
+    "purpose": "branch B: load the pinned SmolVLA checkpoint and run closed-loop action chunks on the MuJoCo G1",
+    "environment": "~/.venvs/g1-vla (separate from ~/.venvs/g1-mujoco)",
+    "python": "3.12.3",
+    "packages": {
+      "torch": "2.10.0+cu128",
+      "torchvision": "0.25.0",
+      "lerobot": "0.4.4",
+      "transformers": "4.57.6",
+      "numpy": "2.2.6",
+      "pillow": "12.3.0",
+      "safetensors": "0.8.0",
+      "accelerate": "1.15.0",
+      "huggingface-hub": "0.35.3"
+    },
+    "why_separate": "lerobot 0.4.4 pins numpy<2.3 and Pillow<13; the registered MuJoCo environment stays at numpy 2.5.4",
+    "install_note": "uv pip install --no-deps lerobot==0.4.4 plus explicit runtime deps; the pynput/evdev chain needs Python.h and this machine has no sudo",
+    "checkpoint": {
+      "repo": "kiteml/G1-ego-test-smolvla",
+      "revision": "cf2f88ba6d5db3f3647b453438a0a1904e07919f",
+      "weights_sha256": "4885e1a224e8dae4284f9e1c903b68f1902a27f6bedf0a7b0dfffe70425e3b63",
+      "local_path": "~/vla-work/models/g1-smolvla"
+    },
+    "processor": {
+      "repo": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+      "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+      "local_path": "~/vla-work/models/smolvlm-processor",
+      "manifest": "source_manifest.json (file hashes; VLM weights not downloaded)"
+    },
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop, 8585216000 bytes total",
+    "measured": {
+      "load_seconds": 25.6,
+      "peak_allocated_bytes": 1280225280,
+      "warm_inference_seconds": 0.237,
+      "native_shape": [
+        1,
+        50,
+        28
+      ]
+    },
+    "evidence": "experiments/grow_up_harness_v2/runs/vla_smoke_20261105_001/result.json"
+  }
+}

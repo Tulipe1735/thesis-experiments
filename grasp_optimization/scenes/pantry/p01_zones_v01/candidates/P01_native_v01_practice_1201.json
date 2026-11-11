@@ -1,0 +1,48 @@
+{
+  "instance_id": "P01_native_v01_practice_1201",
+  "seed": 1201,
+  "split": "practice",
+  "version": "frozen-visual-eval-v2",
+  "status": "UNSCREENED_UNIFORM_APPROVED_ZONE",
+  "config_sha256": "234fd034d69f89d59e090549f878c8cde82b54b60a47468eb570d5eb5fb5f533",
+  "cup_root_name": "DH_2F_mug_06",
+  "cup_table_xy_m": [
+    0.3203116868525904,
+    0.25213266896566344
+  ],
+  "yaw_in_table_rad": 0.7954259979378713,
+  "robot_stance": {
+    "color": "yellow",
+    "floor_marker_rectangle_xy_m": [
+      -0.25,
+      0.25,
+      0.51,
+      0.81
+    ],
+    "label": "B",
+    "meaning": "Foot-area sketch only; full-body collision and standing not validated",
+    "pelvis_height_above_floor_m": 0.793,
+    "pelvis_table_xy_m": [
+      0,
+      0.66
+    ],
+    "pelvis_yaw_in_table_rad": -1.5707963267948966,
+    "preferred_arm": "left",
+    "side": "kitchen_side"
+  },
+  "goal": {
+    "hold_seconds": 1.0,
+    "min_lift_m": 0.1,
+    "name": "HeldLifted"
+  },
+  "initial_snapshot": null,
+  "position_checks": [],
+  "rejected_proposals": 0,
+  "physical_task_trials": 0,
+  "validation": {
+    "conservative_footprint": true,
+    "position_ik": null,
+    "grasp_proven": false
+  },
+  "candidate_sha256": "6e5496e04aff80455ebd8d5347cc6fc8cb009b88ba8aacb92cb8ccd6946236c5"
+}
