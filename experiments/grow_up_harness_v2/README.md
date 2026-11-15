@@ -1,6 +1,6 @@
 # 工件库与实验入口
 
-日期：2026-11-11。状态：已实现；验证记录见 [精简报告](../../docs/research/REPO_SIMPLIFICATION_20261111.md)。边界：MuJoCo + G1 + 双 Dex3-1 仿真。
+日期：2026-11-11。状态：已实现；验证记录见 精简报告（已归档，见 `archive/docs_prune_20261114_001.json`）。边界：MuJoCo + G1 + 双 Dex3-1 仿真。
 
 日常只编辑 leaf 或映射算法。工件库独立于运行证据；调整目录不要求恢复旧运行的源码哈希。
 
@@ -14,6 +14,9 @@ harness/library.py            按所选程序冻结一个包
 calibration/artifacts.py      list / freeze / verify / diff
 calibration/t03.py            prepare / propose / train / evaluate / execute / card / report
 calibration/t03_focus.py      既有焦点预检与只读阶段报告
+calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials
+harness/kernel.py             内核 K_v1：既有桌面阶段分组为 locate / grasp / place 工具，记录工具边界，每阶段写检查点并可续跑
+harness/reach_trial.py        评价器可达性试跑与缺口归因（方法 §2.1.1 第 1 步）
 runs/                        旧实验原始证据，只读
 ../../outputs/               新运行、冻结包与导出，整目录忽略
 ```
@@ -61,10 +64,32 @@ mkdir -p outputs/artifacts
 
 ## 验证与边界
 
-代码变更跑相关检查；精简交付已跑整套测试。日常每个 run 不重复整套代码审计。旧 T01/T02 的训练、ROS 与证据复算工具继续保留，用于既有研究线；新的 T03 只用统一入口。
+代码变更跑相关检查；精简交付已跑整套测试。日常每个 run 不重复整套代码审计。2026-11-13 起，旧 T01/T02/VLA/F0/B1–B2 线中不再被 harness、测试或文档入口引用的 56 支复算脚本已移入 `archive/repo_cleanup_20261113_001.tar.gz`（原路径与哈希见同名 `.json`，亦可从 git 历史恢复）；仍被引用的保留。旧 T03 线只用 `t03.py`，新流程只用 `tabletop.py`。
 
 日常结果在聊天中简短说明，默认不新增报告文件；初态、日志、结果和 verdict 仍按运行保存。用户明确要求时才撰写正式报告。
 
 执行器、机器人保护、独立评价器与冻结依赖库未重写。包冻结的是控制工件和声明的接口版本，不是整个仿真软件环境；runtime/evaluator 改动必须更改版本，旧结果不能称为新实现的结果。原有机器人资产与冻结初态仍须在本机可用。
 
 旧逐轮 T03 脚本、配置、重复导出及组合绑定工具已移入 `archive/repo_ponytail_20261111_001.tar.gz`，原路径见同名 `.json`。历史 `runs/`、`validation/`、研究报告与 ADR 保留；不需要为继续实验恢复整套旧路径或旧源码。旧预注册细节见 [PROTOCOL.md](PROTOCOL.md) 中的归档说明。
+
+## T01–T04 新流程：阶段 0（内核可靠度）
+
+定义与流程见 [GROW_UP_ROOT_DOWN_REVISE_20261113.md](../../docs/research/GROW_UP_ROOT_DOWN_REVISE_20261113.md)。阶段 0 只跑工程栏：固定工具链，无 Agent，不用测试集。
+
+```bash
+# 以下命令均从仓库根运行，环境变量同上
+"$G1_PYTHON" -B experiments/grow_up_harness_v2/calibration/artifacts.py freeze t03_base --out outputs/artifacts/K_v1_t03_base_20261113.json
+"$G1_PYTHON" -B experiments/grow_up_harness_v2/calibration/tabletop.py prepare experiments/grow_up_harness_v2/configs/tabletop_kernel_20261113_001.json
+"$G1_PYTHON" -B experiments/grow_up_harness_v2/calibration/tabletop.py kernel outputs/tabletop_kernel_20261113_001
+"$G1_PYTHON" -B experiments/grow_up_harness_v2/calibration/tabletop.py report outputs/tabletop_kernel_20261113_001
+```
+
+配置二选一：`instances` 列冻结数据集实例；`generate` 用冻结采样器和 T03 近侧网格就地生成 near 桶训练实例（种子与数量写入配置，拒绝样本保留、不补抽）。`report` 按"模板/可达桶"分组；far 桶失败归移动工具，不计入 near 桶可靠度。
+
+`contacts <运行目录> <新输出目录>` 只读重放：把到达 grasp 的回合保存的积分状态恢复到同一场景的新 plant，用 plant 自身的监测规则列出保护停止时的违规接触（按"机器人部位->对方"归类），并给出 grasp/place 边界时目标物的逐体支撑力；不执行动作，不消耗物理预算。
+
+`kernel` 可中断后重跑，已完成的回合不重复。每个模板先跑一次 2 秒等待负对照，被判成功则整批作废。每回合保存 `tools.json`（各工具的自报结果、边界检查、失败是否可重来）、`boundary_states.npz`（工具边界的积分状态，供后续分叉）和独立 `verdict.json`。边界检查阈值写在运行目录的 `kernel.json`，只用于测量工具，不是任务判定。
+
+每个阶段边界（以及配置加手张开之后）在回合目录 `checkpoints/` 写一个检查点，清单见 `checkpoints.json`。检查点含 MuJoCo 积分状态、plant/port/控制器的属性和工具链自身记录，是 harness 自写的 pickle，只从本仓库输出目录加载。`K.execute(..., resume=<检查点>)` 按原流程重建配置（不推进物理）、写回检查点，从下一阶段继续；轨迹保留源回合前缀，评价器照常判整段历史。续跑结果带 `resumed_from`，与完整回合分栏报告。`checkpoints <配置>` 是 E1 验收：每个任务新跑一次源回合，再从它的每个检查点续跑，逐项比对积分/边界状态字节和各记录（见 `configs/tabletop_checkpoint_check_20261114_001.json`）。
+
+可达性试跑（`harness/reach_trial.py`）：节点失败后，从该节点的入口检查点用 K_v1 同一阶段代码跑到所在工具结束，按工具边界检查判"可达"；不用真值，大脑不可见，不计入任何栏的成功。失败节点的执行者就是 K_v1 时，试跑只是重放，归因记为 `untestable`；其余节点按登记校准（在非参照执行者实际通过过的入口上，假"不可达"率不超过登记值、试跑数不少于登记下限）启用，未启用记 `uncalibrated`，启用后分 `node` / `upstream` / `kernel_gap`。原始与归因后 p_j 并排报告，分母不变。`trials <配置>` 是 E2 检查：先确认带检查点的重跑（`configs/tabletop_kernel_near_20261115_001.json`）与阶段 0 逐回合一致，再从重跑每个检查点做一次试跑，比对试跑与源回合的工具边界记录。

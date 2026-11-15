@@ -1,0 +1,26 @@
+{
+  "purpose": "E2 check: reach trials (method §2.1.1 step 1) from every checkpoint of the checkpointed stage-0 rerun. The reference is the same K_v1 stage code (user decision 2026-11-15, option A), so on K_v1 episodes a trial is a replay: it checks the mechanism and the record format, not the reference's reliability. Calibration of the false-unreachable rate needs non-reference executors and is registered with E4.",
+  "output": "outputs/tabletop_reach_trials_20261115_002",
+  "run": "outputs/tabletop_kernel_near_20261115_002",
+  "compare_with": "outputs/tabletop_kernel_near_20261113_001",
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "trials": 80
+  },
+  "budget_note": "One trial per checkpoint with a next node; about 69 expected from the stage-0 failure stages. Trials are evaluator-side episodes, counted here and in no column's success.",
+  "prediction": [
+    "Rerun reproduces stage 0 (see tabletop_kernel_near_20261115_001).",
+    "Every trial's tool boundary row equals the source episode's row for that tool (recoverable excluded); reachable is true exactly where the source passed that tool's boundary check.",
+    "Every attribution is untestable (reference is the failed executor), so attributed_p equals raw_p at every node."
+  ],
+  "falsification": [
+    "Any trial differing from its source boundary, or a trial without its own boundary row: the stop/resume path is wrong; E2 is not done.",
+    "Any attribution other than untestable on these K_v1 episodes."
+  ],
+  "not_tested": "Whether K_v1 is a trustworthy reference for a node (false-unreachable rate). That needs entries a non-K_v1 executor passed, available from E4.",
+  "previous_check": "outputs/tabletop_reach_trials_20261115_001: rerun 14/21 equal (tools.json stage records), trials 69/69 equal their source boundary, 69/69 untestable. Repeated after the starts_tool fix."
+}

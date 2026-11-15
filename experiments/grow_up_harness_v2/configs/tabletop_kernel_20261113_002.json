@@ -1,0 +1,70 @@
+{
+  "purpose": "Stage 0 of GROW_UP_ROOT_DOWN_REVISE_20261113: measure kernel K_v1 tool reliability on frozen training instances; engineering column only, no agent, no test split.",
+  "output": "outputs/tabletop_kernel_20261113_002",
+  "dataset": "experiments/t0_agent_v1/tabletop_dataset_20261026_003",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "instances": {
+    "TP01": [
+      "TP01_train_000",
+      "TP01_train_001",
+      "TP01_train_002",
+      "TP01_train_003",
+      "TP01_train_004",
+      "TP01_train_005",
+      "TP01_train_006",
+      "TP01_train_007"
+    ],
+    "TP03": [
+      "TP03_train_000",
+      "TP03_train_001",
+      "TP03_train_002",
+      "TP03_train_003",
+      "TP03_train_004",
+      "TP03_train_005",
+      "TP03_train_006",
+      "TP03_train_007"
+    ],
+    "TP04": [
+      "TP04_train_000",
+      "TP04_train_001",
+      "TP04_train_002",
+      "TP04_train_003",
+      "TP04_train_004",
+      "TP04_train_005",
+      "TP04_train_006",
+      "TP04_train_007"
+    ]
+  },
+  "instance_note": "All 8 frozen training instances of each template, listed before execution; no filtering by outcome. TP01 training cases were partly used in tp01_adaptive_dev_20261026_015 development.",
+  "baselines": {
+    "negative": "2 s wait on the first instance of each template; any goal satisfaction invalidates the whole batch",
+    "engineering": "fixed K_v1 tool chain (TP01: locate,grasp; TP03/TP04: locate,grasp,place)",
+    "agent": "not run in stage 0"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "physical_episodes": 27,
+    "wall_s": 21600
+  },
+  "prediction": [
+    "TP01 full success 1-4/8 (point 2/8): only 1/2 development evidence for this cup/bottle recipe in this plant.",
+    "TP03 full success 0-2/8 (point 1/8): cup-to-tray never executed in this plant; placement offset leaf was tuned on the platter.",
+    "TP04 full success 0-3/8 (point 1/8): T03 near-side parent was 1/4 and these instances are not restricted to the near-side grid.",
+    "Most failures occur in the grasp tool, and at least 70% of all tool failures are detected by the tool itself."
+  ],
+  "falsification": [
+    "Any template reaches 6/8 or more: the kernel is stronger than predicted.",
+    "More than half of tool failures are undetected: the kernel cannot support check-and-retry routines without new monitors.",
+    "Negative control satisfies a goal: the whole batch is invalid."
+  ],
+  "decision_rule": "A tool is opened for a template's situation buckets when its boundary ok rate is at least 60% there; otherwise the bucket is narrowed or the user decides on an idealized tool. Thresholds are initial values, not validated settings.",
+  "supersedes": {
+    "run": "outputs/tabletop_kernel_20261113_001",
+    "reason": "prepare stopped at TP01_train_002: copied qualification.xml broke relative bottle mesh paths (system path error, 0 physical episodes). Fixed by reading the frozen fixture in place; kernel behaviour unchanged."
+  },
+  "prediction_addendum_20261113_after_smoke": "Written after smoke_001 and before any formal episode; the original prediction above is copied verbatim and not revised. Smoke TP04_train_000 failed locate: the K_v1 colour rule is fixed per category (fruit rule is orange-like; cup rule is red or white). Applying the rules to nominal target colours, 8/24 targets are expected to fail locate with PerceptionError: TP01 bottles 002 and 005 (blue), TP03 slim blue tumblers 002, 003, 007, TP04 apples 000, 003, 004. Rendered colours differ from nominal ones, so this is an approximation."
+}

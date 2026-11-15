@@ -1,0 +1,47 @@
+{
+  "purpose": "Interface smoke for the generate path: one TP03 tray scene and one TP04 platter scene in the near bucket. Reported separately; not counted in stage 0 reliability.",
+  "output": "outputs/tabletop_kernel_near_smoke_20261113_001",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "count": 1,
+    "seed_start": {
+      "TP03": 1139300,
+      "TP04": 1139400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "baselines": {
+    "negative": "2 s wait on the first instance of each template; any goal satisfaction invalidates the whole batch",
+    "engineering": "fixed K_v1 tool chain (TP01: locate,grasp; TP03/TP04: locate,grasp,place)",
+    "agent": "not run in stage 0"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "physical_episodes": 4,
+    "wall_s": 21600
+  },
+  "prediction": [
+    "Both instances generate and qualify (or a rejection is recorded with its reason); ready scenes load; both negatives and engineering episodes finish with result, verdict, tools, boundary_states and integration_states; tasks.json rows carry bucket=near."
+  ],
+  "falsification": [
+    "A generated scene fails to load, a target lands outside the near bucket, or any episode ends with a system execution failure."
+  ]
+}

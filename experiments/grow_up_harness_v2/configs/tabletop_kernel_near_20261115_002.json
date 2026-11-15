@@ -1,0 +1,54 @@
+{
+  "purpose": "E2 (GROW_UP_ROOT_DOWN_REVISE_20261113 engineering step E2): rerun of the stage-0 near batch with the checkpointing kernel, so every episode has stage-entry checkpoints (engineering source of the entry library and of reach trials). Same kernel bundle, generator spec, seeds and caps as stage 0; not a new measurement.",
+  "output": "outputs/tabletop_kernel_near_20261115_002",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "count": 8,
+    "seed_start": {
+      "TP01": 1130100,
+      "TP03": 1130300,
+      "TP04": 1130400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "instance_note": "Same seeds as outputs/tabletop_kernel_near_20261113_001 on purpose: this is a replication, not resampling. No seed is added or replaced.",
+  "baselines": {
+    "negative": "2 s wait on the first instance of each template; any goal satisfaction invalidates the whole batch",
+    "engineering": "fixed K_v1 tool chain (TP01: locate,grasp; TP03/TP04: locate,grasp,place)",
+    "agent": "not run in stage 0"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "physical_episodes": 27,
+    "wall_s": 21600
+  },
+  "related_runs": {
+    "outputs/tabletop_kernel_near_20261113_001": "stage-0 run this batch must reproduce; its numbers stay the G0 baseline",
+    "outputs/tabletop_kernel_near_20261115_001": "failed E2 rerun, kept: physics reproduced stage 0 in 21/21 episodes, but 7/21 tools.json lost the first preflight and prepare from grasp stages (the second preflight reset the tool record; fixed in kernel.starts_tool). Not used as an entry library."
+  },
+  "prediction": [
+    "Every generated instance, readiness and robot initial hash equals stage 0, and every episode equals its stage-0 episode under tabletop.same_episode (state arrays byte-equal; actions, execution, tools, verdict without file hash, result counts equal)."
+  ],
+  "falsification": [
+    "Any differing instance or episode: the checkpointing kernel changed behaviour, or the machine no longer reproduces stage 0. The stage-0 numbers stay; this run is not used as an entry library until the cause is found.",
+    "Negative control satisfies a goal: the whole batch is invalid."
+  ]
+}

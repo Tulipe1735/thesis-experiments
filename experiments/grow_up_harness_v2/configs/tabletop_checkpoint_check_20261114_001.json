@@ -1,0 +1,20 @@
+{
+  "purpose": "E1 acceptance (GROW_UP_ROOT_DOWN_REVISE_20261113 engineering step E1): every stage-boundary checkpoint of kernel K_v1 resumes to the same episode. Harness check only; no reliability or success counting.",
+  "output": "outputs/tabletop_checkpoint_check_20261114_001",
+  "tasks_from": "outputs/tabletop_kernel_near_20261113_001",
+  "tasks": [
+    "TP04_near_1130402",
+    "TP04_near_1130406",
+    "TP01_near_1130102"
+  ],
+  "task_choice": "Stage-0 near instances chosen from the stage-0 results before any checkpoint episode ran: TP04_near_1130402 (fruit, full chain, verified success), TP04_near_1130406 (fruit, guard stop in lift_and_hold), TP01_near_1130102 (bottle, guard stop in approach; covers the object-recipe path without the fruit leaf).",
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "physical_episodes": "one fresh source episode per task plus one resume per written checkpoint (at most 11 per task)",
+  "prediction": "Every resume reproduces its source episode: integration and boundary state arrays byte-equal; actions, execution, tools, verdict (except trajectory file hash) and result counts equal.",
+  "falsification": "Any resume with a differing record, or a source episode that raises a checkpoint TypeError/PicklingError. Either blocks E2; the check is repeated only after a code change, in a new output directory.",
+  "comparison_note": "The fresh source episodes are compared with their own resumes only. They are not compared with the stage-0 episodes, which ran before checkpoints existed and were not rerun."
+}

@@ -1,0 +1,67 @@
+{
+  "purpose": "Stage 0, near bucket: measure kernel K_v1 tool reliability where the fixed stance has preflight evidence. Engineering column only, no agent, no test split. Out-of-reach situations are the far bucket, owned by a future move tool (idealized first, locomotion later).",
+  "output": "outputs/tabletop_kernel_near_20261113_001",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "count": 8,
+    "seed_start": {
+      "TP01": 1130100,
+      "TP03": 1130300,
+      "TP04": 1130400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "instance_note": "Generated before execution by the frozen tabletop sampler with the T03 near-side grid injected (same adapter as the T03 line, harness/t03_curriculum.generate). Seeds seed_start..seed_start+7 per template, asset index 0..7. No outcome filter; generation or qualification rejections stay as not-ready rows and are not resampled. Containers stay at the sampler fixed position (0, 0.29).",
+  "baselines": {
+    "negative": "2 s wait on the first instance of each template; any goal satisfaction invalidates the whole batch",
+    "engineering": "fixed K_v1 tool chain (TP01: locate,grasp; TP03/TP04: locate,grasp,place)",
+    "agent": "not run in stage 0"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "physical_episodes": 27,
+    "wall_s": 21600
+  },
+  "related_runs": {
+    "outputs/tabletop_kernel_20261113_002": "Same K_v1 on 24 frozen dataset instances, all in the far bucket. Kept unchanged; its far-bucket results are the gap record below, not grasp reliability."
+  },
+  "far_bucket_gap": {
+    "evidence": "outputs/tabletop_kernel_20261113_002: grasp preflight rejected 15/15 (targets at pelvis x 0.65-0.97 m, 5 on the right of the left hand); TP01_train_001 and _003 targets outside the head camera view at locate.",
+    "class": "kernel gap: no stance change tool",
+    "owner": "move tool: an idealized base placement as K_v2 after the near bucket is measured, then real locomotion with T05",
+    "not_counted_as": "grasp or locate reliability inside the near bucket"
+  },
+  "prediction": [
+    "Generation: at least 20/24 instances are ready. TP03 cups can only clear the long tray (half x 0.27 m) in the x=0.40 grid column.",
+    "Locate in the near bucket: TP01 >=5/8, TP03 >=4/8, TP04 >=4/8. Remaining failures are colour-rule misses (apples, blue slim tumblers) or white-cup/grey-can ambiguity, not out-of-view targets.",
+    "Grasp preflight passes in at least 60% of episodes that reach grasp, pooled over templates; T03 near-grid evidence was most instances passing, with failures in the y=0.25 row at x>=0.35.",
+    "TP03 is the weakest: its cups sit in the x=0.40 column, half of whose train cells are the y=0.25 edge.",
+    "TP01 full success 1-4/8 (point 2/8); TP03 0-2/8 (point 0/8): tray never executed, cups at the reach edge, placement offset tuned on the platter; TP04 1-4/8 (point 2/8): T03 near-side parent was 1/4.",
+    "At least 70% of tool failures are detected by the tool itself."
+  ],
+  "falsification": [
+    "Grasp preflight passes in fewer than half of the episodes that reach grasp, pooled: the near grid is not a valid stance bucket for this kernel and the bucket definition must be revised before any training round.",
+    "Any template reaches 6/8 or more: the kernel is stronger than predicted.",
+    "More than half of tool failures are undetected: the kernel cannot support check-and-retry routines without new monitors.",
+    "Negative control satisfies a goal: the whole batch is invalid."
+  ],
+  "decision_rule": "A tool is opened for a template's situation buckets when its boundary ok rate is at least 60% there; otherwise the bucket is narrowed or the user decides on an idealized tool. Thresholds are initial values, not validated settings. Rates are computed per template inside the near bucket only."
+}

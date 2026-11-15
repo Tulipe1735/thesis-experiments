@@ -1,0 +1,37 @@
+{
+  "purpose": "Interface smoke after the in-place fixture fix: a bottle scene (relative mesh paths) and an orange instance that should reach grasp/place. Reported separately; not counted in stage 0 reliability.",
+  "output": "outputs/tabletop_kernel_smoke_20261113_002",
+  "dataset": "experiments/t0_agent_v1/tabletop_dataset_20261026_003",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "instances": {
+    "TP01": [
+      "TP01_train_002"
+    ],
+    "TP04": [
+      "TP04_train_001"
+    ]
+  },
+  "instance_note": "All 8 frozen training instances of each template, listed before execution; no filtering by outcome. TP01 training cases were partly used in tp01_adaptive_dev_20261026_015 development.",
+  "baselines": {
+    "negative": "2 s wait on the first instance of each template; any goal satisfaction invalidates the whole batch",
+    "engineering": "fixed K_v1 tool chain (TP01: locate,grasp; TP03/TP04: locate,grasp,place)",
+    "agent": "not run in stage 0"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "physical_episodes": 4,
+    "wall_s": 21600
+  },
+  "prediction": [
+    "Both scenes load; both negatives and both engineering episodes finish with result, verdict, tools, boundary_states and integration_states.",
+    "TP01_train_002 fails locate (blue bottle vs bottle colour rule); TP04_train_001 passes locate and reaches grasp."
+  ],
+  "falsification": [
+    "Any scene fails to load or any episode ends with a system execution failure."
+  ],
+  "decision_rule": "A tool is opened for a template's situation buckets when its boundary ok rate is at least 60% there; otherwise the bucket is narrowed or the user decides on an idealized tool. Thresholds are initial values, not validated settings."
+}
