@@ -1,0 +1,66 @@
+{
+  "purpose": "E3 step 1 (GROW_UP_ROOT_DOWN_REVISE_20261113 §5.4 K3): registered offline feasibility test of the K3 VLM locate primitive before it may enter K_v2. 2D answers only; no physics, no task episodes, no evaluator change.",
+  "output": "outputs/tabletop_vlm_feasibility_20261116_002",
+  "run": "outputs/tabletop_kernel_near_20261115_002",
+  "frames": "The 320x180 head frame locate read in every ready engineering episode of the checkpointed stage-0 rerun (21 frames, recovered from each 00_configured checkpoint), plus a 640x360 render of the same camera at the same state.",
+  "groups": {
+    "hard": "locate failed in the run and the target prototype is listed in hard_prototypes (stage 0: apple 0/3, blue slim tumbler 0/3)",
+    "rule_ok": "locate passed its boundary check in the run (control)",
+    "rule_failed_other": "any other locate failure (stage 0: one white standard mug, cylinder fit)"
+  },
+  "hard_prototypes": [
+    "apple_ellipsoid_proxy",
+    "tumbler_slim_proxy"
+  ],
+  "ollama": {
+    "endpoint": "http://localhost:11434",
+    "model": "qwen3-vl:8b",
+    "options": {
+      "temperature": 0,
+      "seed": 0
+    },
+    "think": false,
+    "timeout_s": 600
+  },
+  "query": "harness/vlm_locate.query_text: 'the <nearest public colour word of appearance_rgba> <category>' from the public task's target role",
+  "sizes": [
+    [
+      320,
+      180
+    ],
+    [
+      640,
+      360
+    ]
+  ],
+  "size_note": "320x180 is the kernel head camera and the only size the decision uses. 640x360 is a sensor change: reported, and used only if the user decides so.",
+  "high_confidence": 0.7,
+  "repeats": 2,
+  "caps": {
+    "calls": 100
+  },
+  "budget_note": "21 frames x 2 sizes x 2 repeats = 84 local model calls; no physics episodes.",
+  "baselines": {
+    "colour": "nominal_rgba colour variant (tabletop.colour_baseline): largest component passing the platter rule's colour test; no confidence, so every wrong answer counts as a high-confidence error for this arm",
+    "original_rule": "the run's own locate outcome, which defines the groups"
+  },
+  "metrics": "per arm, size and group: n, 2D hits (answered point on a target-mask pixel), abstentions, invalid replies, high-confidence errors (wrong answer at confidence >= 0.7), median latency, repeat agreement (VLM)",
+  "prediction": [
+    "VLM at 320x180: at least 4/6 hits on hard frames and at least 12/14 hits on rule_ok frames.",
+    "The colour baseline hits the apples (3/3 expected) but can lock onto a same-coloured container for the blue tumblers (the TP03_near_1130307 tray is blue and the baseline's largest component there is the tray): 3-5/6 expected. This prediction was informed by running colour_baseline on nine stage-0 initial_head.jpg images (no masks, so no hit scores) and viewing two of them before any VLM call.",
+    "Repeated calls at temperature 0 agree on at least 90% of frames."
+  ],
+  "falsification": [
+    "Registered in the design doc: VLM hits on hard frames at 320x180 not above the colour baseline's, or any VLM high-confidence error on rule_ok frames at 320x180. Either one keeps K3 out of K_v2; the first series then uses K_v1 and the result is recorded.",
+    "Not tested here: relation queries (TP05/TP06), depth lifting and the geometric veto."
+  ],
+  "previous_attempt": [
+    "outputs/tabletop_vlm_feasibility_20261115_001 stopped at the first /api/chat call with HTTP 500: the local ollama 0.40.13 install had no llama-server runner (outputs/vlm_diagnosis_20261115_001). No model answer was produced, so nothing was seen; same registration, rerun after the user repaired the install.",
+    "outputs/tabletop_vlm_feasibility_20261115_002 (ollama 0.40.16, same digest) stopped after 33 of 42 frame-size rows with HTTP 500 'model runner has unexpectedly stopped': the WSL kernel OOM-killed llama-server twice (swap 0; llama-server ~5.8 GiB host incl. swap with mmap disabled by ollama, the tabletop.py process ~2 GiB holding the MuJoCo scenes), evidence in outputs/ollama_repair_20261116_001/kernel.log. The 33 per-row lines were seen; no summary or decision was produced. Changed: vlm now renders all frames in a child process that exits before the first model call. Prediction, falsification, prompt, query, sizes, thresholds, repeats and caps are unchanged; no reply cache is reused.",
+    "outputs/tabletop_vlm_feasibility_20261116_001 (frames rendered in a child process that exited before the first call) stopped after 23 of 42 rows with the same HTTP 500: llama-server RSS grew from 1.4 to 6.2 GiB over the run (outputs/vlm_run_20261116_001/memory.log) and was OOM-killed at 22:01:51; the server log of _002 shows the host prompt cache growing by one saved prompt per request. The 23 per-row lines were seen; no summary or decision was produced. Changed: prompt cache disabled on the server. Prediction, falsification, prompt, query, sizes, thresholds, repeats and caps unchanged; no reply cache reused."
+  ],
+  "ollama_server_env": {
+    "LLAMA_ARG_CACHE_RAM": "0",
+    "why": "llama-server's host prompt cache (default limit 8192 MiB) saves every finished prompt state, 180-310 MiB per image prompt; that alone exceeds the 7.6 GiB WSL memory. Set on ollama.service; the server log must not show 'prompt cache is enabled'. Repeats then recompute from the image instead of reusing a saved prompt state."
+  }
+}

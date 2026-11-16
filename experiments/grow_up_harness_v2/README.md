@@ -14,9 +14,10 @@ harness/library.py            按所选程序冻结一个包
 calibration/artifacts.py      list / freeze / verify / diff
 calibration/t03.py            prepare / propose / train / evaluate / execute / card / report
 calibration/t03_focus.py      既有焦点预检与只读阶段报告
-calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials
+calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials / vlm
 harness/kernel.py             内核 K_v1：既有桌面阶段分组为 locate / grasp / place 工具，记录工具边界，每阶段写检查点并可续跑
 harness/reach_trial.py        评价器可达性试跑与缺口归因（方法 §2.1.1 第 1 步）
+harness/vlm_locate.py         K3 VLM 定位原语（2D 部分）：本机 ollama，温度 0，按模型摘要与图像哈希缓存
 runs/                        旧实验原始证据，只读
 ../../outputs/               新运行、冻结包与导出，整目录忽略
 ```
@@ -93,3 +94,5 @@ mkdir -p outputs/artifacts
 每个阶段边界（以及配置加手张开之后）在回合目录 `checkpoints/` 写一个检查点，清单见 `checkpoints.json`。检查点含 MuJoCo 积分状态、plant/port/控制器的属性和工具链自身记录，是 harness 自写的 pickle，只从本仓库输出目录加载。`K.execute(..., resume=<检查点>)` 按原流程重建配置（不推进物理）、写回检查点，从下一阶段继续；轨迹保留源回合前缀，评价器照常判整段历史。续跑结果带 `resumed_from`，与完整回合分栏报告。`checkpoints <配置>` 是 E1 验收：每个任务新跑一次源回合，再从它的每个检查点续跑，逐项比对积分/边界状态字节和各记录（见 `configs/tabletop_checkpoint_check_20261114_001.json`）。
 
 可达性试跑（`harness/reach_trial.py`）：节点失败后，从该节点的入口检查点用 K_v1 同一阶段代码跑到所在工具结束，按工具边界检查判"可达"；不用真值，大脑不可见，不计入任何栏的成功。失败节点的执行者就是 K_v1 时，试跑只是重放，归因记为 `untestable`；其余节点按登记校准（在非参照执行者实际通过过的入口上，假"不可达"率不超过登记值、试跑数不少于登记下限）启用，未启用记 `uncalibrated`，启用后分 `node` / `upstream` / `kernel_gap`。原始与归因后 p_j 并排报告，分母不变。`trials <配置>` 是 E2 检查：先确认带检查点的重跑（`configs/tabletop_kernel_near_20261115_001.json`）与阶段 0 逐回合一致，再从重跑每个检查点做一次试跑，比对试跑与源回合的工具边界记录。
+
+`vlm <配置>` 是 E3 的离线可行性测试（方法 §5.4 K3）：从带检查点运行的 `00_configured` 检查点取回 locate 实际读到的 320×180 头部帧（另渲染登记的大尺寸作对照，属传感器改动，只报告），用分割渲染得到目标掩码，比较 VLM 与按 `nominal_rgba` 的颜色变体基线的 2D 命中、弃权、高置信错误和耗时。判定只用内核相机尺寸；证伪即 K3 不进 K_v2。模型标识、权重摘要和 ollama 版本写入运行目录 `model.json`。

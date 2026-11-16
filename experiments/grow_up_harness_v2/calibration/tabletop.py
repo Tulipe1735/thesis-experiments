@@ -6,7 +6,8 @@ controls plus the fixed engineering tool chain of kernel K_v1 per instance),
 report (tool reliability table per template and reach bucket), contacts
 (read-only replay of robot contacts at stops and object supports at boundaries) and
 checkpoints (a source episode per listed task resumed from each of its checkpoints)
-and trials (rerun reproduction plus a reach trial from every checkpoint of a run).
+trials (rerun reproduction plus a reach trial from every checkpoint of a run) and vlm
+(offline K3 feasibility on the frames locate saw).
 """
 import argparse
 import hashlib
@@ -630,6 +631,206 @@ def trials(path):
     return summary
 
 
+def colour_baseline(rgb, rgba, min_pixels=20):
+    """nominal_rgba colour variant: centre of the largest component passing the platter rule's colour test.
+
+    Same test as t03_runtime.platter_from_camera (cos > .985 to the nominal colour, brightness > .1),
+    image-only. None when no component reaches min_pixels.
+    """
+    import numpy as np
+    from scipy import ndimage
+    x = np.asarray(rgb, float) / 255
+    nominal = np.asarray(rgba[:3], float) / np.linalg.norm(rgba[:3])
+    length = np.linalg.norm(x, axis=-1)
+    labels, count = ndimage.label(((x @ nominal) / np.maximum(length, 1e-9) > .985) & (length > .1))
+    if not count:
+        return None
+    sizes = np.bincount(labels.ravel())[1:]
+    if sizes.max() < min_pixels:
+        return None
+    ys, xs = np.nonzero(labels == np.argmax(sizes) + 1)
+    return [float(xs.mean()), float(ys.mean())]
+
+
+def score(answer, mask, high):
+    """2D hit: the answered point lies on a target pixel. A wrong answer at confidence >= high is a high-confidence error."""
+    if answer['outcome'] != 'answer':
+        return {'outcome': answer['outcome'], 'hit': False, 'high_confidence_error': False}
+    x, y = answer['point_px']
+    i, j = int(y), int(x)
+    hit = bool(0 <= i < len(mask) and 0 <= j < len(mask[0]) and mask[i][j])
+    return {'outcome': 'answer', 'hit': hit, 'high_confidence_error': not hit and answer['confidence'] >= high}
+
+
+def locate_frames(run, row, sizes, scratch):
+    """The RGB locate read at the run's 00_configured checkpoint, fresh renders at other sizes, target masks.
+
+    The kernel camera is 320x180; that frame follows TabletopPlant.rgbd (the cached frame while it is
+    younger than 0.4 s). Masks come from MuJoCo segmentation of the target body's subtree.
+    """
+    import io
+    import mujoco
+    import numpy as np
+    from harness import kernel as K
+    from experiments.t0_agent_v1.tabletop_training_plant import TabletopPlant
+    folder = run / 'episodes' / row['id'] / 'engineering'
+    entry = next(e for e in read(folder / 'checkpoints.json') if e['done'] == 0)
+    snap = K.read_checkpoint(ROOT / entry['path'])
+    links = dict.fromkeys(('instance', 'plant', 'port', 'controller', 'model', 'data', 'renderer', 'kinematics'))
+    saved = K._Thawer(io.BytesIO(snap['objects']), links, scratch).load()['plant']
+    instance = read(run / 'tasks' / row['id'] / 'instance.json')
+    model = mujoco.MjModel.from_xml_path(str(run / 'tasks' / row['id'] / 'pantry_G1.xml'))
+    plant = TabletopPlant(instance, ROOT / row['source'], model, scratch, budget=1.)
+    mujoco.mj_setState(model, plant.data, snap['mujoco_state'], K.INTEGRATION)
+    mujoco.mj_forward(model, plant.data)
+    plant.rgbd_cache = saved['rgbd_cache']
+    sensor = plant.rgbd()
+    target = model.body(next(o for o in instance['objects'] if o['is_target'])['name']).id
+
+    def inside(body):
+        while body and body != target:
+            body = int(model.body_parentid[body])
+        return body == target
+    geoms = [g for g in range(model.ngeom) if inside(int(model.geom_bodyid[g]))]
+    options = mujoco.MjvOption()
+    options.geomgroup[:] = [0, 1, 1, 0, 0, 0]
+    frames = {}
+    for width, height in sizes:
+        renderer = mujoco.Renderer(model, height=height, width=width, max_geom=4000)
+        renderer.update_scene(plant.data, camera='g1_head', scene_option=options)
+        rgb = np.asarray(sensor['rgb'], np.uint8) if (width, height) == (320, 180) else renderer.render().copy()
+        renderer.enable_segmentation_rendering()
+        renderer.update_scene(plant.data, camera='g1_head', scene_option=options)
+        segment = renderer.render().copy()
+        renderer.close()
+        mask = (segment[..., 1] == mujoco.mjtObj.mjOBJ_GEOM) & np.isin(segment[..., 0], geoms)
+        frames[(width, height)] = (rgb, mask)
+    if plant.renderer:
+        plant.renderer.close()
+    return frames, {'checkpoint': entry['path'], 'state_time_s': snap['simulation_s'],
+                    'frame_time_s': sensor['timestamp_s']}
+
+
+def vlm_renders(c, run, out):
+    """E3 frames, target masks and their provenance under out. vlm runs this in a child process so the
+    MuJoCo scenes are freed before the model loads: with both resident, WSL OOM-killed llama-server (_002)."""
+    import numpy as np
+    from PIL import Image
+    from harness import vlm_locate as V
+    sizes = [tuple(s) for s in c['sizes']]
+    renders = []
+    (out / 'frames').mkdir()
+    for task in read(run / 'tasks.json'):
+        folder = run / 'episodes' / task['id'] / 'engineering'
+        if not (folder / 'checkpoints.json').exists() or not read(folder / 'checkpoints.json'):
+            continue
+        public = read(run / 'tasks' / task['id'] / 'task.json')
+        role = next(r for r in public['roles'] if r['target'])
+        instance = read(run / 'tasks' / task['id'] / 'instance.json')
+        prototype = next(o for o in instance['objects'] if o['is_target'])['asset'].get('prototype_id')
+        located = next(t for t in read(folder / 'tools.json') if t['tool'] == 'locate')
+        group = ('rule_ok' if located['truth_ok'] else 'hard' if prototype in c['hard_prototypes'] else 'rule_failed_other')
+        scratch = out / 'scratch' / task['id']
+        scratch.mkdir(parents=True)
+        frames, origin = locate_frames(run, task, sizes, scratch)
+        for (width, height), (rgb, mask) in frames.items():
+            size = f'{width}x{height}'
+            with (out / 'frames' / f"{task['id']}_{size}.png").open('xb') as f:
+                Image.fromarray(rgb).save(f, format='PNG')
+            with (out / 'frames' / f"{task['id']}_{size}_mask.png").open('xb') as f:
+                Image.fromarray(mask.astype(np.uint8) * 255).save(f, format='PNG')
+            renders.append({'task': task['id'], 'template': task['template'], 'prototype': prototype, 'group': group,
+                            'size': size, 'mask_pixels': int(mask.sum()), 'query': V.query_text(role),
+                            'appearance_rgba': role['appearance_rgba'], **origin})
+    write_new(out / 'renders.json', renders)
+
+
+def vlm(path):
+    """E3 offline feasibility of the K3 VLM locate primitive (design doc §5.4 K3).
+
+    Frames: the 320x180 frame locate read in every ready episode of a checkpointed run, plus
+    registered larger renders of the same camera (a sensor change, reported only). Groups by
+    the run's own locate outcome. Arms: the VLM and the nominal_rgba colour baseline.
+    """
+    import io
+    import multiprocessing
+    import statistics
+    import numpy as np
+    from PIL import Image
+    from harness import vlm_locate as V
+    c = read(path)
+    for key in ('prediction', 'falsification', 'run', 'ollama', 'sizes', 'high_confidence', 'repeats', 'hard_prototypes',
+                'caps'):
+        if c.get(key) in (None, '', [], {}):
+            raise ValueError('missing preregistration: ' + key)
+    run, out = ROOT / c['run'], ROOT / c['output']
+    out.mkdir(parents=True, exist_ok=False)
+    write_new(out / 'config.json', c)
+    setup = dict(c['ollama'])
+    model = V.identity(setup['endpoint'], setup['model'])
+    setup['digest'] = model['digest']
+    write_new(out / 'model.json', model)
+    sizes = [tuple(s) for s in c['sizes']]
+    child = multiprocessing.get_context('spawn').Process(target=vlm_renders, args=(c, run, out))
+    child.start()
+    child.join()
+    if child.exitcode:
+        raise RuntimeError(f'frame rendering exited with code {child.exitcode}')
+    rows, calls = [], 0
+    for render in read(out / 'renders.json'):
+        name = f"{render['task']}_{render['size']}"
+        png = (out / 'frames' / f'{name}.png').read_bytes()
+        rgb = np.asarray(Image.open(io.BytesIO(png)))
+        mask = np.asarray(Image.open(out / 'frames' / f'{name}_mask.png')) > 0
+        height, width = mask.shape
+        base = colour_baseline(rgb, render['appearance_rgba'])
+        answer = {'outcome': 'abstain'} if base is None else {'outcome': 'answer', 'point_px': base, 'confidence': 1.}
+        common = {k: v for k, v in render.items() if k != 'appearance_rgba'}
+        rows.append({**common, 'arm': 'colour', 'answer': answer, **score(answer, mask, c['high_confidence'])})
+        replies = []
+        for repeat in range(c['repeats']):
+            if calls >= c['caps']['calls']:
+                raise RuntimeError('VLM_CALL_BUDGET')
+            calls += 1
+            replies.append(V.ask(png, render['query'], setup, cache=out / 'cache' if repeat == 0 else None))
+        answer = V.parse(replies[0]['text'], width, height)
+        rows.append({**common, 'arm': 'vlm', 'answer': answer, 'replies': replies,
+                     'repeats_agree': len({r['text'] for r in replies}) == 1,
+                     **score(answer, mask, c['high_confidence'])})
+        print(f"{render['task']:18} {render['group']:17} {render['size']:8} colour hit={rows[-2]['hit']!s:5} "
+              f"vlm {answer['outcome']:7} hit={rows[-1]['hit']!s:5} {replies[0]['latency_s']:.1f}s")
+    write_new(out / 'frames.json', rows)
+    table = []
+    for key in sorted({(r['arm'], r['size'], r['group']) for r in rows}):
+        part = [r for r in rows if (r['arm'], r['size'], r['group']) == key]
+        entry = {'arm': key[0], 'size': key[1], 'group': key[2], 'n': len(part), 'hit': sum(r['hit'] for r in part),
+                 'abstain': sum(r['outcome'] == 'abstain' for r in part),
+                 'invalid': sum(r['outcome'] == 'invalid' for r in part),
+                 'high_confidence_error': sum(r['high_confidence_error'] for r in part)}
+        if key[0] == 'vlm':
+            entry['median_latency_s'] = statistics.median(r['replies'][0]['latency_s'] for r in part)
+            entry['repeats_agree'] = sum(r['repeats_agree'] for r in part)
+        table.append(entry)
+    cell = {(t['arm'], t['size'], t['group']): t for t in table}
+    primary = f'{sizes[0][0]}x{sizes[0][1]}'
+    vlm_hard, colour_hard = cell.get(('vlm', primary, 'hard')), cell.get(('colour', primary, 'hard'))
+    errors = cell.get(('vlm', primary, 'rule_ok'), {}).get('high_confidence_error', 0)
+    falsified = [reason for reason, hit in (
+        (f'hard-frame hits {vlm_hard and vlm_hard["hit"]} not above colour baseline {colour_hard and colour_hard["hit"]}',
+         not vlm_hard or vlm_hard['hit'] <= (colour_hard['hit'] if colour_hard else 0)),
+        (f'{errors} high-confidence errors on rule-success frames', errors > 0)) if hit]
+    summary = {'model': model, 'primary_size': primary, 'calls': calls, 'table': table,
+               'falsified': falsified, 'k3_enters_k2': not falsified,
+               'scope': 'decision uses the primary (kernel camera) size only; other sizes need a sensor decision'}
+    write_new(out / 'summary.json', summary)
+    print('arm    size     group             n hit abstain invalid hc_err latency agree')
+    for t in table:
+        print(f"{t['arm']:6} {t['size']:8} {t['group']:17} {t['n']:2} {t['hit']:3} {t['abstain']:7} {t['invalid']:7} "
+              f"{t['high_confidence_error']:6} {t.get('median_latency_s', 0):7.1f} {t.get('repeats_agree', '')}")
+    print('K3 falsified: ' + '; '.join(falsified) if falsified else 'K3 not falsified on the primary size')
+    return summary
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -637,6 +838,7 @@ def main(argv=None):
         sub.add_parser(name).add_argument('path', type=Path)
     sub.add_parser('checkpoints').add_argument('path', type=Path)
     sub.add_parser('trials').add_argument('path', type=Path)
+    sub.add_parser('vlm').add_argument('path', type=Path)
     replay = sub.add_parser('contacts')
     replay.add_argument('path', type=Path)
     replay.add_argument('out', type=Path)
@@ -650,6 +852,8 @@ def main(argv=None):
         checkpoints(args.path)
     elif args.command == 'trials':
         trials(args.path)
+    elif args.command == 'vlm':
+        vlm(args.path)
     elif args.command == 'contacts':
         contacts(args.path, args.out)
     else:

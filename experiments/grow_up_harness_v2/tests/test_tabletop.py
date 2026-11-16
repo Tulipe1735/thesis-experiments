@@ -77,6 +77,26 @@ class SameEpisodeTest(unittest.TestCase):
             self.assertFalse(tabletop.same_episode(a, b)['integration_states.npz'])
 
 
+class VlmScoringTest(unittest.TestCase):
+    def test_colour_baseline_finds_the_largest_matching_component(self):
+        import numpy as np
+        image = np.zeros((20, 30, 3), np.uint8)
+        image[2:4, 2:4] = (200, 20, 15)
+        image[10:16, 20:26] = (180, 15, 10)
+        image[10:16, 5:9] = (20, 60, 200)
+        self.assertEqual(tabletop.colour_baseline(image, [.69, .055, .037, 1.], min_pixels=5), [22.5, 12.5])
+        self.assertIsNone(tabletop.colour_baseline(image, [.69, .055, .037, 1.], min_pixels=40))
+
+    def test_hit_needs_a_target_pixel_and_confident_misses_are_counted(self):
+        mask = [[False] * 4, [False, True, True, False]]
+        answer = {'outcome': 'answer', 'point_px': [1.6, 1.2], 'confidence': .9}
+        self.assertEqual(tabletop.score(answer, mask, .7), {'outcome': 'answer', 'hit': True, 'high_confidence_error': False})
+        miss = dict(answer, point_px=[3.5, 1.5])
+        self.assertTrue(tabletop.score(miss, mask, .7)['high_confidence_error'])
+        self.assertFalse(tabletop.score(dict(miss, confidence=.5), mask, .7)['high_confidence_error'])
+        self.assertFalse(tabletop.score({'outcome': 'abstain'}, mask, .7)['hit'])
+
+
 class NodeRowsTest(unittest.TestCase):
     def test_last_checkpoint_marks_the_failed_node(self):
         checkpoints = [{'done': k} for k in range(5)]
