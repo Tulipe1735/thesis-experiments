@@ -14,10 +14,10 @@ harness/library.py            按所选程序冻结一个包
 calibration/artifacts.py      list / freeze / verify / diff
 calibration/t03.py            prepare / propose / train / evaluate / execute / card / report
 calibration/t03_focus.py      既有焦点预检与只读阶段报告
-calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials / vlm
+calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials / vlm / lift
 harness/kernel.py             内核 K_v1：既有桌面阶段分组为 locate / grasp / place 工具，记录工具边界，每阶段写检查点并可续跑
 harness/reach_trial.py        评价器可达性试跑与缺口归因（方法 §2.1.1 第 1 步）
-harness/vlm_locate.py         K3 VLM 定位原语（2D 部分）：本机 ollama，温度 0，按模型摘要与图像哈希缓存
+harness/vlm_locate.py         K3 VLM 定位原语：本机 ollama 给 2D 点，深度与支撑面拟合提升到 3D，几何只否决；按模型摘要与图像哈希缓存
 runs/                        旧实验原始证据，只读
 ../../outputs/               新运行、冻结包与导出，整目录忽略
 ```
@@ -96,3 +96,5 @@ mkdir -p outputs/artifacts
 可达性试跑（`harness/reach_trial.py`）：节点失败后，从该节点的入口检查点用 K_v1 同一阶段代码跑到所在工具结束，按工具边界检查判"可达"；不用真值，大脑不可见，不计入任何栏的成功。失败节点的执行者就是 K_v1 时，试跑只是重放，归因记为 `untestable`；其余节点按登记校准（在非参照执行者实际通过过的入口上，假"不可达"率不超过登记值、试跑数不少于登记下限）启用，未启用记 `uncalibrated`，启用后分 `node` / `upstream` / `kernel_gap`。原始与归因后 p_j 并排报告，分母不变。`trials <配置>` 是 E2 检查：先确认带检查点的重跑（`configs/tabletop_kernel_near_20261115_001.json`）与阶段 0 逐回合一致，再从重跑每个检查点做一次试跑，比对试跑与源回合的工具边界记录。
 
 `vlm <配置>` 是 E3 的离线可行性测试（方法 §5.4 K3）：从带检查点运行的 `00_configured` 检查点取回 locate 实际读到的 320×180 头部帧（另渲染登记的大尺寸作对照，属传感器改动，只报告），用分割渲染得到目标掩码，比较 VLM 与按 `nominal_rgba` 的颜色变体基线的 2D 命中、弃权、高置信错误和耗时。判定只用内核相机尺寸；证伪即 K3 不进 K_v2。模型标识、权重摘要和 ollama 版本写入运行目录 `model.json`。
+
+K_v2 = K_v1 + K3 原语，登记在 `configs/kernel_K_v2_20261116.json`（模型摘要、ollama 版本、原语与提示词哈希）。运行配置写 `kernel_package` 后，`prepare` 向本机 ollama 核对这些值，不符即 `VLM_PACKAGE_MISMATCH`，kernel.json 版本记为 K_v2；`"locate": "vlm"` 让 locate 改走原语（G0 不用）。回复缓存在各回合 `vlm_cache/`，续跑同时读源回合缓存；`replay=True` 时未命中报 `ReplayCacheMiss`（`REPLAY_CACHE_MISS`），不重新调用模型。模型服务失败记 `ModelUnavailable`，整批作废。`lift <配置>` 用 E3 缓存回放，在各 `00_configured` 检查点的 locate 帧上检查 3D 提升与否决。

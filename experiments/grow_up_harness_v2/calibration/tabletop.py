@@ -6,8 +6,9 @@ controls plus the fixed engineering tool chain of kernel K_v1 per instance),
 report (tool reliability table per template and reach bucket), contacts
 (read-only replay of robot contacts at stops and object supports at boundaries) and
 checkpoints (a source episode per listed task resumed from each of its checkpoints)
-trials (rerun reproduction plus a reach trial from every checkpoint of a run) and vlm
-(offline K3 feasibility on the frames locate saw).
+trials (rerun reproduction plus a reach trial from every checkpoint of a run), vlm
+(offline K3 feasibility on the frames locate saw) and lift (the K_v2 primitive's 3D estimate
+on those frames from cached replies).
 """
 import argparse
 import hashlib
@@ -72,14 +73,16 @@ def seed_reuse(config, configs=CONFIGS):
     return clashes
 
 
-def kernel_spec(bundle_path):
+def kernel_spec(bundle_path, package=None):
+    """The kernel interface a run records at prepare. package: a K_v2 registration (configs/kernel_K_v2_*.json);
+    the live ollama server must report its model digest and version, and the code its primitive and prompt."""
     from harness import kernel as K
     from harness.library import read_bundle
     bundle = read_bundle(ROOT / bundle_path)
     refs = bundle['components']
     leaves = {name: bundle['artifacts'][refs[key]]['implementation']['source_sha256'] for name, key in K.LEAVES.items()}
     registration = read(ROOT / OBJECT_RECIPE)
-    return {'version': K.VERSION, 'tools': K.TOOLS, 'chains': K.CHAINS, 'checks': K.CHECKS,
+    spec = {'version': K.VERSION, 'tools': K.TOOLS, 'chains': K.CHAINS, 'checks': K.CHECKS,
             'bundle': {'path': bundle_path, 'bundle_id': bundle['bundle_id'], 'components': refs},
             'leaves': leaves, 'sources': {h: bundle['sources'][h] for h in leaves.values()},
             'object_recipe': registration['recipe'],
@@ -87,6 +90,20 @@ def kernel_spec(bundle_path):
             'fruit_recipe': 'defaults + frozen t03_adaptive_recipe leaf reply (T03 parent binding)',
             'evaluators': {'TP01': 'tabletop-predicates-v1', 'TP03': 'fruit-bottom v2 (cup relation unchanged)',
                            'TP04': 'fruit-bottom v2'}}
+    if package:
+        from harness import vlm_locate as V
+        registered = read(ROOT / package)
+        live = V.identity(registered['vlm']['endpoint'], registered['vlm']['model'])
+        expected = {'digest': registered['vlm']['digest'], 'ollama': registered['vlm']['ollama'],
+                    'primitive': registered['primitive'], 'prompt_sha256': registered['prompt_sha256'],
+                    'lift': registered['lift']}
+        found = {**{k: live[k] for k in expected if k != 'lift'}, 'lift': V.LIFT}
+        if found != expected:
+            raise RuntimeError(f'VLM_PACKAGE_MISMATCH: {package} registers {expected}, found {found}')
+        spec['version'] = K.VLM_VERSION
+        spec['vlm'] = {**registered['vlm'], 'primitive': registered['primitive'], 'lift': registered['lift'],
+                       'prompt_sha256': registered['prompt_sha256'], 'package': {'path': package, 'sha256': sha(ROOT / package)}}
+    return spec
 
 
 def reach_bucket(instance):
@@ -200,7 +217,7 @@ def prepare(path):
     run = ROOT / c['output']
     run.mkdir(parents=True, exist_ok=False)
     write_new(run / 'config.json', c)
-    write_new(run / 'kernel.json', kernel_spec(c['kernel_bundle']))
+    write_new(run / 'kernel.json', kernel_spec(c['kernel_bundle'], c.get('kernel_package')))
     write_new(run / 'registration.json', {'start_epoch': time.time(), 'kernel': read(run / 'kernel.json')['version'],
         'column': 'engineering (fixed tool chain, no agent)', 'test_split_used': False,
         'python': sys.version, 'runtime_record': 'declared interface versions; source-tree bytes are not frozen'})
@@ -281,6 +298,9 @@ def kernel(run):
         folder = run / 'tasks' / row['id']
         case = {'folder': folder, 'source': ROOT / row['source'], 'instance': read(folder / 'instance.json'),
                 'ready': row['ready'], 'template': row['template']}
+        if c.get('locate') == 'vlm':
+            from harness import vlm_locate as V
+            case['locate_query'] = V.query_text(next(r for r in read(folder / 'task.json')['roles'] if r['target']))
         start_physical(run, row['id'], 'engineering')
         result = K.execute(case, run / 'episodes' / row['id'] / 'engineering', spec, c['episode_caps'])
         if result['initial_hash'] != row['robot_initial_hash']:
@@ -289,7 +309,7 @@ def kernel(run):
         log(run, 'physical_completed', task=row['id'], arm='engineering', success=result['success'])
         if result['error'] and result['error']['type'] in (
                 'WorkerError', 'WorkerStartupError', 'WorkerProtocolError', 'WorkerCrashed', 'ValueError', 'PermissionError',
-                'TypeError', 'PicklingError'):
+                'TypeError', 'PicklingError', 'ModelUnavailable'):
             log(run, 'batch_invalid', reason='SYSTEM_EXECUTION_FAILURE', task=row['id'])
             raise RuntimeError('SYSTEM_EXECUTION_FAILURE:' + str(result['error']))
     written = written_since(FROZEN, read(run / 'registration.json')['start_epoch'])
@@ -300,7 +320,7 @@ def kernel(run):
 
 def check_kernel_unchanged(spec):
     """The kernel interface recorded at prepare must still be the one that runs."""
-    now = json.loads(json.dumps(kernel_spec(spec['bundle']['path'])))
+    now = json.loads(json.dumps(kernel_spec(spec['bundle']['path'], spec.get('vlm', {}).get('package', {}).get('path'))))
     changed = sorted(k for k in now.keys() | spec.keys() if now.get(k) != spec.get(k))
     if changed:
         raise RuntimeError(f'KERNEL_CHANGED_AFTER_PREPARE: {changed} differ from kernel.json; '
@@ -506,7 +526,8 @@ def checkpoints(path):
     """E1 check: a fresh source episode per listed task, then one resume from each of its checkpoints.
 
     Tasks come from an already prepared run and use its kernel.json. A harness check, not a
-    task measurement: nothing here enters a reliability table.
+    task measurement: nothing here enters a reliability table. For a run whose locate goes through
+    the K3 primitive, resumes replay the source episode's cached replies (a miss is ReplayCacheMiss).
     """
     from harness import kernel as K
     c = read(path)
@@ -521,17 +542,22 @@ def checkpoints(path):
     run.mkdir(parents=True, exist_ok=False)
     write_new(run / 'config.json', c)
     spec = read(source / 'kernel.json')
+    vlm = read(source / 'config.json').get('locate') == 'vlm'
     checked = []
     for task in c['tasks']:
         folder = source / 'tasks' / task
         case = {'folder': folder, 'source': ROOT / rows[task]['source'], 'instance': read(folder / 'instance.json'),
                 'ready': True, 'template': rows[task]['template']}
+        if vlm:
+            from harness import vlm_locate as V
+            case['locate_query'] = V.query_text(next(r for r in read(folder / 'task.json')['roles'] if r['target']))
         first = run / task / 'source'
         result = K.execute(case, first, spec, c['episode_caps'])
         print(f"{task} source: success={result['success']} error={result['error'] and result['error']['stage']}")
         for entry in read(first / 'checkpoints.json'):
             name = Path(entry['path']).name.removesuffix('.pkl.gz')
-            resumed = K.execute(case, run / task / ('resume_' + name), spec, c['episode_caps'], resume=ROOT / entry['path'])
+            resumed = K.execute(case, run / task / ('resume_' + name), spec, c['episode_caps'], resume=ROOT / entry['path'],
+                                replay=vlm)
             same = same_episode(first, run / task / ('resume_' + name))
             checked.append({'task': task, 'checkpoint': entry['path'], 'done': entry['done'], 'next': entry['next'],
                             'source_error': result['error'], 'resumed_error': resumed['error'],
@@ -662,15 +688,13 @@ def score(answer, mask, high):
     return {'outcome': 'answer', 'hit': hit, 'high_confidence_error': not hit and answer['confidence'] >= high}
 
 
-def locate_frames(run, row, sizes, scratch):
-    """The RGB locate read at the run's 00_configured checkpoint, fresh renders at other sizes, target masks.
+def configured(run, row, scratch):
+    """A plant at the run's 00_configured checkpoint, holding the head RGB-D frame locate read there.
 
-    The kernel camera is 320x180; that frame follows TabletopPlant.rgbd (the cached frame while it is
-    younger than 0.4 s). Masks come from MuJoCo segmentation of the target body's subtree.
+    That frame follows TabletopPlant.rgbd (the cached frame while it is younger than 0.4 s).
     """
     import io
     import mujoco
-    import numpy as np
     from harness import kernel as K
     from experiments.t0_agent_v1.tabletop_training_plant import TabletopPlant
     folder = run / 'episodes' / row['id'] / 'engineering'
@@ -684,6 +708,18 @@ def locate_frames(run, row, sizes, scratch):
     mujoco.mj_setState(model, plant.data, snap['mujoco_state'], K.INTEGRATION)
     mujoco.mj_forward(model, plant.data)
     plant.rgbd_cache = saved['rgbd_cache']
+    return instance, plant, entry, snap
+
+
+def locate_frames(run, row, sizes, scratch):
+    """The RGB locate read at the run's 00_configured checkpoint, fresh renders at other sizes, target masks.
+
+    The kernel camera is 320x180. Masks come from MuJoCo segmentation of the target body's subtree.
+    """
+    import mujoco
+    import numpy as np
+    instance, plant, entry, snap = configured(run, row, scratch)
+    model = plant.model
     sensor = plant.rgbd()
     target = model.body(next(o for o in instance['objects'] if o['is_target'])['name']).id
 
@@ -831,6 +867,72 @@ def vlm(path):
     return summary
 
 
+def lift(path):
+    """K_v2 lift check: the K3 primitive on the frame locate read at each 00_configured checkpoint.
+
+    Replays the cached E3 replies with replay=True, so a miss is REPLAY_CACHE_MISS and the model is
+    never called; the estimate is scored with the kernel's locate boundary check (truth, evaluator side).
+    """
+    from harness import kernel as K
+    from harness import vlm_locate as V
+    from experiments.t0_agent_v1.reuse_grasp import PerceptionError
+    c = read(path)
+    for key in ('prediction', 'run', 'cache', 'kernel_package', 'hard_prototypes'):
+        if c.get(key) in (None, '', [], {}):
+            raise ValueError('missing preregistration: ' + key)
+    run, out = ROOT / c['run'], ROOT / c['output']
+    out.mkdir(parents=True, exist_ok=False)
+    write_new(out / 'config.json', c)
+    setup = read(ROOT / c['kernel_package'])['vlm']
+    rows = []
+    for task in read(run / 'tasks.json'):
+        folder = run / 'episodes' / task['id'] / 'engineering'
+        if not (folder / 'checkpoints.json').exists() or not read(folder / 'checkpoints.json'):
+            continue
+        role = next(r for r in read(run / 'tasks' / task['id'] / 'task.json')['roles'] if r['target'])
+        scratch = out / 'scratch' / task['id']
+        scratch.mkdir(parents=True)
+        instance, plant, entry, snap = configured(run, task, scratch)
+        target = next(o for o in instance['objects'] if o['is_target'])
+        rule = next(t for t in read(folder / 'tools.json') if t['tool'] == 'locate')
+        prototype = target['asset'].get('prototype_id')
+        row = {'task': task['id'], 'template': task['template'], 'prototype': prototype, 'checkpoint': entry['path'],
+               'group': 'rule_ok' if rule['truth_ok'] else 'hard' if prototype in c['hard_prototypes'] else 'rule_failed_other',
+               'rule_xy_error_m': rule['truth'].get('locate_xy_error_m'),
+               'rule_failure': rule['failure'] and rule['failure']['message']}
+        try:
+            estimate = V.locate(plant.rgbd(), V.query_text(role), target['asset']['kind'], setup,
+                                sources=[ROOT / c['cache']], replay=True)
+        except V.ReplayCacheMiss as error:
+            row.update(outcome='REPLAY_CACHE_MISS', failure=str(error), ok=False)
+        except PerceptionError as error:
+            row.update(outcome='declared_failure', failure=str(error), ok=False)
+        else:
+            truth = K.truth(plant, instance, target, 0., estimate['cup_bottom_position_m'])
+            row.update(outcome='estimate', xy_error_m=truth['locate_xy_error_m'], ok=K.tool_truth_ok('locate', truth),
+                       component_pixels=estimate['component_pixels'], answer=estimate['vlm']['answer'])
+        if plant.renderer:
+            plant.renderer.close()
+        rows.append(row)
+        error = f"{row['xy_error_m'] * 1000:6.1f} mm" if 'xy_error_m' in row else row['failure'][:60]
+        print(f"{row['task']:18} {row['group']:17} ok={row['ok']!s:5} {error}")
+    write_new(out / 'rows.json', rows)
+    table = []
+    for group in sorted({r['group'] for r in rows}):
+        part = [r for r in rows if r['group'] == group]
+        table.append({'group': group, 'n': len(part), 'vlm_ok': sum(r['ok'] for r in part),
+                      'declared_failure': sum(r['outcome'] == 'declared_failure' for r in part),
+                      'replay_cache_miss': sum(r['outcome'] == 'REPLAY_CACHE_MISS' for r in part),
+                      'wrong_estimate': sum(r['outcome'] == 'estimate' and not r['ok'] for r in part)})
+    summary = {'table': table, 'scope': 'locate boundary at 00_configured only; no grasp, no physics, no model call'}
+    write_new(out / 'summary.json', summary)
+    print('group             n vlm_ok declared miss wrong')
+    for t in table:
+        print(f"{t['group']:17} {t['n']:2} {t['vlm_ok']:6} {t['declared_failure']:8} "
+              f"{t['replay_cache_miss']:4} {t['wrong_estimate']:5}")
+    return summary
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -839,6 +941,7 @@ def main(argv=None):
     sub.add_parser('checkpoints').add_argument('path', type=Path)
     sub.add_parser('trials').add_argument('path', type=Path)
     sub.add_parser('vlm').add_argument('path', type=Path)
+    sub.add_parser('lift').add_argument('path', type=Path)
     replay = sub.add_parser('contacts')
     replay.add_argument('path', type=Path)
     replay.add_argument('out', type=Path)
@@ -854,6 +957,8 @@ def main(argv=None):
         trials(args.path)
     elif args.command == 'vlm':
         vlm(args.path)
+    elif args.command == 'lift':
+        lift(args.path)
     elif args.command == 'contacts':
         contacts(args.path, args.out)
     else:

@@ -33,7 +33,7 @@ def reach_trial(case, entry, out, kernel, caps):
     if len(rows) != K.CHAINS[snap['template']].index(tool) + 1:
         raise RuntimeError(f'trial left no {tool} boundary: {result["error"]}')
     return {'entry': relative(Path(entry)), 'node': snap['done'], 'label': node_label(snap['template'], snap['done']),
-            'tool': tool, 'reference': K.VERSION, 'reachable': bool(rows[-1]['truth_ok']),
+            'tool': tool, 'reference': kernel['version'], 'reachable': bool(rows[-1]['truth_ok']),
             'trial_error': result['error'], 'boundary': rows[-1], 'episode': relative(Path(out))}
 
 

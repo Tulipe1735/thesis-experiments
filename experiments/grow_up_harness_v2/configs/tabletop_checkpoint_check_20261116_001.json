@@ -1,0 +1,18 @@
+{
+  "purpose": "E1 acceptance for K_v2 with the primitive in use: every stage-boundary checkpoint of an episode whose locate goes through the K3 primitive resumes to the same episode, replaying the source episode's cached replies (replay=True). Harness check only.",
+  "output": "outputs/tabletop_checkpoint_check_20261116_001",
+  "tasks_from": "outputs/tabletop_kernel_v2_smoke_20261116_001",
+  "tasks": [
+    "TP04_near_1161400",
+    "TP03_near_1161300"
+  ],
+  "task_choice": "The first generated instance of the two templates with the full chain, fixed before the smoke run; if either was rejected at prepare (ready false) the check stops and a new config is registered.",
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1200
+  },
+  "physical_episodes": "one fresh source episode per task (live model calls) plus one resume per written checkpoint (at most 10 per task, no model calls)",
+  "prediction": "Every resume reproduces its source episode under tabletop.same_episode, with no ReplayCacheMiss: the locate and prepare relocate frames render to the same bytes, so both replies come from the source episode's vlm_cache.",
+  "falsification": "Any ReplayCacheMiss (the replayed frame differs from the source frame) or any differing record. Either blocks K_v2 use in checkpoint-based work (entry library, reach trials) until the cause is found."
+}

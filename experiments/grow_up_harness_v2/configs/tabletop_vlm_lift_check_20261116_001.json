@@ -1,0 +1,25 @@
+{
+  "purpose": "K_v2 step check: the K3 primitive's 3D lift and geometric veto (harness/vlm_locate.lift) on the frame locate read at each 00_configured checkpoint of the checkpointed stage-0 rerun, replaying the E3 replies from cache. Verifies the implementation and the replay path; it is not a K decision and not a task measurement.",
+  "output": "outputs/tabletop_vlm_lift_check_20261116_001",
+  "run": "outputs/tabletop_kernel_near_20261115_002",
+  "cache": "outputs/tabletop_vlm_feasibility_20261116_002/cache",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "hard_prototypes": [
+    "apple_ellipsoid_proxy",
+    "tumbler_slim_proxy"
+  ],
+  "metric": "per group: estimates passing the kernel's locate boundary check (xy error <= 0.015 m, evaluator side), declared failures (VLM abstain/invalid, point off object, vetoes, fit failures), REPLAY_CACHE_MISS, and wrong estimates (an estimate that fails the boundary check)",
+  "prediction": [
+    "No REPLAY_CACHE_MISS: the primitive encodes the same frame to the same PNG bytes as E3, so all 21 replies come from cache and no model call is made.",
+    "Only the 17 frames the VLM hit in 2D at 320x180 can pass; the 3 abstentions and the empty reply give declared failures.",
+    "rule_ok: at least 10 of the 11 2D hits pass, since the fits are the colour rule's and only the pixel selection differs.",
+    "hard: of the 2 apple hit frames, 0-2 pass (the T03 sphere fit was made for round fruit; an ellipsoid may exceed its 3 mm rms); of the 3 slim-tumbler hit frames, 0-3 pass (the cylinder radius bound or wall fit may reject a slim tumbler). No firm number: this is where the lift is untested.",
+    "rule_failed_other: the white mug fails with the same cylinder-fit failure as the rule."
+  ],
+  "falsification": [
+    "Any REPLAY_CACHE_MISS: the replay path does not reproduce E3's image bytes.",
+    "A rule_ok frame with a 2D hit that gives a wrong estimate or a declared failure other than a fit failure: the depth component selected under the VLM point differs from the object the rule fitted, so the lift is wrong."
+  ],
+  "budget": "21 checkpoint thaws and renders, no physics stepping, no model call",
+  "evidence_seen": "The E3 per-frame 2D results (outputs/tabletop_vlm_feasibility_20261116_002/frames.json) were read before this registration; no lift was run before it."
+}

@@ -1,0 +1,32 @@
+{
+  "package": "K_v2-20261116",
+  "base": "K_v1-20261113: same tools, chains, checks, leaf bundle outputs/artifacts/K_v1_t03_base_20261113.json and evaluators",
+  "adds": "K3 VLM locate primitive harness/vlm_locate.py; a case with locate_query selects its target through it (harness/kernel.py _VlmLocate); G0 never passes a query",
+  "decision": "docs/research/GROW_UP_ROOT_DOWN_REVISE_20261113.md §5.4 K3: the E3 entry condition was falsified (outputs/tabletop_vlm_feasibility_20261116_002); the user overrode it on 2026-11-16",
+  "primitive": "k3-vlm-locate-2d-20261115",
+  "prompt_sha256": "ef1de5f69c950a749666ea0b04c27389f8b697136f3ba5b863c87258480d6d63",
+  "lift": "k3-lift-20261116b",
+  "vlm": {
+    "endpoint": "http://localhost:11434",
+    "model": "qwen3-vl:8b",
+    "digest": "9cf69da2b16d097f7def535917c4b55a95d6c7ee5700eb69ab86b01b3cfca487",
+    "ollama": "0.40.16",
+    "options": {
+      "temperature": 0,
+      "seed": 0
+    },
+    "think": false,
+    "timeout_s": 600
+  },
+  "server_env": {
+    "LLAMA_ARG_CACHE_RAM": "0"
+  },
+  "dependency": "grasp_optimization/reports/dependencies.json k3_vlm_locate_20261116",
+  "use": [
+    "confidence is not used: constant 0.0 under this prompt; acceptance rests on the geometric vetoes only",
+    "geometry only vetoes: workspace, support tilt, component size and the colour rule's sphere / cylinder-wall fits; reachability stays with preflight",
+    "replies are cached per episode in vlm_cache/ by (digest, prompt, query, image sha256); the cache travels with the run",
+    "equivalence replay, Revise consistency replay and checkpoint-resume acceptance run with replay=True: a miss is ReplayCacheMiss (REPLAY_CACHE_MISS) and the comparison is untestable"
+  ],
+  "lift_note": "k3-lift-20261116 (no occlusion-edge cut) joined an orange to the bottle it touched in the image; seen in outputs/tabletop_vlm_lift_check_20261116_001 before any K_v2 run, so it never entered a run. This package registers the corrected lift."
+}

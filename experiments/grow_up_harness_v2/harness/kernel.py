@@ -4,9 +4,14 @@ Tools only regroup the unchanged AdaptiveGrasp stages and reuse the T03 hand-ope
 placement-offset and finish leaves; no controller is rewritten. Truth checks at
 tool boundaries are evaluator-side measurement and never reach a policy or agent.
 Every stage boundary writes a checkpoint an episode of the same case can resume from.
+
+K_v2 is K_v1 plus the K3 VLM locate primitive (harness/vlm_locate.py): a case with a
+locate_query selects its target through the primitive instead of the colour rule; every
+other stage is the same code. G0 never passes a query.
 """
 import gzip
 import io
+import json
 import math
 import pickle
 import signal
@@ -17,11 +22,12 @@ import mujoco
 import numpy as np
 
 from . import t03_evaluator as E
+from . import vlm_locate as V
 from .agent import check_source
 from .t03_placement import validate as placement_offset
 from .t03_runtime import BudgetPlant, platter_from_camera
 from experiments.t0_agent_v1.adaptive_reuse_grasp import AdaptiveGrasp, AdaptivePort, parameters_for
-from experiments.t0_agent_v1.reuse_grasp import PROGRAM, ActionFailure
+from experiments.t0_agent_v1.reuse_grasp import PROGRAM, ActionFailure, PerceptionError, ReuseGrasp
 from experiments.t0_agent_v1.common import write_new, relative
 from experiments.t0_agent_v1.diversity_predicates import snapshot
 from experiments.t0_agent_v1.tabletop_training_plant import independent_verify, set_left_hand_impedance
@@ -29,6 +35,7 @@ from experiments.t0_agent_v1.train_tp01 import body_packet
 from experiments.grow_up_v2.isolation.worker import Worker
 
 VERSION = 'K_v1-20261113'
+VLM_VERSION = 'K_v2-20261116'
 CHECKPOINT = 'kernel-checkpoint-v1-20261114'
 INTEGRATION = mujoco.mjtState.mjSTATE_INTEGRATION
 TOOLS = {
@@ -145,7 +152,44 @@ def _act_leaf(source, observation, task):
         return worker.act(observation, task), worker.security
 
 
-class KernelGrasp(AdaptiveGrasp):
+class _VlmLocate(ReuseGrasp):
+    """K_v2: with vlm set, ReuseGrasp.locate takes its estimate from the K3 primitive.
+
+    Sits between AdaptiveGrasp and ReuseGrasp, so AdaptiveGrasp's handle, neck and offset
+    steps run unchanged on the primitive's estimate. vlm: query, setup, cache, sources, replay.
+    """
+    vlm = None
+    vlm_records = ()
+
+    def save(self):
+        super().save()
+        if self.vlm_records:
+            # Every model answer, including those whose lift was vetoed; rewritten like the base records.
+            (self.folder / 'vlm_calls.json').write_text(json.dumps(self.vlm_records, indent=1))
+
+    def locate(self, pixel_hint=None):
+        if self.vlm is None:
+            return super().locate(pixel_hint)
+        if self.phase not in ('initial', 'ready'):
+            raise ActionFailure('Relocalization not allowed during grasp')
+        v, sensor = self.vlm, self.port.plant.rgbd()
+        record = V.ask_frame(sensor, v['query'], v['setup'], v['cache'], v['sources'], v['replay'])
+        self.vlm_records = [*self.vlm_records, record]
+        self.save()
+        # Whether the reply came from cache is call history, not part of the decision a resume must reproduce.
+        decided = dict(record, reply={k: v for k, v in record['reply'].items() if k != 'cached'})
+        estimate = dict(V.lift(sensor, record['answer'], self.public_task['target_category']), vlm=decided)
+        if self.initial_visual_cup is not None and np.linalg.norm(
+                np.asarray(estimate['cup_bottom_position_m']) - self.initial_visual_cup) > .04:
+            raise PerceptionError('Selected target moved during preparation')
+        self.initial_visual_cup = np.asarray(estimate['cup_bottom_position_m'])
+        self.estimate = estimate
+        self.estimates.append(estimate)
+        self.save()
+        return estimate
+
+
+class KernelGrasp(AdaptiveGrasp, _VlmLocate):
     """Replaces only the optional raise_clear_of_tray segment with the wait-only finish leaf."""
     finish_source = None
     finish_record = None
@@ -193,7 +237,7 @@ def container_target(plant, instance, kernel, out):
     return center + offset
 
 
-def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
+def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True, replay=False):
     """One engineering-column episode: the fixed tool chain of the case's template.
 
     resume is a checkpoint file of an earlier episode of the same case. Configuration is
@@ -201,6 +245,9 @@ def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
     at the next stage. The restored trace keeps the source prefix, so the unchanged
     evaluator judges prefix plus resumed suffix; such results are reported separately.
     stop ends the chain after that many flattened stages; checkpoints=False writes none.
+    case['locate_query'] (K_v2 only) routes locate through the VLM primitive; replies are cached
+    in out/vlm_cache, a resume also reads its source episode's cache, and replay=True turns a
+    cache miss into ReplayCacheMiss instead of a model call.
     """
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
@@ -219,8 +266,10 @@ def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
     tools, states, security, calls, results, done, saved = [], [], {}, 0, [], 0, []
     error, stage, controller, port, binding = None, 'configure', None, None, None
     snap = read_checkpoint(resume) if resume else None
+    if case.get('locate_query') and 'vlm' not in kernel:
+        raise ValueError(kernel['version'] + ' has no VLM locate primitive')
     if snap and (snap['format'], snap['kernel'], snap['task_id'], snap['template']) != (
-            CHECKPOINT, VERSION, instance['id'], template):
+            CHECKPOINT, kernel['version'], instance['id'], template):
         raise ValueError('checkpoint belongs to another kernel, format or case')
 
     def links():
@@ -250,7 +299,7 @@ def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
         _Freezer(objects, links(), out).dump({'plant': vars(plant), 'port': vars(port), 'controller': vars(controller),
                                               'loop': dict(tools=tools, states=states, security=security,
                                                            calls=calls, results=results)})
-        header = {'format': CHECKPOINT, 'kernel': VERSION, 'task_id': instance['id'], 'template': template,
+        header = {'format': CHECKPOINT, 'kernel': kernel['version'], 'task_id': instance['id'], 'template': template,
                   'done': done, 'next': chain[done] if done < len(chain) else None,
                   'simulation_s': float(plant.data.time)}
         with gzip.open(path, 'xb', compresslevel=1) as stream:
@@ -288,6 +337,9 @@ def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
         folder.mkdir()
         controller = KernelGrasp(port, folder, public, params)
         controller.finish_source = _leaf(kernel, 't03_post_release_finish')
+        if case.get('locate_query'):
+            controller.vlm = {'query': case['locate_query'], 'setup': kernel['vlm'], 'cache': out / 'vlm_cache',
+                              'sources': [], 'replay': replay}
         if snap:
             restored = _Thawer(io.BytesIO(snap['objects']), links(), out).load()
             if restored['plant']['initial_hash'] != plant.initial_hash:
@@ -298,6 +350,10 @@ def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
             for live, name in ((plant, 'plant'), (port, 'port'), (controller, 'controller')):
                 live.__dict__.clear()
                 live.__dict__.update(restored[name])
+            if controller.vlm:
+                # The thawed cache path already points into this episode; the source's stays readable.
+                source = Path(resume).parents[1] / 'vlm_cache'
+                controller.vlm = dict(controller.vlm, sources=[source, *controller.vlm['sources']], replay=replay)
             # The wall budget restarts; simulation and command budgets carry over from the source.
             plant.started = time.monotonic()
             tools, states, security, calls, results = (restored['loop'][k] for k in
@@ -366,7 +422,7 @@ def execute(case, out, kernel, caps, resume=None, stop=None, checkpoints=True):
     if final and not final['truth_ok']:
         final['recoverable'] = bool(final['truth']['at_rest_upright'] and not plant.guard)
     write_new(out / 'tools.json', tools)
-    result = {'task_id': instance['id'], 'template': template, 'kernel': VERSION, 'success': verdict['verified_task_success'],
+    result = {'task_id': instance['id'], 'template': template, 'kernel': kernel['version'], 'success': verdict['verified_task_success'],
               'error': error, 'commands': plant.command_count, 'worker_calls': calls,
               'simulation_s': runtime['simulation_seconds'], 'wall_s': time.monotonic() - plant.started,
               'initial_hash': plant.initial_hash, 'evaluator': verdict.get('evaluator_version'),

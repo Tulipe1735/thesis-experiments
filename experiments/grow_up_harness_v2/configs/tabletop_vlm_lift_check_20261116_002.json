@@ -1,0 +1,26 @@
+{
+  "purpose": "K_v2 step check: the K3 primitive's 3D lift and geometric veto (harness/vlm_locate.lift) on the frame locate read at each 00_configured checkpoint of the checkpointed stage-0 rerun, replaying the E3 replies from cache. Verifies the implementation and the replay path; it is not a K decision and not a task measurement. Rerun after the occlusion-edge fix (lift k3-lift-20261116b).",
+  "output": "outputs/tabletop_vlm_lift_check_20261116_002",
+  "run": "outputs/tabletop_kernel_near_20261115_002",
+  "cache": "outputs/tabletop_vlm_feasibility_20261116_002/cache",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "hard_prototypes": [
+    "apple_ellipsoid_proxy",
+    "tumbler_slim_proxy"
+  ],
+  "metric": "per group: estimates passing the kernel's locate boundary check (xy error <= 0.015 m, evaluator side), declared failures (VLM abstain/invalid, point off object, vetoes, fit failures), REPLAY_CACHE_MISS, and wrong estimates (an estimate that fails the boundary check)",
+  "prediction": [
+    "No REPLAY_CACHE_MISS and no wrong estimate.",
+    "The 13 frames that passed in _001 still pass, each within 1 mm of its _001 xy error.",
+    "TP01_near_1130104, TP01_near_1130107 and TP04_near_1130401 now pass, so rule_ok is 11/11 of its 2D hits and 16/21 overall.",
+    "The white mug (TP01_near_1130106) still fails the cylinder wall fit; the 3 abstentions and the empty reply stay declared failures."
+  ],
+  "falsification": [
+    "Any REPLAY_CACHE_MISS or wrong estimate.",
+    "Any _001 pass that now fails or moves by more than 1 mm: the edge cut changes objects it should leave whole.",
+    "Any of the three joined oranges still failing: the diagnosis was wrong."
+  ],
+  "budget": "21 checkpoint thaws and renders, no physics stepping, no model call",
+  "evidence_seen": "Post-hoc on the same 21 frames: the fix was made after seeing _001, so this rerun only checks that the fix does what the diagnosis says and breaks nothing on these frames. It is not independent evidence for the lift; that comes from frames no fix was tuned on (a K_v2 episode run on new seeds).",
+  "previous_attempt": "outputs/tabletop_vlm_lift_check_20261116_001 (lift k3-lift-20261116): 13/21 passed, 0 cache misses, 0 wrong estimates; the rule_ok prediction (>= 10/11 of the 2D hits) failed at 8/11. TP01_near_1130104, TP01_near_1130107 and TP04_near_1130401 failed the sphere fit: in each the orange touches a grey bottle in the image, so the above-table depth mask joined them into one component (frames in outputs/tabletop_vlm_feasibility_20261116_002/frames). Changed: components are cut where neighbouring points are more than 0.02 m apart in 3D. Nothing else changed."
+}

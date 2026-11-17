@@ -208,6 +208,43 @@ class KernelUnchangedTest(unittest.TestCase):
                 tabletop.check_kernel_unchanged(self.spec)
 
 
+class KernelPackageTest(unittest.TestCase):
+    package = {'primitive': 'p', 'prompt_sha256': 's', 'lift': 'l',
+               'vlm': {'endpoint': 'e', 'model': 'm', 'digest': 'd', 'ollama': '1', 'options': {}}}
+
+    def spec(self, live):
+        import harness
+        from harness import vlm_locate
+        kernel = types.SimpleNamespace(VERSION='K_v1', VLM_VERSION='K_v2', TOOLS={}, CHAINS={}, CHECKS={}, LEAVES={})
+        library = types.SimpleNamespace(read_bundle=lambda path: {'bundle_id': 'b@1', 'components': {}, 'sources': {}})
+        reads = {tabletop.ROOT / tabletop.OBJECT_RECIPE: {'recipe': {}}, tabletop.ROOT / 'k.json': self.package}
+        with mock.patch.dict(sys.modules, {'harness.kernel': kernel, 'harness.library': library}), \
+                mock.patch.object(harness, 'kernel', kernel, create=True), \
+                mock.patch.object(harness, 'library', library, create=True), \
+                mock.patch.object(vlm_locate, 'identity', return_value=live), \
+                mock.patch.object(vlm_locate, 'LIFT', live.get('lift', 'l')), \
+                mock.patch.object(tabletop, 'read', side_effect=reads.__getitem__), \
+                mock.patch.object(tabletop, 'sha', return_value='h'):
+            return tabletop.kernel_spec('b.json', 'k.json')
+
+    def test_package_matching_the_live_model_makes_a_k_v2_spec(self):
+        spec = self.spec({'digest': 'd', 'ollama': '1', 'primitive': 'p', 'prompt_sha256': 's', 'size': 3})
+        self.assertEqual(spec['version'], 'K_v2')
+        self.assertEqual((spec['vlm']['digest'], spec['vlm']['package']), ('d', {'path': 'k.json', 'sha256': 'h'}))
+
+    def test_other_weights_or_server_stop_prepare(self):
+        for changed in ({'digest': 'x'}, {'ollama': '2'}, {'prompt_sha256': 't'}, {'lift': 'older'}):
+            live = {'digest': 'd', 'ollama': '1', 'primitive': 'p', 'prompt_sha256': 's', **changed}
+            with self.assertRaisesRegex(RuntimeError, 'VLM_PACKAGE_MISMATCH'):
+                self.spec(live)
+
+    def test_resume_check_reads_the_recorded_package(self):
+        recorded = {'version': 'K_v2', 'bundle': {'path': 'b.json'}, 'vlm': {'package': {'path': 'k.json'}}}
+        with mock.patch.object(tabletop, 'kernel_spec', return_value=recorded) as live:
+            tabletop.check_kernel_unchanged(recorded)
+        live.assert_called_once_with('b.json', 'k.json')
+
+
 class KernelRerunTest(unittest.TestCase):
     def rerun(self, run):
         with mock.patch.dict(sys.modules, {'harness.kernel': types.ModuleType('harness.kernel')}), \

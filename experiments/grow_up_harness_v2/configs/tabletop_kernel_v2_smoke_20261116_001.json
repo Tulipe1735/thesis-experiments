@@ -1,0 +1,59 @@
+{
+  "purpose": "K_v2 smoke: the fixed K_v1 tool chain with locate routed through the K3 primitive (\"locate\": \"vlm\") on near-bucket seeds no lift fix was tuned on. Checks the kernel wiring (live model calls, cache, checkpoints of an episode holding the primitive's state) and gives the first independent evidence for the 3D lift. Not the G0 rerun under K_v2 (that waits for the K2 decision) and not an Agent-column result: the query is passed by the harness, no brain chooses the primitive.",
+  "output": "outputs/tabletop_kernel_v2_smoke_20261116_001",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "locate": "vlm",
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "count": 4,
+    "seed_start": {
+      "TP01": 1161100,
+      "TP03": 1161300,
+      "TP04": 1161400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "instance_note": "New seeds; target prototypes are whatever the generator draws, so the hard prototypes (apple, slim tumbler) may or may not appear.",
+  "baselines": {
+    "negative": "2 s wait on the first instance of each template; any goal satisfaction invalidates the whole batch",
+    "engineering": "K_v1 tool chain, locate through the K3 primitive (query from the public task's target role); every other stage unchanged",
+    "comparison": "stage-0 K_v1 near batch (outputs/tabletop_kernel_near_20261113_001) for the colour rule's locate rate on other seeds; not paired",
+    "agent": "not run"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1200
+  },
+  "caps_note": "wall_s doubled from stage 0: each episode makes two model calls (locate, and the relocate in prepare) of 20-50 s, and an empty reply runs to the 4096-token context (about 5 min on this machine).",
+  "caps": {
+    "physical_episodes": 15,
+    "wall_s": 21600
+  },
+  "environment": "ollama 0.40.16 with LLAMA_ARG_CACHE_RAM=0 (/etc/systemd/system/ollama.service.d/cache-ram.conf); prepare stops with VLM_PACKAGE_MISMATCH if the served model or version differs from the package",
+  "prediction": [
+    "No system failure (TypeError, PicklingError, ModelUnavailable, worker errors) and no KERNEL_CHANGED_AFTER_PREPARE: an episode whose controller holds the primitive's configuration checkpoints and finishes like a K_v1 episode.",
+    "Locate boundary (truth, evaluator side) passes on 8-11 of the 12 episodes: E3 gave 2D hits on 17/21 frames and the corrected lift passed every hit there; the misses expected here are model abstentions (E3 abstained on 2 of 3 TP01 bottle frames) and empty replies.",
+    "No wrong estimate: every episode whose locate returned an estimate passes the locate boundary check; every other locate outcome is a declared failure (VLM_*, VETO_*, fit failure).",
+    "Stages after locate behave as in stage 0 (grasp is the stage-0 frontier); no prediction on task success."
+  ],
+  "falsification": [
+    "Any system failure or a checkpoint that cannot be written: the K_v2 wiring is broken; fix before any K_v2 use.",
+    "Any wrong estimate (an estimate that fails the locate boundary check): the lift is not reliable on frames it was not fixed on; K_v2 is not used for the G0 rerun until the cause is found.",
+    "Negative control satisfies a goal: the whole batch is invalid."
+  ]
+}
