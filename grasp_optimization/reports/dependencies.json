@@ -319,5 +319,15 @@
       ]
     },
     "evidence": "experiments/grow_up_harness_v2/runs/vla_smoke_20261105_001/result.json"
+  },
+  "k3_vlm_locate_20261116": {
+    "verified_date": "2026-11-16",
+    "use": "K3 VLM locate primitive in K_v2 (harness/vlm_locate.py, primitive k3-vlm-locate-2d-20261115); registered by user decision after the E3 test falsified the preregistered entry condition (docs/research/GROW_UP_ROOT_DOWN_REVISE_20261113.md §5.4 K3)",
+    "ollama": "0.40.16, installed with the official install.sh into /usr/local on the user's WSL; server env LLAMA_ARG_CACHE_RAM=0 (/etc/systemd/system/ollama.service.d/cache-ram.conf), without it llama-server's 8 GiB host prompt cache was OOM-killed",
+    "model": "qwen3-vl:8b",
+    "digest": "9cf69da2b16d097f7def535917c4b55a95d6c7ee5700eb69ab86b01b3cfca487",
+    "details": "parent dhiltgen/qwen3-vl:8b-thinking-q4_K_M-llamacpp, Q4_K_M, 8.2B, gguf via llamacpp runner",
+    "options": "temperature 0, seed 0, think false, format json; GPU RTX 4060 Laptop 8 GiB, 34/37 layers offloaded",
+    "evidence": "outputs/tabletop_vlm_feasibility_20261116_002/model.json"
   }
 }

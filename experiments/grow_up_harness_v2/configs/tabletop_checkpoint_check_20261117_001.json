@@ -1,0 +1,19 @@
+{
+  "purpose": "E1 acceptance for K_v2 with the primitive in use, replacing tabletop_checkpoint_check_20261116_001 (not run: TP03_near_1161300 was rejected at prepare, outside_table:cup_1). Every stage-boundary checkpoint of an episode whose locate goes through the K3 primitive resumes to the same episode, replaying the source episode's cached replies (replay=True). Harness check only.",
+  "output": "outputs/tabletop_checkpoint_check_20261117_001",
+  "replaces": "experiments/grow_up_harness_v2/configs/tabletop_checkpoint_check_20261116_001.json",
+  "tasks_from": "outputs/tabletop_kernel_v2_smoke_20261116_001",
+  "tasks": [
+    "TP04_near_1161400",
+    "TP03_near_1161302"
+  ],
+  "task_choice": "Unchanged rule of _20261116_001, applied to ready instances: the first ready generated instance of each of the two templates with the full chain (TP03_near_1161300 and _1161301 were rejected at prepare). The smoke outcomes of these episodes were known when this config was written; the rule does not use them.",
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1200
+  },
+  "physical_episodes": "one fresh source episode per task (live model calls) plus one resume per written checkpoint (at most 10 per task, no model calls)",
+  "prediction": "Every resume reproduces its source episode under tabletop.same_episode, with no ReplayCacheMiss: the locate and prepare relocate frames render to the same bytes, so both replies come from the source episode's vlm_cache. The fresh source episodes may differ from the smoke episodes of the same task (model replies are not byte-identical across calls); that is not checked here.",
+  "falsification": "Any ReplayCacheMiss (the replayed frame differs from the source frame) or any differing record. Either blocks K_v2 use in checkpoint-based work (entry library, reach trials) until the cause is found."
+}
