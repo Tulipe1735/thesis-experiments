@@ -40,6 +40,8 @@ node_modules/
 /experiments/ros_skill_cycle/ros_logs/
 /experiments/t0_agent_v1/*_202*/
 /grasp_optimization/episodes/
+/figures/*.png
+/figures/*.pdf
 
 # 本地凭据
 .env
