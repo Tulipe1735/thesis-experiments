@@ -8,4 +8,4 @@ status: accepted
 
 图片中出现的 `move_ee()` 是既有接口说明，不推翻用户已确认的直接关节动作选择；现成 IK 和工程抓取仍不作为主实验动作能力。共享完整初始资料的无跨回合经验条件是必要参照，人工代写或修改动作技能则另记人辅助；左侧 14 关节仅是沿用现有项目的可逆实现默认，不是用户指定。
 
-图片、字段与本地实现差异见[协议文档](../research/OBSERVATION_AND_EXPERIMENT_PROTOCOL.md)。后续 [ADR-0004](0004-synthesis-improvement-and-frozen-transfer.md) 已明确自产 IK 合法、知识合成与经验改进分别归因、分轴冻结迁移与后续 OCL；完整实现数值仍待整体确认，本决定不授权运行实验。
+图片、字段与本地实现差异见协议文档（已归档，见 `archive/docs_prune_20261114_001.json`）。后续 [ADR-0004](0004-synthesis-improvement-and-frozen-transfer.md) 已明确自产 IK 合法、知识合成与经验改进分别归因、分轴冻结迁移与后续 OCL；完整实现数值仍待整体确认，本决定不授权运行实验。

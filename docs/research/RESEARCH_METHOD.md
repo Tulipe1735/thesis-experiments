@@ -2,7 +2,7 @@
 
 日期：2026-11-08。状态：现行方法，给接手的 agent（Codex 等）用。边界：MuJoCo 仿真，不涉及实体机器人。
 
-本页只讲做法。研究主张和晋升规则以 `GROW_UP_MINIMAL_EXPERIMENT.md` 为准，术语以 `../../GLOSSARY.md` 为准。示范用的实例是 T02 v3：配置在 `experiments/grow_up_harness_v2/configs/grow_t02_v3.json`，运行结果在 `experiments/grow_up_harness_v2/runs/grow_t02_v3_20261107_001/`，报告在 `T02_GROW_V2_20261107.md`。要模仿就照这三份写。
+本页只讲做法。研究主张、晋升规则与 T01–T04 流程以 [GROW_UP_ROOT_DOWN_REVISE_20261113.md](GROW_UP_ROOT_DOWN_REVISE_20261113.md) 为准（旧版 `GROW_UP_MINIMAL_EXPERIMENT.md` 已归档，见 `archive/docs_prune_20261114_001.json`），术语以 `../../GLOSSARY.md` 为准。示范用的实例是 T02 v3：配置在 `experiments/grow_up_harness_v2/configs/grow_t02_v3.json`，运行结果在 `experiments/grow_up_harness_v2/runs/grow_t02_v3_20261107_001/`，报告在 `T02_GROW_V2_20261107.md`（已归档，见 `archive/docs_prune_20261114_001.json`）。要模仿就照这三份写。
 
 ## 1. 先把问题落成一个可证伪的比较
 
@@ -157,4 +157,8 @@ python -B calibration/t03_focus.py report runs/<run> --config <新配置> --pack
 
 ## 12. T03 水果几何高度纠正（2026-11-11，用户明确授权）
 
-用户回复“允许修正，并继续训练”后，新登记运行可采用 `t03-fruit-bottom-v2-20261111`，以水果碰撞几何最低点替代刚体原点作为支撑高度。4mm容差、真实盘底承托、释放、连续稳定1秒及机器人保护要求不变；修正在唯一harness适配层实现，不修改冻结依赖。保留原评价器版本、全部旧失败及校准失败，不回写旧verdict；校准与影子复算不能算完整训练成功。实际授权、反例、校准边界与新回合证据见 [T03报告](T03_ARTIFACT_CYCLE_20261110.md)。
+用户回复“允许修正，并继续训练”后，新登记运行可采用 `t03-fruit-bottom-v2-20261111`，以水果碰撞几何最低点替代刚体原点作为支撑高度。4mm容差、真实盘底承托、释放、连续稳定1秒及机器人保护要求不变；修正在唯一harness适配层实现，不修改冻结依赖。保留原评价器版本、全部旧失败及校准失败，不回写旧verdict；校准与影子复算不能算完整训练成功。实际授权、反例、校准边界与新回合证据见 T03报告（已归档，见 `archive/docs_prune_20261114_001.json`）。
+
+## 13. 新流程入口（2026-11-13）
+
+T01–T04 及之后按 [GROW_UP_ROOT_DOWN_REVISE_20261113.md](GROW_UP_ROOT_DOWN_REVISE_20261113.md) 执行：每轮登记一次（基线族、预算、预测、证伪），以能力缺口记录代替 §11 焦点卡，叶子与特化边的修改走配对分叉证据门，图与内核冻结后按模板在测试实例上执行一次。§1–4、§6 的对照、证伪、预算与两栏报告规则不变；§10–12 只适用于旧 T03 线。统一入口为 `experiments/grow_up_harness_v2/calibration/tabletop.py`。
