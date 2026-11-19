@@ -197,3 +197,5 @@ T01 的首次 Astra / 2500 在运输末点触发 IK 保护并失败；降低单�
 - [完整修复、预算与结论边界](../docs/research/GROW_UP_MINIMAL_EXPERIMENT.md#146-t03复用-t01-后的水果取放修复谱系) · [一致性核对](../experiments/t0_agent_v1/fruit_20261026_002/integrity_checks.json)
 
 新增 T03 的 `repair_lineage` 正式登记后，当前 T01、T03 各有一个范围受限的正式 Skill，T02 未晋升。Memory 仍是候选，没有单因素收益对照。仅验证一个实际初态，且“稳定”是冻结速度门槛下的有限窗口，不承诺无限期完全静止；其他水果、无标记果盘、跨 seed、Astra 对该版本的调度和实体执行均未验证。原 T01 Skill、Memory 和本页旧数字保持原样。
+
+> 2026-11-14 追加：上文指向 `docs/research/GROW_UP_MINIMAL_EXPERIMENT.md` 的链接，原文已归档（清单 `archive/docs_prune_20261114_001.json`，也可从提交 `0c46cae` 恢复）。本页旧数字不变。

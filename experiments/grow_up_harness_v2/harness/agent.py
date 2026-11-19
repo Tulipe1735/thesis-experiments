@@ -82,7 +82,7 @@ class GatewayResponse:
     response_sha256: str
     input_tokens: int
     output_tokens: int
-    cost: float
+    cost: float | None
     wall_time_s: float
     reasoning_tokens: int = 0
     events: tuple[dict, ...] = ()

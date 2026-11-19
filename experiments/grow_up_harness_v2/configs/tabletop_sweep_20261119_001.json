@@ -1,0 +1,228 @@
+{
+  "purpose": "Zero-token screen of the bounded grasp variant envelope on the Agent failures of tabletop_vary_20261119_002, before any brain model is called again (user request 2026-11-19). Each (task, candidate) is a fresh Agent-column episode under agent_column.ScriptGateway: the source episode's first-pass locate calls (its VLM answers from the source cache), then grasp (and place), then stop. Candidates are fixed per failure family, the same for every instance in the family, from the failures seen so far: (A) route stops on a distractor 2-7 cm beside the target on the hand's side, cup/bottle at translate_clear, fruit at forward_clear or approach_open; (B) left thumb MEASURED_SPEED during lift or hold. TP01 1102 (cylindrical wall fit, perception) is not screened. Result: which bounded variants pass the stopped step, per family; the next vary card offers only screened candidates.",
+  "output": "outputs/tabletop_sweep_20261119_001",
+  "tasks_from": "outputs/tabletop_vary_20261119_002",
+  "candidates": {
+    "clear_high": {
+      "clear_position_m": [
+        0.3,
+        0.35,
+        0.38
+      ]
+    },
+    "clear_high_inner": {
+      "clear_position_m": [
+        0.3,
+        0.3,
+        0.38
+      ]
+    },
+    "clear_high_back": {
+      "clear_position_m": [
+        0.2,
+        0.35,
+        0.38
+      ]
+    },
+    "clear_mid_inner": {
+      "clear_position_m": [
+        0.3,
+        0.3,
+        0.34
+      ]
+    },
+    "palm_backoff": {
+      "approach_mode": "palm_backoff"
+    },
+    "pelvis_forward": {
+      "approach_mode": "pelvis_forward"
+    },
+    "yaw_0": {
+      "preferred_yaw": 0.0
+    },
+    "yaw_1_25": {
+      "preferred_yaw": 1.25
+    },
+    "top_down_short": {
+      "approach_mode": "top_down",
+      "backoff_m": 0.045
+    },
+    "top_down_yaw_0": {
+      "approach_mode": "top_down",
+      "preferred_yaw": 0.0
+    },
+    "backoff_short": {
+      "backoff_m": 0.06
+    },
+    "backoff_short_direct": {
+      "backoff_m": 0.06,
+      "forward_first": false
+    },
+    "clear_high_fruit": {
+      "clear_position_m": [
+        -0.04,
+        0.34,
+        0.38
+      ]
+    },
+    "yaw_1_0": {
+      "preferred_yaw": 1.0
+    },
+    "yaw_neg_0_5": {
+      "preferred_yaw": -0.5
+    },
+    "no_grip_hold": {
+      "grip_hold": false
+    },
+    "coupled": {
+      "pressure_coordination": "coupled"
+    },
+    "damped": {
+      "hand_kd": 0.3
+    },
+    "short_recovery": {
+      "pressure_recovery_s": 0.4
+    },
+    "fast_servo": {
+      "servo_period_s": 0.04
+    },
+    "small_lead": {
+      "hand_lead_rad": 0.02
+    },
+    "slow_step": {
+      "hand_step_rad": 0.006
+    }
+  },
+  "plan": {
+    "TP01_near_1171100": [
+      "clear_high",
+      "clear_high_inner",
+      "clear_high_back",
+      "clear_mid_inner",
+      "palm_backoff",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_25"
+    ],
+    "TP01_near_1171105": [
+      "clear_high",
+      "clear_high_inner",
+      "clear_high_back",
+      "clear_mid_inner",
+      "palm_backoff",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_25"
+    ],
+    "TP03_near_1171302": [
+      "clear_high",
+      "clear_high_inner",
+      "clear_high_back",
+      "clear_mid_inner",
+      "palm_backoff",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_25"
+    ],
+    "TP03_near_1171303": [
+      "clear_high",
+      "clear_high_inner",
+      "clear_high_back",
+      "clear_mid_inner",
+      "palm_backoff",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_25"
+    ],
+    "TP04_near_1171401": [
+      "top_down_short",
+      "top_down_yaw_0",
+      "backoff_short",
+      "backoff_short_direct",
+      "clear_high_fruit",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_0",
+      "yaw_neg_0_5"
+    ],
+    "TP04_near_1171402": [
+      "top_down_short",
+      "top_down_yaw_0",
+      "backoff_short",
+      "backoff_short_direct",
+      "clear_high_fruit",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_0",
+      "yaw_neg_0_5"
+    ],
+    "TP04_near_1171403": [
+      "top_down_short",
+      "top_down_yaw_0",
+      "backoff_short",
+      "backoff_short_direct",
+      "clear_high_fruit",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_0",
+      "yaw_neg_0_5"
+    ],
+    "TP04_near_1171405": [
+      "top_down_short",
+      "top_down_yaw_0",
+      "backoff_short",
+      "backoff_short_direct",
+      "clear_high_fruit",
+      "pelvis_forward",
+      "yaw_0",
+      "yaw_1_0",
+      "yaw_neg_0_5"
+    ],
+    "TP04_near_1171400": [
+      "no_grip_hold",
+      "coupled",
+      "damped",
+      "short_recovery",
+      "fast_servo",
+      "small_lead",
+      "slow_step"
+    ],
+    "TP04_near_1171404": [
+      "no_grip_hold",
+      "coupled",
+      "damped",
+      "short_recovery",
+      "fast_servo",
+      "small_lead",
+      "slow_step"
+    ]
+  },
+  "baselines": {
+    "source": "outputs/tabletop_vary_20261119_002 (Astra, high reasoning, vary2): 2/13; 21 variant branches, none succeeded; brain variants passed some stopped steps (TP01 1100 reached hold, TP03 1303 test_lift) and then stopped on a left thumb speed guard",
+    "current_recipes": "cup/bottle: top_down, backoff 0.06, clear [0.30,0.35,0.32], yaw 0.7/0.6; fruit: palm_backoff, backoff 0.13, forward_first, clear [-0.04,0.34,0.30], yaw 0.5, grip_hold, independent pressure, hand_kd 0.12, recovery 4.8 s, servo 0.2 s, step 0.012, lead 0.06"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1800,
+    "brain_calls": 12
+  },
+  "caps": {
+    "episodes": 92
+  },
+  "budget_note": "10 tasks x (1 baseline + 8, 9 or 7 candidates) = 92 episodes; a preflight rejection ends within seconds. No brain model call: every brain record is model 'script' with 0 tokens. VLM answers come from the source cache; a miss calls the local K3 model, never Astra.",
+  "prediction": [
+    "All 10 baselines equal their source first pass on integration and boundary states, actions, execution, tools, verdict and result.",
+    "Every brain_cache record of the run has model 'script'.",
+    "Route family, cup/bottle: some candidate gets past translate_clear on at least 2 of the 4 tasks; clear_high and clear_high_back are the likeliest.",
+    "Route family, fruit: some candidate gets past the stopped approach step on at least 2 of the 4 tasks.",
+    "Thumb family: some candidate gets past main_lift on at least 1 of the 2 tasks.",
+    "Evaluator success for at least 2 of the 10 tasks under some candidate; a candidate that passes the route may then meet the thumb speed guard, as in the source branches."
+  ],
+  "falsification": [
+    "A baseline differs from its source first pass: hidden state or nondeterminism; no screen row is used until the cause is found.",
+    "No candidate passes the stopped step on any of the 8 route tasks: the bounded envelope cannot route around an adjacent distractor; the next step is a code leaf that uses a perceived obstacle position (locate the distractor), i.e. a kernel/leaf gap, not more parameters or brain calls.",
+    "No candidate passes main_lift on either thumb task: the thumb speed stop is a controller or guard issue outside the recipe envelope."
+  ],
+  "interpretation": "An engineering screen, not an Agent result: candidates are run exhaustively and judged by the evaluator. It only selects which variants the next vary card offers; an Agent-column success after that still counts as aided by the screen."
+}

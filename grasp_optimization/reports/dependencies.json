@@ -320,6 +320,31 @@
     },
     "evidence": "experiments/grow_up_harness_v2/runs/vla_smoke_20261105_001/result.json"
   },
+  "figures_20261114": {
+    "verified_date": "2026-11-14",
+    "runtime": "separate figure-only venv (python3.10 + matplotlib 3.9.2); not G1_PYTHON",
+    "matplotlib": "3.9.2",
+    "style_reference": "https://github.com/ChenLiu-1996/figures4papers (CC BY-NC 4.0; palette and export conventions only, no code copied)",
+    "boundary": "method overview figure figures/plot_overview.py; no simulation or experiment code"
+  },
+  "formal_verification_run_lifecycle_20261115": {
+    "verified_date": "2026-11-15",
+    "scope": "TLA+ model check of the tabletop run lifecycle; no robot runtime, no G1_PYTHON change",
+    "skill": ".claude/skills/verify-run-lifecycle",
+    "runner": "pstack statechart skill (cursor-plugins pstack 0.15.42), run with Node 24.22.2",
+    "tla2tools": {
+      "version": "1.7.4",
+      "url": "https://github.com/tlaplus/tlaplus/releases/download/v1.7.4/tla2tools.jar",
+      "sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+      "installed_via": "mise"
+    },
+    "java": {
+      "version": "17.0.21.0.3+1-1~22.04.1",
+      "package": "Ubuntu jammy-updates openjdk-17-jre-headless",
+      "installation": "apt-get download + dpkg -x into a scratch folder, no system install; statechart default temurin-25 via mise was too slow to download here"
+    },
+    "replay": "system python3 with stand-ins for mujoco and the plant; no new package"
+  },
   "k3_vlm_locate_20261116": {
     "verified_date": "2026-11-16",
     "use": "K3 VLM locate primitive in K_v2 (harness/vlm_locate.py, primitive k3-vlm-locate-2d-20261115); registered by user decision after the E3 test falsified the preregistered entry condition (docs/research/GROW_UP_ROOT_DOWN_REVISE_20261113.md §5.4 K3)",
@@ -329,5 +354,19 @@
     "details": "parent dhiltgen/qwen3-vl:8b-thinking-q4_K_M-llamacpp, Q4_K_M, 8.2B, gguf via llamacpp runner",
     "options": "temperature 0, seed 0, think false, format json; GPU RTX 4060 Laptop 8 GiB, 34/37 layers offloaded",
     "evidence": "outputs/tabletop_vlm_feasibility_20261116_002/model.json"
+  },
+  "agent_column_brain_20261117": {
+    "verified_date": "2026-11-17",
+    "use": "Agent-column brain (harness/agent_column.py, agent-column-p3-g0-20261117): one stateless decision per gateway call, replies cached by (identity, prompt); docs/research/GROW_UP_ROOT_DOWN_REVISE_20261113.md §5.2 stage 0.5 item 4",
+    "opencode": "opencode v2.3.0 (opencode --version on the user's WSL), private `opencode serve` per run in a deny-all workspace (harness/agent_workspace.py, config sha256 06f22813b0e022f0a0288e684de26cf43b9a3e057df49a2f1c2c513fae971835)",
+    "model": "opencode-go/deepseek-v4.1-flash (hosted; the identifier does not pin weights, §1.6)",
+    "evidence": "outputs/tabletop_agent_checkpoint_check_20261117_001/brain.json"
+  },
+  "agent_column_brain_magpie_20261118": {
+    "verified_date": "2026-11-18",
+    "use": "Agent-column brain with retry (harness/agent_column.py MagpieBrainGateway, agent-column-p3-g0-retry-20261118); user decision 2026-11-18 to change the brain from DeepSeek; one stateless Responses request per decision, tools [], store false",
+    "magpie": "local Magpie at 127.0.0.1:3425 /v1/responses; 0.1.4328 (FileVersion and ProductVersion of the running Windows x64 executable at %LOCALAPPDATA%/Programs/magpie/magpie.exe), SHA-256 matches magpie-windows-amd64.exe from the upstream GitHub release https://github.com/yetone/magpie-releases/releases/tag/v0.1.4328",
+    "model": "gpt-6.2-astra, reasoning effort left to the server default (hosted; the identifier does not pin weights, §1.6); smoke replies reported reasoning_tokens 0; from agent-column-p3-g0-vary-20261118 runs register reasoning effort high (Responses \"reasoning\": {\"effort\": \"high\"})",
+    "evidence": "outputs/tabletop_brain_magpie_smoke_20261118_001/result.json"
   }
 }

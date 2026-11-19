@@ -1,0 +1,14 @@
+{
+  "purpose": "Decision-equivalence check of the G0 rerun under K_v2 and hand rule v2 against the K_v1 near batch, with the v2 replay of that batch as the expected verdicts. Offline, saved states and files only.",
+  "output": "outputs/tabletop_rejudge_20261117_002",
+  "run": "outputs/tabletop_kernel_near_20261115_002",
+  "rerun": "outputs/tabletop_kernel_near_20261117_001",
+  "hand_rule": "palm-hand-v2-20261117",
+  "prediction": [
+    "The replay part repeats tabletop_rejudge_20261117_001 exactly (same flips, v1 replay equal to the record).",
+    "Every rerun episode is equal on every checked record (rerun_differs empty) and the rerun has as many episodes as the K_v1 batch."
+  ],
+  "falsification": [
+    "Any rerun record that differs, or a missing or extra rerun episode: decision equivalence fails; see the falsification of tabletop_kernel_near_20261117_001."
+  ]
+}

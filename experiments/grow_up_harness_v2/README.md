@@ -14,9 +14,10 @@ harness/library.py            按所选程序冻结一个包
 calibration/artifacts.py      list / freeze / verify / diff
 calibration/t03.py            prepare / propose / train / evaluate / execute / card / report
 calibration/t03_focus.py      既有焦点预检与只读阶段报告
-calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials / vlm / lift
+calibration/tabletop.py       T01–T04 新流程入口：prepare / kernel / report（阶段 0）/ contacts / checkpoints / trials / vlm / lift / rejudge / sweep
 harness/kernel.py             内核 K_v1：既有桌面阶段分组为 locate / grasp / place 工具，记录工具边界，每阶段写检查点并可续跑
 harness/reach_trial.py        评价器可达性试跑与缺口归因（方法 §2.1.1 第 1 步）
+harness/agent_column.py       Agent 栏：大脑在 P3 下逐个调用 G0 工具级节点的技能包、提示、回复校验与按提示缓存
 harness/vlm_locate.py         K3 VLM 定位原语：本机 ollama 给 2D 点，深度与支撑面拟合提升到 3D，几何只否决；按模型摘要与图像哈希缓存
 runs/                        旧实验原始证据，只读
 ../../outputs/               新运行、冻结包与导出，整目录忽略
@@ -98,3 +99,13 @@ mkdir -p outputs/artifacts
 `vlm <配置>` 是 E3 的离线可行性测试（方法 §5.4 K3）：从带检查点运行的 `00_configured` 检查点取回 locate 实际读到的 320×180 头部帧（另渲染登记的大尺寸作对照，属传感器改动，只报告），用分割渲染得到目标掩码，比较 VLM 与按 `nominal_rgba` 的颜色变体基线的 2D 命中、弃权、高置信错误和耗时。判定只用内核相机尺寸；证伪即 K3 不进 K_v2。模型标识、权重摘要和 ollama 版本写入运行目录 `model.json`。
 
 K_v2 = K_v1 + K3 原语，登记在 `configs/kernel_K_v2_20261116.json`（模型摘要、ollama 版本、原语与提示词哈希）。运行配置写 `kernel_package` 后，`prepare` 向本机 ollama 核对这些值，不符即 `VLM_PACKAGE_MISMATCH`，kernel.json 版本记为 K_v2；`"locate": "vlm"` 让 locate 改走原语（G0 不用）。回复缓存在各回合 `vlm_cache/`，续跑同时读源回合缓存；`replay=True` 时未命中报 `ReplayCacheMiss`（`REPLAY_CACHE_MISS`），不重新调用模型。模型服务失败记 `ModelUnavailable`，整批作废。`lift <配置>` 用 E3 缓存回放，在各 `00_configured` 检查点的 locate 帧上检查 3D 提升与否决。
+
+评价器手部口径（K2，用户决定 2026-11-17）：G1 的掌心网格 `*_hand_palm_link` 挂在 `*_wrist_yaw_link` 上，冻结的 snapshot 按 body 名把掌心托住记为非手支撑，保护规则却把掌心算作手。`harness/hand_support.py`（`palm-hand-v2-20261117`）把掌心网格的接触改记为手支撑与手接触，其余接触、冻结谓词与阈值不变。运行配置写 `"hand_rule"` 后 kernel.json 记录该口径：`verdict.json` 与工具边界按 v2，`verdict_v1.json`、`result.json` 的 `success_v1` 与边界的 `held_v1` 保留 v1，report 并排打印；检查点表头带口径，不同口径不能续跑。`rejudge <配置>` 在已记录运行的保存状态上按 v1 与 v2 重判（不步进物理），列出翻转；配置写 `rerun` 时再逐回合核对按新口径复跑的同一批任务。
+
+Agent 栏执行器（阶段 0.5 第 4 项）：`K.execute(..., brain=<agent_column.Brain>)` 让大脑逐次选择模板链中的下一个工具级节点（locate / grasp / place）、申请重试或停止，节点照用工程栏同一阶段代码，每个执行过的节点边界写检查点（`NN_<节点>`）。大脑只看公开任务、调用卡、自己的决策史与节点自报。每次决策独立发起请求，回复按大脑身份和提示存于回合 `brain_cache/`，`decisions.json` 记录每次决策。前提不满足（`PRECONDITION_UNMET`）不步进物理。回复不合 schema 记 `AgentSchemaError` 结束回合。`episode_caps.brain_calls` 限一个回合（含各分支）的决策数。节点内触发守护停机记为该节点失败并回给大脑，之后只能重试或放弃；守护在 plant 中锁死，所以重试由 `K.agent_episode` 从失败节点的入口检查点续跑一条新分支 `branches/NN`，被放弃的尝试标记后留在大脑历史里，从回合开头重复已跑过的调用序列会被拒绝。失败的 grasp 之后，大脑还可以回复 `vary`：在冻结配方的安全范围内（`adaptive_reuse_grasp` 的 `CATEGORY_KEYS` 与 `_validate`）最多改 4 个抓取配方参数；配方在配置时绑定，所以 `agent_episode` 带着变体重新开一个回合（分支），此前所有决策标为已放弃。`episode_caps.forks` 限每回合的重试与变体总数，`retry.json` 列出分支，report 把首轮成功、重试后成功与用了变体的成功分开计数。节点失败后大脑能看到自己的诊断：抓取规划的路线；守护停机时碰到的机器人部位、碰到的角色（按公开任务的角色名）和掌心位置（辅助，随结果注明）；以及每次定位的拟合与 K3 原语的回答。`checkpoints <配置>` 写入 `"column": "agent"` 和 `"brain"` 后，源回合实调大脑，各续跑回放缓存并比对 `decisions.json`。`sweep <配置>` 不调大脑模型：对已有 Agent 运行里失败的任务，每个登记的候选变体新跑一个回合，大脑换成 `agent_column.ScriptGateway`（重放源回合首轮的定位调用并读它的 VLM 缓存，再依次跑 grasp、place 后停止，失败即放弃）；候选 `baseline` 不绑变体，须与源首轮物理记录相同；结果写 `sweep.json`（停在哪一步、守护、碰到的角色、预检失败阶段、评价器成功），属工程筛查，不是 Agent 栏结果。同一配置重跑时跳过已完成的回合并从文件重建其行；有开始未完成的回合目录即停。
+
+新运行的 `brain` 配置写 `{"model": "gpt-6.2-astra", "reasoning": "high", "timeout_s": 180}`（`reasoning` 取 default / low / medium / high，default 不发送推理强度）。默认模型是 GPT-6.2 Astra，经本机 Magpie（`127.0.0.1:3425`）调用，推理强度按配置的 `reasoning` 发送。每次 `kernel` 或 `checkpoints` 调用把大脑身份写进 `brain_sessions/NN/brain.json`。显式登记为 DeepSeek 的历史配置对应私有 OpenCode 服务。
+
+从 Codex 启动时，执行命令需要获准访问本机 Magpie。`[Errno 1] Operation not permitted` 若出现在创建连接时，可在本机 WSL 终端运行同一条命令，或为该次 Codex 命令授权本机网络访问。成功回复的 `reasoning_tokens` 记录在回合的 `brain_cache/`。
+
+两栏同批（阶段 0.5 第 5 项）：运行配置写 `"arms": ["engineering", "agent"]` 与 `"brain"`，`kernel` 在每个实例上按顺序跑两栏（负对照每模板一次，两栏共用）。`generate.exclude_cells` 按格子 id 去掉网格中的格子，id 与训练/测试分区仍按完整网格。`report` 按栏分表，并逐实例配对（`pairs`）：Agent 栏恰好执行了工程栏同一工具序列、定位全用颜色规则时记 `equivalent`，再比对积分与边界状态、actions.json、tools.json（`physics_equal`）。

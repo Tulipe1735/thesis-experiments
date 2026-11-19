@@ -1,0 +1,18 @@
+{
+  "purpose": "K2 evaluator change check before release (design §1.6 harness change rule): the v2 hand rule (palm-mesh contacts count as hand, user decision 2026-11-17) replayed over every episode of the K_v1 near batch. Lists every verdict and grasp boundary that flips. Offline: saved states only, no physical episode, no model call.",
+  "output": "outputs/tabletop_rejudge_20261117_001",
+  "run": "outputs/tabletop_kernel_near_20261115_002",
+  "hand_rule": "palm-hand-v2-20261117",
+  "evidence": "outputs/tabletop_kernel_near_20261113_001_contacts/contacts.json: the grasp boundaries of TP01_near_1130101 and TP04_near_1130402 (both orange_68mm_proxy) carry 1.39 N and 1.30 N upward support from left_wrist_yaw_link, the body that holds the palm mesh; no other grasp boundary has wrist support.",
+  "prediction": [
+    "The v1 replay equals every recorded verdict (without the file hash) and every recorded grasp-boundary held value.",
+    "Grasp-boundary held flips false to true at TP01_near_1130101 and TP04_near_1130402 only, with palm-mesh support there; no other boundary flips and nothing flips from true to false.",
+    "TP01_near_1130101 flips to task success (no execution error, lifted 0.15 m, failed HeldLifted v1 only on non-hand support); no other verdict flips; the three negative controls stay unsatisfied."
+  ],
+  "falsification": [
+    "Any v1 replay that differs from the record: the replay is not faithful and no v2 number from it is used.",
+    "Either palm-cradle grasp does not flip or shows no palm-mesh support: the rule does not capture what K2 decided.",
+    "Any other flip, any true-to-false flip or a satisfied negative control: listed and explained before the G0 rerun (tabletop_kernel_near_20261117_001) is started."
+  ],
+  "note": "The TP01_near_1130101 verdict expectation is a prediction, not a gate: it also needs the 1 s HeldLifted stability under v2."
+}

@@ -1,0 +1,86 @@
+{
+  "purpose": "Stage 0.5 item 6, fresh replication of tabletop_vary_20261118_002. That batch was void after Magpie HTTP 429 at TP03_near_1171302. The Magpie application log recorded that the usage limit had been reached. Before starting this batch, a new Responses request through Magpie with gpt-6.2-astra and high reasoning completed with 2,478 reasoning tokens. Uses the same vary2 harness, model, reasoning effort, episode caps and task generation as tabletop_vary_20261118_002.",
+  "output": "outputs/tabletop_vary_20261119_001",
+  "replicates": [
+    "outputs/tabletop_astatic_20261117_001",
+    "outputs/tabletop_retry_20261118_001",
+    "outputs/tabletop_vary_20261118_001",
+    "outputs/tabletop_vary_20261118_002"
+  ],
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "hand_rule": "palm-hand-v2-20261117",
+  "arms": [
+    "agent"
+  ],
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "exclude_cells": [
+      "near_0_1",
+      "near_0_2"
+    ],
+    "count": 6,
+    "seed_start": {
+      "TP01": 1171100,
+      "TP03": 1171300,
+      "TP04": 1171400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "instance_note": "Same generate spec and seeds as A_static and the two later rounds (replicates), so prepare rebuilds the same 18 instances and the same 13 ready ones; ready rows and initial hashes are compared with A_static after prepare.",
+  "brain": {
+    "model": "gpt-6.2-astra",
+    "reasoning": "high",
+    "timeout_s": 180
+  },
+  "baselines": {
+    "negative": "2 s wait on the first ready instance of each template under hand rule v2; any goal satisfaction invalidates the whole batch",
+    "retry": "outputs/tabletop_retry_20261118_001 (Astra, default reasoning, retries only): first pass 2/13, after retries 2/13; 11 failed instances, 13 branches, every relocated estimate within 0.5 mm",
+    "agent_static": "outputs/tabletop_astatic_20261117_001 agent column (DeepSeek v4.1 flash, no retry, a guard ended the episode): 2/13 full success (TP01 2/5, TP03 0/2, TP04 0/6)",
+    "aids": "the guard diagnosis comes from the plant's own guard record (contact bodies named by public role) and is reported as an aid with every success",
+    "vary_001": "outputs/tabletop_vary_20261118_001 (same brain and budget, defective guard rule): 2/13; 9 guard stops answered with retry, then 9 variants proposed and refused; 2 variants ran (TP01 1102 grasp_feature visible_neck: still wall-fit failure; TP04 1404 closure_mode thumb_lead + index_scale 1.0 + contact_stop_N 5.0: past the grip load check, then a thumb speed stop at main_lift_02)",
+    "vary_002": "outputs/tabletop_vary_20261118_002 was void (SYSTEM_EXECUTION_FAILURE, Magpie HTTP 429). Its partial episodes provide no baseline success rate."
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1800,
+    "brain_calls": 12,
+    "forks": 2
+  },
+  "caps_note": "Budgets as the retry round (user decision): 2 forks shared by retries and variants, 12 brain calls per episode. A variant branch is a new episode of the case, so its simulation, command and wall budgets restart; a retry branch's carry over from its source.",
+  "caps": {
+    "physical_episodes": 16,
+    "wall_s": 43200
+  },
+  "budget_note": "3 negatives + 13 ready instances x 1 arm; a retry branch is part of its episode, not a new physical episode.",
+  "prediction": [
+    "No system failure, no KERNEL_CHANGED_AFTER_PREPARE, negatives 3/3 not satisfied; the 13 ready instances and their robot initial hashes equal A_static's.",
+    "Cross-run determinism: every first pass whose executed node path equals the retry round's has physical records equal to it.",
+    "The brain answers at least 7 of the 9 guard stops in grasp (translate_clear x4, forward_clear x1, approach x3, main-lift speed x1) with a variant within its first fork, and no variant is refused for PRECONDITION_UNMET.",
+    "translate_clear (cup and bottle, clear point 15 cm over the table above the target): a variant gets past prepare on at least 2 of the 4 instances.",
+    "Approach and forward_clear stops (TP04 fruit, 4 instances): a variant gets past the stopped step on at least 1 of the 4.",
+    "Full success after variants: between 2 and 5 of 13 (first pass 2; at most 3 more, from TP01 or TP03 past prepare; TP04 place has never been reached).",
+    "At most 1 AgentSchemaError, no BRAIN_CALL_BUDGET; every episode's last branch ends with stop."
+  ],
+  "falsification": [
+    "Negative control satisfies a goal, or any system failure: the whole batch is invalid.",
+    "A first pass with the retry round's node path but different physical records: hidden state or nondeterminism; variant results are not used until the cause is found.",
+    "Any BRAIN_CALL_BUDGET or more than 1 AgentSchemaError: the variant prompt or schema is not usable as is; reported, not fixed inside this run.",
+    "No variant gets past the stage it targeted on any of the 9 guard stops: bounded recipe variants do not reach this frontier; the next step is a code-level leaf or a kernel gap (for example obstacle perception), not more parameter search."
+  ],
+  "interpretation": "A variant success is a candidate from the brain's recovery (origin brain_recovery, aided by the guard diagnosis); it enters the graph only through the evidence gate on other instances (\u00a72.1 step 6), which this run does not perform."
+}

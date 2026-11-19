@@ -7,14 +7,19 @@ report (tool reliability table per template and reach bucket), contacts
 (read-only replay of robot contacts at stops and object supports at boundaries) and
 checkpoints (a source episode per listed task resumed from each of its checkpoints)
 trials (rerun reproduction plus a reach trial from every checkpoint of a run), vlm
-(offline K3 feasibility on the frames locate saw) and lift (the K_v2 primitive's 3D estimate
-on those frames from cached replies).
+(offline K3 feasibility on the frames locate saw), lift (the K_v2 primitive's 3D estimate
+on those frames from cached replies) and rejudge (a hand rule replayed over a recorded run,
+optionally checked against its rerun under that rule). checkpoints also runs the Agent
+column: the brain calls the G0 nodes, and each resume replays its cached replies. sweep screens
+grasp recipe variants on recorded Agent failures under a script brain, without a brain model.
 """
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 import time
+from contextlib import contextmanager, nullcontext
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -73,9 +78,10 @@ def seed_reuse(config, configs=CONFIGS):
     return clashes
 
 
-def kernel_spec(bundle_path, package=None):
+def kernel_spec(bundle_path, package=None, hand_rule=None):
     """The kernel interface a run records at prepare. package: a K_v2 registration (configs/kernel_K_v2_*.json);
-    the live ollama server must report its model digest and version, and the code its primitive and prompt."""
+    the live ollama server must report its model digest and version, and the code its primitive and prompt.
+    hand_rule: the evaluator hand rule (harness.hand_support.VERSION), None for the v1 body-name rule."""
     from harness import kernel as K
     from harness.library import read_bundle
     bundle = read_bundle(ROOT / bundle_path)
@@ -90,6 +96,11 @@ def kernel_spec(bundle_path, package=None):
             'fruit_recipe': 'defaults + frozen t03_adaptive_recipe leaf reply (T03 parent binding)',
             'evaluators': {'TP01': 'tabletop-predicates-v1', 'TP03': 'fruit-bottom v2 (cup relation unchanged)',
                            'TP04': 'fruit-bottom v2'}}
+    if hand_rule:
+        from harness import hand_support as H
+        if hand_rule != H.VERSION:
+            raise ValueError(f'hand_rule {hand_rule} is not the implemented {H.VERSION}')
+        spec['hand_rule'] = hand_rule
     if package:
         from harness import vlm_locate as V
         registered = read(ROOT / package)
@@ -118,6 +129,16 @@ def reach_bucket(instance):
     return 'near' if inside else 'far'
 
 
+def near_cells(spec):
+    """The grid's cells minus generate.exclude_cells; ids and train/test partitions are those of the full grid."""
+    from harness import t03_curriculum as C
+    cells = C.cells(spec['grid'])
+    unknown = set(spec.get('exclude_cells', [])) - {c['id'] for c in cells}
+    if unknown:
+        raise ValueError(f'exclude_cells {sorted(unknown)} are not cells of the grid')
+    return [c for c in cells if c['id'] not in spec.get('exclude_cells', [])]
+
+
 def generate(run, template, index, seed, spec):
     """Sample one near-bucket training instance with the frozen sampler, as the T03 line does.
 
@@ -132,7 +153,7 @@ def generate(run, template, index, seed, spec):
     slot = {'id': task_id, 'template': template, 'stratum': 'train', 'seed': seed, 'index': index,
             'split': 'train', 'asset_partition': spec['asset_partition'],
             'position_partition': spec['position_partition']}
-    instance = C.generate(slot, C.cells(spec['grid']))
+    instance = C.generate(slot, near_cells(spec))
     write_new(folder / 'instance.json', instance)
     placed = any(o['is_target'] for o in instance['objects'])
     # A rejection before the target is placed still belongs to the bucket it was sampled for.
@@ -195,6 +216,12 @@ def prepare(path):
             raise ValueError('missing preregistration: ' + key)
     if bool(c.get('instances')) == bool(c.get('generate')):
         raise ValueError('register exactly one of instances or generate')
+    arms = c.get('arms', ['engineering'])
+    if not arms or set(arms) - {'engineering', 'agent'} or len(set(arms)) != len(arms):
+        raise ValueError('arms lists engineering and/or agent, each once')
+    if 'agent' in arms and not (c.get('brain') and c['episode_caps'].get('brain_calls')
+                                and type(c['episode_caps'].get('forks')) is int):
+        raise ValueError('missing preregistration: brain, episode_caps.brain_calls and forks for the agent arm')
     spec = c.get('generate')
     if set(c.get('instances') or spec['seed_start']) - set(TEMPLATES):
         raise ValueError('stage 0 measures only ' + ', '.join(TEMPLATES))
@@ -208,6 +235,8 @@ def prepare(path):
         if clashes:
             raise ValueError(f'seeds already registered by {sorted(clashes)}: move seed_start to an unused range, or for '
                              'a deliberate replication list that output in replicates and keep its generate spec')
+        if not any(cell['partition'] == spec['position_partition'] for cell in near_cells(spec)):
+            raise ValueError('exclude_cells leaves no cell of the position partition')
     else:
         dataset = ROOT / c['dataset']
         listed = {e['id']: e['template_id'] for e in read(dataset / 'train/manifest.json')['instances']}
@@ -217,9 +246,12 @@ def prepare(path):
     run = ROOT / c['output']
     run.mkdir(parents=True, exist_ok=False)
     write_new(run / 'config.json', c)
-    write_new(run / 'kernel.json', kernel_spec(c['kernel_bundle'], c.get('kernel_package')))
+    write_new(run / 'kernel.json', kernel_spec(c['kernel_bundle'], c.get('kernel_package'), c.get('hand_rule')))
+    columns = {'engineering': 'engineering (fixed tool chain, no agent)',
+               'agent': 'agent (brain calls G0 nodes at P3; retries from the failed node\'s entry checkpoint up to '
+                        f"{c['episode_caps'].get('forks')} times; no growth)"}
     write_new(run / 'registration.json', {'start_epoch': time.time(), 'kernel': read(run / 'kernel.json')['version'],
-        'column': 'engineering (fixed tool chain, no agent)', 'test_split_used': False,
+        'column': ' + '.join(columns[a] for a in arms), 'test_split_used': False,
         'python': sys.version, 'runtime_record': 'declared interface versions; source-tree bytes are not frozen'})
     log(run, 'prepared')
     if spec:
@@ -259,7 +291,8 @@ def negative(run, row):
             log(run, 'batch_invalid', reason='NEGATIVE_WAIT_REJECTED', task=row['id'])
             raise RuntimeError('NEGATIVE_WAIT_REJECTED')
     write_new(out / 'result.json', plant.save(None, {'stage': 'negative_wait'}, None, 0))
-    verdict = K.verifier(row['template'])(out, instance, model, initial_valid=row['ready'])
+    verdict = K.verifier(row['template'], read(run / 'kernel.json').get('hand_rule'))(
+        out, instance, model, initial_valid=row['ready'])
     write_new(out / 'verdict.json', verdict)
     if (verdict['verified_task_success'] or verdict['goal_satisfied'] or not verdict['robot_evidence_valid']
             or plant.guard or plant.initial_hash != row['robot_initial_hash']):
@@ -268,14 +301,22 @@ def negative(run, row):
     log(run, 'physical_completed', task=row['id'], arm='negative', success=False)
 
 
-def kernel(run):
-    """Negative control per template, then the engineering chain on every listed instance.
+SYSTEM_FAILURES = ('WorkerError', 'WorkerStartupError', 'WorkerProtocolError', 'WorkerCrashed', 'ValueError',
+                   'PermissionError', 'TypeError', 'PicklingError', 'ModelUnavailable', 'GatewayUnavailable',
+                   'ReplayCacheMiss')
 
+
+def kernel(run):
+    """Negative control per template, then every registered arm on every listed instance.
+
+    Arms run row by row in config order (engineering: the fixed chain; agent: the brain calls
+    the G0 nodes, harness/agent_column.py), so both arms of an instance sit side by side in the log.
     A rerun continues after the last completed episode. An episode that started and never
     completed was interrupted; it is never rerun, and the whole batch is void.
     """
     from harness import kernel as K
     rows, spec, c = read(run / 'tasks.json'), read(run / 'kernel.json'), read(run / 'config.json')
+    arms = c.get('arms', ['engineering'])
     check_kernel_unchanged(spec)
     past = events(run)
     if any(e['event'] == 'batch_invalid' for e in past):
@@ -289,29 +330,33 @@ def kernel(run):
         first = next((r for r in rows if r['template'] == template and r['ready']), None)
         if first and (first['id'], 'negative') not in done:
             negative(run, first)
-    for row in rows:
-        if (row['id'], 'engineering') in done:
-            continue
-        if not row['ready']:
-            log(run, 'skipped', task=row['id'], reason='initial fixture rejected')
-            continue
-        folder = run / 'tasks' / row['id']
-        case = {'folder': folder, 'source': ROOT / row['source'], 'instance': read(folder / 'instance.json'),
-                'ready': row['ready'], 'template': row['template']}
-        if c.get('locate') == 'vlm':
-            from harness import vlm_locate as V
-            case['locate_query'] = V.query_text(next(r for r in read(folder / 'task.json')['roles'] if r['target']))
-        start_physical(run, row['id'], 'engineering')
-        result = K.execute(case, run / 'episodes' / row['id'] / 'engineering', spec, c['episode_caps'])
-        if result['initial_hash'] != row['robot_initial_hash']:
-            log(run, 'batch_invalid', reason='INITIAL_STATE_MISMATCH', task=row['id'])
-            raise RuntimeError('INITIAL_STATE_MISMATCH')
-        log(run, 'physical_completed', task=row['id'], arm='engineering', success=result['success'])
-        if result['error'] and result['error']['type'] in (
-                'WorkerError', 'WorkerStartupError', 'WorkerProtocolError', 'WorkerCrashed', 'ValueError', 'PermissionError',
-                'TypeError', 'PicklingError', 'ModelUnavailable'):
-            log(run, 'batch_invalid', reason='SYSTEM_EXECUTION_FAILURE', task=row['id'])
-            raise RuntimeError('SYSTEM_EXECUTION_FAILURE:' + str(result['error']))
+    with brain_session(run, c['brain']) if 'agent' in arms else nullcontext() as brain:
+        for row in rows:
+            if not row['ready']:
+                log(run, 'skipped', task=row['id'], reason='initial fixture rejected')
+                continue
+            folder = run / 'tasks' / row['id']
+            for arm in arms:
+                if (row['id'], arm) in done:
+                    continue
+                case = {'folder': folder, 'source': ROOT / row['source'], 'instance': read(folder / 'instance.json'),
+                        'ready': row['ready'], 'template': row['template']}
+                if arm == 'agent':
+                    case['public_task'] = read(folder / 'task.json')
+                elif c.get('locate') == 'vlm':
+                    from harness import vlm_locate as V
+                    case['locate_query'] = V.query_text(next(r for r in read(folder / 'task.json')['roles'] if r['target']))
+                start_physical(run, row['id'], arm)
+                out = run / 'episodes' / row['id'] / arm
+                result = (K.agent_episode(case, out, spec, c['episode_caps'], brain) if arm == 'agent'
+                          else K.execute(case, out, spec, c['episode_caps']))
+                if result['initial_hash'] != row['robot_initial_hash']:
+                    log(run, 'batch_invalid', reason='INITIAL_STATE_MISMATCH', task=row['id'])
+                    raise RuntimeError('INITIAL_STATE_MISMATCH')
+                log(run, 'physical_completed', task=row['id'], arm=arm, success=result['success'])
+                if result['error'] and result['error']['type'] in SYSTEM_FAILURES:
+                    log(run, 'batch_invalid', reason='SYSTEM_EXECUTION_FAILURE', task=row['id'])
+                    raise RuntimeError('SYSTEM_EXECUTION_FAILURE:' + str(result['error']))
     written = written_since(FROZEN, read(run / 'registration.json')['start_epoch'])
     if written:
         log(run, 'batch_invalid', reason='FROZEN_SOURCE_WRITTEN', files=written[:20])
@@ -320,7 +365,8 @@ def kernel(run):
 
 def check_kernel_unchanged(spec):
     """The kernel interface recorded at prepare must still be the one that runs."""
-    now = json.loads(json.dumps(kernel_spec(spec['bundle']['path'], spec.get('vlm', {}).get('package', {}).get('path'))))
+    now = json.loads(json.dumps(kernel_spec(spec['bundle']['path'], spec.get('vlm', {}).get('package', {}).get('path'),
+                                            spec.get('hand_rule'))))
     changed = sorted(k for k in now.keys() | spec.keys() if now.get(k) != spec.get(k))
     if changed:
         raise RuntimeError(f'KERNEL_CHANGED_AFTER_PREPARE: {changed} differ from kernel.json; '
@@ -344,35 +390,128 @@ def tally(episodes):
     return table
 
 
-def report(run):
-    rows = read(run / 'tasks.json')
+def column(run, rows, arm):
+    """Per-group task counts and per-tool tally of one arm's finished episodes."""
     episodes, summary = [], {}
     for row in rows:
         # Runs prepared before buckets existed get theirs from the saved instance.
         row.setdefault('bucket', reach_bucket(read(run / 'tasks' / row['id'] / 'instance.json')))
         group = f"{row['template']}/{row['bucket']}"
-        s = summary.setdefault(group, dict(attempted=0, success=0, listed=0))
+        s = summary.setdefault(group, dict(attempted=0, success=0, listed=0, success_v1=0))
         s['listed'] += 1
-        folder = run / 'episodes' / row['id'] / 'engineering'
+        folder = run / 'episodes' / row['id'] / arm
         if not (folder / 'result.json').exists():
             continue
         episodes.append((group, read(folder / 'tools.json')))
         s['attempted'] += 1
-        s['success'] += bool(read(folder / 'result.json')['success'])
+        result = read(folder / 'result.json')
+        s['success'] += bool(result['success'])
+        s['success_v1'] += bool(result.get('success_v1', result['success']))
+        if (folder / 'retry.json').exists():
+            # The table above is the first pass; a success after retries is a separate count (§2.1.1).
+            retried = read(folder / 'retry.json')
+            s['success_after_retry'] = s.get('success_after_retry', 0) + bool(retried['success'])
+            s['forks'] = s.get('forks', 0) + len(retried['branches'])
+            if any(b.get('variant') for b in retried['branches']):
+                # A success whose last branch ran a brain-written grasp variant: a candidate, not yet through the gate.
+                final = read(ROOT / retried['final'])
+                s['success_with_variant'] = s.get('success_with_variant', 0) + bool(
+                    retried['success'] and final['agent'].get('variant'))
+                s['variants'] = s.get('variants', 0) + sum(bool(b.get('variant')) for b in retried['branches'])
     table = tally(episodes)
+    return summary, [{'group': k[0], 'tool': k[1], **v} for k, v in sorted(table.items())]
+
+
+def pair(run, row, arms):
+    """One instance across arms: outcome, where it ended, and for the agent its calls; pure file reads."""
+    out = {'task': row['id'], 'group': f"{row['template']}/{row['bucket']}"}
+    for arm in arms:
+        folder = run / 'episodes' / row['id'] / arm
+        if not (folder / 'result.json').exists():
+            out[arm] = None
+            continue
+        result, tools = read(folder / 'result.json'), read(folder / 'tools.json')
+        error = result['error']
+        out[arm] = {'success': result['success'], 'error': error and f"{error['type']}@{error['stage']}",
+                    'last_tool': tools[-1]['tool'] if tools else None,
+                    'last_tool_ok': tools[-1]['truth_ok'] if tools else None}
+        if arm == 'agent':
+            answered = [d for d in read(folder / 'decisions.json') if d['outcome']]
+            out[arm].update(nodes=result['agent']['nodes'], stop=result['agent']['stop'],
+                            brain_calls=result['agent']['brain_calls'],
+                            **({'retry': retry_summary(folder)} if (folder / 'retry.json').exists() else {}),
+                            refused=sum(not d['outcome']['executed'] for d in answered),
+                            locate=[d['decision']['args']['method'] for d in answered
+                                    if d['outcome']['executed'] and d['decision'].get('call') == 'locate'])
+    if out.get('engineering') and out.get('agent'):
+        # Decision-equivalent: the brain executed exactly the fixed chain's tools, every locate by the colour rule.
+        tools = [t['tool'] for t in read(run / 'episodes' / row['id'] / 'engineering' / 'tools.json')]
+        agent = out['agent']
+        out['equivalent'] = agent['nodes'] == tools and set(agent['locate']) <= {'colour'}
+        if out['equivalent']:
+            # Brain calls step no physics, so the physical record must match; error/stage bookkeeping differs by design.
+            same = same_episode(run / 'episodes' / row['id'] / 'engineering', run / 'episodes' / row['id'] / 'agent')
+            out['physics_equal'] = all(same[k] for k in PHYSICAL_RECORDS)
+    return out
+
+
+PHYSICAL_RECORDS = ('integration_states.npz', 'boundary_states.npz', 'actions.json', 'tools.json')
+
+
+def retry_summary(folder):
+    """An agent episode's branches: where each resumed, how it ended, and the episode's final outcome."""
+    retried = read(folder / 'retry.json')
+    rows = []
+    for branch in retried['branches']:
+        result = read(ROOT / branch['folder'] / 'result.json')
+        rows.append({'resumed': branch['resumed'] and Path(branch['resumed']).name.removesuffix('.pkl.gz'),
+                     **({'variant': branch['variant']} if branch.get('variant') else {}),
+                     'nodes': result['agent']['nodes'], 'stop': result['agent']['stop'], 'success': result['success'],
+                     **({'gap': result['agent']['gap']} if result['agent'].get('gap') else {}),
+                     'error': result['error'] and f"{result['error']['type']}@{result['error']['stage']}"})
+    return {'forks': len(rows), 'branches': rows, 'success': retried['success']}
+
+
+def report(run):
+    rows = read(run / 'tasks.json')
+    arms = read(run / 'config.json').get('arms', ['engineering'])
+    columns = {arm: column(run, rows, arm) for arm in arms}
     log_ = events(run)
     invalid = [e['reason'] for e in log_ if e['event'] == 'batch_invalid']
-    finished = {e['task'] for e in log_ if e['event'] == 'physical_completed' and e['arm'] == 'engineering'}
-    out = {'kernel': read(run / 'kernel.json')['version'], 'column': 'engineering', 'batch_invalid': invalid,
-           'tasks': summary,
-           'tools': [{'group': k[0], 'tool': k[1], **v} for k, v in sorted(table.items())],
-           'definitions': {'group': 'template/reach bucket; near = target sampled inside NEAR_GRID, far = outside',
-                           'ok': 'evaluator-side boundary check of kernel.json checks',
-                           'detected': 'the tool raised or reported failure itself',
-                           'undetected': 'the tool reported success but the boundary check failed',
-                           'recoverable': 'final failure left the target at rest, upright and released, no guard'}}
+    finished = {(e['task'], e['arm']) for e in log_ if e['event'] == 'physical_completed'}
+    hand_rule = read(run / 'kernel.json').get('hand_rule')
+    if not hand_rule:
+        for summary, _ in columns.values():
+            for s in summary.values():
+                s.pop('success_v1')
+    definitions = {'group': 'template/reach bucket; near = target sampled inside NEAR_GRID, far = outside',
+                   'ok': 'evaluator-side boundary check of kernel.json checks',
+                   'detected': 'the tool raised or reported failure itself',
+                   'undetected': 'the tool reported success but the boundary check failed',
+                   'recoverable': 'final failure left the target at rest, upright and released, no guard'}
+    out = {'kernel': read(run / 'kernel.json')['version'], 'column': ' + '.join(arms), 'batch_invalid': invalid,
+           **({'hand_rule': hand_rule} if hand_rule else {})}
+    if arms == ['agent']:
+        summary, tools = columns['agent']
+        out.update(tasks=summary, tools=tools, pairs=[pair(run, r, arms) for r in rows if r['ready']],
+                   definitions={**definitions, 'tools': 'first pass only; branches resumed by retries are in pairs',
+                                'success_after_retry': 'the last branch of the episode succeeded (§2.1.1, simulation '
+                                'privilege: retries resume checkpoints)',
+                                **({'success_with_variant': 'of those, the last branch ran a brain-written grasp '
+                                    'variant (candidate until the evidence gate); the brain saw guard diagnoses (aid)'}
+                                   if any('variants' in g for g in summary.values()) else {})})
+    elif len(arms) == 1:
+        summary, tools = columns[arms[0]]
+        out.update(tasks=summary, tools=tools, definitions=definitions)
+    else:
+        out['columns'] = {arm: {'tasks': summary, 'tools': tools} for arm, (summary, tools) in columns.items()}
+        out['pairs'] = [pair(run, r, arms) for r in rows if r['ready']]
+        out['definitions'] = {**definitions, 'pairs': 'per ready instance, each arm on the same initial state; agent '
+                              'locate lists the method of every executed locate (vlm is kernel-provided K3)',
+                              'equivalent': 'the agent executed exactly the engineering tools, every locate by the '
+                              'colour rule; physics_equal then compares ' + ', '.join(PHYSICAL_RECORDS)}
     path = run / 'report.json'
-    if not invalid and any(r['ready'] and r['id'] not in finished for r in rows):
+    if not invalid and any(r['ready'] and (r['id'], arm) not in finished for r in rows for arm in arms):
         print('PARTIAL: the batch has not ended, so report.json is not written yet')
     elif not path.exists():
         write_new(path, out)
@@ -382,12 +521,25 @@ def report(run):
     if invalid:
         print('BATCH_INVALID ' + ', '.join(invalid) + ': the whole batch is void, no success rates')
         return out
-    for group, s in sorted(summary.items()):
-        print(f"{group}: {s['success']}/{s['attempted']} full success (listed {s['listed']})")
-    print('group     tool     reached ok failed detected undetected recoverable')
-    for r in out['tools']:
-        print(f"{r['group']:9} {r['tool']:8} {r['reached']:7} {r['ok']:2} {r['failed']:6} "
-              f"{r['detected']:8} {r['undetected']:10} {r['recoverable']:11}")
+    for arm, (summary, tools) in columns.items():
+        if len(arms) > 1:
+            print(f'== {arm} column')
+        for group, s in sorted(summary.items()):
+            v1 = f", v1 hand rule {s['success_v1']}" if hand_rule else ''
+            after = (f", after retries {s['success_after_retry']} ({s['forks']} forks"
+                     + (f", {s['variants']} variants, {s['success_with_variant']} with a variant" if 'variants' in s
+                        else '') + ')' if 'success_after_retry' in s else '')
+            print(f"{group}: {s['success']}/{s['attempted']} full success{v1}{after} (listed {s['listed']})")
+        print('group     tool     reached ok failed detected undetected recoverable')
+        for r in tools:
+            print(f"{r['group']:9} {r['tool']:8} {r['reached']:7} {r['ok']:2} {r['failed']:6} "
+                  f"{r['detected']:8} {r['undetected']:10} {r['recoverable']:11}")
+    for r in out.get('pairs', []):
+        print(r['task'], '  '.join(f"{arm}={r[arm] and (r[arm]['success'], r[arm]['last_tool'], r[arm]['error'])}"
+                                   for arm in arms), r.get('agent') and f"nodes={r['agent']['nodes']} "
+                                   f"stop={r['agent']['stop']} locate={r['agent']['locate']}"
+                                   + (f" retry={r['agent']['retry']}" if 'retry' in r['agent'] else ''),
+              *(['physics_equal=' + str(r['physics_equal'])] if r.get('equivalent') else []))
     return out
 
 
@@ -517,9 +669,46 @@ def same_episode(a, b):
     va.pop('trajectory_sha256')
     vb.pop('trajectory_sha256')
     out['verdict.json'] = va == vb
+    if (a / 'decisions.json').exists() or (b / 'decisions.json').exists():
+        from harness import agent_column as A
+        out['decisions.json'] = ((a / 'decisions.json').exists() and (b / 'decisions.json').exists()
+                                 and A.same_decisions(read(a / 'decisions.json'), read(b / 'decisions.json')))
     ra, rb = read(a / 'result.json'), read(b / 'result.json')
     out['result'] = all(ra[k] == rb[k] for k in ('success', 'error', 'commands', 'worker_calls', 'simulation_s'))
     return out
+
+
+@contextmanager
+def brain_session(run, setup):
+    """Set up the registered brain and record its identity for cache and checkpoint replay."""
+    from harness import agent, agent_column as A, agent_workspace, opencode_server
+    model = setup.get('model', A.MagpieBrainGateway.MODEL)
+    if model not in (A.MagpieBrainGateway.MODEL, agent_workspace.MODEL):
+        raise ValueError(f'unknown brain.model {model!r}')
+    reasoning = setup.get('reasoning', 'default')
+    if model != A.MagpieBrainGateway.MODEL and reasoning != 'default':
+        raise ValueError('only the Astra brain takes a reasoning effort')
+    timeout_s = setup['timeout_s']
+    sessions = run / 'brain_sessions'
+    sessions.mkdir(exist_ok=True)
+    folder = sessions / f'{len(list(sessions.iterdir())):02d}'
+    folder.mkdir()
+    if model == A.MagpieBrainGateway.MODEL:
+        identity = {'model': model, 'provider': 'magpie', 'reasoning': reasoning, 'column': A.VERSION}
+        write_new(folder / 'brain.json', {**identity, 'timeout_s': timeout_s})
+        yield A.Brain(A.MagpieBrainGateway(timeout_s, reasoning), identity)
+        return
+
+    workspace = agent_workspace.prepare_workspace(Path(setup['workspace_root']) / run.name / folder.name)
+    with opencode_server.serve(workspace, folder / 'server') as server:
+        gateway = agent.OpenCodeGateway(workspace, model=model, timeout_s=timeout_s,
+                                        server=server['url'], env={'OPENCODE_PASSWORD': server['password']})
+        identity = {'model': model, 'workspace_config_sha256': agent_workspace.config_sha256(),
+                    'column': A.VERSION}
+        cli = subprocess.run(['opencode', '--version'], capture_output=True, text=True, check=True).stdout.strip()
+        write_new(folder / 'brain.json', {**identity, 'opencode': cli, 'workspace': str(workspace),
+                                       'timeout_s': timeout_s})
+        yield A.Brain(gateway, identity)
 
 
 def checkpoints(path):
@@ -528,12 +717,18 @@ def checkpoints(path):
     Tasks come from an already prepared run and use its kernel.json. A harness check, not a
     task measurement: nothing here enters a reliability table. For a run whose locate goes through
     the K3 primitive, resumes replay the source episode's cached replies (a miss is ReplayCacheMiss).
+    "column": "agent" makes every episode an Agent-column one (config "brain"; episode_caps
+    "brain_calls"): the source calls the brain live, each resume replays its replies and VLM
+    answers, and the brain's decision log joins the compared records.
     """
-    from harness import kernel as K
     c = read(path)
-    for key in ('prediction', 'falsification', 'episode_caps', 'tasks', 'tasks_from'):
+    agent = c.get('column') == 'agent'
+    for key in ('prediction', 'falsification', 'episode_caps', 'tasks', 'tasks_from', *(('brain',) if agent else ())):
         if not c.get(key):
             raise ValueError('missing preregistration: ' + key)
+    if agent and not (c['episode_caps'].get('brain_calls') and type(c['episode_caps'].get('forks')) is int):
+        raise ValueError('missing preregistration: episode_caps.brain_calls and forks')
+    from harness import kernel as K
     source = ROOT / c['tasks_from']
     rows = {r['id']: r for r in read(source / 'tasks.json')}
     if any(not rows[t]['ready'] for t in c['tasks']):
@@ -544,28 +739,132 @@ def checkpoints(path):
     spec = read(source / 'kernel.json')
     vlm = read(source / 'config.json').get('locate') == 'vlm'
     checked = []
-    for task in c['tasks']:
-        folder = source / 'tasks' / task
-        case = {'folder': folder, 'source': ROOT / rows[task]['source'], 'instance': read(folder / 'instance.json'),
-                'ready': True, 'template': rows[task]['template']}
-        if vlm:
-            from harness import vlm_locate as V
-            case['locate_query'] = V.query_text(next(r for r in read(folder / 'task.json')['roles'] if r['target']))
-        first = run / task / 'source'
-        result = K.execute(case, first, spec, c['episode_caps'])
-        print(f"{task} source: success={result['success']} error={result['error'] and result['error']['stage']}")
-        for entry in read(first / 'checkpoints.json'):
-            name = Path(entry['path']).name.removesuffix('.pkl.gz')
-            resumed = K.execute(case, run / task / ('resume_' + name), spec, c['episode_caps'], resume=ROOT / entry['path'],
-                                replay=vlm)
-            same = same_episode(first, run / task / ('resume_' + name))
-            checked.append({'task': task, 'checkpoint': entry['path'], 'done': entry['done'], 'next': entry['next'],
-                            'source_error': result['error'], 'resumed_error': resumed['error'],
-                            'equal': same, 'all_equal': all(same.values())})
-            print(f"  {name:34} {'equal' if all(same.values()) else 'DIFFERS ' + str([k for k, v in same.items() if not v])}")
+    with brain_session(run, c['brain']) if agent else nullcontext() as brain:
+        for task in c['tasks']:
+            folder = source / 'tasks' / task
+            case = {'folder': folder, 'source': ROOT / rows[task]['source'], 'instance': read(folder / 'instance.json'),
+                    'ready': True, 'template': rows[task]['template']}
+            if agent:
+                case['public_task'] = read(folder / 'task.json')
+            elif vlm:
+                from harness import vlm_locate as V
+                case['locate_query'] = V.query_text(next(r for r in read(folder / 'task.json')['roles'] if r['target']))
+            first = run / task / 'source'
+            result = K.execute(case, first, spec, c['episode_caps'], brain=brain)
+            print(f"{task} source: success={result['success']} error={result['error'] and result['error']['stage']}"
+                  + (f" nodes={result['agent']['nodes']} stop={result['agent']['stop']}" if agent else ''))
+            for entry in read(first / 'checkpoints.json'):
+                name = Path(entry['path']).name.removesuffix('.pkl.gz')
+                resumed = K.execute(case, run / task / ('resume_' + name), spec, c['episode_caps'],
+                                    resume=ROOT / entry['path'], replay=vlm or agent, brain=brain)
+                same = same_episode(first, run / task / ('resume_' + name))
+                checked.append({'task': task, 'checkpoint': entry['path'], 'done': entry['done'], 'next': entry['next'],
+                                'source_error': result['error'], 'resumed_error': resumed['error'],
+                                'equal': same, 'all_equal': all(same.values())})
+                print(f"  {name:34} {'equal' if all(same.values()) else 'DIFFERS ' + str([k for k, v in same.items() if not v])}")
     write_new(run / 'checkpoint_check.json', checked)
     print(f"{sum(r['all_equal'] for r in checked)}/{len(checked)} resumes equal their source episode")
     return checked
+
+
+def first_locates(decisions):
+    """The locate args a source Agent episode executed before its first grasp; pure for testing."""
+    calls = [d['decision'] for d in decisions if d['outcome'] and d['outcome'].get('executed') and 'call' in d['decision']]
+    grasp = next((i for i, d in enumerate(calls) if d['call'] == 'grasp'), len(calls))
+    return [d['args'] for d in calls[:grasp] if d['call'] == 'locate']
+
+
+def screen_row(decisions, check, trials):
+    """Where one screened episode stopped; pure for testing.
+
+    check: the last preflight result of the grasp (tools.json), trials: tools/adaptive_preflight.json or None.
+    The first preflight previews only the preparation move and writes no trials, so a rejection there
+    has a reason and no failed stages.
+    """
+    ran = [d for d in decisions if d['outcome'] and d['outcome'].get('executed') and 'call' in d['decision']]
+    failed = next((d for d in ran if not d['outcome']['ok']), None)
+    row = {'nodes': [d['decision']['call'] for d in ran], 'failed_node': failed and failed['decision']['call'],
+           'stopped': failed and failed['outcome']['failure']['message'],
+           'guard': failed and failed['outcome']['failure'].get('guard'),
+           'stages': failed and failed['outcome']['stages']}
+    detail = ((failed or {}).get('outcome', {}).get('diagnosis') or {}).get('guard_detail') or {}
+    row.update({k: detail.get(k) for k in ('robot_link', 'touched', 'palm_position_pelvis_m', 'speed_joints')})
+    if row['stopped'] == 'APPROACH_PREFLIGHT_REJECTED':
+        row['preflight_reason'] = check.get('reason')
+        row['preflight_failed_at'] = trials and sorted({t['failed_at']['stage'] for t in trials['trials']})
+    return row
+
+
+def sweep(path):
+    """Zero-token variant screen: one fresh Agent-column episode per (task, candidate) under a script brain.
+
+    The script (agent_column.ScriptGateway) replays the source Agent episode's first-pass locate calls,
+    reading its VLM cache, then runs grasp (and place) and stops; no brain model is called. Candidate
+    'baseline' binds no variant and must reproduce the source first pass physically. An engineering
+    screen of the bounded recipe envelope, not an Agent-column result: the plan is fixed per failure
+    family before running, and the success column is the evaluator's verdict.
+    """
+    c = read(path)
+    for key in ('prediction', 'falsification', 'episode_caps', 'caps', 'tasks_from', 'candidates', 'plan'):
+        if not c.get(key):
+            raise ValueError('missing preregistration: ' + key)
+    if 'baseline' in c['candidates'] or any(set(names) - set(c['candidates']) for names in c['plan'].values()):
+        raise ValueError('plan names an unknown candidate, or a candidate is called baseline')
+    if sum(len(names) + 1 for names in c['plan'].values()) > c['caps']['episodes']:
+        raise ValueError('plan exceeds caps.episodes')
+    from harness import agent_column as A, kernel as K
+    for variant in c['candidates'].values():
+        # The frozen recipe envelope refuses a bad candidate here rather than mid-run.
+        K.bind_variant({'parameters': {}}, variant)
+    source = ROOT / c['tasks_from']
+    rows = {r['id']: r for r in read(source / 'tasks.json')}
+    run = ROOT / c['output']
+    if run.exists() and read(run / 'config.json') != c:
+        raise ValueError('output exists with another config')
+    run.mkdir(parents=True, exist_ok=True)
+    if not (run / 'config.json').exists():
+        write_new(run / 'config.json', c)
+    started = time.time()
+    spec, caps, records = read(source / 'kernel.json'), dict(c['episode_caps'], forks=0), []
+    for task, names in c['plan'].items():
+        folder, agent = source / 'tasks' / task, source / 'episodes' / task / 'agent'
+        locates = first_locates(read(agent / 'decisions.json'))
+        case = {'folder': folder, 'source': ROOT / rows[task]['source'], 'instance': read(folder / 'instance.json'),
+                'ready': rows[task]['ready'], 'template': rows[task]['template'],
+                'public_task': read(folder / 'task.json'), 'vlm_sources': [agent / 'vlm_cache']}
+        for name in ('baseline', *names):
+            variant = c['candidates'].get(name)
+            brain = A.Brain(A.ScriptGateway(locates), {'model': A.ScriptGateway.MODEL, 'locates': locates,
+                                                       'column': A.VERSION})
+            out = run / task / name
+            if out.exists() and not (out / 'result.json').exists():
+                raise RuntimeError(f'INTERRUPTED: {task}/{name} started and never completed; not rerun')
+            # A rerun of the same config continues after the completed episodes and rebuilds their rows from files.
+            result = read(out / 'result.json') if out.exists() else K.execute(case, out, spec, caps, brain=brain,
+                                                                                variant=variant)
+            if result['initial_hash'] != rows[task]['robot_initial_hash']:
+                raise RuntimeError('INITIAL_STATE_MISMATCH: ' + task)
+            if result['error'] and result['error']['type'] in SYSTEM_FAILURES:
+                raise RuntimeError('SYSTEM_EXECUTION_FAILURE: ' + str(result['error']))
+            grasp = next((t for t in read(out / 'tools.json') if t['tool'] == 'grasp'), {'stages': []})
+            checks = [s['result'] for s in grasp['stages'] if s['stage'] == 'preflight']
+            trials = out / 'tools' / 'adaptive_preflight.json'
+            record = {'task': task, 'candidate': name, 'variant': variant, 'success': result['success'],
+                      **screen_row(read(out / 'decisions.json'), checks[-1] if checks else None,
+                                   read(trials) if trials.exists() else None)}
+            if name == 'baseline':
+                same = same_episode(agent, out)
+                record['source_equal'] = {k: v for k, v in same.items() if k != 'decisions.json'}
+            records.append(record)
+            print(f"{task:18} {name:24} success={result['success']!s:5} {record['stopped'] or 'ok'}"
+                  f"{' touched ' + record['touched'] if record['touched'] else ''}"
+                  f"{' ' + str(record['speed_joints']) if record['speed_joints'] else ''}"
+                  f"{' source_equal=' + str(all(record['source_equal'].values())) if name == 'baseline' else ''}")
+    written = written_since(FROZEN, started)
+    if written:
+        raise RuntimeError('FROZEN_SOURCE_WRITTEN: ' + ', '.join(written[:5]))
+    write_new(run / 'sweep.json', records)
+    return records
 
 
 def node_rows(template, checkpoints, error, trials):
@@ -933,6 +1232,139 @@ def lift(path):
     return summary
 
 
+
+def rejudge(path):
+    """Evaluator change check (design §1.6): a hand rule replayed over every episode of a recorded run.
+
+    Verdicts are judged again from the saved integration states under the v1 and the registered rule,
+    and grasp boundaries are re-measured from boundary_states.npz; nothing is stepped and the run is only
+    read. The v1 replay must equal the recorded verdicts and boundaries. With rerun (the same tasks run
+    again under that rule), each rerun episode is checked against the source: same physics and records,
+    verdict_v1 equal to the recorded verdict, verdict and tool truth equal to the replayed rule.
+    """
+    import mujoco
+    import numpy as np
+    from harness import hand_support as H
+    from harness import kernel as K
+    from experiments.t0_agent_v1.diversity_predicates import snapshot
+    from experiments.t0_agent_v1.tabletop_training_plant import TabletopPlant, set_left_hand_impedance
+    c = read(path)
+    for key in ('prediction', 'falsification', 'run', 'hand_rule'):
+        if not c.get(key):
+            raise ValueError('missing preregistration: ' + key)
+    if c['hand_rule'] != H.VERSION:
+        raise ValueError(f"hand_rule {c['hand_rule']} is not the implemented {H.VERSION}")
+    run, out = ROOT / c['run'], ROOT / c['output']
+    rerun = c.get('rerun') and ROOT / c['rerun']
+    out.mkdir(parents=True, exist_ok=False)
+    write_new(out / 'config.json', c)
+    start = time.time()
+    spec = mujoco.mjtState.mjSTATE_INTEGRATION
+
+    def plain(verdict):
+        return {k: v for k, v in verdict.items() if k != 'trajectory_sha256'}
+
+    rows = []
+    for task in read(run / 'tasks.json'):
+        for arm in ('negative', 'engineering'):
+            folder = run / 'episodes' / task['id'] / arm
+            if not (folder / 'result.json').exists():
+                continue
+            instance = read(run / 'tasks' / task['id'] / 'instance.json')
+            target = next(o for o in instance['objects'] if o['is_target'])
+            model = mujoco.MjModel.from_xml_path(str(run / 'tasks' / task['id'] / 'pantry_G1.xml'))
+            scratch = out / task['id'] / arm
+            scratch.mkdir(parents=True)
+            judged = {rule: H.verify(task['template'], scratch, rule)(folder, instance, model, initial_valid=task['ready'])
+                      for rule in (None, c['hand_rule'])}
+            v1, v2 = judged[None], judged[c['hand_rule']]
+            row = {'task': task['id'], 'arm': arm, 'template': task['template'],
+                   'prototype': target['asset'].get('prototype_id'),
+                   'v1_equals_recorded': plain(v1) == plain(read(folder / 'verdict.json')),
+                   'success': [v1['verified_task_success'], v2['verified_task_success']],
+                   'goal': [v1['goal_satisfied'], v2['goal_satisfied']], 'boundaries': []}
+            if arm == 'engineering':
+                plant = TabletopPlant(instance, ROOT / task['source'], model, scratch, budget=1e9)
+                config = folder / 'left_hand_impedance.json'
+                if config.exists():
+                    impedance = read(config)
+                    set_left_hand_impedance(model, impedance['kp'], impedance['kd'])
+                start_z = snapshot(model, plant.data, instance, base=plant.base_reference)['objects'][target['name']]['position_m'][2]
+                states = np.load(folder / 'boundary_states.npz')['state']
+                for tool in read(folder / 'tools.json'):
+                    if tool['tool'] != 'grasp':
+                        continue
+                    mujoco.mj_setState(model, plant.data, states[tool['state_index']], spec)
+                    mujoco.mj_forward(model, plant.data)
+                    measured = K.truth(plant, instance, target, start_z, hand_rule=c['hand_rule'])
+                    palm = {k: v for k, v in H.snapshot(model, plant.data, instance, base=plant.base_reference)[
+                        'objects'][target['name']]['upward_support_N'].items() if k.endswith('_hand_palm_link')}
+                    row['boundaries'].append({'tool': 'grasp', 'recorded': tool['truth']['held'],
+                                              'held': [measured['held_v1'], measured['held']], 'palm_support_N': palm})
+                if plant.renderer:
+                    plant.renderer.close()
+            row['v1_equals_recorded'] = row['v1_equals_recorded'] and all(
+                b['recorded'] == b['held'][0] for b in row['boundaries'])
+            if rerun:
+                row['rerun'] = rerun_check(folder, rerun / 'episodes' / task['id'] / arm, arm, v1, v2, row)
+            rows.append(row)
+            flips = [k for k in ('success', 'goal') if row[k][0] != row[k][1]]
+            flips += ['grasp_held' for b in row['boundaries'] if b['held'][0] != b['held'][1]]
+            row['flips'] = flips
+            extra = '' if not rerun else ' rerun=' + ('equal' if all(row['rerun'].values()) else
+                                                      'DIFFERS ' + str([k for k, v in row['rerun'].items() if not v]))
+            print(f"{task['id']:18} {arm:11} v1_replay={'ok' if row['v1_equals_recorded'] else 'DIFFERS'} "
+                  f"success {row['success'][0]!s:5}->{row['success'][1]!s:5} flips={flips}{extra}")
+    written = written_since([run, *FROZEN] + ([rerun] if rerun else []), start)
+    if written:
+        raise RuntimeError('SOURCE_WRITTEN: the replay wrote into a run it reads: ' + ', '.join(written[:5]))
+    write_new(out / 'rows.json', rows)
+    summary = {'hand_rule': c['hand_rule'], 'episodes': len(rows),
+               'v1_replay_differs': [f"{r['task']}/{r['arm']}" for r in rows if not r['v1_equals_recorded']],
+               'flips': {f"{r['task']}/{r['arm']}": r['flips'] for r in rows if r['flips']},
+               'scope': 'saved states only; no physics stepped, no physical episode'}
+    if rerun:
+        summary['rerun_differs'] = {f"{r['task']}/{r['arm']}": [k for k, v in r['rerun'].items() if not v]
+                                    for r in rows if not all(r['rerun'].values())}
+        summary['rerun_episodes'] = sum(1 for _ in (rerun / 'episodes').glob('*/*/result.json'))
+    write_new(out / 'summary.json', summary)
+    print(json.dumps({k: v for k, v in summary.items() if k != 'scope'}, indent=1))
+    return summary
+
+
+def rerun_check(source, folder, arm, v1, v2, row):
+    """One rerun episode against its source under the replayed rule; pure file reads."""
+    import numpy as np
+    out = {'exists': (folder / 'result.json').exists()}
+    if not out['exists']:
+        return out
+
+    def plain(verdict):
+        return {k: v for k, v in verdict.items() if k != 'trajectory_sha256'}
+    names = ('integration_states.npz',) + (('boundary_states.npz',) if arm == 'engineering' else ())
+    for name in names:
+        with np.load(source / name) as x, np.load(folder / name) as y:
+            out[name] = sorted(x.files) == sorted(y.files) and all(
+                (x[k].dtype, x[k].shape) == (y[k].dtype, y[k].shape) and x[k].tobytes() == y[k].tobytes()
+                for k in x.files)
+    out['execution.json'] = read(source / 'execution.json') == read(folder / 'execution.json')
+    out['verdict.json'] = plain(read(folder / 'verdict.json')) == plain(v2)
+    if arm == 'negative':
+        return out
+    out['actions.json'] = read(source / 'actions.json') == read(folder / 'actions.json')
+    out['verdict_v1.json'] = plain(read(folder / 'verdict_v1.json')) == plain(v1)
+    a, b = read(source / 'result.json'), read(folder / 'result.json')
+    out['result'] = (all(a[k] == b[k] for k in ('error', 'commands', 'worker_calls', 'simulation_s'))
+                     and b['success'] == v2['verified_task_success'] and b['success_v1'] == a['success'])
+    ta, tb = read(source / 'tools.json'), read(folder / 'tools.json')
+    held = iter(b['held'][1] for b in row['boundaries'])
+    expected = [next(held) if t['tool'] == 'grasp' else v2['goal_satisfied'] if t['tool'] == 'place'
+                else t['truth_ok'] for t in ta]
+    out['tools.json'] = ([(t['tool'], t['visible_ok'], t['failure'], t['stages']) for t in ta]
+                         == [(t['tool'], t['visible_ok'], t['failure'], t['stages']) for t in tb]
+                         and [t['truth_ok'] for t in tb] == expected)
+    return out
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -942,6 +1374,8 @@ def main(argv=None):
     sub.add_parser('trials').add_argument('path', type=Path)
     sub.add_parser('vlm').add_argument('path', type=Path)
     sub.add_parser('lift').add_argument('path', type=Path)
+    sub.add_parser('rejudge').add_argument('path', type=Path)
+    sub.add_parser('sweep').add_argument('path', type=Path)
     replay = sub.add_parser('contacts')
     replay.add_argument('path', type=Path)
     replay.add_argument('out', type=Path)
@@ -959,6 +1393,10 @@ def main(argv=None):
         vlm(args.path)
     elif args.command == 'lift':
         lift(args.path)
+    elif args.command == 'rejudge':
+        rejudge(args.path)
+    elif args.command == 'sweep':
+        sweep(args.path)
     elif args.command == 'contacts':
         contacts(args.path, args.out)
     else:

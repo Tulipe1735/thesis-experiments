@@ -1,0 +1,62 @@
+{
+  "purpose": "Stage 0.5 item 3: the G0 near batch under the series kernel K_v2 and the K2 hand rule v2. G0 leaves do not call the K3 primitive (locate stays the colour rule, design §1.6), so this checks decision equivalence with K_v1 and rebuilds the entry library checkpoints under K_v2 + hand rule v2. Same bundle, generator spec, seeds and episode caps as the K_v1 near batch.",
+  "output": "outputs/tabletop_kernel_near_20261117_001",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "hand_rule": "palm-hand-v2-20261117",
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "count": 8,
+    "seed_start": {
+      "TP01": 1130100,
+      "TP03": 1130300,
+      "TP04": 1130400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "replicates": [
+    "outputs/tabletop_kernel_near_20261113_001",
+    "outputs/tabletop_kernel_near_20261115_001",
+    "outputs/tabletop_kernel_near_20261115_002"
+  ],
+  "instance_note": "Same seeds as the stage-0 near batch on purpose: a paired rerun under the new kernel and hand rule, not resampling. No seed is added or replaced.",
+  "baselines": {
+    "negative": "2 s wait on the first ready instance of each template; any goal satisfaction under hand rule v2 invalidates the whole batch",
+    "engineering": "fixed G0 tool chain under K_v2 (TP01: locate,grasp; TP03/TP04: locate,grasp,place), colour-rule locate, no model call",
+    "paired": "outputs/tabletop_kernel_near_20261115_002 (K_v1, hand rule v1) and its v2 replay outputs/tabletop_rejudge_20261117_001",
+    "agent": "not run"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 600
+  },
+  "caps": {
+    "physical_episodes": 27,
+    "wall_s": 21600
+  },
+  "gate": "Run only if tabletop_rejudge_20261117_001 triggers none of its falsification conditions.",
+  "prediction": [
+    "Every instance, readiness and robot initial hash equals the K_v1 near batch; no episode calls the model (no vlm_calls.json, no vlm_cache).",
+    "Every episode reproduces its K_v1 episode (checked by tabletop_rejudge_20261117_002): state arrays byte-equal, actions and execution equal, verdict_v1.json equal to the recorded verdict, verdict.json and tool truth equal to the v2 replay, result counts equal.",
+    "Full success per group therefore equals the K_v1 batch plus the verdict flips of the v2 replay."
+  ],
+  "falsification": [
+    "Any differing episode: K_v2 changed G0 behaviour, so the stage-0 baseline is not carried over to K_v2 and these checkpoints are not used as an entry library until the cause is found.",
+    "Negative control satisfies a goal: the whole batch is invalid.",
+    "A system execution failure or KERNEL_CHANGED_AFTER_PREPARE."
+  ]
+}

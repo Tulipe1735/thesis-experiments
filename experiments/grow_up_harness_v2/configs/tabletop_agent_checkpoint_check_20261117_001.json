@@ -1,0 +1,35 @@
+{
+  "purpose": "Stage 0.5 item 4 acceptance: the Agent-column executor (harness/agent_column.py, agent-column-p3-g0-20261117) resumes from every node-boundary checkpoint to the same episode, as E1 did for the engineering column. The brain (the series model behind a private deny-all OpenCode server) picks the next G0 node at P3; the source episode calls it live, every resume replays its cached replies and VLM answers (replay=True). Harness check only: nothing here is an Agent-column success rate or the A_static round (item 5).",
+  "output": "outputs/tabletop_agent_checkpoint_check_20261117_001",
+  "column": "agent",
+  "tasks_from": "outputs/tabletop_kernel_v2_smoke_20261116_001",
+  "tasks": [
+    "TP04_near_1161400",
+    "TP03_near_1161302"
+  ],
+  "task_choice": "The two tasks of tabletop_checkpoint_check_20261117_001, so the K_v2 engineering resume check and this one share instances. Their smoke outcomes were known when this config was written (both stopped in grasp); the rule does not use them.",
+  "kernel_note": "tasks_from is the K_v2 smoke run: K_v2-20261116 with the v1 hand rule (its kernel.json has no hand_rule). No prepared K_v2 + palm-hand-v2 run exists yet (item 3, tabletop_kernel_near_20261117_001, is not run). Resume consistency does not depend on the hand rule; the checkpoint header still checks it.",
+  "brain": {
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "workspace_root": "/tmp/opencode/growup_agent_workspaces",
+    "timeout_s": 180
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1800,
+    "brain_calls": 8
+  },
+  "caps_note": "wall_s 1800: up to two VLM calls of 20-50 s (an empty reply runs about 5 min) plus up to 8 brain calls under the 180 s gateway timeout. A wall-budget alarm during a brain call surfaces as GatewayUnavailable (the gateway maps OSError), which is a system failure here, not a brain outcome.",
+  "physical_episodes": "one fresh source episode per task (live brain and VLM calls) plus one resume per written checkpoint: 00_configured and one per executed node, at most 1 + 8 per task, no model calls",
+  "prediction": [
+    "Every resume reproduces its source episode under tabletop.same_episode, decisions.json included, with no ReplayCacheMiss: each resumed decision prompt is rebuilt from the restored decision log and hits the source episode's brain_cache, and the locate frames hit its vlm_cache.",
+    "Each source episode writes 00_configured plus one checkpoint per executed node; refused calls (PRECONDITION_UNMET) step no physics and write none.",
+    "No prediction on which nodes the brain calls, on its locate method, or on task success."
+  ],
+  "falsification": [
+    "Any ReplayCacheMiss or any differing record: the executor is not used for checkpoint-based work (A_static, entry library, reach-trial calibration) until the cause is found.",
+    "A system failure (GatewayUnavailable, TypeError, PicklingError, ModelUnavailable, worker errors) in a source episode: the wiring is broken; fix before item 5.",
+    "An AgentSchemaError ends that source episode and is reported as a brain reply outside the schema; its resumes are still compared. It does not falsify resume consistency."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "purpose": "Stage 0.5 item 5, A_static round: on the same new near-bucket instances, the engineering column (fixed G0 chain, colour-rule locate) and the Agent column (the brain calls the G0 nodes at P3, harness/agent_column.py agent-column-p3-g0-20261117; no recovery, no growth) under the series kernel K_v2 and hand rule v2, paired per instance. Gives the Agent-column pi_j / p_j baseline, the difference between the brain calling G0 and the fixed chain, and the engineering baseline under K_v2 + v2. User decision 2026-11-17: this paired run replaces item 3's same-seed rerun.",
+  "output": "outputs/tabletop_astatic_20261117_001",
+  "replaces": "experiments/grow_up_harness_v2/configs/tabletop_kernel_near_20261117_001.json (item 3, registered, never prepared); its check of decision equivalence with the stage-0 K_v1 episodes is not done",
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "hand_rule": "palm-hand-v2-20261117",
+  "arms": [
+    "engineering",
+    "agent"
+  ],
+  "brain": {
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "workspace_root": "/tmp/opencode/growup_agent_workspaces",
+    "timeout_s": 180
+  },
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "exclude_cells": [
+      "near_0_1",
+      "near_0_2"
+    ],
+    "count": 6,
+    "seed_start": {
+      "TP01": 1171100,
+      "TP03": 1171300,
+      "TP04": 1171400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "instance_note": "New seeds. exclude_cells drops the train cells of the y=0.25 row (design §5.1, stage-0 preflight 1/7 there); ids and train/test partitions are those of the full grid, so test cells (near_0_0, near_1_2, near_2_1) stay held out. 4 train cells remain. Rejected samples stay as not-ready rows; nothing is resampled.",
+  "baselines": {
+    "negative": "2 s wait on the first ready instance of each template under hand rule v2; any goal satisfaction invalidates the whole batch",
+    "engineering": "fixed G0 tool chain under K_v2, colour-rule locate, no model call (G0 never passes a query)",
+    "agent": "brain picks each next G0 node or stops; may choose the K3 primitive for locate (kernel-provided, reported separately); configuration and hand_open before its first decision; at most 8 decisions",
+    "comparison": "stage-0 near batch (outputs/tabletop_kernel_near_20261113_001, K_v1) on other seeds; not paired"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1800,
+    "brain_calls": 8
+  },
+  "caps_note": "Episode caps as in the agent checkpoint check (two VLM calls of 20-50 s possible, up to 8 brain calls under a 180 s gateway timeout). A wall alarm during a brain call surfaces as GatewayUnavailable and voids the batch as a system failure.",
+  "caps": {
+    "physical_episodes": 39,
+    "wall_s": 43200
+  },
+  "budget_note": "3 negatives + 18 instances x 2 arms = 39 if all are ready; rejected instances run no episode.",
+  "prediction": [
+    "No system failure, no KERNEL_CHANGED_AFTER_PREPARE, negatives 3/3 not satisfied.",
+    "Decision equivalence: on every instance where the agent executes exactly the engineering column's tools with every locate by the colour rule (report pairs: equivalent), the physical records are equal (physics_equal: integration and boundary states, actions.json, tools.json): brain calls step no physics. result.error and execution.json differ by design there, since the brain stops instead of an exception ending the chain.",
+    "The brain starts locate with the colour rule and, after a colour-rule PerceptionError, retries with the K3 primitive (as in both checkpoint-check sources); so the agent's locate boundary passes on at least as many instances as the engineering column's.",
+    "Grasp stays the frontier in both columns (stage 0: 0/14 HeldLifted grasp boundaries under v1, 2 flips under v2): at most 3 full successes per column over the 18 instances. No prediction on which column has more.",
+    "At most 1 AgentSchemaError over the agent episodes; every agent episode ends with stop (done or give_up) or a node-terminating guard, not BRAIN_CALL_BUDGET."
+  ],
+  "falsification": [
+    "Negative control satisfies a goal, or any system failure: the whole batch is invalid.",
+    "A pair with equivalent true and physics_equal false: the Agent column carries hidden state or nondeterminism; its results are not used as a baseline (item 6) until the cause is found.",
+    "An agent locate that reports success while its boundary truth fails with the K3 primitive: the lift is not reliable on new seeds; K3 use in the agent column is reported as a kernel gap.",
+    "More than 1 AgentSchemaError or any BRAIN_CALL_BUDGET: the prompt or decision schema is not usable for item 6 as is; reported, not fixed inside this run."
+  ]
+}

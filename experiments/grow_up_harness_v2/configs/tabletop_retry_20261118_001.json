@@ -1,0 +1,80 @@
+{
+  "purpose": "Stage 0.5, retry round (user decision 2026-11-18): the Agent column alone on the 13 ready A_static instances, with a guard stop fed back to the brain as the node's failure and up to 2 retries per episode, each resuming the failed node's entry checkpoint in a new branch (harness/agent_column.py agent-column-p3-g0-retry-20261118; §2.1.1 snapshot return, simulation privilege). Brain changed to GPT-6.2 Astra via local Magpie (user decision 2026-11-18). No growth: the graph stays G0. Measures what retries over G0 recover, first pass and after retries counted apart.",
+  "output": "outputs/tabletop_retry_20261118_001",
+  "replicates": [
+    "outputs/tabletop_astatic_20261117_001"
+  ],
+  "kernel_bundle": "outputs/artifacts/K_v1_t03_base_20261113.json",
+  "kernel_package": "experiments/grow_up_harness_v2/configs/kernel_K_v2_20261116.json",
+  "hand_rule": "palm-hand-v2-20261117",
+  "arms": [
+    "agent"
+  ],
+  "brain": {
+    "model": "gpt-6.2-astra",
+    "reasoning": "default",
+    "timeout_s": 180
+  },
+  "generate": {
+    "grid": {
+      "x_centers_m": [
+        0.28,
+        0.34,
+        0.4
+      ],
+      "y_centers_m": [
+        0.25,
+        0.32,
+        0.39
+      ],
+      "jitter_m": 0.008
+    },
+    "exclude_cells": [
+      "near_0_1",
+      "near_0_2"
+    ],
+    "count": 6,
+    "seed_start": {
+      "TP01": 1171100,
+      "TP03": 1171300,
+      "TP04": 1171400
+    },
+    "asset_partition": "train",
+    "position_partition": "train"
+  },
+  "instance_note": "Same generate spec and seeds as A_static (replicates), so prepare rebuilds the same 18 instances and the same 13 ready ones; ready rows and initial hashes are compared with A_static after prepare.",
+  "baselines": {
+    "negative": "2 s wait on the first ready instance of each template under hand rule v2; any goal satisfaction invalidates the whole batch",
+    "agent_static": "outputs/tabletop_astatic_20261117_001 agent column (DeepSeek v4.1 flash, no retry, a guard ended the episode): 2/13 full success (TP01 2/5, TP03 0/2, TP04 0/6)",
+    "engineering": "outputs/tabletop_astatic_20261117_001 engineering column on the same instances: 2/13",
+    "confound": "brain model and retry change together; the first pass approximates A_static under Astra (its prompt also carries the retry rule), success after retries minus first pass is the retry effect"
+  },
+  "episode_caps": {
+    "simulation_s": 300,
+    "commands": 3000,
+    "wall_s": 1800,
+    "brain_calls": 12,
+    "forks": 2
+  },
+  "caps_note": "Simulation and command budgets follow a branch's lineage (a branch resumes its source prefix), so A_static's per-episode values stay; wall restarts per branch. brain_calls bounds all decisions of an episode across branches. 2 forks: over G0 the only different retry is another locate method or query.",
+  "caps": {
+    "physical_episodes": 16,
+    "wall_s": 43200
+  },
+  "budget_note": "3 negatives + 13 ready instances x 1 arm; a retry branch is part of its episode, not a new physical episode.",
+  "prediction": [
+    "No system failure, no KERNEL_CHANGED_AFTER_PREPARE, negatives 3/3 not satisfied; the 13 ready instances and their robot initial hashes equal A_static's.",
+    "Cross-run determinism: on every instance whose first-pass executed node path (calls and args) equals the A_static agent episode's, the physical records (integration and boundary states, actions.json, tools.json) are equal to A_static's.",
+    "First pass: at most 3 full successes (A_static 2/13; the grasp frontier is physical, not a decision).",
+    "Retry: Astra retries on at least half of the instances whose first pass failed at grasp, and every executed retry branch changes the locate (method or query) before grasping again.",
+    "Retries recover at most 2 instances (success after retries <= first-pass successes + 2): 9 of A_static's 11 grasp failures were guard stops at translate_clear, forward_clear_18 or lift pressure, which a few-millimetre locate change is not expected to remove.",
+    "At most 1 AgentSchemaError; no BRAIN_CALL_BUDGET; every episode's last branch ends with stop (done or give_up)."
+  ],
+  "falsification": [
+    "Negative control satisfies a goal, or any system failure: the whole batch is invalid.",
+    "An instance with the same first-pass node path as A_static whose physical records differ: hidden state, nondeterminism or a replication mismatch; retry results are not used for item 6 until the cause is found.",
+    "Any BRAIN_CALL_BUDGET or more than 1 AgentSchemaError: the retry prompt or schema is not usable for item 6 as is; reported, not fixed inside this run.",
+    "A retry branch whose restored prefix differs from its source episode up to the resumed checkpoint (integration states): the branch mechanism is broken; success after retries is not reported."
+  ],
+  "interpretation": "If success after retries equals the first pass, the G0 grasp frontier is not addressable by locate choice: item 6 then needs leaf growth (§2.1.1 step 4), not more retries."
+}
